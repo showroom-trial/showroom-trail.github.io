@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIA Showroom - Sales Executive Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="execut.css">
+</head>
+<body>
+    <button class="toggle-btn">☰</button>
+
+    <div class="sidebar">
+        <div class="brand">
+            <h2>KIA Showroom</h2>
+            <p>Sales Executive</p>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#my-leads" class="active">📋 My Leads</a></li>
+            <li><a href="#quotations">💰 Quotations</a></li>
+            <li><a href="#customer-interactions">🗣️ Customer Interactions</a></li>
+            <li><a href="#addons-section">🛒 Add-ons Sales</a></li>
+            <li><a href="#daily-tasks-section">✓ Daily Tasks</a></li>
+            <li><a href="#customer-feedback-section">⭐ Customer Feedback</a></li>
+            <li><a href="#logout">🔒 Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+
+        <section id="my-leads" class="section active">
+            <div class="header">
+                <h1>My Leads</h1>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>Lead Management</h2>
+                </div>
+                
+                <div class="filters">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search by name..." id="lead-search">
+                    </div>
+                    <select class="form-control filter-select" id="lead-source-filter">
+                        <option value="">All Lead Sources</option>
+                        <option value="Walk-in">Walk-in</option>
+                        <option value="Online">Online</option>
+                        <option value="Referral">Referral</option>
+                        <option value="Social Media">Social Media</option>
+                    </select>
+                    <select class="form-control filter-select" id="lead-status-filter">
+                        <option value="">All Statuses</option>
+                        <option value="New">New</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Converted">Converted</option>
+                        <option value="Lost">Lost</option>
+                    </select>
+                </div>
+                
+                <div class="table-container">
+                    <table id="leads-table">
+                        <thead>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Lead Source</th>
+                                <th>Lead Status</th>
+                                <th>Follow-up Date & Time</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John Smith</td>
+                                <td>Walk-in</td>
+                                <td><span class="status status-new">New</span></td>
+                                <td>Mar 12, 2025 10:30 AM</td>
+                                <td>
+                                    <button class="btn btn-outline">Details</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Sarah Johnson</td>
+                                <td>Online</td>
+                                <td><span class="status status-progress">In Progress</span></td>
+                                <td>Mar 11, 2025 2:15 PM</td>
+                                <td>
+                                    <button class="btn btn-outline">Details</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Michael Brown</td>
+                                <td>Referral</td>
+                                <td><span class="status status-converted">Converted</span></td>
+                                <td>Mar 15, 2025 11:00 AM</td>
+                                <td>
+                                    <button class="btn btn-outline">Details</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Emily Davis</td>
+                                <td>Social Media</td>
+                                <td><span class="status status-lost">Lost</span></td>
+                                <td>Mar 10, 2025 9:45 AM</td>
+                                <td>
+                                    <button class="btn btn-outline">Details</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>David Wilson</td>
+                                <td>Walk-in</td>
+                                <td><span class="status status-progress">In Progress</span></td>
+                                <td>Mar 14, 2025 3:30 PM</td>
+                                <td>
+                                    <button class="btn btn-outline">Details</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>Lead Conversion Rate</h2>
+                </div>
+                <div class="chart-container">
+                    <canvas id="lead-conversion-chart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Quotations Section -->
+        <section id="quotations" class="section">
+            <div class="header">
+                <h1>Quotations</h1>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>Generate Quotation</h2>
+                </div>
+                
+                <form id="quotation-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customer-name">Customer Name</label>
+                            <input type="text" id="customer-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-email">Email</label>
+                            <input type="email" id="customer-email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-phone">Phone Number</label>
+                            <input type="tel" id="customer-phone" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="vehicle-model">Vehicle Model</label>
+                            <select id="vehicle-model" class="form-control" required>
+                                <option value="">Select Model</option>
+                                <option value="KIA Seltos">KIA Seltos</option>
+                                <option value="KIA Sonet">KIA Sonet</option>
+                                <option value="KIA Carnival">KIA Carnival</option>
+                                <option value="KIA EV6">KIA EV6</option>
+                                <option value="KIA Sportage">KIA Sportage</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicle-variant">Variant</label>
+                            <select id="vehicle-variant" class="form-control" required>
+                                <option value="">Select Variant</option>
+                                <option value="HTE">HTE</option>
+                                <option value="HTK">HTK</option>
+                                <option value="HTK+">HTK+</option>
+                                <option value="HTX">HTX</option>
+                                <option value="HTX+">HTX+</option>
+                                <option value="GTX">GTX</option>
+                                <option value="GTX+">GTX+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicle-color">Color</label>
+                            <select id="vehicle-color" class="form-control" required>
+                                <option value="">Select Color</option>
+                                <option value="White">White</option>
+                                <option value="Black">Black</option>
+                                <option value="Silver">Silver</option>
+                                <option value="Grey">Grey</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="ex-showroom">Ex-Showroom Price</label>
+                            <input type="number" id="ex-showroom" class="form-control" readonly value="1200000">
+                        </div>
+                        <div class="form-group">
+                            <label for="tax-amount">Taxes & Registration</label>
+                            <input type="number" id="tax-amount" class="form-control" readonly value="180000">
+                        </div>
+                        <div class="form-group">
+                            <label for="discount-amount">Discount</label>
+                            <input type="number" id="discount-amount" class="form-control" value="0">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="add-ons">Add-ons</label>
+                            <select id="add-ons" class="form-control" multiple>
+                                <option value="Extended Warranty">Extended Warranty (₹25,000)</option>
+                                <option value="Premium Floor Mats">Premium Floor Mats (₹5,000)</option>
+                                <option value="Seat Covers">Seat Covers (₹12,000)</option>
+                                <option value="Infotainment Upgrade">Infotainment Upgrade (₹18,000)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="add-ons-cost">Add-ons Cost</label>
+                            <input type="number" id="add-ons-cost" class="form-control" readonly value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="total-amount">Total On-Road Price</label>
+                            <input type="number" id="total-amount" class="form-control" readonly value="1380000">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" class="form-control" rows="3"></textarea>
+                    </div>
+                    
+                    <div style="display: flex; gap: 10px;">
+                        <button type="submit" class="btn btn-primary">Generate & Email Quotation</button>
+                        <button type="button" class="btn btn-outline">Save Draft</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>Saved Quotations</h2>
+                </div>
+                
+                <div class="table-container">
+                    <table id="quotations-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Customer Name</th>
+                                <th>Vehicle Model</th>
+                                <th>Total Amount</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mar 9, 2025</td>
+                                <td>James Wilson</td>
+                                <td>KIA Seltos HTX</td>
+                                <td>₹ 1,385,000</td>
+                                <td><span class="status status-progress">Pending</span></td>
+                                <td>
+                                    <button class="btn btn-outline">View</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Mar 8, 2025</td>
+                                <td>Lisa Thompson</td>
+                                <td>KIA Carnival GTX+</td>
+                                <td>₹ 2,450,000</td>
+                                <td><span class="status status-converted">Accepted</span></td>
+                                <td>
+                                    <button class="btn btn-outline">View</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Mar 7, 2025</td>
+                                <td>Robert Parker</td>
+                                <td>KIA Sonet HTK+</td>
+                                <td>₹ 1,150,000</td>
+                                <td><span class="status status-lost">Rejected</span></td>
+                                <td>
+                                    <button class="btn btn-outline">View</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Customer Interactions Section -->
+        <section id="customer-interactions" class="section">
+            <div class="header">
+                <h1>Customer Interactions</h1>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>Pending Follow-ups</h2>
+                </div>
+                
+                <div class="table-container">
+                    <table id="followups-table">
+                        <thead>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Last Contact</th>
+                                <th>Communication Mode</th>
+                                <th>Next Follow-up</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mark Johnson</td>
+                                <td>Mar 8, 2025</td>
+                                <td>Call</td>
+                                <td>Mar 10, 2025 2:00 PM</td>
+                                <td>
+                                    <button class="btn btn-primary">Complete</button>
+                                    <button class="btn btn-outline">Reschedule</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Susan Miller</td>
+                                <td>Mar 7, 2025</td>
+                                <td>Email</td>
+                                <td>Mar 11, 2025 11:30 AM</td>
+                                <td>
+                                    <button class="btn btn-primary">Complete</button>
+                                    <button class="btn btn-outline">Reschedule</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Thomas Anderson</td>
+                                <td>Mar 6, 2025</td>
+                                <td>In-Person</td>
+                                <td>Mar 10, 2025 4:15 PM</td>
+                                <td>
+                                    <button class="btn btn-primary">Complete</button>
+                                    <button class="btn btn-outline">Reschedule</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>Interaction History</h2>
+                </div>
+                
+                <div class="filters">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search by name..." id="interaction-search">
+                    </div>
+                    <select class="form-control filter-select" id="comm-mode-filter">
+                        <option value="">All Modes</option>
+                        <option value="Call">Call</option>
+                        <option value="Email">Email</option>
+                        <option value="In-Person">In-Person</option>
+                    </select>
+                </div>
+                
+                <div class="table-container">
+                    <table id="interactions-table">
+                        <thead>
+                            <tr>
+                                <th>Date & Time</th>
+                                <th>Customer Name</th>
+                                <th>Mode</th>
+                                <th>Summary</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mar 9, 2025 9:30 AM</td>
+                                <td>Jennifer Lewis</td>
+                                <td>Call</td>
+                                <td>Discussed financing options for Seltos HTX</td>
+                                <td>
+                                    <button class="btn btn-outline">View Notes</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Mar 8, 2025 3:45 PM</td>
+                                <td>William Chen</td>
+                                <td>In-Person</td>
+                                <td>Test drive of KIA EV6, interested in GT-Line</td>
+                                <td>
+                                    <button class="btn btn-outline">View Notes</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Mar 8, 2025 11:15 AM</td>
+                                <td>Katherine Wright</td>
+                                <td>Email</td>
+                                <td>Sent brochure and pricing details for Carnival</td>
+                                <td>
+                                    <button class="btn btn-outline">View Notes</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Mar 7, 2025 2:00 PM</td>
+                                <td>Daniel Martinez</td>
+                                <td>Call</td>
+                                <td>Follow-up after test drive, discussing add-ons</td>
+                                <td>
+                                    <button class="btn btn-outline">View Notes</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Mar 7, 2025 10:30 AM</td>
+                                <td>Sarah Johnson</td>
+                                <td>Email</td>
+                                <td>Inquired about Sportage delivery timeline</td>
+                                <td>
+                                    <button class="btn btn-outline">View Notes</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Mar 6, 2025 4:00 PM</td>
+                                <td>Michael Rodriguez</td>
+                                <td>In-Person</td>
+                                <td>Finalized color and trim options for Sorento</td>
+                                <td>
+                                    <button class="btn btn-outline">View Notes</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="pagination">
+                    <button class="pagination-btn">Previous</button>
+                    <span class="page-numbers">
+                        <button class="page-num active">1</button>
+                        <button class="page-num">2</button>
+                        <button class="page-num">3</button>
+                    </span>
+                    <button class="pagination-btn">Next</button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>New Interaction</h2>
+                </div>
+                
+                <div class="interaction-form">
+                    <form id="new-interaction-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customer-select">Customer</label>
+                                <select id="customer-select" class="form-control" required>
+                                    <option value="">Select Customer</option>
+                                    <option value="1">Mark Johnson</option>
+                                    <option value="2">Susan Miller</option>
+                                    <option value="3">Thomas Anderson</option>
+                                    <option value="4">Jennifer Lewis</option>
+                                    <option value="5">William Chen</option>
+                                    <option value="6">Katherine Wright</option>
+                                    <option value="7">Daniel Martinez</option>
+                                    <option value="8">Sarah Johnson</option>
+                                    <option value="9">Michael Rodriguez</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="interaction-date">Date & Time</label>
+                                <input type="datetime-local" id="interaction-date" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="interaction-mode">Communication Mode</label>
+                                <select id="interaction-mode" class="form-control" required>
+                                    <option value="">Select Mode</option>
+                                    <option value="Call">Call</option>
+                                    <option value="Email">Email</option>
+                                    <option value="In-Person">In-Person</option>
+                                    <option value="Video Call">Video Call</option>
+                                    <option value="SMS">SMS</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="interaction-duration">Duration (minutes)</label>
+                                <input type="number" id="interaction-duration" class="form-control" min="1">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interaction-summary">Summary</label>
+                            <input type="text" id="interaction-summary" class="form-control" placeholder="Brief summary of interaction" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interaction-notes">Detailed Notes</label>
+                            <textarea id="interaction-notes" class="form-control" rows="4" placeholder="Enter detailed notes about the interaction"></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="follow-up-required">Follow-up Required?</label>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="follow-up-required">
+                                    <label for="follow-up-required"></label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group follow-up-group" id="follow-up-details">
+                                <label for="follow-up-date">Follow-up Date & Time</label>
+                                <input type="datetime-local" id="follow-up-date" class="form-control">
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Save Interaction</button>
+                            <button type="reset" class="btn btn-outline">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Add-ons & Cross-selling Section -->
+        <section id="addons-section" class="section">
+            <div class="header">
+                <h1>Add-ons & Cross-selling</h1>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>Add-ons Sales Performance</h2>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="addons-chart"></canvas>
+                </div>
+            </div>
+            
+            <div class="cards-row">
+                <div class="card small-card">
+                    <div class="card-header">
+                        <h2>Total Add-on Revenue</h2>
+                    </div>
+                    <div class="stat-value">&#8377;24,850</div>
+                    <div class="stat-label">Last 30 days</div>
+                </div>
+                
+                <div class="card small-card">
+                    <div class="card-header">
+                        <h2>Conversion Rate</h2>
+                    </div>
+                    <div class="stat-value">42%</div>
+                    <div class="stat-label">Customers purchasing add-ons</div>
+                </div>
+                
+                <div class="card small-card">
+                    <div class="card-header">
+                        <h2>Most Popular</h2>
+                    </div>
+                    <div class="stat-value">Extended Warranty</div>
+                    <div class="stat-label">58 units sold this month</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>Recent Add-on Sales</h2>
+                </div>
+                
+                <div class="filters">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search by name..." id="addon-search">
+                    </div>
+                    <select class="form-control filter-select" id="addon-type-filter">
+                        <option value="">All Types</option>
+                        <option value="Warranty">Warranty</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Protection">Protection</option>
+                        <option value="Maintenance">Maintenance</option>
+                    </select>
+                </div>
+                
+                <div class="table-container">
+                    <table id="addons-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Customer Name</th>
+                                <th>Vehicle Model</th>
+                                <th>Add-on Item</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mar 9, 2025</td>
+                                <td>Emily Parker</td>
+                                <td>KIA Seltos</td>
+                                <td>Extended Warranty (5-year)</td>
+                                <td>Warranty</td>
+                                <td>&#8377;1,299</td>
+                            </tr>
+                            <tr>
+                                <td>Mar 8, 2025</td>
+                                <td>David Kim</td>
+                                <td>KIA Sportage</td>
+                                <td>Premium Floor Mats</td>
+                                <td>Accessories</td>
+                                <td>&#8377;249</td>
+                            </tr>
+                            <tr>
+                                <td>Mar 8, 2025</td>
+                                <td>Lisa Thompson</td>
+                                <td>KIA EV6</td>
+                                <td>Home Charging Station</td>
+                                <td>Accessories</td>
+                                <td>&#8377;899</td>
+                            </tr>
+                            <tr>
+                                <td>Mar 7, 2025</td>
+                                <td>Robert Wilson</td>
+                                <td>KIA Carnival</td>
+                                <td>Interior Protection Package</td>
+                                <td>Protection</td>
+                                <td>&#8377;599</td>
+                            </tr>
+                            <tr>
+                                <td>Mar 7, 2025</td>
+                                <td>Jennifer Adams</td>
+                                <td>KIA Sorento</td>
+                                <td>Maintenance Plan (3-year)</td>
+                                <td>Maintenance</td>
+                                <td>&#8377;1,199</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="pagination">
+                    <button class="pagination-btn">Previous</button>
+                    <span class="page-numbers">
+                        <button class="page-num active">1</button>
+                        <button class="page-num">2</button>
+                        <button class="page-num">3</button>
+                    </span>
+                    <button class="pagination-btn">Next</button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>Recommended Add-ons</h2>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customer-addon-select">Select Customer</label>
+                    <select id="customer-addon-select" class="form-control">
+                        <option value="">Choose a customer</option>
+                        <option value="1">Mark Johnson</option>
+                        <option value="2">Susan Miller</option>
+                        <option value="3">Thomas Anderson</option>
+                        <option value="4">Jennifer Lewis</option>
+                        <option value="5">William Chen</option>
+                    </select>
+                </div>
+                
+                <div class="addon-recommendations" id="addon-recommendations">
+                    <div class="recommendation-card">
+                        <div class="recommendation-header">
+                            <h3>Extended Warranty</h3>
+                            <div class="recommendation-score">98%</div>
+                        </div>
+                        <p class="recommendation-desc">5-year extended warranty with roadside assistance</p>
+                        <div class="recommendation-price">&#8377;1,299</div>
+                        <div class="recommendation-reason">Based on previous preferences and vehicle type</div>
+                    </div>
+                    
+                    <div class="recommendation-card">
+                        <div class="recommendation-header">
+                            <h3>All-Weather Floor Mats</h3>
+                            <div class="recommendation-score">85%</div>
+                        </div>
+                        <p class="recommendation-desc">Premium all-weather floor mats with custom fit</p>
+                        <div class="recommendation-price">&#8377;249</div>
+                        <div class="recommendation-reason">Popular with customers who purchased similar vehicles</div>
+                    </div>
+                    
+                    <div class="recommendation-card">
+                        <div class="recommendation-header">
+                            <h3>Paint Protection Film</h3>
+                            <div class="recommendation-score">78%</div>
+                        </div>
+                        <p class="recommendation-desc">Clear protective film for hood, mirrors and bumper</p>
+                        <div class="recommendation-price">&#8377;899</div>
+                        <div class="recommendation-reason">Customer previously inquired about protection options</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container">
+                <!-- Add-ons & Cross-selling -->
+                <div class="dashboard-section add-ons-section">
+                    <h3 class="section-title">Add-ons & Cross-selling</h3>
+                    <div class="add-ons-item">
+                        <span class="item-name">Premium Support Package</span>
+                        <span class="item-revenue">&#8377;1,245.00</span>
+                    </div>
+                    <div class="add-ons-item">
+                        <span class="item-name">Extended Warranty</span>
+                        <span class="item-revenue">&#8377;895.00</span
+                        </div>
+        </section>
+
+        <!-- Daily Tasks Section -->
+        <section id="daily-tasks-section" class="section">
+            <div class="header"><h1>Daily Task Tracker</h1></div>
+            <div class="card">
+                <div class="card-header"><h2>Tasks</h2></div>
+                <ul class="task-list">
+                    <li class="task-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <span class="task-text">Follow up with customer inquiry</span>
+                        <span class="task-date">Due today</span>
+                    </li>
+                    <li class="task-item task-completed">
+                        <input type="checkbox" class="task-checkbox" checked>
+                        <span class="task-text">Review inventory reports</span>
+                        <span class="task-date">Completed</span>
+                    </li>
+                    <li class="task-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <span class="task-text">Prepare monthly sales presentation</span>
+                        <span class="task-date">Due tomorrow</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Customer Feedback Section -->
+        <section id="customer-feedback-section" class="section">
+            <div class="header"><h1>Customer Feedback</h1></div>
+            <div class="card">
+                <div class="card-header"><h2>Recent Feedback</h2></div>
+                <div class="feedback-item">
+                    <div class="feedback-header">
+                        <span class="customer-name">John Doe</span>
+                        <span class="rating">★★★★★</span>
+                    </div>
+                    <p class="feedback-text">Great product and fast shipping. Will definitely buy again!</p>
+                </div>
+                <div class="feedback-item">
+                    <div class="feedback-header">
+                        <span class="customer-name">Sarah Johnson</span>
+                        <span class="rating">★★★★☆</span>
+                    </div>
+                    <p class="feedback-text">Quality exceeded my expectations. Would recommend to others.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const sidebar = document.querySelector('.sidebar');
+            const toggleBtn = document.querySelector('.toggle-btn');
+
+            // Sidebar Toggle Button
+            toggleBtn.addEventListener('click', function () {
+                sidebar.classList.toggle('active');
+            });
+
+            // Show only the first section on load
+            sections.forEach(section => section.style.display = 'none');
+            document.getElementById('my-leads').style.display = 'block';
+            navLinks[0].classList.add('active');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    // Hide all sections first
+                    sections.forEach(section => section.style.display = 'none');
+
+                    // Show only the clicked section
+                    if (targetSection) {
+                        targetSection.style.display = 'block';
+                    }
+
+                    // Remove active class from all links & add to clicked one
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Close sidebar on mobile after selection
+                    sidebar.classList.remove('active');
+                });
+            });
+        });
+        document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector("a[href='#logout']").addEventListener("click", function(event) {
+            event.preventDefault();
+            window.location.href = "login.html";
+        });
+
+    // Graphs Configuration
+    function renderCharts() {
+        // Lead Conversion Chart
+        const leadChartCtx = document.getElementById('lead-conversion-chart');
+        if (leadChartCtx) {
+            new Chart(leadChartCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['New', 'In Progress', 'Converted', 'Lost'],
+                    datasets: [{
+                        data: [10, 15, 5, 3],
+                        backgroundColor: ['#666', '#3498db', '#2ecc71', '#e74c3c']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        // Add-ons Sales Performance Chart
+        const addonsChartCtx = document.getElementById('addons-chart');
+        if (addonsChartCtx) {
+            new Chart(addonsChartCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Add-on Sales',
+                        data: [12, 15, 18, 14, 20, 22],
+                        backgroundColor: ['#4285F4', '#EA4335', '#FBBC05', '#34A853', '#FF6D00', '#8E24AA']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#555'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            ticks: {
+                                color: '#555'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    renderCharts();
+});
+
+</script>
+</body>
+</html>

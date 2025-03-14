@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIA Showroom - Drive Your Dreams</title>
+    
+    <link rel="stylesheet" href="index1_updated.css">
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <!-- Replaced text logo with image logo -->
+                <div class="logo">
+                    <img src="https://i.ibb.co/mCkf9qrL/Kialogo-removebg-preview.png" alt="Kia Logo">
+                </div>
+                <div class="hamburger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#featured">Vehicles</a></li>
+                    <li><a href="#locations">Locations</a></li>
+                    <li><a href="#footer">Contact</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to KIA Showroom - Drive Your Dreams</h1>
+            <p class="hero-text">Experience the future of driving with our latest collection of premium vehicles designed for performance, comfort, and style.</p>
+            <div class="hero-buttons">
+                <a href="#featured" class="btn">Explore Vehicles</a>
+                <a href="#" class="btn btn-outline" id="test-drive-btn">Book Test Drive</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Vehicles Section -->
+    <section id="featured" class="featured-vehicles">
+        <div class="container">
+            <h2 class="section-title">Featured Vehicles</h2>
+            <div class="vehicles-grid">
+                <!-- Vehicle 1 -->
+                <div class="vehicle-card">
+                    <img src="https://i.ibb.co/CKCZmnv5/Kia-sportage.jpg" alt="Kia Sportage">
+                    <div class="vehicle-info">
+                        <h3 class="vehicle-name">KIA Sportage</h3>
+                        <p class="vehicle-desc">A versatile SUV combining style and performance for your everyday adventure.</p>
+                        <button class="btn view-details" data-id="1">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Vehicle 2 -->
+                <div class="vehicle-card">
+                    <img src="https://i.ibb.co/fzJHPcJq/kia-ev6.jpg" alt="Kia EV6">
+                    <div class="vehicle-info">
+                        <h3 class="vehicle-name">KIA EV6</h3>
+                        <p class="vehicle-desc">The future of electric vehicles with stunning design and cutting-edge technology.</p>
+                        <button class="btn view-details" data-id="2">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Vehicle 3 -->
+                <div class="vehicle-card">
+                    <img src="https://i.ibb.co/c44s7Jq/kia-sorento.jpg" alt="Kia Sorento">
+                    <div class="vehicle-info">
+                        <h3 class="vehicle-name">KIA Sorento</h3>
+                        <p class="vehicle-desc">A spacious and powerful SUV built for family adventures and daily commutes.</p>
+                        <button class="btn view-details" data-id="3">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showroom Locations Section -->
+    <section id="locations" class="locations">
+        <div class="container">
+            <h2 class="section-title">Our Showroom Locations</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3872.752446052968!2d75.58523567406726!3d13.913739793525723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbba92d7f6a3c1f%3A0x5862cb178f27d67b!2sJansi%20Kia!5e0!3m2!1sen!2sin!4v1741711031232!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">KIA Showroom</div>
+                    <p>Experience the best in automotive excellence with our premium collection of KIA vehicles.</p>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i></i> Phone: 8291042663</p>
+                    <p><i></i> Email: jansiKia23@gmail.com</p>
+                    <p><i></i> Address: #151/1, Bypasss Road, Oorgadur Extension, Vidya Nagara, Shimoga 577203, Karnataka, 577203</p>
+                    <div class="social-links">
+                        <a href="#"><span>FB</span></a>
+                        <a href="#"><span>IG</span></a>
+                        <a href="#"><span>TW</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 KIA Showroom. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Vehicle Details Modal -->
+    <div class="modal" id="vehicle-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img src="" alt="" class="modal-img" id="modal-img">
+            <h2 class="modal-title" id="modal-title"></h2>
+            <p class="modal-desc" id="modal-desc"></p>
+            <div class="modal-specs" id="modal-specs"></div>
+            <a href="#" class="btn" id="book-test-drive-modal">Book a Test Drive</a>
+        </div>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // Vehicle Details Modal
+        const modal = document.getElementById('vehicle-modal');
+        const closeModal = document.querySelector('.close-modal');
+        const viewDetailsButtons = document.querySelectorAll('.view-details');
+        
+        // Vehicle data (would normally come from a backend)
+        const vehicleData = [
+            {
+                id: 1,
+                name: "KIA Sportage",
+                description: "The KIA Sportage offers a perfect blend of style, technology, and versatility. With its spacious interior, advanced safety features, and powerful performance, it's the ideal companion for both city commutes and weekend adventures.",
+                image: "https://i.ibb.co/CKCZmnv5/Kia-sportage.jpg",
+                specs: [
+                    { label: "Engine", value: "2.0L Turbo" },
+                    { label: "Horsepower", value: "187 HP" },
+                    { label: "Transmission", value: "8-Speed Automatic" },
+                    { label: "Fuel Economy", value: "25/32 MPG" },
+                    { label: "Seating", value: "5 Passengers" },
+                    { label: "Starting Price", value: "&#8377;25,990" }
+                ]
+            },
+            {
+                id: 2,
+                name: "KIA EV6",
+                description: "The all-electric KIA EV6 represents the future of sustainable mobility without compromise. Its sleek design, impressive range, and ultra-fast charging capabilities make electric driving exciting and practical.",
+                image: "https://i.ibb.co/fzJHPcJq/kia-ev6.jpg",
+                specs: [
+                    { label: "Range", value: "Up to 310 miles" },
+                    { label: "Charging", value: "10-80% in 18 min" },
+                    { label: "Power", value: "320 HP" },
+                    { label: "0-60 mph", value: "4.6 seconds" },
+                    { label: "Battery", value: "77.4 kWh" },
+                    { label: "Starting Price", value: "&#8377;41,400" }
+                ]
+            },
+            {
+                id: 3,
+                name: "KIA Sorento",
+                description: "The KIA Sorento is a versatile mid-size SUV that combines bold styling with practical features. With three-row seating, advanced tech, and impressive capabilities, it's designed for families and adventure-seekers alike.",
+                image: "https://i.ibb.co/c44s7Jq/kia-sorento.jpg",
+                specs: [
+                    { label: "Engine", value: "2.5L Turbo" },
+                    { label: "Horsepower", value: "281 HP" },
+                    { label: "Transmission", value: "8-Speed DCT" },
+                    { label: "Fuel Economy", value: "22/29 MPG" },
+                    { label: "Seating", value: "7 Passengers" },
+                    { label: "Starting Price", value: "&#8377;29,990" }
+                ]
+            }
+        ];
+
+        // Open modal with vehicle details
+        viewDetailsButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const vehicleId = parseInt(this.getAttribute('data-id'));
+                const vehicle = vehicleData.find(v => v.id === vehicleId);
+                
+                if (vehicle) {
+                    document.getElementById('modal-img').src = vehicle.image;
+                    document.getElementById('modal-img').alt = vehicle.name;
+                    document.getElementById('modal-title').textContent = vehicle.name;
+                    document.getElementById('modal-desc').textContent = vehicle.description;
+                    
+                    // Clear and populate specs
+                    const specsContainer = document.getElementById('modal-specs');
+                    specsContainer.innerHTML = '';
+                    
+                    vehicle.specs.forEach(spec => {
+                        const specElement = document.createElement('div');
+                        specElement.className = 'spec-item';
+                        
+                        const specLabel = document.createElement('span');
+                        specLabel.className = 'spec-label';
+                        specLabel.textContent = spec.label;
+                        
+                        const specValue = document.createElement('span');
+                        specValue.className = 'spec-value';
+                        specValue.textContent = spec.value;
+                        
+                        specElement.appendChild(specLabel);
+                        specElement.appendChild(specValue);
+                        specsContainer.appendChild(specElement);
+                    });
+                    
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', function() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Parallax effect for hero image
+        window.addEventListener('scroll', function() {
+            const heroImg = document.querySelector('.hero-bg');
+            const scrollPos = window.scrollY;
+            heroImg.style.transform = `translateY(${scrollPos * 0.2}px)`;
+        });
+
+        // Test drive booking buttons
+        document.getElementById('test-drive-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Test drive booking functionality would be implemented here.');
+        });
+
+        document.getElementById('book-test-drive-modal').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Test drive booking functionality would be implemented here.');
+        });
+    </script>
+</body>
+</html>

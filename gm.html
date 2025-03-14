@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIA Showroom - GM Dashboard</title>
+    
+    <link rel="stylesheet" href="gm.css">
+</head>
+<body>
+    <!-- Mobile Nav Toggle (visible on small screens) -->
+    <button class="mobile-nav-toggle" id="mobileNavToggle">
+        ☰
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">K</div>
+            <h2>Dashboard</h2>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="#dashboard" class="nav-link active" data-section="dashboard">
+                    <div class="nav-icon">📊</div>
+                    <span class="nav-text">Dashboard Overview</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#enquiries" class="nav-link" data-section="enquiries">
+                    <div class="nav-icon">👥</div>
+                    <span class="nav-text">Customer Enquiries</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#addons" class="nav-link" data-section="addons">
+                    <div class="nav-icon">🔧</div>
+                    <span class="nav-text">Add-ons Sales</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#sales" class="nav-link" data-section="sales">
+                    <div class="nav-icon">💰</div>
+                    <span class="nav-text">Sales Performance</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#service" class="nav-link" data-section="service">
+                    <div class="nav-icon">🔄</div>
+                    <span class="nav-text">Service Performance</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#comparative" class="nav-link" data-section="comparative">
+                    <div class="nav-icon">📈</div>
+                    <span class="nav-text">Comparative Analysis</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#predictive" class="nav-link" data-section="predictive">
+                    <div class="nav-icon">🔮</div>
+                    <span class="nav-text">Predictive Analytics</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#logout" class="nav-link">
+                    <div class="nav-icon">🔒</div>
+                    <span class="nav-text">Logout</span>
+                </a>
+            </li>
+            
+        </ul>
+        <button class="toggle-sidebar" id="toggleSidebar">
+            <span class="toggle-sidebar-icon">◀</span>
+            <span class="toggle-sidebar-text">Collapse</span>
+        </button>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content" id="mainContent">
+        <!-- Dashboard Overview Section -->
+        <section id="dashboard" class="dashboard-section active-section">
+            <div class="section-header">
+                <h1>Dashboard Overview</h1>
+                <p>Last updated: March 10, 2025</p>
+            </div>
+
+            <!-- Key Metrics Cards -->
+            <div class="dashboard-grid">
+                <div class="card metric-card">
+                    <h3>Total Sales Revenue</h3>
+                    <div class="metric-value">&#8377;5.2M</div>
+                    <div class="trend trend-up">
+                        <span>↑ 12.5% vs Last Month</span>
+                    </div>
+                </div>
+                <div class="card metric-card">
+                    <h3>Customer Retention Rate</h3>
+                    <div class="metric-value">68.7%</div>
+                    <div class="trend trend-up">
+                        <span>↑ 2.3% vs Last Month</span>
+                    </div>
+                </div>
+                <div class="card metric-card">
+                    <h3>Monthly Vehicles Sold</h3>
+                    <div class="metric-value">124</div>
+                    <div class="trend trend-down">
+                        <span>↓ 3.1% vs Last Month</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="dashboard-grid">
+                <div class="card chart-card">
+                    <div class="chart-card-header">
+                        <h3>Vehicles Sold by Model</h3>
+                        <div class="chart-controls">
+                            <button class="chart-control-btn">Monthly</button>
+                            <button class="chart-control-btn">Quarterly</button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="vehiclesSoldChart"></canvas>
+                    </div>
+                </div>
+                <div class="card chart-card">
+                    <div class="chart-card-header">
+                        <h3>Customer Retention</h3>
+                        <div class="chart-controls">
+                            <button class="chart-control-btn">All</button>
+                            <button class="chart-control-btn">By Source</button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="retentionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card chart-card">
+                <div class="chart-card-header">
+                    <h3>Monthly Revenue Trends</h3>
+                    <div class="chart-controls">
+                        <button class="chart-control-btn">6 Months</button>
+                        <button class="chart-control-btn">1 Year</button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer Enquiry Section -->
+        <section id="enquiries" class="dashboard-section">
+            <div class="section-header">
+                <h1>Customer Enquiries & Follow-ups</h1>
+                <p>Total Enquiries: 182</p>
+            </div>
+
+            <div class="controls">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search customers...">
+                </div>
+                <select class="filter-dropdown">
+                    <option value="all">All Statuses</option>
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+
+            <div class="card">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Contact</th>
+                                <th>Enquiry Date</th>
+                                <th>Enquiry Source</th>
+                                <th>Vehicle Interest</th>
+                                <th>Follow-up Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>James Wilson</td>
+                                <td>james.wilson@example.com</td>
+                                <td>Mar 09, 2025</td>
+                                <td>Website</td>
+                                <td>KIA EV6</td>
+                                <td><span class="badge badge-pending">Pending</span></td>
+                                <td><button class="chart-control-btn">Follow Up</button></td>
+                            </tr>
+                            <tr>
+                                <td>Emma Rodriguez</td>
+                                <td>emma.r@example.com</td>
+                                <td>Mar 08, 2025</td>
+                                <td>Walk-in</td>
+                                <td>KIA Sportage</td>
+                                <td><span class="badge badge-completed">Completed</span></td>
+                                <td><button class="chart-control-btn">View Details</button></td>
+                            </tr>
+                            <tr>
+                                <td>Michael Chang</td>
+                                <td>m.chang@example.com</td>
+                                <td>Mar 08, 2025</td>
+                                <td>Referral</td>
+                                <td>KIA Sorento</td>
+                                <td><span class="badge badge-pending">Pending</span></td>
+                                <td><button class="chart-control-btn">Follow Up</button></td>
+                            </tr>
+                            <tr>
+                                <td>Sarah Johnson</td>
+                                <td>sarah.j@example.com</td>
+                                <td>Mar 07, 2025</td>
+                                <td>Social Media</td>
+                                <td>KIA Seltos</td>
+                                <td><span class="badge badge-completed">Completed</span></td>
+                                <td><button class="chart-control-btn">View Details</button></td>
+                            </tr>
+                            <tr>
+                                <td>Robert Williams</td>
+                                <td>r.williams@example.com</td>
+                                <td>Mar 07, 2025</td>
+                                <td>Website</td>
+                                <td>KIA Telluride</td>
+                                <td><span class="badge badge-pending">Pending</span></td>
+                                <td><button class="chart-control-btn">Follow Up</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="card chart-card">
+                    <div class="chart-card-header">
+                        <h3>Enquiry Sources</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="enquirySourcesChart"></canvas>
+                    </div>
+                </div>
+                <div class="card chart-card">
+                    <div class="chart-card-header">
+                        <h3>Conversion Rate</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="conversionRateChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add-ons Sales Section -->
+        <section id="addons" class="dashboard-section">
+            <div class="section-header">
+                <h1>Add-ons Sales</h1>
+                <p>Total Revenue: &#8377;382,450</p>
+            </div>
+
+            <div class="card chart-card">
+                <div class="chart-card-header">
+                    <h3>Add-ons Revenue by Category</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="addonsChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item Name</th>
+                                <th>Category</th>
+                                <th>Units Sold</th>
+                                <th>Unit Price</th>
+                                <th>Total Revenue</th>
+                                <th>% Contribution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Extended Warranty</td>
+                                <td>Protection Plans</td>
+                                <td>98</td>
+                                <td>&#8377;1,499</td>
+                                <td>&#8377;146,902</td>
+                                <td>38.4%</td>
+                            </tr>
+                            <tr>
+                                <td>Premium Audio System</td>
+                                <td>Electronics</td>
+                                <td>42</td>
+                                <td>&#8377;1,299</td>
+                                <td>&#8377;54,558</td>
+                                <td>14.3%</td>
+                            </tr>
+                            <tr>
+                                <td>Interior Protection Package</td>
+                                <td>Protection Plans</td>
+                                <td>86</td>
+                                <td>&#8377;599</td>
+                                <td>&#8377;51,514</td>
+                                <td>13.5%</td>
+                            </tr>
+                            <tr>
+                                <td>Roof Rack</td>
+                                <td>Exterior Accessories</td>
+                                <td>53</td>
+                                <td>&#8377;499</td>
+                                <td>&#8377;26,447</td>
+                                <td>6.9%</td>
+                            </tr>
+                            <tr>
+                                <td>Floor Mats (All Weather)</td>
+                                <td>Interior Accessories</td>
+                                <td>104</td>
+                                <td>&#8377;199</td>
+                                <td>&#8377;20,696</td>
+                                <td>5.4%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sales Performance Section -->
+        <section id="sales" class="dashboard-section">
+            <div class="section-header">
+                <h1>Sales Performance</h1>
+                <p>Q1 2025</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="card metric-card">
+                    <h3>Total Vehicles Sold</h3>
+                    <div class="metric-value">356</div>
+                    <div class="trend trend-up">
+                        <span>↑ 8.2% YoY</span>
+                    </div>
+                </div>
+                <div class="card metric-card">
+                    <h3>Avg. Sale Price</h3>
+                    <div class="metric-value">&#8377;38,750</div>
+                    <div class="trend trend-up">
+                        <span>↑ 3.1% YoY</span>
+                    </div>
+                </div>
+                <div class="card metric-card">
+                    <h3>Profit Margin</h3>
+                    <div class="metric-value">12.8%</div>
+                    <div class="trend trend-down">
+                        <span>↓ 0.5% YoY</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card chart-card">
+                <div class="chart-card-header">
+                    <h3>Sales by Vehicle Type</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="vehicleTypeChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Sales Executive Performance</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Sales Target</th>
+                                <th>Achieved</th>
+                                <th>Achievement %</th>
+                                <th>Revenue Generated</th>
+                                <th>Commission Earned</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>David Kim</td>
+                                <td>30</td>
+                                <td>38</td>
+                                <td>126.7%</td>
+                                <td>&#8377;1,482,000</td>
+                                <td>&#8377;44,460</td>
+                            </tr>
+                            <tr>
+                                <td>Lisa Carter</td>
+                                <td>30</td>
+                                <td>32</td>
+                                <td>106.7%</td>
+                                <td>&#8377;1,256,000</td>
+                                <td>&#8377;37,680</td>
+                            </tr>
+                            <tr>
+                                <td>Marcus Johnson</td>
+                                <td>25</td>
+                                <td>28</td>
+                                <td>112.0%</td>
+                                <td>&#8377;1,078,000</td>
+                                <td>&#8377;32,340</td>
+                            </tr>
+                            <tr>
+                                <td>Jennifer Thompson</td>
+                                <td>25</td>
+                                <td>22</td>
+                                <td>88.0%</td>
+                                <td>&#8377;841,000</td>
+                                <td>&#8377;25,230</td>
+                            </tr>
+                            <tr>
+                                <td>Carlos Rodriguez</td>
+                                <td>20</td>
+                                <td>19</td>
+                                <td>95.0%</td>
+                                <td>&#8377;722,000</td>
+                                <td>&#8377;21,660</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Performance Section -->
+        <section id="service" class="dashboard-section">
+            <div class="section-header">
+                <h1>Service Performance</h1>
+                <p>Q1 2025</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="card metric-card">
+                    <h3>Total Service Orders</h3>
+                    <div class="metric-value">483</div>
+                    <div class="trend trend-up">
+                        <span>↑ 4.8% YoY</span>
+                    </div>
+                </div>
+                <div class="card metric-card">
+                    <h3>Avg. Service Value</h3>
+                    <div class="metric-value">&#8377;342</div>
+                    <div class="trend trend-up">
+                        <span>↑ 2.7% YoY</span>
+                    </div>
+                </div>
+                <div class="card metric-card">
+                    <h3>Customer Satisfaction</h3>
+                    <div class="metric-value">4.8/5</div>
+                    <div class="trend trend-up">
+                        <span>↑ 0.2 vs Last Quarter</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card chart-card">
+                <div class="chart-card-header">
+                    <h3>Service Types Distribution</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="serviceTypeChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Technician Performance</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Orders Completed</th>
+                                <th>Avg. Completion Time</th>
+                                <th>Labor Hours</th>
+                                <th>Customer Rating</th>
+                                <th>Efficiency Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mike Reynolds</td>
+                                <td>87</td>
+                                <td>2.3 hrs</td>
+                                <td>212 hrs</td>
+                                <td>4.9/5</td>
+                                <td>96%</td>
+                            </tr>
+                            <tr>
+                                <td>Samantha Lee</td>
+                                <td>79</td>
+                                <td>2.5 hrs</td>
+                                <td>198 hrs</td>
+                                <td>4.8/5</td>
+                                <td>93%</td>
+                            </tr>
+                            <tr>
+                                <td>Robert Jackson</td>
+                                <td>84</td>
+                                <td>2.4 hrs</td>
+                                <td>206 hrs</td>
+                                <td>4.7/5</td>
+                                <td>91%</td>
+                            </tr>
+                            <tr>
+                                <td>Angela Martinez</td>
+                                <td>78</td>
+                                <td>2.6 hrs</td>
+                                <td>190 hrs</td>
+                                <td>4.8/5</td>
+                                <td>89%</td>
+                            </tr>
+                            <tr>
+                                <td>Kevin Chen</td>
+                                <td>82</td>
+                                <td>2.4 hrs</td>
+                                <td>201 hrs</td>
+                                <td>4.7/5</td>
+                                <td>90%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparative Analysis Section -->
+        <section id="comparative" class="dashboard-section">
+            <div class="section-header">
+                <h1>Comparative Analysis</h1>
+                <p>KIA vs Competitors</p>
+            </div>
+
+            <div class="card chart-card">
+                <div class="chart-card-header">
+                    <h3>Market Share Comparison</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="marketShareChart"></canvas>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="card chart-card">
+                    <div class="chart-card-header">
+                        <h3>Customer Satisfaction Scores</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="satisfactionChart"></canvas>
+                    </div>
+                </div>
+                <div class="card chart-card">
+                    <div class="chart-card-header">
+                        <h3>Pricing Competitiveness</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="pricingChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Competitor Performance Metrics</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Brand</th>
+                                <th>Market Share</th>
+                                <th>YoY Growth</th>
+                                <th>Avg. Price Point</th>
+                                <th>Customer Satisfaction</th>
+                                <th>Brand Reputation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>KIA</td>
+                                <td>8.2%</td>
+                                <td>↑ 1.3%</td>
+                                <td>&#8377;38,750</td>
+                                <td>4.8/5</td>
+                                <td>8.4/10</td>
+                            </tr>
+                            <tr>
+                                <td>Competitor A</td>
+                                <td>11.4%</td>
+                                <td>↑ 0.8%</td>
+                                <td>&#8377;42,300</td>
+                                <td>4.6/5</td>
+                                <td>8.7/10</td>
+                            </tr>
+                            <tr>
+                                <td>Competitor B</td>
+                                <td>9.8%</td>
+                                <td>↓ 0.2%</td>
+                                <td>&#8377;39,100</td>
+                                <td>4.5/5</td>
+                                <td>8.5/10</td>
+                            </tr>
+                            <tr>
+                                <td>Competitor C</td>
+                                <td>7.1%</td>
+                                <td>↑ 1.1%</td>
+                                <td>&#8377;36,900</td>
+                                <td>4.7/5</td>
+                                <td>8.2/10</td>
+                            </tr>
+                            <tr>
+                                <td>Competitor D</td>
+                                <td>9.2%</td>
+                                <td>↑ 0.5%</td>
+                                <td>&#8377;41,200</td>
+                                <td>4.5/5</td>
+                                <td>8.8/10</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Predictive Analytics Section -->
+        <section id="predictive" class="dashboard-section">
+            <div class="section-header">
+                <h1>Predictive Analytics</h1>
+                <p>Next 6 Months Forecast</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="card metric-card">
+                    <h3>Projected Q2 Sales</h3>
+                    <div class="metric-value">386</div>
+                    <div class="trend trend-up">
+                        <span>↑ 8.4% vs Q2 2024</span>
+                    </div>
+                </div>
+                <div class="card metric-card">
+                    <h3>Expected Market Share</h3>
+                    <div class="metric-value">8.7%</div>
+                    <div class="trend trend-up">
+                        <span>↑ 0.5% vs Current</span>
+                    </div>
+                </div>
+                <div class="card metric-card">
+                    <h3>Forecast Revenue</h3>
+                    <div class="metric-value">&#8377;5.8M</div>
+                    <div class="trend trend-up">
+                        <span>↑ 11.5% vs Q1</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card chart-card">
+                <div class="chart-card-header">
+                    <h3>Sales Trend Forecast (Next 6 Months)</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="forecastChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Model-Specific Forecasts</h3>
+                <div class="heatmap">
+                    <div class="heatmap-cell heat-6">
+                        <div class="heatmap-value">+18%</div>
+                        <div class="heatmap-label">KIA EV6</div>
+                    </div>
+                    <div class="heatmap-cell heat-5">
+                        <div class="heatmap-value">+12%</div>
+                        <div class="heatmap-label">KIA Sportage</div>
+                    </div>
+                    <div class="heatmap-cell heat-7">
+                        <div class="heatmap-value">+22%</div>
+                        <div class="heatmap-label">KIA Seltos</div>
+                    </div>
+                    <div class="heatmap-cell heat-3">
+                        <div class="heatmap-value">+6%</div>
+                        <div class="heatmap-label">KIA Sorento</div>
+                    </div>
+                    <div class="heatmap-cell heat-4">
+                        <div class="heatmap-value">+9%</div>
+                        <div class="heatmap-label">KIA Soul</div>
+                    </div>
+                    <div class="heatmap-cell heat-2">
+                        <div class="heatmap-value">+3%</div>
+                        <div class="heatmap-label">KIA K5</div>
+                    </div>
+                    <div class="heatmap-cell heat-8">
+                        <div class="heatmap-value">+25%</div>
+                        <div class="heatmap-label">KIA EV9</div>
+                    </div>
+                    <div class="heatmap-cell heat-4">
+                        <div class="heatmap-value">+8%</div>
+                        <div class="heatmap-label">KIA Telluride</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Risk Assessment</h3>
+                <div style="padding: 1rem;">
+                    <div class="risk-indicator">
+                        <div class="risk-bar">
+                            <div class="risk-fill" style="width: 35%;"></div>
+                        </div>
+                        <div class="risk-text">35%</div>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">Current risk assessment indicates a moderate level of uncertainty for the forecast. Main factors include potential supply chain disruptions and competitive pricing pressure.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Ja<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+vaScript for Dashboard Functionality -->
+        <!-- Add Chart.js library in the head section -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
+<!-- Replace the existing script at the bottom with this enhanced version -->
+<script>
+    // Toggle Sidebar
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('mainContent');
+    const toggleSidebarBtn = document.getElementById('toggleSidebar');
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+
+    // Wait for the DOM to fully load
+document.addEventListener('DOMContentLoaded', function() {
+    // Navigation links
+    const navLinks = document.querySelectorAll('.nav-link[data-section]');
+    
+    // Mobile navigation toggle
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+    const sidebar = document.getElementById('sidebar');
+    
+    // Sidebar collapse toggle
+    const toggleSidebarBtn = document.getElementById('toggleSidebar');
+    const mainContent = document.getElementById('mainContent');
+    const toggleIcon = document.querySelector('.toggle-sidebar-icon');
+    const toggleText = document.querySelector('.toggle-sidebar-text');
+    
+    // Function to activate a section
+    function activateSection(sectionId) {
+        // Get all sections
+        const allSections = document.querySelectorAll('section[id]');
+        
+        // Hide all sections first
+        allSections.forEach(section => {
+            section.style.display = 'none';
+        });
+        
+        // Show the selected section
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+            targetSection.style.display = 'block';
+        }
+        
+        // Remove active class from all nav links
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+        });
+        
+        // Add active class to the clicked nav link
+        const activeLink = document.querySelector(`.nav-link[data-section="${sectionId}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
+        }
+        
+        // On mobile, close the sidebar after selection
+        if (window.innerWidth < 768) {
+            sidebar.classList.remove('show-mobile');
+        }
+    }
+    
+    // Add click event listeners to nav links
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const sectionId = this.getAttribute('data-section');
+            activateSection(sectionId);
+        });
+    });
+    
+    // Mobile nav toggle
+    mobileNavToggle.addEventListener('click', function() {
+        sidebar.classList.toggle('show-mobile');
+    });
+    
+    // Sidebar collapse toggle
+    toggleSidebarBtn.addEventListener('click', function() {
+        sidebar.classList.toggle('collapsed');
+        mainContent.classList.toggle('expanded');
+        
+        // Update toggle icon and text
+        if (sidebar.classList.contains('collapsed')) {
+            toggleIcon.textContent = '▶';
+            toggleText.textContent = 'Expand';
+        } else {
+            toggleIcon.textContent = '◀';
+            toggleText.textContent = 'Collapse';
+        }
+    });
+    
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth < 768 && 
+            !sidebar.contains(e.target) && 
+            e.target !== mobileNavToggle) {
+            sidebar.classList.remove('show-mobile');
+        }
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth >= 768) {
+            sidebar.classList.remove('show-mobile');
+        }
+    });
+    
+    // Initialize with the dashboard section active
+    activateSection('dashboard');
+});
+
+    toggleSidebarBtn.addEventListener('click', function() {
+        sidebar.classList.toggle('collapsed');
+        mainContent.classList.toggle('expanded');
+        
+        const toggleText = sidebar.classList.contains('collapsed') ? 'Expand' : 'Collapse';
+        document.querySelector('.toggle-sidebar-text').textContent = toggleText;
+    });
+
+    if (mobileNavToggle) {
+        mobileNavToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('expanded');
+        });
+    }
+
+    // Navigation
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.dashboard-section');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Remove active class from all links
+            navLinks.forEach(l => l.classList.remove('active'));
+            
+            // Add active class to clicked link
+            this.classList.add('active');
+            
+            // Hide all sections
+            sections.forEach(section => section.classList.remove('active-section'));
+            
+            // Show selected section
+            const sectionId = this.getAttribute('data-section');
+            document.getElementById(sectionId).classList.add('active-section');
+            
+            // On mobile, close sidebar after navigation
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('expanded');
+            }
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector("a[href='#logout']").addEventListener("click", function(event) {
+            event.preventDefault();
+            window.location.href = "login.html";
+        });
+        
+        // Initialize all charts
+        initializeCharts();
+    });
+
+    // Colorful chart initialization
+    function initializeCharts() {
+        // Define a colorful palette
+        const colorPalette = [
+            '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF',
+            '#FF9F40', '#8AC926', '#1982C4', '#6A4C93', '#F15BB5'
+        ];
+        
+        // 1. Vehicles Sold by Model Chart
+        const vehiclesSoldCtx = document.getElementById('vehiclesSoldChart').getContext('2d');
+        new Chart(vehiclesSoldCtx, {
+            type: 'bar',
+            data: {
+                labels: ['EV6', 'Sportage', 'Sorento', 'Telluride', 'Soul', 'K5', 'Seltos', 'EV9'],
+                datasets: [{
+                    label: 'Units Sold',
+                    data: [42, 35, 28, 25, 18, 15, 22, 12],
+                    backgroundColor: colorPalette,
+                    borderColor: colorPalette,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Vehicles Sold by Model'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // 2. Customer Retention Chart
+        const retentionCtx = document.getElementById('retentionChart').getContext('2d');
+        new Chart(retentionCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Retention Rate (%)',
+                    data: [62.3, 64.5, 65.8, 67.2, 68.1, 68.7],
+                    fill: true,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Customer Retention Rate'
+                    }
+                },
+                scales: {
+                    y: {
+                        min: 60,
+                        max: 70
+                    }
+                }
+            }
+        });
+
+        // 3. Monthly Revenue Trends Chart
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(revenueCtx, {
+            type: 'line',
+            data: {
+                labels: ['Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar'],
+                datasets: [{
+                    label: 'Revenue (in millions)',
+                    data: [3.8, 4.1, 4.5, 4.7, 4.9, 5.2],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 2,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Monthly Revenue Trends'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        // 4. Enquiry Sources Chart
+        const enquirySourcesCtx = document.getElementById('enquirySourcesChart').getContext('2d');
+        new Chart(enquirySourcesCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Website', 'Walk-in', 'Social Media', 'Referral', 'Phone'],
+                datasets: [{
+                    data: [38, 26, 18, 12, 6],
+                    backgroundColor: colorPalette.slice(0, 5),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Enquiry Sources (%)'
+                    }
+                }
+            }
+        });
+
+        // 5. Conversion Rate Chart
+        const conversionCtx = document.getElementById('conversionRateChart').getContext('2d');
+        new Chart(conversionCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Website', 'Walk-in', 'Social Media', 'Referral', 'Phone'],
+                datasets: [{
+                    label: 'Conversion Rate (%)',
+                    data: [18, 32, 15, 28, 20],
+                    backgroundColor: colorPalette.slice(5, 10),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Enquiry to Sale Conversion Rate'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 40
+                    }
+                }
+            }
+        });
+
+        // 6. Add-ons Revenue Chart
+        const addonsCtx = document.getElementById('addonsChart').getContext('2d');
+        new Chart(addonsCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Protection Plans', 'Electronics', 'Interior Accessories', 'Exterior Accessories', 'Service Packages'],
+                datasets: [{
+                    data: [51.9, 21.6, 12.8, 9.3, 4.4],
+                    backgroundColor: colorPalette,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Add-ons Revenue by Category (%)'
+                    }
+                }
+            }
+        });
+
+        // 7. Sales by Vehicle Type Chart
+        const vehicleTypeCtx = document.getElementById('vehicleTypeChart').getContext('2d');
+        new Chart(vehicleTypeCtx, {
+            type: 'bar',
+            data: {
+                labels: ['SUV', 'Crossover', 'Sedan', 'Electric', 'Hybrid'],
+                datasets: [{
+                    label: 'Units Sold',
+                    data: [138, 92, 57, 46, 23],
+                    backgroundColor: colorPalette.slice(0, 5),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Sales by Vehicle Type'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // 8. Service Types Distribution Chart
+        const serviceTypeCtx = document.getElementById('serviceTypeChart').getContext('2d');
+        new Chart(serviceTypeCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Regular Maintenance', 'Repairs', 'Warranty Work', 'Upgrades', 'Recalls'],
+                datasets: [{
+                    data: [42, 28, 16, 10, 4],
+                    backgroundColor: colorPalette.slice(5, 10),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Service Types Distribution (%)'
+                    }
+                }
+            }
+        });
+
+        // 9. Market Share Comparison Chart
+        const marketShareCtx = document.getElementById('marketShareChart').getContext('2d');
+        new Chart(marketShareCtx, {
+            type: 'bar',
+            data: {
+                labels: ['KIA', 'Competitor A', 'Competitor B', 'Competitor C', 'Competitor D'],
+                datasets: [{
+                    label: 'Market Share (%)',
+                    data: [8.2, 11.4, 9.8, 7.1, 9.2],
+                    backgroundColor: colorPalette,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Market Share Comparison'
+                    }
+                }
+            }
+        });
+
+        // 10. Customer Satisfaction Chart
+        const satisfactionCtx = document.getElementById('satisfactionChart').getContext('2d');
+        new Chart(satisfactionCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Product Quality', 'Customer Service', 'Price Value', 'Brand Image', 'After-Sales'],
+                datasets: [
+                    {
+                        label: 'KIA',
+                        data: [4.8, 4.7, 4.6, 4.5, 4.8],
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Competitors Avg',
+                        data: [4.5, 4.4, 4.3, 4.6, 4.2],
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        min: 4,
+                        max: 5
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Customer Satisfaction Comparison'
+                    }
+                }
+            }
+        });
+
+        // 11. Pricing Competitiveness Chart
+        const pricingCtx = document.getElementById('pricingChart').getContext('2d');
+        new Chart(pricingCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Compact', 'Mid-size', 'SUV', 'Electric', 'Luxury'],
+                datasets: [
+                    {
+                        label: 'KIA',
+                        data: [22800, 28500, 34200, 42000, 48500],
+                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Market Average',
+                        data: [24300, 30100, 36400, 45000, 52000],
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Pricing Comparison by Category ($)'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // 12. Forecast Chart
+        const forecastCtx = document.getElementById('forecastChart').getContext('2d');
+        new Chart(forecastCtx, {
+            type: 'line',
+            data: {
+                labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+                datasets: [
+                    {
+                        label: 'Expected Sales',
+                        data: [128, 142, 156, 168, 172, 180],
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Previous Year',
+                        data: [118, 125, 140, 148, 152, 158],
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        fill: false,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Sales Forecast (Next 6 Months)'
+                    }
+                }
+            }
+        });
+
+        // Update the heatmap to use actual colors instead of grayscale
+        const heatmapCells = document.querySelectorAll('.heatmap-cell');
+        const heatColors = [
+            '#FEF0D9', '#FDCC8A', '#FC8D59', '#E34A33', '#B30000', // Orange-red
+            '#EDF8E9', '#BAE4B3', '#74C476', '#31A354', '#006D2C'  // Green
+        ];
+        
+        heatmapCells.forEach((cell, index) => {
+            // Remove the heat-X class
+            cell.classList.remove('heat-1', 'heat-2', 'heat-3', 'heat-4', 'heat-5', 'heat-6', 'heat-7', 'heat-8');
+            
+            // Get the growth value
+            const growthText = cell.querySelector('.heatmap-value').textContent;
+            const growthValue = parseInt(growthText);
+            
+            // Determine color based on growth percentage
+            let colorIndex = Math.min(Math.floor(growthValue / 5), heatColors.length - 1);
+            
+            // Apply the color
+            cell.style.backgroundColor = heatColors[colorIndex];
+            cell.style.color = colorIndex > 2 ? '#fff' : '#333';
+        });
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+    const sidebar = document.querySelector('.sidebar');
+    const toggleBtn = document.querySelector('.toggle-btn');
+
+    toggleBtn.addEventListener('click', function () {
+        sidebar.classList.toggle('active');
+    });
+});
+
+    
+</script>
+</html>
