@@ -604,6 +604,19 @@
       line-height: 1.6;
       font-size: 15px;
     }
+    
+    .chart-container {
+      position: relative;
+      height: 300px;
+      margin-bottom: 20px;
+  }
+  
+  /* Larger chart size for desktop only */
+  @media (min-width: 769px) {
+      .chart-container:not(.popup .chart-container) {
+          height: 400px; /* Increased height */
+      }
+  }
 
     /* Animation keyframes */
     @keyframes fadeIn {
