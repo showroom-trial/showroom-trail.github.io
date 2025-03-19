@@ -275,7 +275,7 @@ function createCharts() {
     const departmentTargetsCtx = document.getElementById('departmentTargetsChart');
     if (departmentTargetsCtx) {
         charts.departmentTargets = new Chart(departmentTargetsCtx, {
-            type: 'radar',
+            type: 'bar',
             data: {
                 labels: ['Sales', 'Service', 'Accessories', 'Insurance', 'Extended Warranty'],
                 datasets: [{
