@@ -151,6 +151,35 @@
                             </button>
                         </div>
                     </div>
+                    <!-- Modal for Target Reminder -->
+<div id="targetReminderModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeTargetReminder">&times;</span>
+        <h3>Target Status</h3>
+        <canvas id="targetReminderChart"></canvas>
+    </div>
+</div>
+
+<!-- Mini-tab for Assign Target -->
+<div id="assignTargetTab" class="mini-tab">
+    <div class="mini-tab-header">
+        <h3>Assign Target</h3>
+        <span class="close-btn" id="closeAssignTarget">&times;</span>
+    </div>
+    <form id="assignTargetForm">
+        <label for="executive">Select Executive:</label>
+        <select id="executive" name="executive">
+            <option value="Mark Wilson">Mark Wilson</option>
+            <option value="Sarah Davis">Sarah Davis</option>
+            <option value="Robert Johnson">Robert Johnson</option>
+            <option value="Jennifer Adams">Jennifer Adams</option>
+            <option value="Michael Carter">Michael Carter</option>
+        </select>
+        <label for="target">Target:</label>
+        <input type="number" id="target" name="target" placeholder="Enter target" required>
+        <button type="submit">Assign</button>
+    </form>
+</div>
                     <table id="leads-table">
                         <thead>
                             <tr>
@@ -1019,16 +1048,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 }
             }
-            if (targetSection) {
-        targetSection.classList.add('active-section');
-        
-        // Scroll to top of page
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }
-    
 
             // If sidebar is open on mobile, close it after clicking
             if (window.innerWidth <= 768 && sidebar) {
@@ -1047,7 +1066,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (logoutButton) {
         logoutButton.addEventListener("click", function(event) {
             event.preventDefault();
-            window.location.href = "index.html"; // Redirect to login page
+            window.location.href = "login.html"; // Redirect to login page
         });
     }
     
@@ -1930,25 +1949,111 @@ if (salesCtx) {
 } else {
     console.error("salesContributionChart not found");
 }
-// Target reminder and assignment buttons
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const targetReminderBtn = document.getElementById("target-reminder-btn");
     const assignTargetBtn = document.getElementById("assign-target-btn");
-    
-    if (targetReminderBtn) {
-        targetReminderBtn.addEventListener("click", function() {
-            alert("Reminder: You need to achieve your target!");
+    const targetReminderModal = document.getElementById("targetReminderModal");
+    const closeTargetReminder = document.getElementById("closeTargetReminder");
+    const assignTargetTab = document.getElementById("assignTargetTab");
+    const closeAssignTarget = document.getElementById("closeAssignTarget");
+    const assignTargetForm = document.getElementById("assignTargetForm");
+
+    // Show Target Reminder Modal
+    targetReminderBtn.addEventListener("click", function () {
+        targetReminderModal.style.display = "flex";
+
+        // Initialize Pie Chart
+        const ctx = document.getElementById("targetReminderChart").getContext("2d");
+        new Chart(ctx, {
+            type: "pie",
+            data: {
+                labels: ["Pending", "Cleared"],
+                datasets: [
+                    {
+                        data: [30, 70], // Example data
+                        backgroundColor: ["#FF6384", "#36A2EB"],
+                    },
+                ],
+            },
         });
-    }
-    
-    if (assignTargetBtn) {
-        assignTargetBtn.addEventListener("click", function() {
-            const targetValue = prompt("Please enter your target value:");
-            if (targetValue !== null && targetValue.trim() !== "") {
-                alert("Target assigned: " + targetValue);
-            }
+    });
+
+    // Close Target Reminder Modal
+    closeTargetReminder.addEventListener("click", function () {
+        targetReminderModal.style.display = "none";
+    });
+
+    // Show Assign Target Mini-tab
+    assignTargetBtn.addEventListener("click", function () {
+        assignTargetTab.style.display = "block";
+    });
+
+    // Close Assign Target Mini-tab
+    closeAssignTarget.addEventListener("click", function () {
+        assignTargetTab.style.display = "none";
+    });
+
+    // Handle Assign Target Form Submission
+    assignTargetForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const executive = document.getElementById("executive").value;
+        const target = document.getElementById("target").value;
+        alert(`Target of ${target} assigned to ${executive}`);
+        assignTargetTab.style.display = "none";
+    });
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const targetReminderBtn = document.getElementById("target-reminder-btn");
+    const assignTargetBtn = document.getElementById("assign-target-btn");
+    const targetReminderModal = document.getElementById("targetReminderModal");
+    const closeTargetReminder = document.getElementById("closeTargetReminder");
+    const assignTargetTab = document.getElementById("assignTargetTab");
+    const closeAssignTarget = document.getElementById("closeAssignTarget");
+    const assignTargetForm = document.getElementById("assignTargetForm");
+
+    // Show Target Reminder Modal
+    targetReminderBtn.addEventListener("click", function () {
+        targetReminderModal.style.display = "flex";
+
+        // Initialize Pie Chart
+        const ctx = document.getElementById("targetReminderChart").getContext("2d");
+        new Chart(ctx, {
+            type: "pie",
+            data: {
+                labels: ["Pending", "Cleared"],
+                datasets: [
+                    {
+                        data: [30, 70], // Example data
+                        backgroundColor: ["#FF6384", "#36A2EB"],
+                    },
+                ],
+            },
         });
-    }
+    });
+
+    // Close Target Reminder Modal
+    closeTargetReminder.addEventListener("click", function () {
+        targetReminderModal.style.display = "none";
+    });
+
+    // Show Assign Target Mini-tab
+    assignTargetBtn.addEventListener("click", function () {
+        assignTargetTab.style.display = "block";
+    });
+
+    // Close Assign Target Mini-tab
+    closeAssignTarget.addEventListener("click", function () {
+        assignTargetTab.style.display = "none";
+    });
+
+    // Handle Assign Target Form Submission
+    assignTargetForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const executive = document.getElementById("executive").value;
+        const target = document.getElementById("target").value;
+        alert(`Target of ${target} assigned to ${executive}`);
+        assignTargetTab.style.display = "none";
+    });
 });
 
 </script>
