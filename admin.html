@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="mobile-nav-toggle" id="mobileNavToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <div class="top-section">
+        <div class="top-section-right">
+            <img src="kia-logo.png" alt="KIA Logo" class="header-logo">
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="profile-pic">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="admin-info">
+                    <h3>John Smith</h3>
+                    <p>Admin</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+                    <li data-tab="employee"><i class="fas fa-users"></i> Employee Management</li>
+                    <li data-tab="vehicle"><i class="fas fa-car"></i> Vehicle Management</li>
+                    <li data-tab="addons"><i class="fas fa-puzzle-piece"></i> Add-ons Management</li>
+                    <li data-tab="service"><i class="fas fa-tools"></i> Service Information</li>
+                    <li id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</li>
+                </ul>
+            </nav>
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header"></header>
+            <!--<header class="top-header">
+                <div class="search-box">
+                    <input type="text" placeholder="Search...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="header-actions">
+                    <div class="notification">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="settings">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                </div>
+            </header>-->
+
+            <!-- Dashboard Section -->
+            <section class="content-section active" id="dashboard">
+                <h2 class="section-title">Dashboard Overview</h2>
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon employee-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Employees</h3>
+                            <p class="stat-number">45</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon vehicle-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Vehicles</h3>
+                            <p class="stat-number">124</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon addon-icon">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Add-ons</h3>
+                            <p class="stat-number">32</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Services</h3>
+                            <p class="stat-number">18</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="recent-activity">
+                    <h2 class="section-title">Recent Activity</h2>
+                    <div class="activity-log">
+                        <div class="activity-item">
+                            <div class="activity-icon"><i class="fas fa-user-plus"></i></div>
+                            <div class="activity-details">
+                                <p>New employee Sarah Johnson added</p>
+                                <span class="timestamp">Today, 10:45 AM</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon"><i class="fas fa-car"></i></div>
+                            <div class="activity-details">
+                                <p>New vehicle model Seltos added</p>
+                                <span class="timestamp">Yesterday, 3:30 PM</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon"><i class="fas fa-tools"></i></div>
+                            <div class="activity-details">
+                                <p>Service pricing updated for Oil Change</p>
+                                <span class="timestamp">Mar 22, 2025, 1:15 PM</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon"><i class="fas fa-puzzle-piece"></i></div>
+                            <div class="activity-details">
+                                <p>New add-on Premium Sound System added</p>
+                                <span class="timestamp">Mar 21, 2025, 11:20 AM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Employee Management Section -->
+            <section class="content-section" id="employee">
+                <div class="section-header">
+                    <h2 class="section-title">Employee Management</h2>
+                    <button class="action-btn"><i class="fas fa-plus"></i> Add New Employee</button>
+                </div>
+
+                <div class="search-filter">
+                    <div class="search">
+                        <input type="text" placeholder="Search employees...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="filter">
+                        <select>
+                            <option value="">All Roles</option>
+                            <option value="gm">General Manager</option>
+                            <option value="sales">Sales Executive</option>
+                            <option value="service">Service Manager</option>
+                        </select>
+                        <select>
+                            <option value="">All Locations</option>
+                            <option value="main">Main Branch Showroom</option>
+                            <option value="downtown">Chitradurga Branch</option>
+                            <option value="east">Chikmangluru Branch</option>
+                            <option value="east">Chikmangluru Branch</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Location</th>
+                                <th>Contact</th>
+                                <th>Joining Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John Smith</td>
+                                <td>General Manager</td>
+                                <td>Main Showroom</td>
+                                <td>john.smith@company.com</td>
+                                <td>Jun 15, 2021</td>
+                                <td class="actions">
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Sarah Johnson</td>
+                                <td>Sales Executive</td>
+                                <td>Chitradurga Branch</td>
+                                <td>sarah.j@company.com</td>
+                                <td>Mar 23, 2025</td>
+                                <td class="actions">
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Michael Wilson</td>
+                                <td>Service Manager</td>
+                                <td>Chikmangluru Branchh</td>
+                                <td>m.wilson@company.com</td>
+                                <td>Nov 10, 2023</td>
+                                <td class="actions">
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Vehicle Management Section -->
+            <section class="content-section" id="vehicle">
+                <div class="section-header">
+                    <h2 class="section-title">Vehicle Management</h2>
+                    <button class="action-btn"><i class="fas fa-plus"></i> Add New Vehicle</button>
+                </div>
+
+                <div class="search-filter">
+                    <div class="search">
+                        <input type="text" placeholder="Search vehicles...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="filter">
+                        <select>
+                            <option value="">All Years</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                        </select>
+                        <select>
+                            <option value="">All Types</option>
+                            <option value="sedan">Sedan</option>
+                            <option value="suv">SUV</option>
+                            <option value="truck">Truck</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Vehicle Name</th>
+                                <th>Model Year</th>
+                                <th>Price</th>
+                                <th>Engine</th>
+                                <th>Transmission</th>
+                                <th>Availability</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Seltos</td>
+                                <td>2025</td>
+                                <td>&#8377 3,52,990</td>
+                                <td>Electric</td>
+                                <td>Automatic</td>
+                                <td><span class="status available">Available</span></td>
+                                <td class="actions">
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>EV6</td>
+                                <td>2024</td>
+                                <td>&#8377 7,28,455</td>
+                                <td>2.5L I4</td>
+                                <td>8-Speed Auto</td>
+                                <td><span class="status available">Available</span></td>
+                                <td class="actions">
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Sonet</td>
+                                <td>2025</td>
+                                <td>&#8377 4,34,585</td>
+                                <td>3.5L EcoBoost</td>
+                                <td>10-Speed Auto</td>
+                                <td><span class="status unavailable">Out of Stock</span></td>
+                                <td class="actions">
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Add-ons Management Section -->
+            <section class="content-section" id="addons">
+                <div class="section-header">
+                    <h2 class="section-title">Add-ons Management</h2>
+                    <button class="action-btn"><i class="fas fa-plus"></i> Add New Add-on</button>
+                </div>
+
+                <div class="search-filter">
+                    <div class="search">
+                        <input type="text" placeholder="Search add-ons...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="filter">
+                        <select>
+                            <option value="">All Categories</option>
+                            <option value="exterior">Exterior</option>
+                            <option value="interior">Interior</option>
+                            <option value="performance">Performance</option>
+                            <option value="warranty">Warranty</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Add-on Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Applicable Models</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Premium Sound System</td>
+                                <td>Interior</td>
+                                <td>&#8377 1,200</td>
+                                <td>All Models</td>
+                                <td class="actions">
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Extended Warranty</td>
+                                <td>Warranty</td>
+                                <td>&#8377 2,500</td>
+                                <td>All Models</td>
+                                <td class="actions">
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Alloy Wheels</td>
+                                <td>Exterior</td>
+                                <td>&#8377 800</td>
+                                <td>Sedan, SUV</td>
+                                <td class="actions">
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Service Information Section -->
+            <section class="content-section" id="service">
+                <div class="section-header">
+                    <h2 class="section-title">Service Information</h2>
+                    <button class="action-btn"><i class="fas fa-plus"></i> Add New Service</button>
+                </div>
+
+                <div class="search-filter">
+                    <div class="search">
+                        <input type="text" placeholder="Search services...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="filter">
+                        <select>
+                            <option value="">All Types</option>
+                            <option value="maintenance">Maintenance</option>
+                            <option value="repair">Repair</option>
+                            <option value="inspection">Inspection</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Service Name</th>
+                                <th>Type</th>
+                                <th>Price Range</th>
+                                <th>Duration</th>
+                                <th>Applicable Vehicles</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Oil Change</td>
+                                <td>Maintenance</td>
+                                <td>&#8377 45 - &#8377 80</td>
+                                <td>30 mins</td>
+                                <td>All (except Electric)</td>
+                                <td class="actions">
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Tire Rotation</td>
+                                <td>Maintenance</td>
+                                <td>&#8377  30 - &#8377  50</td>
+                                <td>45 mins</td>
+                                <td>All Models</td>
+                                <td class="actions">
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Battery Replacement</td>
+                                <td>Repair</td>
+                                <td>&#8377  150 - &#8377  300</td>
+                                <td>1 hour</td>
+                                <td>All Models</td>
+                                <td class="actions">
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarNavItems = document.querySelectorAll('.sidebar-nav li');
+    const contentSections = document.querySelectorAll('.content-section');
+
+    // Function to switch tabs
+    function switchTab(tabElement) {
+        // Handle logout separately
+        if (tabElement.id === 'logout-btn') {
+            window.location.href = 'index.html';
+            return;
+        }
+
+        // Get the tab/section ID
+        const tabId = tabElement.getAttribute('data-tab');
+        
+        // Remove active class from all nav items and sections
+        sidebarNavItems.forEach(item => {
+            item.classList.remove('active');
+        });
+        contentSections.forEach(section => {
+            section.classList.remove('active');
+        });
+        
+        // Add active class to current nav item and section
+        tabElement.classList.add('active');
+        const activeSection = document.getElementById(tabId);
+        
+        if (activeSection) {
+            activeSection.classList.add('active');
+        }
+
+        // Close mobile sidebar
+        closeMobileSidebar();
+    }
+
+    // Function to close mobile sidebar
+    function closeMobileSidebar() {
+        sidebar.classList.remove('mobile-active');
+        document.body.classList.remove('sidebar-open');
+    }
+
+    // Add click event listeners to sidebar navigation items
+    sidebarNavItems.forEach(item => {
+        item.addEventListener('click', function(event) {
+            // Prevent default behavior and stop propagation
+            event.preventDefault();
+            event.stopPropagation();
+
+            // Call switch tab function
+            switchTab(this);
+        });
+    });
+
+    // Mobile navigation toggle
+    mobileNavToggle.addEventListener('click', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        
+        // Toggle sidebar
+        sidebar.classList.toggle('mobile-active');
+        document.body.classList.toggle('sidebar-open');
+    });
+
+    // Close sidebar when clicking outside
+    document.addEventListener('click', function(event) {
+        if (sidebar.classList.contains('mobile-active') && 
+            !sidebar.contains(event.target) && 
+            !mobileNavToggle.contains(event.target)) {
+            closeMobileSidebar();
+        }
+    });
+
+    // Prevent scroll when sidebar is open
+    function toggleBodyScroll() {
+        if (sidebar.classList.contains('mobile-active')) {
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+        } else {
+            document.body.style.overflow = 'auto';
+            document.body.style.position = 'static';
+            document.body.style.width = 'auto';
+        }
+    }
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            // Reset for desktop view
+            closeMobileSidebar();
+        }
+        toggleBodyScroll();
+    });
+
+    // Initial body scroll toggle
+    toggleBodyScroll();
+
+    // Debug logging
+    console.log('Mobile navigation script initialized');
+    console.log('Sidebar nav items:', sidebarNavItems.length);
+});
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+    const sidebar = document.getElementById('sidebar');
+    const tabs = document.querySelectorAll('.sidebar-nav li');
+    const sections = document.querySelectorAll('.content-section');
+    const mainContent = document.querySelector('.main-content');
+
+    // Debugging function to log touch and click events
+    function logTouchInteraction(element) {
+        element.addEventListener('touchstart', function(e) {
+            console.log('Touchstart event triggered on:', element);
+            e.stopPropagation();
+        });
+
+        element.addEventListener('click', function(e) {
+            console.log('Click event triggered on:', element);
+            e.stopPropagation();
+        });
+    }
+
+    // Apply logging to all sidebar navigation items
+    tabs.forEach(tab => {
+        logTouchInteraction(tab);
+    });
+
+    // Comprehensive tab switching function
+    function switchTab(tabElement) {
+        // Logout handling
+        if (tabElement.id === 'logout-btn') {
+            window.location.href = 'index.html';
+            return;
+        }
+
+        const tabId = tabElement.getAttribute('data-tab');
+        
+        // Remove active states
+        tabs.forEach(t => t.classList.remove('active'));
+        sections.forEach(s => s.classList.remove('active'));
+        
+        // Add active states
+        tabElement.classList.add('active');
+        const activeSection = document.getElementById(tabId);
+        activeSection.classList.add('active');
+
+        // Close mobile sidebar
+        if (window.innerWidth <= 768) {
+            sidebar.classList.remove('mobile-active');
+            document.body.classList.remove('sidebar-open');
+        }
+
+        // Scroll to top
+        mainContent.scrollTop = 0;
+    }
+
+    // Enhanced event listeners for tabs
+    tabs.forEach(tab => {
+        // Multiple event listeners for cross-browser compatibility
+        tab.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            switchTab(this);
+        });
+
+        tab.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            switchTab(this);
+        }, { passive: false });
+    });
+
+    // Mobile navigation toggle
+    function toggleSidebar(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        sidebar.classList.toggle('mobile-active');
+        document.body.classList.toggle('sidebar-open');
+    }
+
+    mobileNavToggle.addEventListener('click', toggleSidebar);
+    mobileNavToggle.addEventListener('touchstart', toggleSidebar, { passive: false });
+
+    // Sidebar close logic
+    document.addEventListener('click', function(event) {
+        if (sidebar.classList.contains('mobile-active') && 
+            !sidebar.contains(event.target) && 
+            !mobileNavToggle.contains(event.target)) {
+            sidebar.classList.remove('mobile-active');
+            document.body.classList.remove('sidebar-open');
+        }
+    });
+
+    // Responsive handling
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            sidebar.classList.remove('mobile-active');
+            document.body.classList.remove('sidebar-open');
+            document.body.style.overflow = 'auto';
+        }
+    });
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    const body = document.body;
+
+    mobileNavToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('mobile-active');
+        body.classList.toggle('sidebar-open');
+    });
+
+    // Close sidebar when clicking outside
+    document.addEventListener('click', (event) => {
+        if (!sidebar.contains(event.target) && 
+            !mobileNavToggle.contains(event.target) && 
+            sidebar.classList.contains('mobile-active')) {
+            sidebar.classList.remove('mobile-active');
+            body.classList.remove('sidebar-open');
+        }
+    });
+});
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarNavItems = document.querySelectorAll('.sidebar-nav li');
+    const contentSections = document.querySelectorAll('.content-section');
+    const overlay = document.createElement('div');
+    overlay.classList.add('sidebar-overlay');
+    document.body.appendChild(overlay);
+
+    function switchTab(tabElement) {
+        if (tabElement.id === 'logout-btn') {
+            window.location.href = 'index.html';
+            return;
+        }
+        
+        const tabId = tabElement.getAttribute('data-tab');
+        sidebarNavItems.forEach(item => item.classList.remove('active'));
+        contentSections.forEach(section => section.classList.remove('active'));
+        
+        tabElement.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+        closeMobileSidebar();
+    }
+
+    function closeMobileSidebar() {
+        sidebar.classList.remove('mobile-active');
+        document.body.classList.remove('sidebar-open');
+        overlay.style.opacity = '0';
+        setTimeout(() => overlay.style.visibility = 'hidden', 300);
+    }
+
+    sidebarNavItems.forEach(item => {
+        item.addEventListener('click', function(event) {
+            event.preventDefault();
+            switchTab(this);
+        });
+    });
+
+    mobileNavToggle.addEventListener('click', function(event) {
+        event.preventDefault();
+        sidebar.classList.toggle('mobile-active');
+        document.body.classList.toggle('sidebar-open');
+        if (sidebar.classList.contains('mobile-active')) {
+            overlay.style.visibility = 'visible';
+            overlay.style.opacity = '1';
+        } else {
+            closeMobileSidebar();
+        }
+    });
+
+    overlay.addEventListener('click', closeMobileSidebar);
+});
+    </script>
+</body>
+</html>

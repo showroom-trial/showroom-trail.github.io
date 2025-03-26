@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIA Showroom - GM Dashboard</title>
+    <link rel="stylesheet" href="gm.css">
+</head>
+<body>
+
+<!-- Mobile Nav Toggle (visible on small screens) -->
+<button class="mobile-nav-toggle" id="mobileNavToggle">☰</button>
+
+<!-- Updated Header with new structure -->
+<div class="top-section">
+    <div class="top-section-right">
+        <img src="kia-logo.png" alt="KIA Logo" class="header-logo">
+        <select id="locationSelect" class="location-select">
+            <option value="all">All Locations</option>
+            <option value="shivamogga">Shivamogga</option>
+            <option value="chitradurga">Chitradurga</option>
+            <option value="chikmangaluru">Chikkamagaluru</option>
+            <option value="davanagere">Davanagere</option>
+        </select>
+    </div>
+</div>
+
+<!-- Sidebar Navigation -->
+<div class="sidebar" id="sidebar">
+    <div class="user-info">
+        <div class="user-avatar">J</div>
+        <div class="user-details">
+            <span class="user-name">John Doe</span>
+            <span class="user-position">Manager</span>
+        </div>
+    </div>
+    <ul class="nav-menu">
+        <li class="nav-item">
+            <a href="#dashboard" class="nav-link active" data-section="dashboard">
+                <div class="nav-icon">📊</div>
+                <span class="nav-text">Dashboard Overview</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#targets" class="nav-link" data-section="targets">
+                <div class="nav-icon">🎯</div>
+                <span class="nav-text">Target Allocation</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#addons" class="nav-link" data-section="addons">
+                <div class="nav-icon">🔧</div>
+                <span class="nav-text">Add-ons Sales</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#sales" class="nav-link" data-section="sales">
+                <div class="nav-icon">💰</div>
+                <span class="nav-text">Sales Performance</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#service" class="nav-link" data-section="service">
+                <div class="nav-icon">🔄</div>
+                <span class="nav-text">Service Performance</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#comparative" class="nav-link" data-section="comparative">
+                <div class="nav-icon">📈</div>
+                <span class="nav-text">Comparative Analysis</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#predictive" class="nav-link" data-section="predictive">
+                <div class="nav-icon">🔮</div>
+                <span class="nav-text">Predictive Analytics</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#logout" class="nav-link">
+                <div class="nav-icon">🔒</div>
+                <span class="nav-text">Logout</span>
+            </a>
+        </li>
+    </ul>
+    <button class="toggle-sidebar" id="toggleSidebar">◀ Collapse</button>
+</div>
+
+<!-- Main Content Area -->
+<div class="main-content" id="mainContent">
+    <!-- Dashboard Overview Section -->
+    <section id="dashboard" class="dashboard-section active-section">
+        <div class="section-header">
+            <h1>Dashboard Overview</h1>
+            <p>Last updated: March 10, 2025</p>
+        </div>
+
+        <!-- Key Metrics Cards -->
+        <div class="dashboard-grid">
+            <div class="card metric-card">
+                <h3>Total Sales Revenue</h3>
+                <div class="metric-value">&#8377;5.2M</div>
+                <div class="trend trend-up">
+                    <span>↑ 12.5% vs Last Month</span>
+                </div>
+            </div>
+            <div class="card metric-card">
+                <h3>Total Enquiries</h3>
+                <div class="metric-value">182</div>
+                <div class="trend trend-up">
+                    <span>↑ 4.6% vs Last Month</span>
+                </div>
+            </div>
+            <div class="card metric-card">
+                <h3>Monthly Vehicles Sold</h3>
+                <div class="metric-value">124</div>
+                <div class="trend trend-down">
+                    <span>↓ 3.1% vs Last Month</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="dashboard-grid">
+            <div class="card chart-card">
+                <div class="chart-card-header">
+                    <h3>Vehicles Sold by Model</h3>
+                    <div class="chart-controls">
+                        <button class="chart-control-btn">Monthly</button>
+                        <button class="chart-control-btn">Quarterly</button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="vehiclesSoldChart"></canvas>
+                </div>
+            </div>
+            <div class="card chart-card">
+                <div class="chart-card-header">
+                    <h3>Enquiries vs Conversions</h3>
+                    <div class="chart-controls">
+                        <button class="chart-control-btn">All</button>
+                        <button class="chart-control-btn">By Model</button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="enquiriesConversionsChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="card chart-card">
+            <div class="chart-card-header">
+                <h3>Monthly Revenue Trends</h3>
+                <div class="chart-controls">
+                    <button class="chart-control-btn">6 Months</button>
+                    <button class="chart-control-btn">1 Year</button>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="revenueChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Allocation Section -->
+    <section id="targets" class="dashboard-section">
+        <div class="section-header">
+            <h1>Target Allocation</h1>
+            <p>Showroom-Wise Target Allocation</p>
+        </div>
+
+        <div class="controls">
+            <div class="filter-group">
+                <select class="filter-dropdown">
+                    <option value="all">All Locations</option>
+                    <option value="shivamogga">Shivamogga</option>
+                    <option value="chitradurga">Chitradurga</option>
+                    <option value="chikmangaluru">Chikkmagaluru</option>
+                    <option value="davanagere">Davanagere</option>
+                </select>
+                <select class="filter-dropdown">
+                    <option value="monthly">Monthly</option>
+                    <option value="quarterly">Quarterly</option>
+                    <option value="yearly">Yearly</option>
+                </select>
+                <select class="filter-dropdown">
+                    <option value="all">All Departments</option>
+                    <option value="sales">Sales</option>
+                    <option value="service">Service</option>
+                    <option value="accessories">Accessories</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="card chart-card">
+                <div class="chart-card-header">
+                    <h3>Location-Based Targets</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="locationTargetsChart"></canvas>
+                </div>
+            </div>
+            <div class="card chart-card">
+                <div class="chart-card-header">
+                    <h3>Enquiries vs Sales Conversion</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="enquiriesSalesChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dashboard-grid">
+            <div class="card chart-card">
+                <div class="chart-card-header">
+                    <h3>Department-Wise Target Achievement</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="departmentTargetsChart"></canvas>
+                </div>
+            </div>
+            <div class="card chart-card">
+                <div class="chart-card-header">
+                    <h3>Target Achievement Progress</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="targetProgressChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Detailed Target Allocation</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Location</th>
+                            <th>Department</th>
+                            <th>Monthly Target</th>
+                            <th>Quarterly Target</th>
+                            <th>Yearly Target</th>
+                            <th>Current Achievement</th>
+                            <th>Achievement %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Shivamogga</td>
+                            <td>Sales</td>
+                            <td>25 units</td>
+                            <td>75 units</td>
+                            <td>300 units</td>
+                            <td>22 units</td>
+                            <td>88%</td>
+                        </tr>
+                        <tr>
+                            <td>Chitradurga</td>
+                            <td>Sales</td>
+                            <td>20 units</td>
+                            <td>60 units</td>
+                            <td>240 units</td>
+                            <td>18 units</td>
+                            <td>90%</td>
+                        </tr>
+                        <tr>
+                            <td>Chikmangaluru</td>
+                            <td>Sales</td>
+                            <td>18 units</td>
+                            <td>54 units</td>
+                            <td>216 units</td>
+                            <td>15 units</td>
+                            <td>83%</td>
+                        </tr>
+                        <tr>
+                            <td>Davanagere</td>
+                            <td>Sales</td>
+                            <td>22 units</td>
+                            <td>66 units</td>
+                            <td>264 units</td>
+                            <td>20 units</td>
+                            <td>91%</td>
+                        </tr>
+                        <tr>
+                            <td>Shivamogga</td>
+                            <td>Service</td>
+                            <td>120 orders</td>
+                            <td>360 orders</td>
+                            <td>1440 orders</td>
+                            <td>115 orders</td>
+                            <td>96%</td>
+                        </tr>
+                        <tr>
+                            <td>Chitradurga</td>
+                            <td>Accessories</td>
+                            <td>&#8377;85,000</td>
+                            <td>&#8377;255,000</td>
+                            <td>&#8377;1,020,000</td>
+                            <td>&#8377;78,500</td>
+                            <td>92%</td>
+                        </tr>
+                        <tr>
+                            <td>Chikmangaluru</td>
+                            <td>Service</td>
+                            <td>105 orders</td>
+                            <td>315 orders</td>
+                            <td>1260 orders</td>
+                            <td>98 orders</td>
+                            <td>93%</td>
+                        </tr>
+                        <tr>
+                            <td>Davanagere</td>
+                            <td>Accessories</td>
+                            <td>&#8377;90,000</td>
+                            <td>&#8377;270,000</td>
+                            <td>&#8377;1,080,000</td>
+                            <td>&#8377;85,000</td>
+                            <td>94%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Set Targets Section -->
+        <div class="section-header">
+            <h1>Set Targets</h1>
+            <p>Configure targets for upcoming periods</p>
+        </div>
+        
+        <div class="controls">
+            <div class="filter-group">
+                <select id="targetPeriodSelect" class="filter-dropdown">
+                    <option value="monthly">Monthly</option>
+                    <option value="quarterly">Quarterly</option>
+                    <option value="yearly">Yearly</option>
+                </select>
+                <select id="targetLocationSelect" class="filter-dropdown">
+                    <option value="all">All Locations</option>
+                    <option value="shivamogga">Shivamogga</option>
+                    <option value="chitradurga">Chitradurga</option>
+                    <option value="chikmangaluru">Chikmangaluru</option>
+                    <option value="davanagere">Davanagere</option>
+                </select>
+                <select id="targetDepartmentSelect" class="filter-dropdown">
+                    <option value="all">All Departments</option>
+                    <option value="sales">Sales</option>
+                    <option value="service">Service</option>
+                    <option value="accessories">Accessories</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3>Target Configuration</h3>
+            <div class="target-form-container">
+                <form id="targetForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="salesTarget">Sales Target (units)</label>
+                            <input type="number" id="salesTarget" class="form-input" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="revenueTarget">Revenue Target (₹)</label>
+                            <input type="number" id="revenueTarget" class="form-input" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="serviceTarget">Service Orders Target</label>
+                            <input type="number" id="serviceTarget" class="form-input" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="accessoriesTarget">Accessories Sales Target (₹)</label>
+                            <input type="number" id="accessoriesTarget" class="form-input" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="enquiriesTarget">Enquiries Target</label>
+                            <input type="number" id="enquiriesTarget" class="form-input" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="conversionTarget">Conversion Target (%)</label>
+                            <input type="number" id="conversionTarget" class="form-input" min="0" max="100">
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" id="loadCurrentTargets" class="secondary-btn">Load Current</button>
+                        <button type="submit" class="primary-btn">Save Targets</button>
+                        <button type="button" class="primary-btn">
+                            <div class="export-icon">📊</div>
+                            <span class="export-text">Export CSV</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3>Current Targets Overview</h3>
+            <div class="table-container">
+                <table id="targetsTable">
+                    <thead>
+                        <tr>
+                            <th>Location</th>
+                            <th>Department</th>
+                            <th>Period</th>
+                            <th>Target Description</th>
+                            <th>Target Value</th>
+                            <th>Last Updated</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Shivamogga</td>
+                            <td>Sales</td>
+                            <td>Monthly</td>
+                            <td>Vehicle Sales Units</td>
+                            <td>25 units</td>
+                            <td>March 15, 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Chitradurga</td>
+                            <td>Sales</td>
+                            <td>Quarterly</td>
+                            <td>Vehicle Sales Units</td>
+                            <td>75 units</td>
+                            <td>March 10, 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Chikmangaluru</td>
+                            <td>Service</td>
+                            <td>Monthly</td>
+                            <td>Service Orders</td>
+                            <td>105 orders</td>
+                            <td>March 18, 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Davanagere</td>
+                            <td>Accessories</td>
+                            <td>Quarterly</td>
+                            <td>Accessories Revenue</td>
+                            <td>&#8377;270,000</td>
+                            <td>March 12, 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Shivamogga</td>
+                            <td>Service</td>
+                            <td>Yearly</td>
+                            <td>Total Service Orders</td>
+                            <td>1440 orders</td>
+                            <td>March 5, 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Chitradurga</td>
+                            <td>Accessories</td>
+                            <td>Monthly</td>
+                            <td>Accessories Revenue</td>
+                            <td>&#8377;85,000</td>
+                            <td>March 20, 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Chikmangaluru</td>
+                            <td>Sales</td>
+                            <td>Quarterly</td>
+                            <td>Vehicle Sales Units</td>
+                            <td>54 units</td>
+                            <td>March 8, 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Davanagere</td>
+                            <td>Sales</td>
+                            <td>Yearly</td>
+                            <td>Vehicle Sales Units</td>
+                            <td>264 units</td>
+                            <td>March 3, 2025</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add-ons Sales Section -->
+    <section id="addons" class="dashboard-section">
+        <div class="section-header">
+            <h1>Add-ons Sales</h1>
+            <p>Total Revenue: &#8377;382,450</p>
+        </div>
+
+        <div class="card chart-card">
+            <div class="chart-card-header">
+                <h3>Add-ons Revenue by Category</h3>
+            </div>
+            <div class="chart-container">
+                <canvas id="addonsChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Category</th>
+                            <th>Units Sold</th>
+                            <th>Unit Price</th>
+                            <th>Total Revenue</th>
+                            <th>% Contribution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Extended Warranty</td>
+                            <td>Protection Plans</td>
+                            <td>98</td>
+                            <td>&#8377;1,499</td>
+                            <td>&#8377;146,902</td>
+                            <td>38.4%</td>
+                        </tr>
+                        <tr>
+                            <td>Premium Audio System</td>
+                            <td>Electronics</td>
+                            <td>42</td>
+                            <td>&#8377;1,299</td>
+                            <td>&#8377;54,558</td>
+                            <td>14.3%</td>
+                        </tr>
+                        <tr>
+                            <td>Interior Protection Package</td>
+                            <td>Protection Plans</td>
+                            <td>86</td>
+                            <td>&#8377;599</td>
+                            <td>&#8377;51,514</td>
+                            <td>13.5%</td>
+                        </tr>
+                        <tr>
+                            <td>Roof Rack</td>
+                            <td>Exterior Accessories</td>
+                            <td>53</td>
+                            <td>&#8377;499</td>
+                            <td>&#8377;26,447</td>
+                            <td>6.9%</td>
+                        </tr>
+                        <tr>
+                            <td>Floor Mats (All Weather)</td>
+                            <td>Interior Accessories</td>
+                            <td>104</td>
+                            <td>&#8377;199</td>
+                            <td>&#8377;20,696</td>
+                            <td>5.4%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sales Performance Section -->
+    <section id="sales" class="dashboard-section">
+        <div class="section-header">
+            <h1>Sales Performance</h1>
+            <p>Q1 2025</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="card metric-card">
+                <h3>Total Vehicles Sold</h3>
+                <div class="metric-value">356</div>
+                <div class="trend trend-up">
+                    <span>↑ 8.2% YoY</span>
+                </div>
+            </div>
+            <div class="card metric-card">
+                <h3>Avg. Sale Price</h3>
+                <div class="metric-value">&#8377;38,750</div>
+                <div class="trend trend-up">
+                    <span>↑ 3.1% YoY</span>
+                </div>
+            </div>
+            <div class="card metric-card">
+                <h3>Profit Margin</h3>
+                <div class="metric-value">12.8%</div>
+                <div class="trend trend-down">
+                    <span>↓ 0.5% YoY</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card chart-card">
+            <div class="chart-card-header">
+                <h3>Sales by Vehicle Type</h3>
+            </div>
+            <div class="chart-container">
+                <canvas id="vehicleTypeChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Sales Executive Performance</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Sales Target</th>
+                            <th>Achieved</th>
+                            <th>Achievement %</th>
+                            <th>Revenue Generated</th>
+                            <th>Commission Earned</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>David Kim</td>
+                            <td>30</td>
+                            <td>38</td>
+                            <td>126.7%</td>
+                            <td>&#8377;1,482,000</td>
+                            <td>&#8377;44,460</td>
+                        </tr>
+                        <tr>
+                            <td>Lisa Carter</td>
+                            <td>30</td>
+                            <td>32</td>
+                            <td>106.7%</td>
+                            <td>&#8377;1,256,000</td>
+                            <td>&#8377;37,680</td>
+                        </tr>
+                        <tr>
+                            <td>Marcus Johnson</td>
+                            <td>25</td>
+                            <td>28</td>
+                            <td>112.0%</td>
+                            <td>&#8377;1,078,000</td>
+                            <td>&#8377;32,340</td>
+                        </tr>
+                        <tr>
+                            <td>Jennifer Thompson</td>
+                            <td>25</td>
+                            <td>22</td>
+                            <td>88.0%</td>
+                            <td>&#8377;841,000</td>
+                            <td>&#8377;25,230</td>
+                        </tr>
+                        <tr>
+                            <td>Carlos Rodriguez</td>
+                            <td>20</td>
+                            <td>19</td>
+                            <td>95.0%</td>
+                            <td>&#8377;722,000</td>
+                            <td>&#8377;21,660</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Performance Section -->
+    <section id="service" class="dashboard-section">
+        <div class="section-header">
+            <h1>Service Performance</h1>
+            <p>Q1 2025</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="card metric-card">
+                <h3>Total Service Orders</h3>
+                <div class="metric-value">483</div>
+                <div class="trend trend-up">
+                    <span>↑ 4.8% YoY</span>
+                </div>
+            </div>
+            <div class="card metric-card">
+                <h3>Avg. Service Value</h3>
+                <div class="metric-value">&#8377;342</div>
+                <div class="trend trend-up">
+                    <span>↑ 2.7% YoY</span>
+                </div>
+            </div>
+            <div class="card metric-card">
+                <h3>Customer Satisfaction</h3>
+                <div class="metric-value">4.8/5</div>
+                <div class="trend trend-up">
+                    <span>↑ 0.2 vs Last Quarter</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card chart-card">
+            <div class="chart-card-header">
+                <h3>Service Types Distribution</h3>
+            </div>
+            <div class="chart-container">
+                <canvas id="serviceTypeChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Technician Performance</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Orders Completed</th>
+                            <th>Avg. Completion Time</th>
+                            <th>Labor Hours</th>
+                            <th>Customer Rating</th>
+                            <th>Efficiency Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mike Reynolds</td>
+                            <td>87</td>
+                            <td>2.3 hrs</td>
+                            <td>212 hrs</td>
+                            <td>4.9/5</td>
+                            <td>96%</td>
+                        </tr>
+                        <tr>
+                            <td>Samantha Lee</td>
+                            <td>79</td>
+                            <td>2.5 hrs</td>
+                            <td>198 hrs</td>
+                            <td>4.8/5</td>
+                            <td>93%</td>
+                        </tr>
+                        <tr>
+                            <td>Robert Jackson</td>
+                            <td>84</td>
+                            <td>2.4 hrs</td>
+                            <td>206 hrs</td>
+                            <td>4.7/5</td>
+                            <td>91%</td>
+                        </tr>
+                        <tr>
+                            <td>Angela Martinez</td>
+                            <td>78</td>
+                            <td>2.6 hrs</td>
+                            <td>190 hrs</td>
+                            <td>4.8/5</td>
+                            <td>89%</td>
+                        </tr>
+                        <tr>
+                            <td>Kevin Chen</td>
+                            <td>82</td>
+                            <td>2.4 hrs</td>
+                            <td>201 hrs</td>
+                            <td>4.7/5</td>
+                            <td>90%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparative Analysis Section -->
+    <section id="comparative" class="dashboard-section">
+        <div class="section-header">
+            <h1>Comparative Analysis</h1>
+            <p>KIA vs Competitors</p>
+        </div>
+
+        <div class="card chart-card">
+            <div class="chart-card-header">
+                <h3>Market Share Comparison</h3>
+            </div>
+            <div class="chart-container">
+                <canvas id="marketShareChart"></canvas>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="card chart-card">
+                <div class="chart-card-header">
+                    <h3>Customer Satisfaction Scores</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="satisfactionChart"></canvas>
+                </div>
+            </div>
+            <div class="card chart-card">
+                <div class="chart-card-header">
+                    <h3>Pricing Competitiveness</h3>
+                </div>
+                <div class="chart-container">
+                    <canvas id="pricingChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Competitor Performance Metrics</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Brand</th>
+                            <th>Market Share</th>
+                            <th>YoY Growth</th>
+                            <th>Avg. Price Point</th>
+                            <th>Customer Satisfaction</th>
+                            <th>Brand Reputation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>KIA</td>
+                            <td>8.2%</td>
+                            <td>↑ 1.3%</td>
+                            <td>&#8377;38,750</td>
+                            <td>4.8/5</td>
+                            <td>8.4/10</td>
+                        </tr>
+                        <tr>
+                            <td>Competitor A</td>
+                            <td>11.4%</td>
+                            <td>↑ 0.8%</td>
+                            <td>&#8377;42,300</td>
+                            <td>4.6/5</td>
+                            <td>8.7/10</td>
+                        </tr>
+                        <tr>
+                            <td>Competitor B</td>
+                            <td>9.8%</td>
+                            <td>↓ 0.2%</td>
+                            <td>&#8377;39,100</td>
+                            <td>4.5/5</td>
+                            <td>8.5/10</td>
+                        </tr>
+                        <tr>
+                            <td>Competitor C</td>
+                            <td>7.1%</td>
+                            <td>↑ 1.1%</td>
+                            <td>&#8377;36,900</td>
+                            <td>4.7/5</td>
+                            <td>8.2/10</td>
+                        </tr>
+                        <tr>
+                            <td>Competitor D</td>
+                            <td>9.2%</td>
+                            <td>↑ 0.5%</td>
+                            <td>&#8377;41,200</td>
+                            <td>4.5/5</td>
+                            <td>8.8/10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Predictive Analytics Section -->
+    <section id="predictive" class="dashboard-section">
+        <div class="section-header">
+            <h1>Predictive Analytics</h1>
+            <p>Next 6 Months Forecast</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="card metric-card">
+                <h3>Projected Q2 Sales</h3>
+                <div class="metric-value">386</div>
+                <div class="trend trend-up">
+                    <span>↑ 8.4% vs Q2 2024</span>
+                </div>
+            </div>
+            <div class="card metric-card">
+                <h3>Expected Market Share</h3>
+                <div class="metric-value">8.7%</div>
+                <div class="trend trend-up">
+                    <span>↑ 0.5% vs Current</span>
+                </div>
+            </div>
+            <div class="card metric-card">
+                <h3>Forecast Revenue</h3>
+                <div class="metric-value">&#8377;5.8M</div>
+                <div class="trend trend-up">
+                    <span>↑ 11.5% vs Q1</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card chart-card">
+            <div class="chart-card-header">
+                <h3>Sales Trend Forecast (Next 6 Months)</h3>
+            </div>
+            <div class="chart-container">
+                <canvas id="forecastChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Model-Specific Forecasts</h3>
+            <div class="heatmap">
+                <div class="heatmap-cell heat-6">
+                    <div class="heatmap-value">+18%</div>
+                    <div class="heatmap-label">KIA EV6</div>
+                </div>
+                <div class="heatmap-cell heat-5">
+                    <div class="heatmap-value">+12%</div>
+                    <div class="heatmap-label">KIA Sportage</div>
+                </div>
+                <div class="heatmap-cell heat-7">
+                    <div class="heatmap-value">+22%</div>
+                    <div class="heatmap-label">KIA Seltos</div>
+                </div>
+                <div class="heatmap-cell heat-3">
+                    <div class="heatmap-value">+6%</div>
+                    <div class="heatmap-label">KIA Sorento</div>
+                </div>
+                <div class="heatmap-cell heat-4">
+                    <div class="heatmap-value">+9%</div>
+                    <div class="heatmap-label">KIA Soul</div>
+                </div>
+                <div class="heatmap-cell heat-2">
+                    <div class="heatmap-value">+3%</div>
+                    <div class="heatmap-label">KIA K5</div>
+                </div>
+                <div class="heatmap-cell heat-8">
+                    <div class="heatmap-value">+25%</div>
+                    <div class="heatmap-label">KIA EV9</div>
+                </div>
+                <div class="heatmap-cell heat-4">
+                    <div class="heatmap-value">+8%</div>
+                    <div class="heatmap-label">KIA Telluride</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Risk Assessment</h3>
+            <div style="padding: 1rem;">
+                <div class="risk-indicator">
+                    <div class="risk-bar">
+                        <div class="risk-fill" style="width: 35%;"></div>
+                    </div>
+                    <div class="risk-text">35%</div>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.9rem;">Current risk assessment indicates a moderate level of uncertainty for the forecast. Main factors include potential supply chain disruptions and competitive pricing pressure.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<!-- Scripts would go here -->
+<script src="dashboard.js"></script>
+</body>
+</html>

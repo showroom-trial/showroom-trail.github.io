@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIA Sales Manager Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <link rel="stylesheet" href="sales.css">
+</head>
+<body>
+ <!-- Mobile Toggle Button -->
+    <button class="toggle-btn">
+        <i class="fas fa-bars"></i>
+    </button>
+ <!-- Dashboard Container -->
+     <div class="dashboard-container">
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div>
+                    <div class="user-name">Alex Johnson</div>
+                    <div class="user-role">Sales Manager</div>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-menu">
+            <a href="#enquiry" class="active" data-section="enquiry-section">
+                <i class="fas fa-envelope"></i> Enquiry Management
+            </a>
+            <a href="#sales" data-section="sales-section">
+                <i class="fas fa-chart-line"></i> Sales Tracking
+            </a>
+            <a href="#addons" data-section="addons-section">
+                <i class="fas fa-tags"></i> Add-ons & Cross-selling
+            </a>
+            <a href="#team" data-section="team-section">
+                <i class="fas fa-users"></i> Team Performance
+            </a>
+            <a href="#target-allocation" data-section="target-allocation-section">
+                <i class="fas fa-bullseye"></i> Target Allocation
+            </a>
+            <a href="#location" data-section="location-section">
+                <i class="fas fa-map-marker-alt"></i> Location Comparisons
+            </a>
+            <a href="#predictive" data-section="predictive-section">
+                <i class="fas fa-lightbulb"></i> Predictive Insights
+            </a>
+            <a href="#logout" id="logout-btn" class="nav-link">
+                <div class="nav-icon">🔒</div>
+                <span class="nav-text">Logout</span>
+            </a>
+        </div>
+    </div>
+    <div class="kia-logo-container">
+        <img src="kia-logo.png" alt="KIA Logo" class="kia-logo">
+    </div>
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- 1. Enquiry Management Section -->
+        <div id="enquiry-section" class="dashboard-section active">
+            <div class="section-header">
+                <h1 class="section-title">Enquiry Management</h1>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"> Enquiries </h3>
+                    </div>
+                    <div class="card-value">24</div>
+                    <div class="card-subtitle">
+                        <span class="trend-up">↑ 12% from last week</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Pending Follow-ups</h3>
+                    </div>
+                    <div class="card-value">18</div>
+                    <div class="card-subtitle">
+                        <span class="trend-down">↓ 5% from last week</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Conversion Rate</h3>
+                    </div>
+                    <div class="card-value">32%</div>
+                    <div class="card-subtitle">
+                        <span class="trend-up">↑ 3% from last week</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Avg. Response Time</h3>
+                    </div>
+                    <div class="card-value">42m</div>
+                    <div class="card-subtitle">
+                        <span class="trend-up"> </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">Enquiry Source Distribution</h3>
+                    <div class="chart-filters">
+                        <button class="filter-btn active" data-filter="weekly">Weekly</button>
+                        <button class="filter-btn" data-filter="monthly">Monthly</button>
+                    </div>
+                </div>
+                <canvas id="enquirySourceChart"></canvas>
+            </div>
+            
+            <div class="table-container">
+                <div class="table-header">
+                    <h3 class="table-title">Recent Enquiries</h3>
+                    <div class="search-filter">
+                        <input type="text" id="enquirySearch" placeholder="Search customer...">
+                        <select id="statusFilter">
+                            <option value="all">All Status</option>
+                            <option value="new">New</option>
+                            <option value="progress">In Progress</option>
+                            <option value="closed">Closed</option>
+                        </select>
+                        <select id="sourceFilter">
+                            <option value="all">All Sources</option>
+                            <option value="website">Website</option>
+                            <option value="walkin">Walk-in</option>
+                            <option value="referral">Referral</option>
+                            <option value="social">Social Media</option>
+                        </select>
+                    </div>
+                </div>
+                <table id="enquiryTable">
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Contact</th>
+                            <th>Enquiry Source</th>
+                            <th>Date</th>
+                            <th>Assigned To</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Smith</td>
+                            <td>+1 234-567-8901</td>
+                            <td>Website</td>
+                            <td>10 Mar, 2025</td>
+                            <td>Mark Wilson</td>
+                            <td><span class="status-badge status-new">New</span></td>
+                            <td>
+                                <button class="status-update-btn" data-id="1">Update</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Emma Johnson</td>
+                            <td>+1 234-567-8902</td>
+                            <td>Walk-in</td>
+                            <td>9 Mar, 2025</td>
+                            <td>Sarah Davis</td>
+                            <td><span class="status-badge status-progress">In Progress</span></td>
+                            <td>
+                                <button class="status-update-btn" data-id="2">Update</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Michael Brown</td>
+                            <td>+1 234-567-8903</td>
+                            <td>Referral</td>
+                            <td>9 Mar, 2025</td>
+                            <td>Robert Johnson</td>
+                            <td><span class="status-badge status-progress">In Progress</span></td>
+                            <td>
+                                <button class="status-update-btn" data-id="3">Update</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Jennifer Davis</td>
+                            <td>+1 234-567-8904</td>
+                            <td>Social Media</td>
+                            <td>8 Mar, 2025</td>
+                            <td>Mark Wilson</td>
+                            <td><span class="status-badge status-closed">Closed</span></td>
+                            <td>
+                                <button class="status-update-btn" data-id="4">Update</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>David Wilson</td>
+                            <td>+1 234-567-8905</td>
+                            <td>Website</td>
+                            <td>8 Mar, 2025</td>
+                            <td>Sarah Davis</td>
+                            <td><span class="status-badge status-new">New</span></td>
+                            <td>
+                                <button class="status-update-btn" data-id="5">Update</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lisa Roberts</td>
+                            <td>+1 234-567-8906</td>
+                            <td>Walk-in</td>
+                            <td>7 Mar, 2025</td>
+                            <td>Robert Johnson</td>
+                            <td><span class="status-badge status-progress">In Progress</span></td>
+                            <td>
+                                <button class="status-update-btn" data-id="6">Update</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>James Thompson</td>
+                            <td>+1 234-567-8907</td>
+                            <td>Referral</td>
+                            <td>7 Mar, 2025</td>
+                            <td>Mark Wilson</td>
+                            <td><span class="status-badge status-closed">Closed</span></td>
+                            <td>
+                                <button class="status-update-btn" data-id="7">Update</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 2. Sales Tracking Section -->
+        <div id="sales-section" class="dashboard-section">
+            <div class="section-header">
+                <h1 class="section-title">Sales Performance Tracking</h1>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Total Sales  (this week)</h3>
+                    </div>
+                    <div class="card-value">28</div>
+                    <div class="card-subtitle">
+                        <span class="trend-up">↑ 16% from last week</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Weekly Target</h3>
+                    </div>
+                    <div class="card-value">78%</div>
+                    <div class="card-subtitle">
+                        <span>31/40 vehicles (Target)</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 78%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Revenue (This week)</h3>
+                    </div>
+                    <div class="card-value">&#8377;342K</div>
+                    <div class="card-subtitle">
+                        <span class="trend-up">↑ 12% from last week</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Top Performer</h3>
+                    </div>
+                    <div class="card-value">Mark Wilson</div>
+                    <div class="card-subtitle">
+                        <span>12 Sales this week</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">Daily Sales Performance</h3>
+                </div>
+                <canvas id="dailySalesChart"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">Weekly/Monthly Sales Trends</h3>
+                    <div class="chart-filters">
+                        <button class="filter-btn active" data-period="weekly">Weekly</button>
+                        <button class="filter-btn" data-period="monthly">Monthly</button>
+                    </div>
+                </div>
+                <canvas id="salesTrendChart"></canvas>
+            </div>
+            
+            <div class="table-container">
+                <div class="table-header">
+                    <h3 class="table-title">Recent Sales</h3>
+                    <div class="search-filter">
+                        <input type="text" placeholder="Search by model or customer...">
+                        <select>
+                            <option>All Models</option>
+                            <option>Sportage</option>
+                            <option>Sorento</option>
+                            <option>Telluride</option>
+                            <option>K5</option>
+                            <option>EV6</option>
+                        </select>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Model</th>
+                            <th>Sale Date</th>
+                            <th>Price</th>
+                            <th>Sales Executive</th>
+                            <th>Add-ons</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jennifer Davis</td>
+                            <td>KIA Sportage</td>
+                            <td>10 Mar, 2025</td>
+                            <td>&#8377;34,500</td>
+                            <td>Mark Wilson</td>
+                            <td>Navigation, Premium Audio</td>
+                        </tr>
+                        <tr>
+                            <td>Christopher Lee</td>
+                            <td>KIA Sorento</td>
+                            <td>10 Mar, 2025</td>
+                            <td>&#8377;41,200</td>
+                            <td>Sarah Davis</td>
+                            <td>Leather Package, Winter Kit</td>
+                        </tr>
+                        <tr>
+                            <td>Jessica Miller</td>
+                            <td>KIA EV6</td>
+                            <td>10 Mar, 2025</td>
+                            <td>&#8377;56,800</td>
+                            <td>Robert Johnson</td>
+                            <td>Home Charger, Tech Package</td>
+                        </tr>
+                        <tr>
+                            <td>Michael Harris</td>
+                            <td>KIA K5</td>
+                            <td>9 Mar, 2025</td>
+                            <td>&#8377;32,100</td>
+                            <td>Mark Wilson</td>
+                            <td>Premium Audio</td>
+                        </tr>
+                        <tr>
+                            <td>Emily Wilson</td>
+                            <td>KIA Telluride</td>
+                            <td>9 Mar, 2025</td>
+                            <td>&#8377;49,700</td>
+                            <td>Sarah Davis</td>
+                            <td>Towing Package, Premium Interior</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 3. Add-ons & Cross-selling Section -->
+        <div id="addons-section" class="dashboard-section">
+            <div class="section-header">
+                <h1 class="section-title">Add-ons & Cross-selling</h1>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Add-on Revenue</h3>
+                    </div>
+                    <div class="card-value">&#8377;68.3K</div>
+                    <div class="card-subtitle">
+                        <span class="trend-up">↑ 8% from last week</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Attachment Rate</h3>
+                    </div>
+                    <div class="card-value">84%</div>
+                    <div class="card-subtitle">
+                        <span class="trend-up">↑ 5% from last month</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Avg. Add-ons Per Sale</h3>
+                    </div>
+                    <div class="card-value">2.7</div>
+                    <div class="card-subtitle">
+                        <span class="trend-up">↑ 0.3 from last month</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Top Add-on</h3>
+                    </div>
+                    <div class="card-value">Premium Audio</div>
+                    <div class="card-subtitle">
+                        <span>Sold with 68% of vehicles</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">Add-on Distribution by Type</h3>
+                </div>
+                <canvas id="addonDistributionChart"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">Add-on Attachment Rate by Model</h3>
+                </div>
+                <canvas id="addonByModelChart"></canvas>
+            </div>
+            
+            <div class="table-container">
+                <div class="table-header">
+                    <h3 class="table-title">Top Performing Add-ons</h3>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Add-on Name</th>
+                            <th>Category</th>
+                            <th>Attachment Rate</th>
+                            <th>Revenue</th>
+                            <th>Avg. Price</th>
+                            <th>Trend</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Premium Audio System</td>
+                            <td>Entertainment</td>
+                            <td>68%</td>
+                            <td>&#8377;21,400</td>
+                            <td>&#8377;1,200</td>
+                            <td><span class="trend-up">↑ 4%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Navigation Package</td>
+                            <td>Technology</td>
+                            <td>62%</td>
+                            <td>&#8377;18,600</td>
+                            <td>&#8377;950</td>
+                            <td><span class="trend-up">↑ 2%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Winter Kit</td>
+                            <td>Accessories</td>
+                            <td>54%</td>
+                            <td>&#8377;10,800</td>
+                            <td>&#8377;600</td>
+                            <td><span class="trend-up">↑ 8%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Leather Package</td>
+                            <td>Interior</td>
+                            <td>48%</td>
+                            <td>&#8377;19,200</td>
+                            <td>&#8377;1,600</td>
+                            <td><span class="trend-down">↓ 2%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Towing Package</td>
+                            <td>Functionality</td>
+                            <td>38%</td>
+                            <td>&#8377;11,400</td>
+                            <td>&#8377;950</td>
+                            <td><span class="trend-up">↑ 5%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 4. Team Performance Section -->
+        <div id="team-section" class="dashboard-section">
+            <div class="section-header">
+                <h1 class="section-title">Team Performance</h1>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Total Team Sales</h3>
+                    </div>
+                    <div class="card-value">128</div>
+                    <div class="card-subtitle">
+                        <span class="trend-up">↑ 12% from last month</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Avg. Sales Per Rep</h3>
+                    </div>
+                    <div class="card-value">10.6</div>
+                    <div class="card-subtitle">
+                        <span class="trend-up">↑ 0.8 from last month</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Monthly Target</h3>
+                    </div>
+                    <div class="card-value">64%</div>
+                    <div class="card-subtitle">
+                        <span>128/200 vehicles (Target)</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 64%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Team Conversion Rate</h3>
+                    </div>
+                    <div class="card-value">32%</div>
+                    <div class="card-subtitle">
+                        <span class="trend-up">↑ 3% from last month</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">Sales Representative Performance</h3>
+                </div>
+                <canvas id="teamPerformanceChart"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">Team Conversion Funnel</h3>
+                </div>
+                <canvas id="conversionFunnelChart"></canvas>
+            </div>
+            
+            <div class="table-container">
+                <div class="table-header">
+                    <h3 class="table-title">Sales Team Ranking</h3>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Representative</th>
+                            <th>Sales (MTD)</th>
+                            <th>Conversion Rate</th>
+                            <th>Avg. Sale Value</th>
+                            <th>Add-on Attach Rate</th>
+                            <th>Target Progress</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Mark Wilson</td>
+                            <td>16</td>
+                            <td>38%</td>
+                            <td>&#8377;42,800</td>
+                            <td>92%</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 80%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Sarah Davis</td>
+                            <td>14</td>
+                            <td>35%</td>
+                            <td>&#8377;39,200</td>
+                            <td>86%</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 70%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Robert Johnson</td>
+                            <td>12</td>
+                            <td>29%</td>
+                            <td>&#8377;44,500</td>
+                            <td>76%</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Jennifer Adams</td>
+                            <td>10</td>
+                            <td>26%</td>
+                            <td>&#8377;38,700</td>
+                            <td>82%</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 50%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Michael Carter</td>
+                            <td>8</td>
+                            <td>22%</td>
+                            <td>&#8377;36,500</td>
+                            <td>74%</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 40%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 6. Target Allocation -->
+        <div id="target-allocation-section" class="dashboard-section">
+            <div class="section-header">
+                <h1 class="section-title">Target Allocation</h1>
+            </div>
+        
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Total Target</h3>
+                    </div>
+                    <div class="card-value" id="total-target">500</div>
+                    <div class="card-subtitle">Overall Target Distribution</div>
+                </div>
+        
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Achieved Target</h3>
+                    </div>
+                    <div class="card-value" id="achieved-target">250</div>
+                    <div class="card-subtitle">50% Completed</div>
+                </div>
+            </div>
+            <!-- Assign Target Section -->
+            <div class="assign-target-container">
+                <h2>Assign Targets</h2>
+                <label for="team-select">Select Team:</label>
+                <select id="team-select">
+                    <option value="teamA">Team A</option>
+                    <option value="teamB">Team B</option>
+                </select>
+
+                <label for="target-input">Set Target:</label>
+                <input type="number" id="target-input" placeholder="Enter target value">
+
+            <button id="assign-target-btn">Assign Target</button>
+            </div>
+
+            <!-- Target History Section -->
+                <div class="table-container">
+                    <h2>Target History</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Team</th>
+                                <th>Assigned Target</th>
+                                <th>Achieved</th>
+                                <th>Completion Rate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>January</td>
+                                <td>Team A</td>
+                                <td>90</td>
+                                <td>85</td>
+                                <td>94%</td>
+                            </tr>
+                            <tr>
+                                <td>January</td>
+                                <td>Team B</td>
+                                <td>100</td>
+                                <td>80</td>
+                                <td>80%</td>
+                            </tr>
+                            <tr>
+                                <td>February</td>
+                                <td>Team A</td>
+                                <td>110</td>
+                                <td>95</td>
+                                <td>86%</td>
+                            </tr>
+                            <tr>
+                                <td>February</td>
+                                <td>Team B</td>
+                                <td>115</td>
+                                <td>100</td>
+                                <td>87%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+        
+            <!-- Filter Buttons for Allocation Breakdown -->
+            <div class="button-container">
+                <button class="filter-btn active" data-filter="team">By Team</button>
+                <button class="filter-btn" data-filter="model">By Model</button>
+                <button class="filter-btn" data-filter="location">By Location</button>
+                <button class="filter-btn export-btn">Export Report</button>
+            </div>
+        
+            <!-- Target Allocation Table (Editable) -->
+            <div class="table-container" id="team-allocation">
+                <div class="table-header">
+                    <h3 class="table-title">Allocate Targets to Team Leads</h3>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Team Lead</th>
+                            <th>Allocated Target</th>
+                            <th>Achieved Sales</th>
+                            <th>Target Progress</th>
+                            <th>Rank</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Smith</td>
+                            <td><input type="number" class="target-input" value="150" data-team="teamA"></td>
+                            <td id="achieved-teamA">100</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-teamA" style="width: 67%;"></div>
+                                </div>
+                            </td>
+                            <td class="rank">1</td>
+                        </tr>
+                        <tr>
+                            <td>Emily Johnson</td>
+                            <td><input type="number" class="target-input" value="120" data-team="teamB"></td>
+                            <td id="achieved-teamB">80</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-teamB" style="width: 67%;"></div>
+                                </div>
+                            </td>
+                            <td class="rank">2</td>
+                        </tr>
+                        <tr>
+                            <td>Michael Brown</td>
+                            <td><input type="number" class="target-input" value="110" data-team="teamC"></td>
+                            <td id="achieved-teamC">70</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-teamC" style="width: 64%;"></div>
+                                </div>
+                            </td>
+                            <td class="rank">3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        
+        
+
+        <!-- 7. Location Comparisons Section -->
+        <div id="location-section" class="dashboard-section">
+            <div class="section-header">
+                <h1 class="section-title">Location Comparisons</h1>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Top Performing Branch</h3>
+                    </div>
+                    <div class="card-value">Shivamogga</div>
+                    <div class="card-subtitle">
+                        <span>48 sales this month</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Most Improved</h3>
+                    </div>
+                    <div class="card-value">Davanagere</div>
+                    <div class="card-subtitle">
+                        <span class="trend-up">↑ 18% from last month</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Highest Conversion</h3>
+                    </div>
+                    <div class="card-value">Chitradurga</div>
+                    <div class="card-subtitle">
+                        <span>38% conversion rate</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Lowest inventory</h3>
+                    </div>
+                    <div class="card-value">Chikkamagaluru</div>
+                    <div class="card-value"></div>
+                    <div class="card-subtitle">
+                        <span class="trend-down">↓ 8 units remaining</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">Sales Performance by Location</h3>
+                </div>
+                <canvas id="locationPerformanceChart"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">Model Popularity by Location</h3>
+                </div>
+                <canvas id="modelByLocationChart"></canvas>
+            </div>
+            
+            <div class="table-container">
+                <div class="table-header">
+                    <h3 class="table-title">Location Performance Comparison</h3>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Location</th>
+                            <th>Monthly Sales</th>
+                            <th>Conversion Rate</th>
+                            <th>Avg. Sale Value</th>
+                            <th>Top Model</th>
+                            <th>Team Size</th>
+                            <th>Target Progress</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Shivamogga</td>
+                            <td>48</td>
+                            <td>36%</td>
+                            <td>&#8377;42,500</td>
+                            <td>Sportage</td>
+                            <td>6</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 80%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Davanagere</td>
+                            <td>42</td>
+                            <td>38%</td>
+                            <td>&#8377;38,700</td>
+                            <td>K5</td>
+                            <td>5</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 70%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Chitradurga</td>
+                            <td>38</td>
+                            <td>31%</td>
+                            <td>&#8377;46,200</td>
+                            <td>Telluride</td>
+                            <td>4</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 63%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Chikkamagaluru</td>
+                            <td>34</td>
+                            <td>29%</td>
+                            <td>&#8377;41,800</td>
+                            <td>Sorento</td>
+                            <td>4</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 57%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 8. Predictive Insights Section -->
+        <div id="predictive-section" class="dashboard-section">
+            <div class="section-header">
+                <h1 class="section-title">Predictive Insights</h1>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Projected Monthly Sales</h3>
+                    </div>
+                    <div class="card-value">214</div>
+                    <div class="card-subtitle">
+                        <span class="trend-up">↑ 12% from last month</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Projected Revenue</h3>
+                    </div>
+                    <div class="card-value">&#8377;8.6M</div>
+                    <div class="card-subtitle">
+                        <span class="trend-up">↑ 8% from last month</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Trending Model</h3>
+                    </div>
+                    <div class="card-value">KIA EV6</div>
+                    <div class="card-subtitle">
+                        <span class="trend-up">↑ 24% growth prediction</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">High-Value Leads</h3>
+                    </div>
+                    <div class="card-value">28</div>
+                    <div class="card-subtitle">
+                        <span>Conversion potential: 65%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">Sales Forecast (Next 3 Months)</h3>
+                </div>
+                <canvas id="salesForecastChart"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">Model Trend Predictions</h3>
+                </div>
+                <canvas id="modelTrendChart"></canvas>
+            </div>
+            
+            <div class="table-container">
+                <div class="table-header">
+                    <h3 class="table-title">High-Value Lead Predictions</h3>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Contact</th>
+                            <th>Interested Model</th>
+                            <th>Lead Source</th>
+                            <th>Last Interaction</th>
+                            <th>Conversion Probability</th>
+                            <th>Predicted Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Thomas Roberts</td>
+                            <td>+1 234-567-8910</td>
+                            <td>KIA Telluride</td>
+                            <td>Website</td>
+                            <td>8 Mar, 2025</td>
+                            <td><span class="status-badge prediction-high">78%</span></td>
+                            <td>&#8377;52,400</td>
+                        </tr>
+                        <tr>
+                            <td>Rachel Stevens</td>
+                            <td>+1 234-567-8911</td>
+                            <td>KIA EV6</td>
+                            <td>Social Media</td>
+                            <td>9 Mar, 2025</td>
+                            <td><span class="status-badge prediction-high">72%</span></td>
+                            <td>&#8377;58,600</td>
+                        </tr>
+                        <tr>
+                            <td>Daniel Harris</td>
+                            <td>+1 234-567-8912</td>
+                            <td>KIA Sorento</td>
+                            <td>Walk-in</td>
+                            <td>7 Mar, 2025</td>
+                            <td><span class="status-badge prediction-high">68%</span></td>
+                            <td>&#8377;46,800</td>
+                        </tr>
+                        <tr>
+                            <td>Olivia Martinez</td>
+                            <td>+1 234-567-8913</td>
+                            <td>KIA Sportage</td>
+                            <td>Referral</td>
+                            <td>10 Mar, 2025</td>
+                            <td><span class="status-badge prediction-medium">56%</span></td>
+                            <td>&#8377;38,200</td>
+                        </tr>
+                        <tr>
+                            <td>Lucas Thompson</td>
+                            <td>+1 234-567-8914</td>
+                            <td>KIA K5</td>
+                            <td>Website</td>
+                            <td>6 Mar, 2025</td>
+                            <td><span class="status-badge prediction-medium">52%</span></td>
+                            <td>&#8377;34,600</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3 class="chart-title">Seasonal Demand Heatmap</h3>
+                </div>
+                <div class="heatmap-container">
+                    <div class="heatmap-cell heat-level-1">Jan</div>
+                    <div class="heatmap-cell heat-level-2">Feb</div>
+                    <div class="heatmap-cell heat-level-3">Mar</div>
+                    <div class="heatmap-cell heat-level-3">Apr</div>
+                    <div class="heatmap-cell heat-level-4">May</div>
+                    <div class="heatmap-cell heat-level-5">Jun</div>
+                    <div class="heatmap-cell heat-level-5">Jul</div>
+                    <div class="heatmap-cell heat-level-4">Aug</div>
+                    <div class="heatmap-cell heat-level-4">Sep</div>
+                    <div class="heatmap-cell heat-level-3">Oct</div>
+                    <div class="heatmap-cell heat-level-2">Nov</div>
+                    <div class="heatmap-cell heat-level-1">Dec</div>
+                </div>
+                <div class="heatmap-legend">
+                    <span class="legend-item heat-level-1">Low Demand</span>
+                    <span class="legend-item heat-level-2">Moderate Demand</span>
+                    <span class="legend-item heat-level-3">Average Demand</span>
+                    <span class="legend-item heat-level-4">High Demand</span>
+                    <span class="legend-item heat-level-5">Peak Demand</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // DOM Elements
+            const toggleBtn = document.querySelector('.toggle-btn');
+            const sidebar = document.querySelector('.sidebar');
+            const mainContent = document.querySelector('.main-content');
+            const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
+            const dashboardSections = document.querySelectorAll('.dashboard-section');
+    
+            // Toggle sidebar on mobile
+            toggleBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('active'); 
+                mainContent.classList.toggle('sidebar-active'); 
+            });
+    
+            // Navigation & Auto Scroll to Top
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links
+                    sidebarLinks.forEach(link => link.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    link.classList.add('active');
+                    
+                    // Get the section to show
+                    const sectionId = link.getAttribute('data-section');
+                    const targetSection = document.getElementById(sectionId);
+    
+                    if (targetSection) {
+                        // Hide all sections
+                        dashboardSections.forEach(section => section.classList.remove('active'));
+    
+                        // Show selected section
+                        targetSection.classList.add('active');
+    
+                        // ✅ 🔥 Auto Scroll Fix Using scrollIntoView
+                        setTimeout(() => {
+                            document.querySelector(".main-content").scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+                        }, 50); // Small delay ensures the section is fully loaded
+    
+                        // Close sidebar on mobile after clicking
+                        sidebar.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Chart Initialization
+        window.addEventListener('load', () => {
+            // Enquiry Source Distribution Chart
+            const enquirySourceCtx = document.getElementById('enquirySourceChart').getContext('2d');
+            const enquirySourceChart = new Chart(enquirySourceCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Website', 'Walk-in', 'Referral', 'Social Media', 'Phone'],
+                    datasets: [{
+                        data: [38, 24, 18, 14, 6],
+                        backgroundColor: [
+                            '#E63946', // Red
+                            '#F4A261', // Orange
+                            '#E9C46A', // Yellow
+                            '#2A9D8F', // Teal
+                            '#264653' 
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right'
+                        }
+                    }
+                }
+            });
+            
+            // Daily Sales Performance Chart
+            const dailySalesCtx = document.getElementById('dailySalesChart').getContext('2d');
+            const dailySalesChart = new Chart(dailySalesCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Sales',
+                        data: [5, 7, 6, 8, 9, 5, 7],
+                        backgroundColor: '#1D3557'
+                    },
+                    {
+                        label: 'Target',
+                        data: [6, 6, 6, 6, 6, 5, 5],
+                        type: 'bar',
+                        borderColor: '#F4A261',
+                        borderWidth: 2,
+                        fill: false,
+                        pointBackgroundColor: '#F4A261'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            
+            // Sales Trend Chart
+            const salesTrendCtx = document.getElementById('salesTrendChart').getContext('2d');
+            const salesTrendChart = new Chart(salesTrendCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                    datasets: [{
+                        label: 'This Month',
+                        data: [28, 32, 36, 32],
+                        borderColor: '#A8DADC',
+                        backgroundColor: 'rgba(168, 218, 220, 0.2)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Last Month',
+                        data: [24, 26, 30, 28],
+                        borderColor: '#457B9D',
+                        backgroundColor: 'rgba(69, 123, 157, 0.2)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            
+            // Add-on Distribution Chart
+            const addonDistributionCtx = document.getElementById('addonDistributionChart').getContext('2d');
+            const addonDistributionChart = new Chart(addonDistributionCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Entertainment', 'Technology', 'Accessories', 'Interior', 'Functionality'],
+                    datasets: [{
+                        data: [32, 25, 18, 15, 10],
+                        backgroundColor: [
+                        '#F94144', // Bright Red
+                        '#F3722C', // Bright Orange
+                        '#F9C74F', // Yellow
+                        '#90BE6D', // Green
+                        '#43AA8B'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true
+                }
+            });
+            
+            // Add-on by Model Chart
+            const addonByModelCtx = document.getElementById('addonByModelChart').getContext('2d');
+            const addonByModelChart = new Chart(addonByModelCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Sportage', 'Sorento', 'Telluride', 'K5', 'EV6'],
+                    datasets: [{
+                        label: 'Attachment Rate (%)',
+                        data: [86, 78, 92, 68, 88],
+                        backgroundColor: '#1D3557'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+            
+            // Team Performance Chart
+            const teamPerformanceCtx = document.getElementById('teamPerformanceChart').getContext('2d');
+            const teamPerformanceChart = new Chart(teamPerformanceCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Mark W.', 'Sarah D.', 'Robert J.', 'Jennifer A.', 'Michael C.'],
+                    datasets: [{
+                        label: 'Sales',
+                        data: [16, 14, 12, 10, 8],
+                        backgroundColor: '#e76f51'
+                    },
+                    {
+                        label: 'Conversion Rate (%)',
+                        data: [38, 35, 29, 26, 22],
+                        type: 'bar',
+                        borderColor: '#999999',
+                        backgroundColor: '#1D3557',
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Sales'
+                            }
+                        },
+                        y1: {
+                            beginAtZero: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Conversion Rate (%)'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            },
+                            max: 50
+                        }
+                    }
+                }
+            });
+            
+            // Conversion Funnel Chart
+            const conversionFunnelCtx = document.getElementById('conversionFunnelChart').getContext('2d');
+            const conversionFunnelChart = new Chart(conversionFunnelCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Enquiries', 'Test Drives', 'Negotiations', 'Sales'],
+                    datasets: [{
+                        label: 'Conversion Funnel',
+                        data: [400, 240, 160, 128],
+                        backgroundColor: [
+                        '#2A9D8F', // Teal
+                        '#E9C46A', // Yellow
+                        '#F4A261', // Orange
+                        '#E63946'  
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            //Update Target Progress & Export
+            document.addEventListener("DOMContentLoaded", function () {
+                const inputs = document.querySelectorAll(".target-input");
+                const exportBtn = document.querySelector(".export-btn");
+            
+                // Update Progress Bars Dynamically
+                inputs.forEach(input => {
+                    input.addEventListener("input", function () {
+                        const team = this.dataset.team;
+                        const allocated = parseInt(this.value) || 0;
+                        const achieved = parseInt(document.getElementById(`achieved-${team}`).innerText) || 0;
+                        const progress = (achieved / allocated) * 100;
+            
+                        document.getElementById(`progress-${team}`).style.width = progress + "%";
+            
+                        let totalTarget = 0;
+                        inputs.forEach(i => totalTarget += parseInt(i.value) || 0);
+                        document.getElementById("total-target").innerText = totalTarget;
+                    });
+                });
+                document.getElementById("assign-target-btn").addEventListener("click", function() {
+                    const team = document.getElementById("team-select").value;
+                    const targetValue = document.getElementById("target-input").value;
+            
+                    if (targetValue && targetValue > 0) {
+                        alert(`Target of ${targetValue} assigned to ${team}`);
+                        // Here, you can update the table dynamically or send data to a backend.
+                    } else {
+                        alert("Please enter a valid target value.");
+                    }
+                });
+            
+                // Export Table as CSV
+                exportBtn.addEventListener("click", function () {
+                    let csvContent = "data:text/csv;charset=utf-8,";
+                    csvContent += "Team Lead,Allocated Target,Achieved Sales,Rank\n";
+            
+                    document.querySelectorAll("tbody tr").forEach(row => {
+                        let rowData = [];
+                        row.querySelectorAll("td").forEach(cell => rowData.push(cell.innerText || cell.querySelector("input").value));
+                        csvContent += rowData.join(",") + "\n";
+                    });
+            
+                    const encodedUri = encodeURI(csvContent);
+                    const link = document.createElement("a");
+                    link.setAttribute("href", encodedUri);
+                    link.setAttribute("download", "target_allocation_report.csv");
+                    document.body.appendChild(link);
+                    link.click();
+                });
+            });
+                    
+            // Location Performance Chart
+            const locationPerformanceCtx = document.getElementById('locationPerformanceChart').getContext('2d');
+            const locationPerformanceChart = new Chart(locationPerformanceCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Shivamogga', 'Davanagere', 'Chitradurga', 'Chikkamagaluru'],
+                    datasets: [{
+                        label: 'Monthly Sales',
+                        data: [48, 42, 38, 34, 32],
+                        backgroundColor: '#333333'
+                    },
+                    {
+                        label: 'Conversion Rate (%)',
+                        data: [36, 38, 31, 29, 28],
+                        type: 'bar',
+                        borderColor: '#999999',
+                        backgroundColor: '#bbbbbb',
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Monthly Sales'
+                            }
+                        },
+                        y1: {
+                            beginAtZero: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Conversion Rate (%)'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            },
+                            max: 50
+                        }
+                    }
+                }
+            });
+            
+            // Model by Location Chart
+            const modelByLocationCtx = document.getElementById('modelByLocationChart').getContext('2d');
+            const modelByLocationChart = new Chart(modelByLocationCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Sportage', 'Sorento', 'Telluride', 'K5', 'EV6'],
+                    datasets: [
+                        {
+                            label: 'Shivamogga',
+                            data: [15, 8, 9, 10, 6],
+                            borderColor: '#333333',
+                            backgroundColor: 'rgba(51, 85, 119, 0.2)'
+                        },
+                        {
+                            label: 'Davanagere',
+                            data: [9, 11, 5, 12, 5],
+                            borderColor: '#999999',
+                            backgroundColor: 'rgba(85, 51, 119, 0.2)'
+                        },
+                        {
+                            label: 'Chitradurga',
+                            data: [7, 9, 12, 6, 4],
+                            borderColor: '#bbbbbb',
+                            backgroundColor: 'rgba(119, 85, 51, 0.2)'
+                        },
+                        {
+                            label: 'Chikkamagaluru',
+                            data: [5, 11, 14, 7, 6],
+                            borderColor: '#65357',
+                            backgroundColor: 'rgba(234, 36, 51, 0.2)'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        r: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            
+            // Sales Forecast Chart
+            const salesForecastCtx = document.getElementById('salesForecastChart').getContext('2d');
+            const salesForecastChart = new Chart(salesForecastCtx, {
+                type: 'line',
+                data: {
+                    labels: ['March', 'April', 'May', 'June'],
+                    datasets: [{
+                        label: 'Projected Sales',
+                        data: [194, 214, 236, 258],
+                        borderColor: '#003366',
+                        backgroundColor: 'rgba(0, 51, 102, 0.2)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.3
+                    },
+                    {
+                        label: 'Actual Sales',
+                        data: [194, null, null, null],
+                        borderColor: '#777777',
+                        backgroundColor: 'rgba(119, 119, 119, 0.2)',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        fill: false,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Total Sales'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Model Trend Chart
+            const modelTrendCtx = document.getElementById('modelTrendChart').getContext('2d');
+            const modelTrendChart = new Chart(modelTrendCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [
+                        {
+                            label: 'Sportage',
+                            data: [42, 46, 48, 52, 56, 60],
+                            borderColor: '#333333',
+                            backgroundColor: 'transparent',
+                            tension: 0.3
+                        },
+                        {
+                            label: 'EV6',
+                            data: [18, 22, 28, 35, 43, 53],
+                            borderColor: '#555555',
+                            backgroundColor: 'transparent',
+                            tension: 0.3
+                        },
+                        {
+                            label: 'Telluride',
+                            data: [36, 38, 41, 44, 47, 50],
+                            borderColor: '#777777',
+                            backgroundColor: 'transparent',
+                            tension: 0.3
+                        },
+                        {
+                            label: 'K5',
+                            data: [32, 33, 35, 36, 37, 38],
+                            borderColor: '#999999',
+                            backgroundColor: 'transparent',
+                            tension: 0.3
+                        },
+                        {
+                            label: 'Sorento',
+                            data: [28, 30, 31, 32, 33, 34],
+                            borderColor: '#bbbbbb',
+                            backgroundColor: 'transparent',
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Units Sold'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+        
+        // Initialize with the first section active
+        document.querySelector('.sidebar-menu a').classList.add('active');
+        document.getElementById('enquiry-section').classList.add('active');
+        
+        // Responsive table functionality
+        const tables = document.querySelectorAll('table');
+        tables.forEach(table => {
+            if (window.innerWidth < 768) {
+                table.classList.add('responsive-table');
+            }
+        });
+        
+        window.addEventListener('resize', () => {
+            tables.forEach(table => {
+                if (window.innerWidth < 768) {
+                    table.classList.add('responsive-table');
+                } else {
+                    table.classList.remove('responsive-table');
+                }
+            });
+        });
+        
+        // Search functionality for tables
+        const searchInputs = document.querySelectorAll('.search-input');
+        searchInputs.forEach(input => {
+            input.addEventListener('keyup', function() {
+                const searchValue = this.value.toLowerCase();
+                const tableId = this.getAttribute('data-table');
+                const table = document.getElementById(tableId);
+                const rows = table.querySelectorAll('tbody tr');
+                
+                rows.forEach(row => {
+                    let found = false;
+                    const cells = row.querySelectorAll('td');
+                    cells.forEach(cell => {
+                        if (cell.textContent.toLowerCase().includes(searchValue)) {
+                            found = true;
+                        }
+                    });
+                    
+                    if (found) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Filter functionality
+        const filterSelects = document.querySelectorAll('.filter-select');
+        filterSelects.forEach(select => {
+            select.addEventListener('change', function() {
+                const filterValue = this.value;
+                const filterType = this.getAttribute('data-filter');
+                const tableId = this.getAttribute('data-table');
+                const table = document.getElementById(tableId);
+                const rows = table.querySelectorAll('tbody tr');
+                
+                if (filterValue === 'all') {
+                    rows.forEach(row => row.style.display = '');
+                    return;
+                }
+                
+                rows.forEach(row => {
+                    const cell = row.querySelector(`td[data-${filterType}]`);
+                    if (cell && cell.getAttribute(`data-${filterType}`) === filterValue) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Update status functionality
+        const statusSelects = document.querySelectorAll('.status-select');
+        statusSelects.forEach(select => {
+            select.addEventListener('change', function() {
+                const newStatus = this.value;
+                const rowId = this.closest('tr').getAttribute('id');
+                
+                // Here you would typically update the status in your database
+                // For this demo, we'll just update the status badge
+                const statusBadge = this.closest('tr').querySelector('.status-badge');
+                statusBadge.textContent = newStatus;
+                
+                // Update the status badge class
+                statusBadge.className = 'status-badge';
+                if (newStatus === 'New') {
+                    statusBadge.classList.add('status-new');
+                } else if (newStatus === 'In Progress') {
+                    statusBadge.classList.add('status-progress');
+                } else if (newStatus === 'Follow-up') {
+                    statusBadge.classList.add('status-followup');
+                } else if (newStatus === 'Closed-Won') {
+                    statusBadge.classList.add('status-won');
+                } else if (newStatus === 'Closed-Lost') {
+                    statusBadge.classList.add('status-lost');
+                }
+                
+                // You can add an AJAX call here to save the new status to the server
+            });
+        });
+        
+        // Date range picker initialization (if implemented)
+        // This would typically use a library like flatpickr or daterangepicker
+        
+        // Export data functionality
+        const exportButtons = document.querySelectorAll('.export-btn');
+        exportButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const tableId = this.getAttribute('data-table');
+                const table = document.getElementById(tableId);
+                
+                // Simple CSV export (for demo purposes)
+                let csv = [];
+                const rows = table.querySelectorAll('tr');
+                
+                rows.forEach(row => {
+                    const rowData = [];
+                    const cols = row.querySelectorAll('th, td');
+                    cols.forEach(col => {
+                        // Replace any commas in the cell text to avoid CSV issues
+                        rowData.push('"' + col.textContent.replace(/"/g, '""') + '"');
+                    });
+                    csv.push(rowData.join(','));
+                });
+                
+                const csvString = csv.join('\n');
+                const filename = tableId + '_export_' + new Date().toISOString().slice(0, 10) + '.csv';
+                
+                // Create download link and click it
+                const downloadLink = document.createElement('a');
+                downloadLink.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvString);
+                downloadLink.download = filename;
+                
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            });
+        });
+        document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector("a[href='#logout']").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            window.location.href = "index.html"; // Redirect to login page
+        });
+    });
+
+    
+    </script>
+</body>
+</html>

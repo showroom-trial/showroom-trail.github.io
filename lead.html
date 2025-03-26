@@ -1,0 +1,2219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIA Showroom -Team Lead Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    
+    <link rel="stylesheet" href="lead.css">
+</head>
+<body>
+    <!-- Mobile Toggle Button -->
+    <button class="toggle-btn">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+               <!-- <div class="logo-container">
+                    <div class="logo">KIA</div>
+                    <div class="dashboard-type">Team Lead Dashboard</div>
+                </div>-->
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <div class="user-name">Alex Johnson</div>
+                        <div class="user-role">Team Lead</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-menu">
+                <a href="#" data-section="lead-allocation-section" class="active">
+                    <i class="fas fa-user-plus"></i> Lead Allocation
+                </a>
+                <a href="#" data-section="team-performance-section">
+                    <i class="fas fa-chart-bar"></i> Team Performance
+                </a>
+                <a href="#" data-section="followups-section">
+                    <i class="fas fa-phone"></i> Follow-ups
+                </a>
+                <a href="#" data-section="addons-section">
+                    <i class="fas fa-tags"></i> Add-ons Performance
+                </a>
+                <a href="#" data-section="comparison-section">
+                    <i class="fas fa-trophy"></i> Executive Comparison
+                </a>
+                <a href="#" data-section="feedback-section">
+                    <i class="fas fa-comment"></i> Customer Feedback
+                </a>
+                <!--<a href="#" data-section="settings-section">
+                    <i class="fas fa-cog"></i> Settings
+                </a>-->
+            
+                <!-- Corrected Logout Button -->
+                <a href="#" id="logout-btn" class="nav-link">
+                    <div class="nav-icon">🔒</div>
+                    <span class="nav-text">Logout</span>
+                </a>
+            </div>            
+        </div>
+        
+        <!-- KIA Logo -->
+<div class="kia-logo-container">
+    <img src="kia-logo.png" alt="KIA Logo" class="kia-logo">
+</div>
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- 1. Lead Allocation Section -->
+            <div id="lead-allocation-section" class="dashboard-section active">
+                <div class="section-header">
+                    <h1 class="section-title">Lead Allocation</h1>
+                </div>
+                
+                <div class="cards-container">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Total Leads </h3>
+                        </div>
+                        <div class="card-value">12</div>
+                        <div class="card-subtitle">
+                            <span class="trend-up">↑ 4 from yesterday</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Pending Allocations</h3>
+                        </div>
+                        <div class="card-value">8</div>
+                        <div class="card-subtitle">
+                            <span>Need immediate attention</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">In Progress Leads</h3>
+                        </div>
+                        <div class="card-value">45</div>
+                        <div class="card-subtitle">
+                            <span class="trend-up">↑ 5% from last week</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Conversion Rate</h3>
+                        </div>
+                        <div class="card-value">32%</div>
+                        <div class="card-subtitle">
+                            <span class="trend-up">↑ 3% from last month</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                        <div class="table-header">
+                            <h3 class="table-title">Assigned Leads</h3>
+                            <div class="table-buttons">
+                                <button id="target-reminder-btn" class="dashboard-btn">Target Reminder</button>
+                                <button id="assign-target-btn" class="dashboard-btn">Assign Target</button>
+                            </div>
+                            <div class="table-actions">
+                                <!-- Your existing search, filter, exports elements remain untouched -->
+                        </div>
+                        <h3 class="table-title">Assigned Leads</h3>
+                        <div class="table-actions">
+                            <input type="text" class="search-input" placeholder="Search leads..." data-table="leads-table">
+                            <select class="filter-select" data-filter="status" data-table="leads-table">
+                                <option value="all">All Status</option>
+                                <option value="New">New</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Follow-up">Follow-up</option>
+                                <option value="Closed-Won">Closed-Won</option>
+                                <option value="Closed-Lost">Closed-Lost</option>
+                            </select>
+                            <select class="filter-select" data-filter="executive" data-table="leads-table">
+                                <option value="all">All Executives</option>
+                                <option value="Mark Wilson">Mark Wilson</option>
+                                <option value="Sarah Davis">Sarah Davis</option>
+                                <option value="Robert Johnson">Robert Johnson</option>
+                                <option value="Jennifer Adams">Jennifer Adams</option>
+                                <option value="Michael Carter">Michael Carter</option>
+                            </select>
+                            <button class="export-btn" data-table="leads-table">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+<!-- Modal for Target Status -->
+<div id="targetStatusModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeTargetStatus">&times;</span>
+        <h3>Target Status</h3>
+        <div class="chart-container">
+            <canvas id="executivePieChart"></canvas>
+        </div>
+        <button id="moreDetailsBtn" class="dashboard-btn">For More Details</button>
+    </div>
+</div>
+
+<!-- Urgent Details-->
+<div id="urgentLeadsPopup" class="popup">
+    <div class="popup-content">
+        <h3>Urgent Leads</h3>
+        <p>You have urgent leads to follow up today!</p>
+        <button id="viewFollowupsBtn">Tap for Details</button>
+    </div>
+</div><!-- Transparent Layer -->
+<div id="assignTargetOverlay"></div>
+
+<!-- Mini-tab for Assign Target -->
+<div id="assignTargetTab" class="mini-tab">
+    <div class="mini-tab-header">
+        <h3>Assign Target</h3>
+        <span class="close-btn" id="closeAssignTarget">&times;</span>
+    </div>
+    <form id="assignTargetForm">
+        <label for="executive">Select Executive:</label>
+        <select id="executive" name="executive">
+            <option value="Mark Wilson">Mark Wilson</option>
+            <option value="Sarah Davis">Sarah Davis</option>
+            <option value="Robert Johnson">Robert Johnson</option>
+            <option value="Jennifer Adams">Jennifer Adams</option>
+            <option value="Michael Carter">Michael Carter</option>
+        </select>
+        <label for="target">Target:</label>
+        <input type="number" id="target" name="target" placeholder="Enter target" required>
+        <button type="submit">Assign</button>
+    </form>
+</div>
+                    <table id="leads-table">
+                        <thead>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Contact</th>
+                                <th>Lead Source</th>
+                                <th>Interested Model</th>
+                                <th>Assigned Executive</th>
+                                <th>Last Update</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="lead-1">
+                                <td data-label="Customer Name">James Wilson</td>
+                                <td data-label="Contact">+1 234-567-8901</td>
+                                <td data-label="Lead Source" data-source="Website">Website</td>
+                                <td data-label="Interested Model">KIA Sportage</td>
+                                <td data-label="Assigned Executive" data-executive="Mark Wilson">Mark Wilson</td>
+                                <td data-label="Last Update">10 Mar, 2025</td>
+                                <td data-label="Status">
+                                    <span class="status-badge status-new">New</span>
+                                </td>
+                                <td data-label="Action">
+                                    <select class="status-select">
+                                        <option value="New" selected>New</option>
+                                        <option value="In Progress">In Progress</option>
+                                        <option value="Follow-up">Follow-up</option>
+                                        <option value="Closed-Won">Closed-Won</option>
+                                        <option value="Closed-Lost">Closed-Lost</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="lead-2">
+                                <td data-label="Customer Name">Emily Johnson</td>
+                                <td data-label="Contact">+1 234-567-8902</td>
+                                <td data-label="Lead Source" data-source="Walk-in">Walk-in</td>
+                                <td data-label="Interested Model">KIA EV6</td>
+                                <td data-label="Assigned Executive" data-executive="Sarah Davis">Sarah Davis</td>
+                                <td data-label="Last Update">9 Mar, 2025</td>
+                                <td data-label="Status">
+                                    <span class="status-badge status-progress">In Progress</span>
+                                </td>
+                                <td data-label="Action">
+                                    <select class="status-select">
+                                        <option value="New">New</option>
+                                        <option value="In Progress" selected>In Progress</option>
+                                        <option value="Follow-up">Follow-up</option>
+                                        <option value="Closed-Won">Closed-Won</option>
+                                        <option value="Closed-Lost">Closed-Lost</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="lead-3">
+                                <td data-label="Customer Name">David Brown</td>
+                                <td data-label="Contact">+1 234-567-8903</td>
+                                <td data-label="Lead Source" data-source="Referral">Referral</td>
+                                <td data-label="Interested Model">KIA Telluride</td>
+                                <td data-label="Assigned Executive" data-executive="Robert Johnson">Robert Johnson</td>
+                                <td data-label="Last Update">8 Mar, 2025</td>
+                                <td data-label="Status">
+                                    <span class="status-badge status-followup">Follow-up</span>
+                                </td>
+                                <td data-label="Action">
+                                    <select class="status-select">
+                                        <option value="New">New</option>
+                                        <option value="In Progress">In Progress</option>
+                                        <option value="Follow-up" selected>Follow-up</option>
+                                        <option value="Closed-Won">Closed-Won</option>
+                                        <option value="Closed-Lost">Closed-Lost</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="lead-4">
+                                <td data-label="Customer Name">Sarah Miller</td>
+                                <td data-label="Contact">+1 234-567-8904</td>
+                                <td data-label="Lead Source" data-source="Social Media">Social Media</td>
+                                <td data-label="Interested Model">KIA Sorento</td>
+                                <td data-label="Assigned Executive" data-executive="Jennifer Adams">Jennifer Adams</td>
+                                <td data-label="Last Update">7 Mar, 2025</td>
+                                <td data-label="Status">
+                                    <span class="status-badge status-won">Closed-Won</span>
+                                </td>
+                                <td data-label="Action">
+                                    <select class="status-select">
+                                        <option value="New">New</option>
+                                        <option value="In Progress">In Progress</option>
+                                        <option value="Follow-up">Follow-up</option>
+                                        <option value="Closed-Won" selected>Closed-Won</option>
+                                        <option value="Closed-Lost">Closed-Lost</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="lead-5">
+                                <td data-label="Customer Name">Michael Thompson</td>
+                                <td data-label="Contact">+1 234-567-8905</td>
+                                <td data-label="Lead Source" data-source="Website">Website</td>
+                                <td data-label="Interested Model">KIA K5</td>
+                                <td data-label="Assigned Executive" data-executive="Michael Carter">Michael Carter</td>
+                                <td data-label="Last Update">6 Mar, 2025</td>
+                                <td data-label="Status">
+                                    <span class="status-badge status-lost">Closed-Lost</span>
+                                </td>
+                                <td data-label="Action">
+                                    <select class="status-select">
+                                        <option value="New">New</option>
+                                        <option value="In Progress">In Progress</option>
+                                        <option value="Follow-up">Follow-up</option>
+                                        <option value="Closed-Won">Closed-Won</option>
+                                        <option value="Closed-Lost" selected>Closed-Lost</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="lead-6">
+                                <td data-label="Customer Name">Jessica Taylor</td>
+                                <td data-label="Contact">+1 234-567-8906</td>
+                                <td data-label="Lead Source" data-source="Walk-in">Walk-in</td>
+                                <td data-label="Interested Model">KIA Sportage</td>
+                                <td data-label="Assigned Executive" data-executive="Mark Wilson">Mark Wilson</td>
+                                <td data-label="Last Update">10 Mar, 2025</td>
+                                <td data-label="Status">
+                                    <span class="status-badge status-new">New</span>
+                                </td>
+                                <td data-label="Action">
+                                    <select class="status-select">
+                                        <option value="New" selected>New</option>
+                                        <option value="In Progress">In Progress</option>
+                                        <option value="Follow-up">Follow-up</option>
+                                        <option value="Closed-Won">Closed-Won</option>
+                                        <option value="Closed-Lost">Closed-Lost</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="lead-7">
+                                <td data-label="Customer Name">Daniel Harris</td>
+                                <td data-label="Contact">+1 234-567-8907</td>
+                                <td data-label="Lead Source" data-source="Referral">Referral</td>
+                                <td data-label="Interested Model">KIA EV6</td>
+                                <td data-label="Assigned Executive" data-executive="Sarah Davis">Sarah Davis</td>
+                                <td data-label="Last Update">9 Mar, 2025</td>
+                                <td data-label="Status">
+                                    <span class="status-badge status-progress">In Progress</span>
+                                </td>
+                                <td data-label="Action">
+                                    <select class="status-select">
+                                        <option value="New">New</option>
+                                        <option value="In Progress" selected>In Progress</option>
+                                        <option value="Follow-up">Follow-up</option>
+                                        <option value="Closed-Won">Closed-Won</option>
+                                        <option value="Closed-Lost">Closed-Lost</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Lead Source Distribution</h3>
+                    </div>
+                    <canvas id="leadSourceChart"></canvas>
+                </div>
+            </div>
+            
+            <!-- 2. Team Performance Section -->
+            <div id="team-performance-section" class="dashboard-section">
+                <div class="section-header">
+                    <h1 class="section-title">Team Performance</h1>
+                </div>
+                
+                <div class="cards-container">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Total Team Sales</h3>
+                        </div>
+                        <div class="card-value">56</div>
+                        <div class="card-subtitle">
+                            <span class="trend-up">↑ 8% from last month</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Team Conversion Rate</h3>
+                        </div>
+                        <div class="card-value">32%</div>
+                        <div class="card-subtitle">
+                            <span class="trend-up">↑ 3% from last month</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Target Achievement</h3>
+                        </div>
+                        <div class="card-value">74%</div>
+                        <div class="card-subtitle">
+                            <span>Monthly target: 75 sales</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Top Performer</h3>
+                        </div>
+                        <div class="card-value">Mark Wilson</div>
+                        <div class="card-subtitle">
+                            <span>16 sales this month</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Sales Contribution Per Executive</h3>
+                    </div>
+                    <canvas id="salesContributionChart"></canvas>
+                </div>
+                
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3 class="table-title">Team Members Performance</h3>
+                        <div class="table-actions">
+                            <button class="export-btn" data-table="team-performance-table">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+                    <table id="team-performance-table">
+                        <thead>
+                            <tr>
+                                <th>Executive Name</th>
+                                <th>Total Leads</th>
+                                <th>Active Leads</th>
+                                <th>Closed Sales</th>
+                                <th>Conversion Rate</th>
+                                <th>Contribution</th>
+                                <th>Target Progress</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="Executive Name">Mark Wilson</td>
+                                <td data-label="Total Leads">42</td>
+                                <td data-label="Active Leads">18</td>
+                                <td data-label="Closed Sales">16</td>
+                                <td data-label="Conversion Rate">38%</td>
+                                <td data-label="Contribution">28.6%</td>
+                                <td data-label="Target Progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 80%;"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-label="Executive Name">Sarah Davis</td>
+                                <td data-label="Total Leads">40</td>
+                                <td data-label="Active Leads">20</td>
+                                <td data-label="Closed Sales">14</td>
+                                <td data-label="Conversion Rate">35%</td>
+                                <td data-label="Contribution">25.0%</td>
+                                <td data-label="Target Progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 70%;"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-label="Executive Name">Robert Johnson</td>
+                                <td data-label="Total Leads">38</td>
+                                <td data-label="Active Leads">22</td>
+                                <td data-label="Closed Sales">12</td>
+                                <td data-label="Conversion Rate">29%</td>
+                                <td data-label="Contribution">21.4%</td>
+                                <td data-label="Target Progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 60%;"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-label="Executive Name">Jennifer Lee</td>
+                                <td data-label="Total Leads">36</td>
+                                <td data-label="Active Leads">16</td>
+                                <td data-label="Closed Sales">10</td>
+                                <td data-label="Conversion Rate">27%</td>
+                                <td data-label="Contribution">17.8%</td>
+                                <td data-label="Target Progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 50%;"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-label="Executive Name">Michael Brown</td>
+                                <td data-label="Total Leads">24</td>
+                                <td data-label="Active Leads">8</td>
+                                <td data-label="Closed Sales">4</td>
+                                <td data-label="Conversion Rate">16%</td>
+                                <td data-label="Contribution">7.2%</td>
+                                <td data-label="Target Progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 20%;"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Follow-ups Section -->
+            <div class="dashboard-section" id="followups-section">
+                <div class="section-header">
+                    <h2>Follow-ups</h2>
+                </div>
+                
+                <div class="alert-container">
+                    <div class="alert-card urgent">
+                        <div class="alert-icon">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div class="alert-content">
+                            <div class="alert-title">5 Urgent Follow-ups Due Today</div>
+                            <div class="alert-subtitle">Prioritize these customers</div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert-card upcoming">
+                        <div class="alert-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="alert-content">
+                            <div class="alert-title">12 Follow-ups Tomorrow</div>
+                            <div class="alert-subtitle">Prepare in advance</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3 class="table-title">Follow-up Schedule</h3>
+                        <div class="table-actions">
+                            <div class="search-container">
+                                <input type="text" placeholder="Search by name" class="search-input">
+                                <button class="search-btn"><i class="fas fa-search"></i></button>
+                            </div>
+                            <div class="filter-container">
+                                <select class="filter-select">
+                                    <option value="all">All Follow-ups</option>
+                                    <option value="today">Due Today</option>
+                                    <option value="tomorrow">Due Tomorrow</option>
+                                    <option value="overdue">Overdue</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <table id="followup-table">
+                        <thead>
+                            <tr>
+                                <th>Lead Name</th>
+                                <th>Last Contact</th>
+                                <th>Next Follow-up</th>
+                                <th>Assigned To</th>
+                                <th>Conversion Probability</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="urgent-row">
+                                <td data-label="Lead Name">James Wilson</td>
+                                <td data-label="Last Contact">Mar 8, 2025</td>
+                                <td data-label="Next Follow-up">Mar 10, 2025</td>
+                                <td data-label="Assigned To">Mark Wilson</td>
+                                <td data-label="Conversion Probability">
+                                    <div class="probability-bar high">
+                                        <div class="probability-fill"></div>
+                                        <span>85%</span>
+                                    </div>
+                                </td>
+                                <td data-label="Status"><span class="status-badge urgent">Today</span></td>
+                                <td data-label="Actions">
+                                    <button class="action-btn"><i class="fas fa-phone"></i></button>
+                                    <button class="action-btn"><i class="fas fa-envelope"></i></button>
+                                    <button class="action-btn"><i class="fas fa-check-circle"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="urgent-row">
+                                <td data-label="Lead Name">Emma Roberts</td>
+                                <td data-label="Last Contact">Mar 5, 2025</td>
+                                <td data-label="Next Follow-up">Mar 10, 2025</td>
+                                <td data-label="Assigned To">Sarah Davis</td>
+                                <td data-label="Conversion Probability">
+                                    <div class="probability-bar medium">
+                                        <div class="probability-fill"></div>
+                                        <span>60%</span>
+                                    </div>
+                                </td>
+                                <td data-label="Status"><span class="status-badge urgent">Today</span></td>
+                                <td data-label="Actions">
+                                    <button class="action-btn"><i class="fas fa-phone"></i></button>
+                                    <button class="action-btn"><i class="fas fa-envelope"></i></button>
+                                    <button class="action-btn"><i class="fas fa-check-circle"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-label="Lead Name">David Thompson</td>
+                                <td data-label="Last Contact">Mar 9, 2025</td>
+                                <td data-label="Next Follow-up">Mar 11, 2025</td>
+                                <td data-label="Assigned To">Jennifer Lee</td>
+                                <td data-label="Conversion Probability">
+                                    <div class="probability-bar high">
+                                        <div class="probability-fill"></div>
+                                        <span>78%</span>
+                                    </div>
+                                </td>
+                                <td data-label="Status"><span class="status-badge upcoming">Tomorrow</span></td>
+                                <td data-label="Actions">
+                                    <button class="action-btn"><i class="fas fa-phone"></i></button>
+                                    <button class="action-btn"><i class="fas fa-envelope"></i></button>
+                                    <button class="action-btn"><i class="fas fa-check-circle"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-label="Lead Name">Richard Clark</td>
+                                <td data-label="Last Contact">Mar 6, 2025</td>
+                                <td data-label="Next Follow-up">Mar 12, 2025</td>
+                                <td data-label="Assigned To">Robert Johnson</td>
+                                <td data-label="Conversion Probability">
+                                    <div class="probability-bar low">
+                                        <div class="probability-fill"></div>
+                                        <span>35%</span>
+                                    </div>
+                                </td>
+                                <td data-label="Status"><span class="status-badge scheduled">Scheduled</span></td>
+                                <td data-label="Actions">
+                                    <button class="action-btn"><i class="fas fa-phone"></i></button>
+                                    <button class="action-btn"><i class="fas fa-envelope"></i></button>
+                                    <button class="action-btn"><i class="fas fa-check-circle"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="overdue-row">
+                                <td data-label="Lead Name">Patricia Hughes</td>
+                                <td data-label="Last Contact">Mar 2, 2025</td>
+                                <td data-label="Next Follow-up">Mar 9, 2025</td>
+                                <td data-label="Assigned To">Michael Brown</td>
+                                <td data-label="Conversion Probability">
+                                    <div class="probability-bar medium">
+                                        <div class="probability-fill"></div>
+                                        <span>55%</span>
+                                    </div>
+                                </td>
+                                <td data-label="Status"><span class="status-badge overdue">Overdue</span></td>
+                                <td data-label="Actions">
+                                    <button class="action-btn"><i class="fas fa-phone"></i></button>
+                                    <button class="action-btn"><i class="fas fa-envelope"></i></button>
+                                    <button class="action-btn"><i class="fas fa-check-circle"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Add-ons Performance Section -->
+            <div class="dashboard-section" id="addons-section">
+                <div class="section-header">
+                    <h2>Add-ons Performance</h2>
+                </div>
+                
+                <div class="charts-row">
+                    <div class="chart-container half-width">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Add-ons Revenue Share</h3>
+                        </div>
+                        <canvas id="addonsRevenueChart"></canvas>
+                    </div>
+                    
+                    <div class="chart-container half-width">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Add-ons Sales Trend</h3>
+                        </div>
+                        <canvas id="addonsTrendChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3 class="table-title">Add-ons Sales by Executive</h3>
+                    </div>
+                    <table id="addons-table">
+                        <thead>
+                            <tr>
+                                <th>Executive Name</th>
+                                <th>Extended Warranty</th>
+                                <th>Insurance</th>
+                                <th>Accessories</th>
+                                <th>Service Package</th>
+                                <th>Total Add-ons Revenue</th>
+                                <th>% of Team Revenue</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="Executive Name">Mark Wilson</td>
+                                <td data-label="Extended Warranty">12</td>
+                                <td data-label="Insurance">14</td>
+                                <td data-label="Accessories">25</td>
+                                <td data-label="Service Package">10</td>
+                                <td data-label="Total Add-ons Revenue">&#8377;28,450</td>
+                                <td data-label="% of Team Revenue">32%</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Executive Name">Sarah Davis</td>
+                                <td data-label="Extended Warranty">10</td>
+                                <td data-label="Insurance">12</td>
+                                <td data-label="Accessories">22</td>
+                                <td data-label="Service Package">8</td>
+                                <td data-label="Total Add-ons Revenue">&#8377;24,300</td>
+                                <td data-label="% of Team Revenue">27%</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Executive Name">Robert Johnson</td>
+                                <td data-label="Extended Warranty">8</td>
+                                <td data-label="Insurance">9</td>
+                                <td data-label="Accessories">18</td>
+                                <td data-label="Service Package">9</td>
+                                <td data-label="Total Add-ons Revenue">&#8377;19,850</td>
+                                <td data-label="% of Team Revenue">22%</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Executive Name">Jennifer Lee</td>
+                                <td data-label="Extended Warranty">6</td>
+                                <td data-label="Insurance">8</td>
+                                <td data-label="Accessories">15</td>
+                                <td data-label="Service Package">5</td>
+                                <td data-label="Total Add-ons Revenue">&#8377;12,100</td>
+                                <td data-label="% of Team Revenue">14%</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Executive Name">Michael Brown</td>
+                                <td data-label="Extended Warranty">2</td>
+                                <td data-label="Insurance">3</td>
+                                <td data-label="Accessories">6</td>
+                                <td data-label="Service Package">1</td>
+                                <td data-label="Total Add-ons Revenue">&#8377;4,500</td>
+                                <td data-label="% of Team Revenue">5%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Executive Comparison Section -->
+            <div class="dashboard-section" id="comparison-section">
+                <div class="section-header">
+                    <h2>Executive Comparison</h2>
+                </div>
+                
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3 class="table-title">Sales Leaderboard</h3>
+                    </div>
+                    <table id="sales-leaderboard">
+                        
+                        <thead>
+                            <thead style="color: black;"></thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Executive Name</th>
+                                <th>Total Sales</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="rank-1">
+                                <td data-label="Rank">1</td>
+                                <td data-label="Executive Name">Mark Wilson</td>
+                                <td data-label="Total Sales">16</td>
+                            </tr>
+                            <tr class="rank-2">
+                                <td data-label="Rank">2</td>
+                                <td data-label="Executive Name">Sarah Davis</td>
+                                <td data-label="Total Sales">14</td>
+                            </tr>
+                            <tr class="rank-3">
+                                <td data-label="Rank">3</td>
+                                <td data-label="Executive Name">Robert Johnson</td>
+                                <td data-label="Total Sales">12</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3 class="table-title">Performance Metrics Comparison</h3>
+                    </div>
+                    <table id="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Executive Name</th>
+                                <th>Total Sales</th>
+                                <th>Leads Closed</th>
+                                <th>Conversion Rate</th>
+                                <th>Revenue Generated</th>
+                                <th>Add-ons Sold</th>
+                                <th>Customer Satisfaction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="rank-1">
+                                <td data-label="Rank">1</td>
+                                <td data-label="Executive Name">Mark Wilson</td>
+                                <td data-label="Total Sales">16</td>
+                                <td data-label="Leads Closed">16/42</td>
+                                <td data-label="Conversion Rate">38%</td>
+                                <td data-label="Revenue Generated">$624,000</td>
+                                <td data-label="Add-ons Sold">61</td>
+                                <td data-label="Customer Satisfaction">4.8/5</td>
+                            </tr>
+                            <tr class="rank-2">
+                                <td data-label="Rank">2</td>
+                                <td data-label="Executive Name">Sarah Davis</td>
+                                <td data-label="Total Sales">14</td>
+                                <td data-label="Leads Closed">14/40</td>
+                                <td data-label="Conversion Rate">35%</td>
+                                <td data-label="Revenue Generated">$546,000</td>
+                                <td data-label="Add-ons Sold">52</td>
+                                <td data-label="Customer Satisfaction">4.6/5</td>
+                            </tr>
+                            <tr class="rank-3">
+                                <td data-label="Rank">3</td>
+                                <td data-label="Executive Name">Robert Johnson</td>
+                                <td data-label="Total Sales">12</td>
+                                <td data-label="Leads Closed">12/38</td>
+                                <td data-label="Conversion Rate">29%</td>
+                                <td data-label="Revenue Generated">$468,000</td>
+                                <td data-label="Add-ons Sold">44</td>
+                                <td data-label="Customer Satisfaction">4.5/5</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Rank">4</td>
+                                <td data-label="Executive Name">Jennifer Lee</td>
+                                <td data-label="Total Sales">10</td>
+                                <td data-label="Leads Closed">10/36</td>
+                                <td data-label="Conversion Rate">27%</td>
+                                <td data-label="Revenue Generated">$390,000</td>
+                                <td data-label="Add-ons Sold">34</td>
+                                <td data-label="Customer Satisfaction">4.3/5</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Rank">5</td>
+                                <td data-label="Executive Name">Michael Brown</td>
+                                <td data-label="Total Sales">4</td>
+                                <td data-label="Leads Closed">4/24</td>
+                                <td data-label="Conversion Rate">16%</td>
+                                <td data-label="Revenue Generated">$156,000</td>
+                                <td data-label="Add-ons Sold">12</td>
+                                <td data-label="Customer Satisfaction">3.9/5</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            
+            <!-- Customer Feedback Section -->
+            <div class="dashboard-section" id="feedback-section">
+                <div class="section-header">
+                    <h2>Customer Feedback</h2>
+                </div>
+                
+                <div class="satisfaction-overview">
+                    <div class="satisfaction-score">
+                        <div class="score-circle">
+                            <span class="score">4.5</span>
+                            <span class="score-label">Overall Satisfaction</span>
+                        </div>
+                    </div>
+                    <div class="satisfaction-breakdown">
+                        <div class="rating-bar">
+                            <div class="rating-label">5 ⭐</div>
+                            <div class="rating-track">
+                                <div class="rating-fill" style="width: 65%;"></div>
+                            </div>
+                            <div class="rating-percentage">65%</div>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="rating-label">4 ⭐</div>
+                            <div class="rating-track">
+                                <div class="rating-fill" style="width: 25%;"></div>
+                            </div>
+                            <div class="rating-percentage">25%</div>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="rating-label">3 ⭐</div>
+                            <div class="rating-track">
+                                <div class="rating-fill" style="width: 8%;"></div>
+                            </div>
+                            <div class="rating-percentage">8%</div>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="rating-label">2 ⭐</div>
+                            <div class="rating-track">
+                                <div class="rating-fill" style="width: 1%;"></div>
+                            </div>
+                            <div class="rating-percentage">1%</div>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="rating-label">1 ⭐</div>
+                            <div class="rating-track">
+                                <div class="rating-fill" style="width: 1%;"></div>
+                            </div>
+                            <div class="rating-percentage">1%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Customer Satisfaction Trend</h3>
+                    </div>
+                    <canvas id="satisfactionTrendChart"></canvas>
+                </div>
+                
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3 class="table-title">Recent Customer Reviews</h3>
+                        <div class="table-actions">
+                            <div class="filter-container">
+                                <select class="filter-select" id="feedback-filter">
+                                    <option value="all">All Reviews</option>
+                                    <option value="positive">Positive (4-5 ★)</option>
+                                    <option value="neutral">Neutral (3 ★)</option>
+                                    <option value="negative">Negative (1-2 ★)</option>
+                                </select>
+                            </div>
+                            <button class="export-btn" data-table="feedback-table">Export CSV</button>
+                        </div>
+                    </div>
+                    <table id="feedback-table">
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <th>Rating</th>
+                                <th>Sales Executive</th>
+                                <th>Date</th>
+                                <th>Feedback</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="positive-feedback">
+                                <td data-label="Customer">John Smith</td>
+                                <td data-label="Rating">
+                                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                                </td>
+                                <td data-label="Sales Executive">Mark Wilson</td>
+                                <td data-label="Date">Mar 9, 2025</td>
+                                <td data-label="Feedback">Mark was incredibly helpful and knowledgeable about all the KIA models. He made my buying experience stress-free and enjoyable.</td>
+                            </tr>
+                            <tr class="positive-feedback">
+                                <td data-label="Customer">Amanda Jones</td>
+                                <td data-label="Rating">
+                                    <div class="stars">⭐⭐⭐⭐</div>
+                                </td>
+                                <td data-label="Sales Executive">Sarah Davis</td>
+                                <td data-label="Date">Mar 8, 2025</td>
+                                <td data-label="Feedback">Sarah was patient and took the time to understand exactly what I needed. She recommended the perfect car for my family.</td>
+                            </tr>
+                            <tr class="neutral-feedback">
+                                <td data-label="Customer">Robert Miller</td>
+                                <td data-label="Rating">
+                                    <div class="stars">⭐⭐⭐</div>
+                                </td>
+                                <td data-label="Sales Executive">Jennifer Lee</td>
+                                <td data-label="Date">Mar 7, 2025</td>
+                                <td data-label="Feedback">The process was good overall, but I had to wait longer than expected for my test drive. Jennifer was knowledgeable though.</td>
+                            </tr>
+                            <tr class="negative-feedback">
+                                <td data-label="Customer">Thomas Wright</td>
+                                <td data-label="Rating">
+                                    <div class="stars">⭐⭐</div>
+                                </td>
+                                <td data-label="Sales Executive">Michael Brown</td>
+                                <td data-label="Date">Mar 5, 2025</td>
+                                <td data-label="Feedback">Michael seemed disinterested and didn't answer my questions thoroughly. I felt rushed through the process.</td>
+                            </tr>
+                            <tr class="positive-feedback">
+                                <td data-label="Customer">Elizabeth Chen</td>
+                                <td data-label="Rating">
+                                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                                </td>
+                                <td data-label="Sales Executive">Robert Johnson</td>
+                                <td data-label="Date">Mar 4, 2025</td>
+                                <td data-label="Feedback">Robert was exceptional! He followed up consistently and made sure I got the best deal possible on my new KIA Sportage.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script>
+        
+ // Wait for DOM to be fully loaded before initializing
+// Wait for DOM to be fully loaded before initializing
+// Wait for DOM to be fully loaded before initializing
+document.addEventListener("DOMContentLoaded", function () {
+    // Sidebar toggle for mobile
+    let toggleButton = document.querySelector('.toggle-btn');
+    let sidebar = document.querySelector('.sidebar');
+
+    if (toggleButton && sidebar) {
+        toggleButton.addEventListener('click', function () {
+            sidebar.classList.toggle('active');
+        });
+    }
+
+    // Handle sidebar navigation
+    const menuItems = document.querySelectorAll('.sidebar-menu a, .menu-item');
+    const sections = document.querySelectorAll('.dashboard-section');
+
+    menuItems.forEach(item => {
+        item.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            // Remove active class from all menu items
+            menuItems.forEach(i => i.classList.remove('active'));
+            this.classList.add('active');
+
+            // Get the section ID
+            const sectionId = this.getAttribute('data-section');
+            
+            // Hide all sections
+            sections.forEach(section => {
+                section.classList.remove('active');
+                section.style.display = 'none';
+            });
+
+            // Show the correct section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                targetSection.style.display = 'block';
+                
+                // Special section handling
+                if (sectionId === "feedback-section") {
+                    const feedbackTable = document.getElementById("feedback-table");
+                    if (feedbackTable) {
+                        feedbackTable.style.display = "table";
+                    }
+                    // Initialize satisfaction chart when section is active
+                    initializeSatisfactionChart();
+                } else if (sectionId === "executive-comparison-section") {
+                    const comparisonSection = document.getElementById("executive-comparison-section");
+                    if (comparisonSection) {
+                        comparisonSection.style.display = "block";
+                        // Initialize sales leaderboard table
+                        initializeSalesLeaderboard();
+                    }
+                }
+            }
+
+            // If sidebar is open on mobile, close it after clicking
+            if (window.innerWidth <= 768 && sidebar) {
+                sidebar.classList.remove('active');
+            }
+        });
+    });
+
+    // Ensure the first section is visible by default
+    if (menuItems.length > 0) {
+        menuItems[0].click();
+    }
+
+    // Logout button functionality
+    let logoutButton = document.getElementById("logout-btn");
+    if (logoutButton) {
+        logoutButton.addEventListener("click", function(event) {
+            event.preventDefault();
+            window.location.href = "index.html"; // Redirect to login page
+        });
+    }
+    
+    // Filter feedback table
+    const feedbackFilter = document.getElementById('feedback-filter');
+    if (feedbackFilter) {
+        feedbackFilter.addEventListener('change', function() {
+            const filter = this.value;
+            const rows = document.querySelectorAll('#feedback-table tbody tr');
+            
+            rows.forEach(row => {
+                if (filter === 'all') {
+                    row.style.display = '';
+                } else if (filter === 'positive' && row.classList.contains('positive-feedback')) {
+                    row.style.display = '';
+                } else if (filter === 'neutral' && row.classList.contains('neutral-feedback')) {
+                    row.style.display = '';
+                } else if (filter === 'negative' && row.classList.contains('negative-feedback')) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    }
+
+    // Filter follow-up table
+    const filterSelect = document.querySelector('.filter-select');
+    if (filterSelect) {
+        filterSelect.addEventListener('change', function() {
+            const filter = this.value;
+            const rows = document.querySelectorAll('#followup-table tbody tr');
+            
+            rows.forEach(row => {
+                const statusCell = row.querySelector('[data-label="Status"] .status-badge');
+                if (statusCell) {
+                    const status = statusCell.textContent.toLowerCase();
+                    
+                    if (filter === 'all') {
+                        row.style.display = '';
+                    } else if (filter === 'today' && status === 'today') {
+                        row.style.display = '';
+                    } else if (filter === 'tomorrow' && status === 'tomorrow') {
+                        row.style.display = '';
+                    } else if (filter === 'overdue' && status === 'overdue') {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                }
+            });
+        });
+    }
+
+    // Search functionality for follow-up table
+    const searchInput = document.querySelector('.search-input');
+    if (searchInput) {
+        searchInput.addEventListener('keyup', function() {
+            const searchTerm = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#followup-table tbody tr');
+            
+            rows.forEach(row => {
+                const nameCell = row.querySelector('[data-label="Lead Name"]');
+                if (nameCell) {
+                    const name = nameCell.textContent.toLowerCase();
+                    if (name.includes(searchTerm)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                }
+            });
+        });
+    }
+
+    // Export table data
+    const exportButtons = document.querySelectorAll('.export-btn');
+    if (exportButtons.length > 0) {
+        exportButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const tableId = this.getAttribute('data-table');
+                const table = document.getElementById(tableId);
+                if (table) {
+                    const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent);
+                    
+                    let csvContent = headers.join(',') + '\n';
+                    
+                    const rows = table.querySelectorAll('tbody tr');
+                    rows.forEach(row => {
+                        const data = Array.from(row.querySelectorAll('td')).map(td => {
+                            let content = td.textContent.trim();
+                            // Replace commas in the content with a space to prevent CSV issues
+                            content = content.replace(/,/g, ' ');
+                            // Enclose in quotes if there's a space
+                            if (content.includes(' ')) {
+                                content = '"' + content + '"';
+                            }
+                            return content;
+                        });
+                        csvContent += data.join(',') + '\n';
+                    });
+                    
+                    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                    const link = document.createElement('a');
+                    const url = URL.createObjectURL(blob);
+                    link.setAttribute('href', url);
+                    link.setAttribute('download', `${tableId}.csv`);
+                    link.style.visibility = 'hidden';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+            });
+        });
+    }
+
+    // Add CSS to control chart sizes and table styles
+    const customStyles = document.createElement('style');
+    customStyles.textContent = `
+        .chart-container {
+            position: relative;
+            height: 350px;
+            max-height: 350px;
+            margin-bottom: 20px;
+        }
+        .chart-container canvas {
+            max-height: 250px;
+        }
+        .satisfaction-overview {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .satisfaction-score {
+            flex: 0 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .score {
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 1;
+        }
+        .score-label {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 5px;
+        }
+        .satisfaction-breakdown {
+            flex: 1 1 60%;
+            padding-left: 20px;
+        }
+        .rating-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .rating-label {
+            width: 45px;
+            text-align: right;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        .rating-track {
+            flex: 1;
+            height: 15px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+        .rating-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            border-radius: 10px;
+        }
+        .rating-percentage {
+            width: 40px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .satisfaction-overview {
+                flex-direction: column;
+            }
+            .satisfaction-score {
+                margin-bottom: 15px;
+                align-self: center;
+            }
+            .satisfaction-breakdown {
+                padding-left: 0;
+            }
+        }
+        #feedback-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        #feedback-table th, #feedback-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        #feedback-table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+        #feedback-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        .positive-feedback {
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+        .neutral-feedback {
+            background-color: rgba(255, 193, 7, 0.1);
+        }
+        .negative-feedback {
+            background-color: rgba(244, 67, 54, 0.1);
+        }
+        
+        /* Sales Leaderboard Table Styles */
+        #sales-leaderboard {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        #sales-leaderboard thead {
+            background-color: #3f51b5;
+            color: white;
+        }
+        #sales-leaderboard th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        #sales-leaderboard td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        #sales-leaderboard tbody tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        #sales-leaderboard tbody tr:hover {
+            background-color: #e8eaf6;
+        }
+        .rank-cell {
+            text-align: center;
+            font-weight: bold;
+        }
+        .rank-1 {
+            color: #ffd700; /* Gold */
+        }
+        .rank-2 {
+            color: #c0c0c0; /* Silver */
+        }
+        .rank-3 {
+            color: #cd7f32; /* Bronze */
+        }
+        .sales-bar-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .sales-bar {
+            height: 15px;
+            background: linear-gradient(90deg, #3f51b5, #5c6bc0);
+            border-radius: 10px;
+        }
+        .sales-amount {
+            font-weight: bold;
+            text-align: right;
+        }
+        .trend-positive {
+            color: #4CAF50;
+        }
+        .trend-negative {
+            color: #F44336;
+        }
+        .lead-count {
+            text-align: center;
+        }
+        #sales-leaderboard caption {
+            caption-side: top;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #3f51b5;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .sales-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .period-selector {
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background-color: white;
+            font-size: 14px;
+        }
+        .export-btn {
+            padding: 8px 16px;
+            background-color: #3f51b5;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .export-btn:hover {
+            background-color: #303f9f;
+        }
+    `;
+    document.head.appendChild(customStyles);
+});
+
+// Initialize charts with responsive options
+function initializeCharts() {
+    // Define common chart options for better responsiveness
+    const commonOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                labels: {
+                    boxWidth: 12,
+                    font: {
+                        size: 11
+                    }
+                }
+            },
+            title: {
+                font: {
+                    size: 14
+                }
+            }
+        }
+    };
+
+    // Define chart data
+    const leadSourceData = {
+        labels: ['Referrals', 'Direct', 'Social Media', 'Email Campaign', 'Website', 'Trade Shows'],
+        datasets: [{
+            label: 'Lead Distribution',
+            data: [30, 25, 15, 12, 10, 8],
+            backgroundColor: [
+                '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
+            ],
+            hoverBackgroundColor: [
+                '#FF4C70', '#2F8FD5', '#FFBF3C', '#37A8A8', '#8652E8', '#FF8A22'
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    const addonsRevenueData = {
+        labels: ['Premium Support', 'Training', 'Extended Warranty', 'Customization', 'Installation'],
+        datasets: [{
+            label: 'Revenue Share (%)',
+            data: [35, 25, 20, 15, 5],
+            backgroundColor: [
+                '#00BCD4', '#4CAF50', '#FFC107', '#9C27B0', '#F44336'
+            ],
+            hoverBackgroundColor: [
+                '#00A0B7', '#3F9142', '#D9A509', '#7E1F8E', '#D32F2F'
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'];
+    
+    const addonsTrendData = {
+        labels: months,
+        datasets: [
+            {
+                label: 'Premium Support',
+                data: [12000, 13500, 14200, 15800, 17500, 18400, 19200, 21000, 22500, 24000],
+                borderColor: '#00BCD4',
+                backgroundColor: 'rgba(0, 188, 212, 0.2)',
+                tension: 0.4,
+                fill: true
+            },
+            {
+                label: 'Training',
+                data: [8500, 9000, 10500, 11000, 11800, 12500, 13000, 14000, 14800, 15500],
+                borderColor: '#4CAF50',
+                backgroundColor: 'rgba(76, 175, 80, 0.2)',
+                tension: 0.4,
+                fill: true
+            },
+            {
+                label: 'Extended Warranty',
+                data: [7000, 7500, 8000, 8800, 9500, 10000, 10800, 11500, 12000, 12800],
+                borderColor: '#FFC107',
+                backgroundColor: 'rgba(255, 193, 7, 0.2)',
+                tension: 0.4,
+                fill: true
+            }
+        ]
+    };
+
+    // Initialize charts if their canvas elements exist
+    
+    // Lead Source Distribution (Pie Chart)
+    const leadSourceCanvas = document.getElementById('leadSourceChart');
+    if (leadSourceCanvas) {
+        new Chart(leadSourceCanvas, {
+            type: 'pie',
+            data: leadSourceData,
+            options: {
+                ...commonOptions,
+                plugins: {
+                    ...commonOptions.plugins,
+                    title: {
+                        display: true,
+                        text: 'Lead Source Distribution',
+                        font: { size: 14 }
+                    },
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            boxWidth: 12,
+                            font: { size: 11 }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.raw || 0;
+                                const total = context.dataset.data.reduce((acc, data) => acc + data, 0);
+                                const percentage = Math.round((value / total) * 100);
+                                return `${label}: ${percentage}% (${value})`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Add-ons Revenue Share (Doughnut Chart)
+    const addonsRevenueCanvas = document.getElementById('addonsRevenueChart');
+    if (addonsRevenueCanvas) {
+        new Chart(addonsRevenueCanvas, {
+            type: 'doughnut',
+            data: addonsRevenueData,
+            options: {
+                ...commonOptions,
+                plugins: {
+                    ...commonOptions.plugins,
+                    title: {
+                        display: true,
+                        text: 'Add-ons Revenue Share',
+                        font: { size: 14 }
+                    },
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            boxWidth: 12,
+                            font: { size: 11 }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.label}: ${context.raw}%`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Add-ons Sales Trend (Line Chart)
+    const addonsTrendCanvas = document.getElementById('addonsTrendChart');
+    if (addonsTrendCanvas) {
+        new Chart(addonsTrendCanvas, {
+            type: 'line',
+            data: addonsTrendData,
+            options: {
+                ...commonOptions,
+                plugins: {
+                    ...commonOptions.plugins,
+                    title: {
+                        display: true,
+                        text: 'Add-ons Sales Trend',
+                        font: { size: 14 }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Revenue ($)',
+                            font: { size: 11 }
+                        },
+                        ticks: {
+                            font: { size: 10 }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: { size: 10 }
+                        }
+                    }
+                }
+            }
+        });
+    }
+}
+
+// Initialize satisfaction chart separately
+function initializeSatisfactionChart() {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'];
+    
+    const satisfactionTrendData = {
+        labels: months,
+        datasets: [
+            {
+                label: 'Satisfaction Score (0-10)',
+                data: [7.5, 7.8, 8.0, 8.2, 8.3, 8.5, 8.4, 8.6, 8.8, 9.0],
+                borderColor: '#FF5722',
+                backgroundColor: 'rgba(255, 87, 34, 0.2)',
+                tension: 0.4,
+                fill: true,
+                yAxisID: 'y'
+            },
+            {
+                label: 'Response Rate (%)',
+                data: [65, 68, 72, 75, 78, 80, 82, 85, 87, 90],
+                borderColor: '#673AB7',
+                backgroundColor: 'rgba(103, 58, 183, 0.2)',
+                tension: 0.4,
+                fill: true,
+                yAxisID: 'y1'
+            }
+        ]
+    };
+
+    const satisfactionTrendCanvas = document.getElementById('satisfactionTrendChart');
+    if (satisfactionTrendCanvas) {
+        // Destroy existing chart if it exists
+        const existingChart = Chart.getChart(satisfactionTrendCanvas);
+        if (existingChart) {
+            existingChart.destroy();
+        }
+        
+        new Chart(satisfactionTrendCanvas, {
+            type: 'line',
+            data: satisfactionTrendData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Customer Satisfaction Trend',
+                        font: { size: 14 }
+                    },
+                    legend: {
+                        labels: {
+                            boxWidth: 12,
+                            font: { size: 11 }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        min: 0,
+                        max: 10,
+                        title: {
+                            display: true,
+                            text: 'Satisfaction Score',
+                            font: { size: 11 }
+                        },
+                        ticks: {
+                            font: { size: 10 }
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        min: 0,
+                        max: 100,
+                        grid: {
+                            drawOnChartArea: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Response Rate (%)',
+                            font: { size: 11 }
+                        },
+                        ticks: {
+                            font: { size: 10 }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: { size: 10 }
+                        }
+                    }
+                }
+            }
+        });
+    }
+}
+
+// Function to initialize the sales leaderboard table
+function initializeSalesLeaderboard() {
+    const comparisonSection = document.getElementById('executive-comparison-section');
+    if (!comparisonSection) return;
+    
+    // Check if table already exists
+    if (document.getElementById('sales-leaderboard')) return;
+    
+    // Create table container
+    const salesLeaderboardContainer = document.createElement('div');
+    salesLeaderboardContainer.className = 'sales-leaderboard-container';
+    
+    // Create controls
+    const salesControls = document.createElement('div');
+    salesControls.className = 'sales-controls';
+    
+    const periodSelector = document.createElement('select');
+    periodSelector.className = 'period-selector';
+    periodSelector.innerHTML = `
+        <option value="monthly">Monthly (Current)</option>
+        <option value="quarterly">Quarterly</option>
+        <option value="yearly">Yearly</option>
+    `;
+    
+    const exportButton = document.createElement('button');
+    exportButton.className = 'export-btn';
+    exportButton.setAttribute('data-table', 'sales-leaderboard');
+    exportButton.textContent = 'Export to CSV';
+    
+    salesControls.appendChild(periodSelector);
+    salesControls.appendChild(exportButton);
+    
+    // Create table
+    const salesLeaderboardTable = document.createElement('table');
+    salesLeaderboardTable.id = 'sales-leaderboard';
+    
+    // Create table caption
+    const caption = document.createElement('caption');
+    caption.textContent = 'Sales Executive Leaderboard';
+    salesLeaderboardTable.appendChild(caption);
+    
+    // Create table header
+    const thead = document.createElement('thead');
+    thead.innerHTML = `
+        <tr>
+            <th width="5%">Rank</th>
+            <th width="20%">Executive</th>
+            <th width="40%">Sales Performance</th>
+            <th width="15%">Amount</th>
+            <th width="10%">vs. Last Period</th>
+            <th width="10%">Leads</th>
+        </tr>
+    `;
+    salesLeaderboardTable.appendChild(thead);
+    
+    // Create table body with sample data
+    const tbody = document.createElement('tbody');
+    
+    // Sample data - replace with actual data
+    const salesData = [
+        { rank: 1, name: 'John Doe', amount: 85000, percentage: 100, trend: '+12%', leads: 32 },
+        { rank: 2, name: 'Jane Smith', amount: 76500, percentage: 90, trend: '+8%', leads: 28 },
+        { rank: 3, name: 'Mike Johnson', amount: 68000, percentage: 80, trend: '+5%', leads: 25 },
+        { rank: 4, name: 'Sarah Williams', amount: 61200, percentage: 72, trend: '-3%', leads: 23 },
+        { rank: 5, name: 'Robert Brown', amount: 58300, percentage: 69, trend: '+7%', leads: 20 },
+        { rank: 6, name: 'Emily Davis', amount: 52700, percentage: 62, trend: '+2%', leads: 18 },
+        { rank: 7, name: 'David Wilson', amount: 48500, percentage: 57, trend: '-5%', leads: 15 },
+        { rank: 8, name: 'Lisa Anderson', amount: 45800, percentage: 54, trend: '+1%', leads: 14 }
+    ];
+    
+    salesData.forEach(data => {
+        const row = document.createElement('tr');
+        
+        // Rank cell with color coding for top 3
+        const rankCell = document.createElement('td');
+        rankCell.className = `rank-cell rank-${data.rank <= 3 ? data.rank : ''}`;
+        rankCell.textContent = `#${data.rank}`;
+        
+        // Name cell
+        const nameCell = document.createElement('td');
+        nameCell.textContent = data.name;
+        
+        // Performance bar cell
+        const performanceCell = document.createElement('td');
+        performanceCell.innerHTML = `
+            <div class="sales-bar-container">
+                <div class="sales-bar" style="width: ${data.percentage}%"></div>
+            </div>
+        `;
+        
+        // Amount cell
+        const amountCell = document.createElement('td');
+        amountCell.className = 'sales-amount';
+        amountCell.textContent = `$${data.amount.toLocaleString()}`;
+        
+        // Trend cell with color coding
+        const trendCell = document.createElement('td');
+        trendCell.className = data.trend.startsWith('+') ? 'trend-positive' : 'trend-negative';
+        trendCell.textContent = data.trend;
+        
+        // Leads cell
+        const leadsCell = document.createElement('td');
+        leadsCell.className = 'lead-count';
+        leadsCell.textContent = data.leads;
+        
+        // Append cells to row
+        row.appendChild(rankCell);
+        row.appendChild(nameCell);
+        row.appendChild(performanceCell);
+        row.appendChild(amountCell);
+        row.appendChild(trendCell);
+        row.appendChild(leadsCell);
+        
+        // Append row to tbody
+        tbody.appendChild(row);
+    });
+    
+    salesLeaderboardTable.appendChild(tbody);
+    
+    // Append controls and table to container
+    salesLeaderboardContainer.appendChild(salesControls);
+    salesLeaderboardContainer.appendChild(salesLeaderboardTable);
+    
+    // Find and replace any existing sales performance chart
+   // const existingChart = comparisonSection.querySelector('.chart-container');
+   // if (existingChart) {
+   //     comparisonSection.replaceChild(salesLeaderboardContainer, existingChart);
+   // } else {
+   //     comparisonSection.appendChild(salesLeaderboardContainer);
+   // }
+    
+    // Add event listener to export button
+    exportButton.addEventListener('click', function() {
+        const tableId = this.getAttribute('data-table');
+        const table = document.getElementById(tableId);
+        if (table) {
+            const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent);
+            
+            let csvContent = headers.join(',') + '\n';
+            
+            const rows = table.querySelectorAll('tbody tr');
+            rows.forEach(row => {
+                const data = Array.from(row.querySelectorAll('td')).map(td => {
+                    let content = td.textContent.trim();
+                    // Replace commas with a space to prevent CSV issues
+                    content = content.replace(/,/g, ' ');
+                    // Enclose in quotes if there's a space
+                    if (content.includes(' ')) {
+                        content = '"' + content + '"';
+                    }
+                    return content;
+                });
+                csvContent += data.join(',') + '\n';
+            });
+            
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `${tableId}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    });
+    
+    // Add event listener to period selector
+    periodSelector.addEventListener('change', function() {
+        const period = this.value;
+        // Update table data based on selected period
+        // This would typically involve an API call or switching to different predefined data
+        
+        // For demonstration, we'll just update the caption
+        const tableCaption = salesLeaderboardTable.querySelector('caption');
+        if (tableCaption) {
+            let captionText = 'Sales Executive Leaderboard - ';
+            switch(period) {
+                case 'monthly':
+                    captionText += 'Monthly (Current)';
+                    break;
+                case 'quarterly':
+                    captionText += 'Quarterly';
+                    break;
+                case 'yearly':
+                    captionText += 'Yearly';
+                    break;
+                default:
+                    captionText += 'Monthly (Current)';
+            }
+            tableCaption.textContent = captionText;
+        }
+    });
+}
+
+// Call initializeCharts when the document is loaded
+document.addEventListener("DOMContentLoaded", function() {
+    initializeCharts();
+    
+    // Check if we need to initialize the satisfaction chart right away
+    const feedbackSection = document.getElementById("feedback-section");
+    if (feedbackSection && feedbackSection.classList.contains('active')) {
+        initializeSatisfactionChart();
+    }
+});
+
+// Initialize all charts when the window is fully loaded
+window.onload = function() {
+    initializeCharts();
+    initializeSatisfactionChart();
+};
+var salesCtx = document.getElementById('salesContributionChart')?.getContext('2d');
+if (salesCtx) {
+    new Chart(salesCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Mark Wilson', 'Sarah Davis', 'Robert Johnson', 'Jennifer Lee', 'Michael Brown'],
+            datasets: [{
+                label: 'Sales Contribution (%)',
+                data: [28.6, 25.0, 21.4, 17.8, 7.2],
+                backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#FFC300'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Contribution (%)'
+                    }
+                }
+            }
+        }
+    });
+} else {
+    console.error("salesContributionChart not found");
+}
+//now 1
+document.addEventListener("DOMContentLoaded", function () {
+    const assignTargetBtn = document.getElementById("assign-target-btn");
+    const assignTargetTab = document.getElementById("assignTargetTab");
+    const assignTargetOverlay = document.getElementById("assignTargetOverlay");
+    const closeAssignTarget = document.getElementById("closeAssignTarget");
+    const assignTargetForm = document.getElementById("assignTargetForm");
+
+    // Example data for executives
+    const executorsData = [
+        { name: "Mark Wilson", achieved: 20, assigned: 30 },
+        { name: "Sarah Davis", achieved: 15, assigned: 25 },
+        { name: "Robert Johnson", achieved: 10, assigned: 20 },
+        { name: "Jennifer Adams", achieved: 8, assigned: 18 },
+        { name: "Michael Carter", achieved: 5, assigned: 15 },
+    ];
+
+    // Show Assign Target Mini-tab
+    assignTargetBtn.addEventListener("click", function () {
+        assignTargetTab.style.display = "flex";
+        assignTargetOverlay.style.display = "block"; // Show the transparent layer
+
+        // Populate the dropdown with updated data
+        const executiveSelect = document.getElementById("executive");
+        executiveSelect.innerHTML = ""; // Clear existing options
+        executorsData.forEach((executor) => {
+            const option = document.createElement("option");
+            option.value = executor.name;
+            option.textContent = `${executor.name} (Achieved: ${executor.achieved}/${executor.assigned})`;
+            executiveSelect.appendChild(option);
+        });
+    });
+
+    // Close Assign Target Mini-tab
+    closeAssignTarget.addEventListener("click", function () {
+        assignTargetTab.style.display = "none";
+        assignTargetOverlay.style.display = "none"; // Hide the transparent layer
+    });
+
+    // Handle Assign Target Form Submission
+    assignTargetForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const executive = document.getElementById("executive").value;
+        const target = document.getElementById("target").value;
+        alert(`Target of ${target} assigned to ${executive}`);
+        assignTargetTab.style.display = "none";
+        assignTargetOverlay.style.display = "none"; // Hide the transparent layer
+    });
+
+    // Close the mini-tab if the overlay is clicked
+    assignTargetOverlay.addEventListener("click", function () {
+        assignTargetTab.style.display = "none";
+        assignTargetOverlay.style.display = "none";
+    });
+});
+//now 2
+
+//now popupdocument.addEventListener("DOMContentLoaded", function () {
+    const urgentLeadsPopup = document.getElementById("urgentLeadsPopup");
+    const viewFollowupsBtn = document.getElementById("viewFollowupsBtn");
+
+    // Show the popup automatically for 2-3 seconds
+    urgentLeadsPopup.style.display = "block";
+    setTimeout(() => {
+        urgentLeadsPopup.style.display = "none";
+    }, 3000); // Popup duration reduced to 3 seconds
+
+    // Redirect to follow-ups page when "Tap for Details" is clicked
+    viewFollowupsBtn.addEventListener("click", function () {
+        // Hide the popup
+        urgentLeadsPopup.style.display = "none";
+
+        // Navigate to the follow-ups section
+        const followupsSection = document.getElementById("followups-section");
+        const menuItems = document.querySelectorAll('.sidebar-menu a');
+
+        // Deactivate all menu items
+        menuItems.forEach(item => item.classList.remove('active'));
+
+        // Activate the follow-ups menu item
+        const followupsMenuItem = document.querySelector('[data-section="followups-section"]');
+        if (followupsMenuItem) {
+            followupsMenuItem.classList.add('active');
+        }
+
+        // Hide all sections
+        const sections = document.querySelectorAll('.dashboard-section');
+        sections.forEach(section => {
+            section.classList.remove('active');
+            section.style.display = 'none';
+        });
+
+        // Show the follow-ups section
+        if (followupsSection) {
+            followupsSection.classList.add('active');
+            followupsSection.style.display = 'block';
+        }
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+    const targetStatusBtn = document.getElementById("target-reminder-btn");
+    const targetStatusModal = document.getElementById("targetStatusModal");
+    const closeTargetStatus = document.getElementById("closeTargetStatus");
+    const moreDetailsBtn = document.getElementById("moreDetailsBtn");
+
+    // Example data for executives
+    const executorsData = [
+        { name: "Mark Wilson", achieved: 20, assigned: 30 },
+        { name: "Sarah Davis", achieved: 15, assigned: 25 },
+        { name: "Robert Johnson", achieved: 10, assigned: 20 },
+        { name: "Jennifer Adams", achieved: 8, assigned: 18 },
+        { name: "Michael Carter", achieved: 5, assigned: 15 },
+    ];
+
+    // Show the modal when the button is clicked
+    targetStatusBtn.addEventListener("click", function () {
+        targetStatusModal.style.display = "block";
+        renderPieChart("all", executorsData);
+    });
+
+    // Close the modal
+    closeTargetStatus.addEventListener("click", function () {
+        targetStatusModal.style.display = "none";
+    });
+
+    // Redirect to Team Performance tab when "For More Details" is clicked
+    moreDetailsBtn.addEventListener("click", function () {
+        targetStatusModal.style.display = "none"; // Close the modal
+
+        // Navigate to the Team Performance section
+        const teamPerformanceSection = document.getElementById("team-performance-section");
+        const menuItems = document.querySelectorAll('.sidebar-menu a');
+
+        // Deactivate all menu items
+        menuItems.forEach(item => item.classList.remove('active'));
+
+        // Activate the Team Performance menu item
+        const teamPerformanceMenuItem = document.querySelector('[data-section="team-performance-section"]');
+        if (teamPerformanceMenuItem) {
+            teamPerformanceMenuItem.classList.add('active');
+        }
+
+        // Hide all sections
+        const sections = document.querySelectorAll('.dashboard-section');
+        sections.forEach(section => {
+            section.classList.remove('active');
+            section.style.display = 'none';
+        });
+
+        // Show the Team Performance section
+        if (teamPerformanceSection) {
+            teamPerformanceSection.classList.add('active');
+            teamPerformanceSection.style.display = 'block';
+        }
+    });
+
+    // Render the pie chart
+    function renderPieChart(selectedExecutive, data) {
+        const ctx = document.getElementById("executivePieChart").getContext("2d");
+        let chartData;
+
+        if (selectedExecutive === "all") {
+            const totalAchieved = data.reduce((sum, executor) => sum + executor.achieved, 0);
+            const totalPending = data.reduce((sum, executor) => sum + (executor.assigned - executor.achieved), 0);
+            chartData = {
+                labels: ["Achieved", "Pending"],
+                datasets: [
+                    {
+                        data: [totalAchieved, totalPending],
+                        backgroundColor: ["#4CAF50", "#F44336"],
+                    },
+                ],
+            };
+        }
+
+        // Destroy the existing chart if it exists
+        if (Chart.getChart(ctx)) {
+            Chart.getChart(ctx).destroy();
+        }
+
+        new Chart(ctx, {
+            type: "pie",
+            data: chartData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: "right",
+                    },
+                },
+            },
+        });
+    }
+});
+//scroll
+document.addEventListener("DOMContentLoaded", function () {
+    const menuItems = document.querySelectorAll('.sidebar-menu a');
+    const sections = document.querySelectorAll('.dashboard-section');
+
+    menuItems.forEach(item => {
+        item.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            // Remove active class from all menu items
+            menuItems.forEach(i => i.classList.remove('active'));
+            this.classList.add('active');
+
+            // Get the section ID
+            const sectionId = this.getAttribute('data-section');
+
+            // Hide all sections
+            sections.forEach(section => {
+                section.classList.remove('active');
+                section.style.display = 'none';
+            });
+
+            // Show the correct section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                targetSection.style.display = 'block';
+
+                // Scroll to the top of the page
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'instant' // Instantly scroll to the top
+                });
+
+                // Initialize charts or other elements if needed
+                if (sectionId === "feedback-section") {
+                    initializeSatisfactionChart();
+                } else if (sectionId === "team-performance-section") {
+                    initializeCharts();
+                }
+            }
+
+            // If sidebar is open on mobile, close it after clicking
+            const sidebar = document.querySelector('.sidebar');
+            if (window.innerWidth <= 768 && sidebar) {
+                sidebar.classList.remove('active');
+            }
+        });
+    });
+
+    // Ensure the first section is visible by default
+    if (menuItems.length > 0) {
+        menuItems[0].click();
+    }
+});
+</script>
+</body>
+</html>

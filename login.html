@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIA Showroom - Login</title>
+    
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="background-container">
+        <div class="background-image"></div>
+        <div class="background-overlay"></div>
+    </div>
+
+    <main class="login-container">
+        <div class="logo-container">
+            <h1 class="logo-title">KIA Showroom</h1>
+            <p>Administration Portal</p>
+        </div>
+
+        <div class="login-card">
+            <div class="kia-glow"></div>
+            <div class="login-header">
+                <h2>Welcome Back</h2>
+                <p id="role-display">Sign in to access your dashboard</p>
+            </div>
+
+            <!-- Step 1: Password Entry -->
+            <form id="password-form" style="display: block;">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🔒</span>
+                        <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+                    </div>
+                </div>
+
+                <div class="login-options">
+                    <label class="remember-me">
+                        <input type="checkbox" id="remember">
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="login-button">Send OTP</button>
+                <button type="button" id="back-to-index" class="login-button back-button">Back to Home</button>
+            </form>
+
+            <!-- Step 2: OTP Verification -->
+            <form id="otp-form" style="display: none;">
+                <div class="form-group">
+                    <label for="otp">Enter OTP</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🔑</span>
+                        <input type="text" id="otp" class="form-control" placeholder="Enter the one-time password" required>
+                    </div>
+                    <p style="font-size: 12px; margin-top: 8px; color: #aaa;">An OTP has been sent to your registered device</p>
+                </div>
+
+                <button type="submit" class="login-button">Verify & Login</button>
+                <button type="button" id="back-button" class="login-button" style="background: #333; margin-top: 10px;">Back</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="copyright">
+            © 2025 KIA Motors. All rights reserved.
+        </div>
+    </footer>
+
+<script>
+// Role-based passwords
+// Role-based passwords
+const rolePasswords = {
+    "gm": "gm123",
+    "sales": "sales123",
+    "executive": "execut123",
+    "lead": "lead123",
+    "admin": "admin"  // Added admin role with password "admin"
+};
+
+// Role-based redirects
+const roleRedirects = {
+    "gm": "gm.html",
+    "sales": "sales.html",
+    "executive": "execut.html",
+    "lead": "lead.html",
+    "admin": "admin.html"  // Added admin.html redirect
+};
+
+// Role display names
+const roleDisplayNames = {
+    "gm": "General Manager",
+    "sales": "Sales Manager",
+    "executive": "Executive",
+    "lead": "Team Lead",
+    "admin": "Administrator"  // Added admin display name
+};
+
+// Get role from URL parameters
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    const results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+
+// Get the role from URL
+let currentRole = getUrlParameter('role');
+
+// Fallback to default role if none is specified
+if (!currentRole || !rolePasswords[currentRole]) {
+    currentRole = "gm";
+}
+
+// Update the role display text
+document.addEventListener('DOMContentLoaded', function() {
+    const roleDisplay = document.getElementById('role-display');
+    roleDisplay.textContent = `Sign in as ${roleDisplayNames[currentRole]}`;
+});
+
+// Password form submission
+document.getElementById('password-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const password = document.getElementById('password').value;
+    
+    if (password === rolePasswords[currentRole]) {
+        // Show OTP form
+        document.getElementById('password-form').style.display = 'none';
+        document.getElementById('otp-form').style.display = 'block';
+    } else {
+        alert("Invalid password! Please try again.");
+    }
+});
+
+// OTP form submission
+document.getElementById('otp-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const otp = document.getElementById('otp').value;
+    
+    // OTP is always 111
+    if (otp === "111") {
+        // Redirect based on role
+        window.location.href = roleRedirects[currentRole];
+    } else {
+        alert("Invalid OTP! Please try again. (Hint: OTP is 111)");
+    }
+});
+
+// Back button functionality
+document.getElementById('back-button').addEventListener('click', function() {
+    document.getElementById('otp-form').style.display = 'none';
+    document.getElementById('password-form').style.display = 'block';
+});
+
+// Back to index functionality
+document.getElementById('back-to-index').addEventListener('click', function() {
+    window.location.href = 'index.html';
+});
+</script>
+</body>
+</html>
