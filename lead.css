@@ -684,7 +684,7 @@ img {
 }
 
 .table-container th {
-    background-color: #669ff5;
+    background-color: #27282a;
     color: white;
     font-weight: bold;
 }
@@ -718,7 +718,7 @@ img {
 }
 
 .table-container .status-won {
-    background-color: #2196F3;
+    background-color: #27a9e9;
 }
 
 .table-container .status-lost {
