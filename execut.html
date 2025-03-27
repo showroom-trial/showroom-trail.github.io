@@ -8,46 +8,28 @@
     <link rel="stylesheet" href="execut.css">
 </head>
 <body>
-    
+    <button class="toggle-btn">☰</button>
+
     <div class="sidebar">
-        <div class="sidebar-header">
-            <div class="user-info">
-                <div class="user-avatar">
-                    <img src="user.jpg" alt="User Avatar" class="avatar-img">
-                </div>
-                <div>
-                    <div class="user-name">Alex Johnson</div>
-                    <div class="user-role">Sales Executive</div>
-                </div>
-            </div>
+        <div class="brand">
+            <h2>Welcome</h2>
+            <p>Sales Executive</p>
         </div>
-        <div class="sidebar-menu">
-            <a href="#my-leads" class="active" data-section="my-leads-section">
-                <i class="fas fa-clipboard-list"></i> My Leads
-            </a>
-            <a href="#quotations" data-section="quotations-section">
-                <i class="fas fa-file-invoice-dollar"></i>💰 Quotations
-            </a>
-            <a href="#customer-interactions" data-section="customer-interactions-section">
-                <i class="fas fa-comments"></i>🗣 Customer Interactions
-            </a>
-            <a href="#addons-section" data-section="addons-section">
-                <i class="fas fa-cart-plus"></i>🛒  Add-ons Sales
-            </a>
-            <a href="#daily-tasks-section" data-section="daily-tasks-section">
-                <i class="fas fa-tasks"></i>✓ Daily Tasks
-            </a>
-            <a href="#customer-feedback-section" data-section="customer-feedback-section">
-                <i class="fas fa-star"></i>⭐Customer Feedback
-            </a>
-            <a href="#logout" id="logout-btn" class="nav-link">
-                <i class="fas fa-lock"></i>🔒 Logout
-            </a>
-        </div>
+        <ul class="nav-links">
+            <li><a href="#my-leads" class="active">📋 My Leads</a></li>
+            <li><a href="#quotations">💰 Quotations</a></li>
+            <li><a href="#customer-interactions">🗣️ Customer Interactions</a></li>
+            <li><a href="#addons-section">🛒 Add-ons Sales</a></li>
+            <li><a href="#daily-tasks-section">✓ Daily Tasks</a></li>
+            <li><a href="#customer-feedback-section">⭐ Customer Feedback</a></li>
+            <li><a href="#logout">🔒 Logout</a></li>
+        </ul>
     </div>
 
-    <div class="kia-logo-container">
-        <img src="https://i.ibb.co/v6xgw8Wd/Kia-new-logo-black-removebg-preview.png" alt="Kia-new-logo-black-removebg-preview" border="0"></a>
+    <div class="top-section">
+        <div class="top-section-right">
+            <img src="https://i.ibb.co/v6xgw8Wd/Kia-new-logo-black-removebg-preview.png" alt="KIA Logo" class="header-logo">
+        </div>
     </div>
 
     <div class="main-content">
@@ -221,20 +203,33 @@
                     
                     <div class="form-row">
                         <div class="form-group">
+                            <label for="ex-showroom">Ex-Showroom Price</label>
+                            <input type="number" id="ex-showroom" class="form-control" readonly value="1200000">
+                        </div>
+                        <div class="form-group">
+                            <label for="tax-amount">Taxes & Registration</label>
+                            <input type="number" id="tax-amount" class="form-control" readonly value="180000">
+                        </div>
+                        <div class="form-group">
+                            <label for="discount-amount">Discount</label>
+                            <input type="number" id="discount-amount" class="form-control" value="0">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
                             <label for="add-ons">Add-ons</label>
-                            <div id="add-ons-container" class="dropdown-container">
-                                <div id="add-ons-display" class="dropdown-display">Select Add-ons</div>
-                                <div id="add-ons-dropdown" class="dropdown-select">
-                                    <select id="add-ons" class="form-control" multiple>
-                                        <option value="Extended Warranty" data-price="25000">Extended Warranty (₹25,000)</option>
-                                        <option value="Premium Floor Mats" data-price="5000">Premium Floor Mats (₹5,000)</option>
-                                        <option value="Seat Covers" data-price="12000">Seat Covers (₹12,000)</option>
-                                        <option value="Infotainment Upgrade" data-price="18000">Infotainment Upgrade (₹18,000)</option>
-                                    </select>
-                                    <button id="add-ons-ok-btn" class="btn btn-primary">OK</button>
-                                </div>
+                            <select id="add-ons" class="form-control" multiple>
+                                <option value="25000">Extended Warranty (₹25,000)</option>
+                                <option value="5000">Premium Floor Mats (₹5,000)</option>
+                                <option value="12000">Seat Covers (₹12,000)</option>
+                                <option value="18000">Infotainment Upgrade (₹18,000)</option>
+                            </select>
+                            <div id="new-addon-container" style="display:none;">
+                                <input type="text" id="new-addon-name" class="form-control" placeholder="Enter the new add-on name">
+                                <input type="number" id="new-addon-price" class="form-control" placeholder="Enter price (₹)">
+                                <button type="button" id="add-addon-btn" class="btn btn-primary">Add</button>
                             </div>
-                            <ul id="selected-addons-list" class="selected-addons-list"></ul>
                         </div>
                         <div class="form-group">
                             <label for="add-ons-cost">Add-ons Cost</label>
@@ -254,10 +249,9 @@
                     <div style="display: flex; gap: 10px;">
                         <button type="submit" class="btn btn-primary">Generate & Email Quotation</button>
                         <button type="button" class="btn btn-outline">Save Draft</button>
-                    </div>
-                </form>
+                </div>
             </div>
-            
+
             <div class="card">
                 <div class="card-header">
                     <h2>Saved Quotations</h2>
@@ -794,47 +788,55 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script>
 
-document.addEventListener('DOMContentLoaded', function () {
-    const sections = document.querySelectorAll('.section'); // All sections
-    const navLinks = document.querySelectorAll('.sidebar-menu a'); // All sidebar links
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const sidebar = document.querySelector('.sidebar');
+            const toggleBtn = document.querySelector('.toggle-btn');
 
-    // Show only the first section on load
-    sections.forEach(section => section.style.display = 'none'); // Hide all sections
-    const firstSection = document.querySelector('.section.active'); // Find the active section
-    if (firstSection) {
-        firstSection.style.display = 'block'; // Show the active section
-    }
-
-    // Add click event listeners to navigation links
-    navLinks.forEach(link => {
-        link.addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent default anchor behavior
-
-            // Get the target section ID from the link's href attribute
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-
-            // Hide all sections
-            sections.forEach(section => section.style.display = 'none');
-
-            // Show the target section
-            if (targetSection) {
-                targetSection.style.display = 'block';
-            }
-
-            // Scroll to the top of the page instantly
-            window.scrollTo({
-                top: 0,
-                behavior: 'instant' // Ensures instant scrolling
+            // Sidebar Toggle Button
+            toggleBtn.addEventListener('click', function () {
+                sidebar.classList.toggle('active');
             });
 
-            // Remove active class from all links and add it to the clicked link
-            navLinks.forEach(link => link.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
-});
+            // Show only the first section on load
+            sections.forEach(section => section.style.display = 'none');
+            document.getElementById('my-leads').style.display = 'block';
+            navLinks[0].classList.add('active');
 
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    // Hide all sections first
+                    sections.forEach(section => section.style.display = 'none');
+
+                    // Show only the clicked section
+                    if (targetSection) {
+                        targetSection.style.display = 'block';
+                    }
+
+                    // Remove active class from all links & add to clicked one
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Close sidebar on mobile after selection
+                    sidebar.classList.remove('active');
+    if (targetSection) {
+        targetSection.classList.add('active-section');
+        
+        // Scroll to top of page
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+                });
+                
+            });
+        });
         document.addEventListener("DOMContentLoaded", function() {
         document.querySelector("a[href='#logout']").addEventListener("click", function(event) {
             event.preventDefault();
@@ -1007,63 +1009,6 @@ document.addEventListener('DOMContentLoaded', function () {
         margin-bottom: 5px;
         color: #444;
     }
-/*addson*/
-.dropdown-container {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-}
-
-.dropdown-display {
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 4px;
-    background-color: #fff;
-    cursor: pointer;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.dropdown-select {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    z-index: 10;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-}
-
-.dropdown-select.show {
-    display: block;
-}
-
-.dropdown-select select {
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.selected-addons-list {
-    list-style-type: disc;
-    margin-top: 10px;
-    padding-left: 20px;
-}
-
-.selected-addons-list li {
-    margin-bottom: 5px;
-}
-
-#add-ons-ok-btn {
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin-top: 10px;
-}
-
 </style>
 
 <script>
@@ -1139,7 +1084,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
         });
-        
 
         // Arrow Positioning with animation
         setTimeout(() => {
@@ -1149,60 +1093,6 @@ document.addEventListener('DOMContentLoaded', function () {
             arrow.style.transform = `rotate(${angle - 90}deg)`;
         }, 100);
     });
-    document.addEventListener('DOMContentLoaded', function () {
-    const addOnsContainer = document.getElementById('add-ons-container');
-    const addOnsDisplay = document.getElementById('add-ons-display');
-    const addOnsDropdown = document.getElementById('add-ons-dropdown');
-    const addOnsSelect = document.getElementById('add-ons');
-    const addOnsOkBtn = document.getElementById('add-ons-ok-btn');
-    const selectedAddonsList = document.getElementById('selected-addons-list');
-    const addOnsCostInput = document.getElementById('add-ons-cost');
-    const totalAmountInput = document.getElementById('total-amount');
-    const basePrice = 1380000; // Base on-road price
-
-    // Toggle dropdown visibility
-    addOnsDisplay.addEventListener('click', function () {
-        addOnsDropdown.classList.toggle('show');
-    });
-
-    // Function to update the selected add-ons list and costs
-    function updateSelectedAddons() {
-        // Clear the current list
-        selectedAddonsList.innerHTML = '';
-
-        // Get selected options
-        const selectedOptions = Array.from(addOnsSelect.selectedOptions);
-
-        // Calculate total add-ons cost
-        let totalAddOnsCost = 0;
-
-        const selectedTexts = [];
-        selectedOptions.forEach(option => {
-            const listItem = document.createElement('li');
-            listItem.textContent = option.text;
-            selectedAddonsList.appendChild(listItem);
-
-            // Add the price of the selected add-on
-            totalAddOnsCost += parseInt(option.getAttribute('data-price'), 10);
-
-            // Collect selected option text
-            selectedTexts.push(option.text);
-        });
-
-        // Update the display text
-        addOnsDisplay.textContent = selectedTexts.length > 0 ? selectedTexts.join(', ') : 'Select Add-ons';
-
-        // Update the add-ons cost and total price
-        addOnsCostInput.value = totalAddOnsCost;
-        totalAmountInput.value = basePrice + totalAddOnsCost;
-
-        // Hide the dropdown after pressing OK
-        addOnsDropdown.classList.remove('show');
-    }
-
-    // Add event listener to the OK button to update the list and costs
-    addOnsOkBtn.addEventListener('click', updateSelectedAddons);
-});
 </script>
 
 </body>
