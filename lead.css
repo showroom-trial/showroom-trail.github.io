@@ -328,6 +328,7 @@
         }
         
         /* Status Badges */
+        /* Status Badges */
         .status-badge {
             padding: 5px 10px;
             border-radius: 20px;
@@ -341,14 +342,14 @@
             color: #0c63e4;
         }
         
-        .status-progress {
-            background-color: #fff4de;
-            color: #b76e00;
+        .status-Warm {
+            background-color: #dd980c;
+            color: #3e362f;
         }
         
-        .status-followup {
-            background-color: #e5f0ff;
-            color: #3a7cdd;
+        .status-Cold {
+            background-color: #0268f8;
+            color: #1b9ae3;
         }
         
         .status-won {
@@ -356,10 +357,11 @@
             color: #0a6b20;
         }
         
-        .status-lost {
-            background-color: #ffe2e5;
-            color: #d9214e;
+        .status-Hot {
+            background-color: #fd031c;
+            color: #d92121;
         }
+        
         
         /* Rating Stars */
         .star-rating {
@@ -395,8 +397,8 @@
             top: 10px;
             left: 10px;
             z-index: 1100;
-            background-color: #333;
-            color: #fff;
+            /* background-color: #333; */
+            color: #000000;
             border: none;
             width: 40px;
             height: 40px;
@@ -684,7 +686,7 @@ img {
 }
 
 .table-container th {
-    background-color: #27282a;
+    background-color: #669ff5;
     color: white;
     font-weight: bold;
 }
@@ -718,7 +720,7 @@ img {
 }
 
 .table-container .status-won {
-    background-color: #27a9e9;
+    background-color: #2196F3;
 }
 
 .table-container .status-lost {
@@ -781,3 +783,181 @@ img {
     height: 1.7cm; /* Set the height to 1.7cm */
     object-fit: contain; /* Ensures the image maintains its aspect ratio */
 }
+
+.mobile-header {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px 15px;
+}
+
+.mobile-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mobile-logo {
+    height: 30px;
+    margin-right: 15px; /* Adding the 15px gap from the right edge */
+}
+
+/* Reverse the order of elements to put logo on right */
+.mobile-header-content {
+    flex-direction: row-reverse;
+}
+
+.mobile-nav-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    margin-right: auto; /* Push the toggle button to the left */
+}
+
+.top-section {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: auto;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /*background-color: #ffffff;*/
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+    padding: 10px 20px;
+    z-index: 1000;
+}
+
+.top-section-right {
+    position: absolute;  /* Fix it to the top-right */
+    top: 10px;  /* Distance from the top */
+    right: 10px;  /* Distance from the right */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;  /* Center items in the column */
+    gap: 15px; /* Space between logo and dropdown */
+    /*background-color: white;  /* Ensure visibility */
+    padding: 10px; /* Padding for spacing */
+    border-radius: 8px; /* Optional rounded corners */
+    /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+.header-logo {
+    height: 40px;
+    max-width: 100px;
+}
+
+@media screen and (max-width: 768px) {
+    /* Show mobile header, hide desktop header */
+    .mobile-header {
+        display: block;
+    }
+    
+    .top-header {
+        display: none;
+    }
+    
+    /* Adjust main content to account for fixed header */
+    .main-content {
+        padding-top: 60px; /* Height of mobile header + some padding */
+    }
+    
+    /* Sidebar adjustments for mobile */
+    .sidebar {
+        position: fixed;
+        left: -100%; /* Hidden off-screen by default */
+        top: 50px; /* Below the mobile header */
+        width: 80%;
+        height: calc(100vh - 50px);
+        transition: left 0.3s ease;
+        z-index: 999;
+    }
+    
+    .sidebar.active {
+        left: 0; /* Show when active */
+    }
+    
+    /* Overlay for when sidebar is open */
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+    }
+    
+    /* .sidebar-overlay.active {
+        display: block;
+    } */
+}
+
+/* Additional styles to ensure consistent layout */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.main-content {
+    transition: margin-left 0.3s ease;
+}
+/* Ensure the feedback table header has a black background */
+.feedback-table-header {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    font-weight: bold; /* Bold text for header */
+}#feedback-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+#feedback-table th, #feedback-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+/* Ensure the feedback table header has a black background */
+#feedback-table th {
+    background-color: #131618; /* Black background */
+    color: #ffffff; /* White text */
+    font-weight: bold;
+
+}
+#feedback-table tr:hover {
+    background-color: #f9f9f9;
+}
+.positive-feedback {
+    background-color: rgba(76, 175, 80, 0.1);
+}
+.neutral-feedback {
+    background-color: rgba(255, 193, 7, 0.1);
+}
+.negative-feedback {
+    background-color: rgba(244, 67, 54, 0.1);
+}
+/* When sidebar is collapsed on mobile */
+@media screen and (max-width: 768px) {
+    .main-content.sidebar-collapsed {
+        margin-left: 0;
+    }
+}
+/* This media query targets mobile devices */
+@media screen and (max-width: 768px) {
+    .kia-logo-container {
+      display: none; /* This will hide the entire top section on mobile */
+    }
+  }
+
