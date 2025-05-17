@@ -13,15 +13,13 @@
     <div class="sidebar">
         <div class="brand">
             <h2>Welcome</h2>
-            <p>Sales Executive</p>
+            <p>Consultant</p>
         </div>
         <ul class="nav-links">
             <li><a href="#my-leads" class="active">📋 My Leads</a></li>
-            <li><a href="#quotations">💰 Quotations</a></li>
-            <li><a href="#customer-interactions">🗣️ Customer Interactions</a></li>
+            <li><a href="#customer-interactions">🗣️ Follow-ups</a></li>
             <li><a href="#addons-section">🛒 Add-ons Sales</a></li>
             <li><a href="#daily-tasks-section">✓ Daily Tasks</a></li>
-            <li><a href="#customer-feedback-section">⭐ Customer Feedback</a></li>
             <li><a href="#logout">🔒 Logout</a></li>
         </ul>
     </div>
@@ -69,8 +67,9 @@
                         <thead>
                             <tr>
                                 <th>Customer Name</th>
-                                <th>Lead Source</th>
-                                <th>Lead Status</th>
+                                <th>Customer ID</th>
+                                <th>Customer Type</th>
+                                <th>Type</th>
                                 <th>Follow-up Date & Time</th>
                                 <th>Actions</th>
                             </tr>
@@ -78,8 +77,9 @@
                         <tbody>
                             <tr>
                                 <td>John Smith</td>
-                                <td>Walk-in</td>
-                                <td><span class="status status-new">New</span></td>
+                                <td>371831</td>
+                                <td>Individual</td>
+                                <td>Hot</td>
                                 <td>Mar 12, 2025 10:30 AM</td>
                                 <td>
                                     <button class="btn btn-outline">Details</button>
@@ -87,17 +87,19 @@
                             </tr>
                             <tr>
                                 <td>Sarah Johnson</td>
-                                <td>Online</td>
-                                <td><span class="status status-progress">In Progress</span></td>
+                                <td>371837</td>
+                                <td>Individual</td>
+                                <td>Cold</td>
                                 <td>Mar 11, 2025 2:15 PM</td>
                                 <td>
                                     <button class="btn btn-outline">Details</button>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Michael Brown</td>
-                                <td>Referral</td>
-                                <td><span class="status status-converted">Converted</span></td>
+                                <td>Michael Brown pvt. ltd.</td>
+                                <td>371835</td>
+                                <td>Corporate</td>
+                                <td>Warm</td>
                                 <td>Mar 15, 2025 11:00 AM</td>
                                 <td>
                                     <button class="btn btn-outline">Details</button>
@@ -105,8 +107,9 @@
                             </tr>
                             <tr>
                                 <td>Emily Davis</td>
-                                <td>Social Media</td>
-                                <td><span class="status status-lost">Lost</span></td>
+                                <td>371832</td>
+                                <td>Individual</td>
+                                <td>Cold</td>
                                 <td>Mar 10, 2025 9:45 AM</td>
                                 <td>
                                     <button class="btn btn-outline">Details</button>
@@ -114,8 +117,9 @@
                             </tr>
                             <tr>
                                 <td>David Wilson</td>
-                                <td>Walk-in</td>
-                                <td><span class="status status-progress">In Progress</span></td>
+                                <td>371833</td>
+                                <td>Individual</td>
+                                <td>Warm</td>
                                 <td>Mar 14, 2025 3:30 PM</td>
                                 <td>
                                     <button class="btn btn-outline">Details</button>
@@ -136,180 +140,10 @@
             </div>
         </section>
         
-        
-        <!-- Quotations Section -->
-        <section id="quotations" class="section">
-            <div class="header">
-                <h1>Quotations</h1>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">
-                    <h2>Generate Quotation</h2>
-                </div>
-                
-                <form id="quotation-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="customer-name">Customer Name</label>
-                            <input type="text" id="customer-name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="customer-email">Email</label>
-                            <input type="email" id="customer-email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="customer-phone">Phone Number</label>
-                            <input type="tel" id="customer-phone" class="form-control" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="vehicle-model">Vehicle Model</label>
-                            <select id="vehicle-model" class="form-control" required>
-                                <option value="">Select Model</option>
-                                <option value="KIA Seltos">KIA Seltos</option>
-                                <option value="KIA Sonet">KIA Sonet</option>
-                                <option value="KIA Carnival">KIA Carnival</option>
-                                <option value="KIA EV6">KIA EV6</option>
-                                <option value="KIA Sportage">KIA Sportage</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="vehicle-variant">Variant</label>
-                            <select id="vehicle-variant" class="form-control" required>
-                                <option value="">Select Variant</option>
-                                <option value="HTE">HTE</option>
-                                <option value="HTK">HTK</option>
-                                <option value="HTK+">HTK+</option>
-                                <option value="HTX">HTX</option>
-                                <option value="HTX+">HTX+</option>
-                                <option value="GTX">GTX</option>
-                                <option value="GTX+">GTX+</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="vehicle-color">Color</label>
-                            <select id="vehicle-color" class="form-control" required>
-                                <option value="">Select Color</option>
-                                <option value="White">White</option>
-                                <option value="Black">Black</option>
-                                <option value="Silver">Silver</option>
-                                <option value="Grey">Grey</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="ex-showroom">Ex-Showroom Price</label>
-                            <input type="number" id="ex-showroom" class="form-control" readonly value="1200000">
-                        </div>
-                        <div class="form-group">
-                            <label for="tax-amount">Taxes & Registration</label>
-                            <input type="number" id="tax-amount" class="form-control" readonly value="180000">
-                        </div>
-                        <div class="form-group">
-                            <label for="discount-amount">Discount</label>
-                            <input type="number" id="discount-amount" class="form-control" value="0">
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="add-ons">Add-ons</label>
-                            <select id="add-ons" class="form-control" multiple>
-                                <option value="25000">Extended Warranty (₹25,000)</option>
-                                <option value="5000">Premium Floor Mats (₹5,000)</option>
-                                <option value="12000">Seat Covers (₹12,000)</option>
-                                <option value="18000">Infotainment Upgrade (₹18,000)</option>
-                            </select>
-                            <div id="new-addon-container" style="display:none;">
-                                <input type="text" id="new-addon-name" class="form-control" placeholder="Enter the new add-on name">
-                                <input type="number" id="new-addon-price" class="form-control" placeholder="Enter price (₹)">
-                                <button type="button" id="add-addon-btn" class="btn btn-primary">Add</button>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="add-ons-cost">Add-ons Cost</label>
-                            <input type="number" id="add-ons-cost" class="form-control" readonly value="0">
-                        </div>
-                        <div class="form-group">
-                            <label for="total-amount">Total On-Road Price</label>
-                            <input type="number" id="total-amount" class="form-control" readonly value="1380000">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="notes">Additional Notes</label>
-                        <textarea id="notes" class="form-control" rows="3"></textarea>
-                    </div>
-                    
-                    <div style="display: flex; gap: 10px;">
-                        <button type="submit" class="btn btn-primary">Generate & Email Quotation</button>
-                        <button type="button" class="btn btn-outline">Save Draft</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h2>Saved Quotations</h2>
-                </div>
-                
-                <div class="table-container">
-                    <table id="quotations-table">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Customer Name</th>
-                                <th>Vehicle Model</th>
-                                <th>Total Amount</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Mar 9, 2025</td>
-                                <td>James Wilson</td>
-                                <td>KIA Seltos HTX</td>
-                                <td>₹ 1,385,000</td>
-                                <td><span class="status status-progress">Pending</span></td>
-                                <td>
-                                    <button class="btn btn-outline">View</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Mar 8, 2025</td>
-                                <td>Lisa Thompson</td>
-                                <td>KIA Carnival GTX+</td>
-                                <td>₹ 2,450,000</td>
-                                <td><span class="status status-converted">Accepted</span></td>
-                                <td>
-                                    <button class="btn btn-outline">View</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Mar 7, 2025</td>
-                                <td>Robert Parker</td>
-                                <td>KIA Sonet HTK+</td>
-                                <td>₹ 1,150,000</td>
-                                <td><span class="status status-lost">Rejected</span></td>
-                                <td>
-                                    <button class="btn btn-outline">View</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-        
         <!-- Customer Interactions Section -->
         <section id="customer-interactions" class="section">
             <div class="header">
-                <h1>Customer Interactions</h1>
+                <h1>Follow-ups</h1>
             </div>
             
             <div class="card">
@@ -322,8 +156,8 @@
                         <thead>
                             <tr>
                                 <th>Customer Name</th>
-                                <th>Last Contact</th>
-                                <th>Communication Mode</th>
+                                <th>Customer ID</th>
+                                <th>Follow-up</th>
                                 <th>Next Follow-up</th>
                                 <th>Actions</th>
                             </tr>
@@ -331,32 +165,29 @@
                         <tbody>
                             <tr>
                                 <td>Mark Johnson</td>
+                                <td>949731</td>
                                 <td>Mar 8, 2025</td>
-                                <td>Call</td>
                                 <td>Mar 10, 2025 2:00 PM</td>
                                 <td>
-                                    <button class="btn btn-primary">Complete</button>
-                                    <button class="btn btn-outline">Reschedule</button>
+                                    <button class="btn btn-primary">Details</button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Susan Miller</td>
+                                <td>949732</td>
                                 <td>Mar 7, 2025</td>
-                                <td>Email</td>
                                 <td>Mar 11, 2025 11:30 AM</td>
                                 <td>
-                                    <button class="btn btn-primary">Complete</button>
-                                    <button class="btn btn-outline">Reschedule</button>
+                                    <button class="btn btn-primary">Details</button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Thomas Anderson</td>
+                                <td>949733</td>
                                 <td>Mar 6, 2025</td>
-                                <td>In-Person</td>
                                 <td>Mar 10, 2025 4:15 PM</td>
                                 <td>
-                                    <button class="btn btn-primary">Complete</button>
-                                    <button class="btn btn-outline">Reschedule</button>
+                                    <button class="btn btn-primary">Details</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -387,7 +218,7 @@
                             <tr>
                                 <th>Date & Time</th>
                                 <th>Customer Name</th>
-                                <th>Mode</th>
+                                <th>Customer ID</th>
                                 <th>Summary</th>
                                 <th>Actions</th>
                             </tr>
@@ -396,7 +227,7 @@
                             <tr>
                                 <td>Mar 9, 2025 9:30 AM</td>
                                 <td>Jennifer Lewis</td>
-                                <td>Call</td>
+                                <td>129831</td>
                                 <td>Discussed financing options for Seltos HTX</td>
                                 <td>
                                     <button class="btn btn-outline">View Notes</button>
@@ -405,7 +236,7 @@
                             <tr>
                                 <td>Mar 8, 2025 3:45 PM</td>
                                 <td>William Chen</td>
-                                <td>In-Person</td>
+                                <td>129832</td>
                                 <td>Test drive of KIA EV6, interested in GT-Line</td>
                                 <td>
                                     <button class="btn btn-outline">View Notes</button>
@@ -414,7 +245,7 @@
                             <tr>
                                 <td>Mar 8, 2025 11:15 AM</td>
                                 <td>Katherine Wright</td>
-                                <td>Email</td>
+                                <td>129833</td>
                                 <td>Sent brochure and pricing details for Carnival</td>
                                 <td>
                                     <button class="btn btn-outline">View Notes</button>
@@ -423,7 +254,7 @@
                             <tr>
                                 <td>Mar 7, 2025 2:00 PM</td>
                                 <td>Daniel Martinez</td>
-                                <td>Call</td>
+                                <td>129834</td>
                                 <td>Follow-up after test drive, discussing add-ons</td>
                                 <td>
                                     <button class="btn btn-outline">View Notes</button>
@@ -432,7 +263,7 @@
                             <tr>
                                 <td>Mar 7, 2025 10:30 AM</td>
                                 <td>Sarah Johnson</td>
-                                <td>Email</td>
+                                <td>129835</td>
                                 <td>Inquired about Sportage delivery timeline</td>
                                 <td>
                                     <button class="btn btn-outline">View Notes</button>
@@ -441,7 +272,7 @@
                             <tr>
                                 <td>Mar 6, 2025 4:00 PM</td>
                                 <td>Michael Rodriguez</td>
-                                <td>In-Person</td>
+                                <td>129836</td>
                                 <td>Finalized color and trim options for Sorento</td>
                                 <td>
                                     <button class="btn btn-outline">View Notes</button>
@@ -462,87 +293,6 @@
                 </div>
             </div>
             
-            <div class="card">
-                <div class="card-header">
-                    <h2>New Interaction</h2>
-                </div>
-                
-                <div class="interaction-form">
-                    <form id="new-interaction-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="customer-select">Customer</label>
-                                <select id="customer-select" class="form-control" required>
-                                    <option value="">Select Customer</option>
-                                    <option value="1">Mark Johnson</option>
-                                    <option value="2">Susan Miller</option>
-                                    <option value="3">Thomas Anderson</option>
-                                    <option value="4">Jennifer Lewis</option>
-                                    <option value="5">William Chen</option>
-                                    <option value="6">Katherine Wright</option>
-                                    <option value="7">Daniel Martinez</option>
-                                    <option value="8">Sarah Johnson</option>
-                                    <option value="9">Michael Rodriguez</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="interaction-date">Date & Time</label>
-                                <input type="datetime-local" id="interaction-date" class="form-control" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="interaction-mode">Communication Mode</label>
-                                <select id="interaction-mode" class="form-control" required>
-                                    <option value="">Select Mode</option>
-                                    <option value="Call">Call</option>
-                                    <option value="Email">Email</option>
-                                    <option value="In-Person">In-Person</option>
-                                    <option value="Video Call">Video Call</option>
-                                    <option value="SMS">SMS</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="interaction-duration">Duration (minutes)</label>
-                                <input type="number" id="interaction-duration" class="form-control" min="1">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="interaction-summary">Summary</label>
-                            <input type="text" id="interaction-summary" class="form-control" placeholder="Brief summary of interaction" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="interaction-notes">Detailed Notes</label>
-                            <textarea id="interaction-notes" class="form-control" rows="4" placeholder="Enter detailed notes about the interaction"></textarea>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="follow-up-required">Follow-up Required?</label>
-                                <div class="toggle-switch">
-                                    <input type="checkbox" id="follow-up-required">
-                                    <label for="follow-up-required"></label>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group follow-up-group" id="follow-up-details">
-                                <label for="follow-up-date">Follow-up Date & Time</label>
-                                <input type="datetime-local" id="follow-up-date" class="form-control">
-                            </div>
-                        </div>
-                        
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary">Save Interaction</button>
-                            <button type="reset" class="btn btn-outline">Reset</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </section>
         
         <!-- Add-ons & Cross-selling Section -->
@@ -558,7 +308,7 @@
                 
                 <div class="chart-container">
                     <canvas id="addons-chart"></canvas>
-                </div>
+                </div>                                               
             </div>
             
             <div class="cards-row">
@@ -604,63 +354,63 @@
                         <option value="Maintenance">Maintenance</option>
                     </select>
                 </div>
-                
-                <div class="table-container">
-                    <table id="addons-table">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Customer Name</th>
-                                <th>Vehicle Model</th>
-                                <th>Add-on Item</th>
-                                <th>Category</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Mar 9, 2025</td>
-                                <td>Emily Parker</td>
-                                <td>KIA Seltos</td>
-                                <td>Extended Warranty (5-year)</td>
-                                <td>Warranty</td>
-                                <td>&#8377;1,299</td>
-                            </tr>
-                            <tr>
-                                <td>Mar 8, 2025</td>
-                                <td>David Kim</td>
-                                <td>KIA Sportage</td>
-                                <td>Premium Floor Mats</td>
-                                <td>Accessories</td>
-                                <td>&#8377;249</td>
-                            </tr>
-                            <tr>
-                                <td>Mar 8, 2025</td>
-                                <td>Lisa Thompson</td>
-                                <td>KIA EV6</td>
-                                <td>Home Charging Station</td>
-                                <td>Accessories</td>
-                                <td>&#8377;899</td>
-                            </tr>
-                            <tr>
-                                <td>Mar 7, 2025</td>
-                                <td>Robert Wilson</td>
-                                <td>KIA Carnival</td>
-                                <td>Interior Protection Package</td>
-                                <td>Protection</td>
-                                <td>&#8377;599</td>
-                            </tr>
-                            <tr>
-                                <td>Mar 7, 2025</td>
-                                <td>Jennifer Adams</td>
-                                <td>KIA Sorento</td>
-                                <td>Maintenance Plan (3-year)</td>
-                                <td>Maintenance</td>
-                                <td>&#8377;1,199</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="filter-container">
+                    <label for="model-filter">Filter by Car Model:</label>
+                    <select id="model-filter">
+                        <option value="all">All Models</option>
+                        <option value="KIA Seltos">KIA Seltos</option>
+                        <option value="KIA Sonet">KIA Sonet</option>
+                        <option value="KIA Carens">KIA Carens</option>
+                        <option value="KIA EV6">KIA EV6</option>
+                    </select>
                 </div>
+                
+                <table id="addon-sales-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Customer Name</th>
+                            <th>Vehicle Model</th>
+                            <th>Add-on Item</th>
+                            <th>Category</th>
+                            <th>Price (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-model="KIA Seltos">
+                            <td>2025-03-15</td>
+                            <td>Rahul Sharma</td>
+                            <td>KIA Seltos</td>
+                            <td>Sunroof</td>
+                            <td>Exterior</td>
+                            <td>₹1,24,500</td>
+                        </tr>
+                        <tr data-model="KIA Sonet">
+                            <td>2025-03-10</td>
+                            <td>Priya Verma</td>
+                            <td>KIA Sonet</td>
+                            <td>Seat Covers</td>
+                            <td>Interior</td>
+                            <td>₹41,500</td>
+                        </tr>
+                        <tr data-model="KIA Carens">
+                            <td>2025-03-08</td>
+                            <td>Amit Gupta</td>
+                            <td>KIA Carens</td>
+                            <td>GPS Tracker</td>
+                            <td>Electronics</td>
+                            <td>₹62,250</td>
+                        </tr>
+                        <tr data-model="KIA EV6">
+                            <td>2025-03-05</td>
+                            <td>Neha Rao</td>
+                            <td>KIA EV6</td>
+                            <td>Extended Warranty</td>
+                            <td>Warranty</td>
+                            <td>₹1,66,000</td>
+                        </tr>
+                    </tbody>
+                </table>
                 
                 <div class="pagination">
                     <button class="pagination-btn">Previous</button>
@@ -690,51 +440,41 @@
                     </select>
                 </div>
                 
-                <div class="addon-recommendations" id="addon-recommendations">
-                    <div class="recommendation-card">
-                        <div class="recommendation-header">
-                            <h3>Extended Warranty</h3>
-                            <div class="recommendation-score">98%</div>
-                        </div>
-                        <p class="recommendation-desc">5-year extended warranty with roadside assistance</p>
-                        <div class="recommendation-price">&#8377;1,299</div>
-                        <div class="recommendation-reason">Based on previous preferences and vehicle type</div>
-                    </div>
-                    
-                    <div class="recommendation-card">
-                        <div class="recommendation-header">
-                            <h3>All-Weather Floor Mats</h3>
-                            <div class="recommendation-score">85%</div>
-                        </div>
-                        <p class="recommendation-desc">Premium all-weather floor mats with custom fit</p>
-                        <div class="recommendation-price">&#8377;249</div>
-                        <div class="recommendation-reason">Popular with customers who purchased similar vehicles</div>
-                    </div>
-                    
-                    <div class="recommendation-card">
-                        <div class="recommendation-header">
-                            <h3>Paint Protection Film</h3>
-                            <div class="recommendation-score">78%</div>
-                        </div>
-                        <p class="recommendation-desc">Clear protective film for hood, mirrors and bumper</p>
-                        <div class="recommendation-price">&#8377;899</div>
-                        <div class="recommendation-reason">Customer previously inquired about protection options</div>
-                    </div>
+                <div class="recommended-addons-container">
+                    <h3>Recommended Add-ons</h3>
+                    <table class="recommended-addons-table">
+                        <thead>
+                            <tr>
+                                <th>Add-on Name</th>
+                                <th>Description</th>
+                                <th>Price (₹)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sunroof</td>
+                                <td>Enhance your ride with a premium sunroof.</td>
+                                <td>1,24,500</td>
+                            </tr>
+                            <tr>
+                                <td>Seat Covers</td>
+                                <td>Comfortable and stylish seat covers.</td>
+                                <td>41,500</td>
+                            </tr>
+                            <tr>
+                                <td>GPS Tracker</td>
+                                <td>Track your car in real time for safety.</td>
+                                <td>62,250</td>
+                            </tr>
+                            <tr>
+                                <td>Extended Warranty</td>
+                                <td>Extra protection for your vehicle.</td>
+                                <td>1,66,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
-            
-            <div class="container">
-                <!-- Add-ons & Cross-selling -->
-                <div class="dashboard-section add-ons-section">
-                    <h3 class="section-title">Add-ons & Cross-selling</h3>
-                    <div class="add-ons-item">
-                        <span class="item-name">Premium Support Package</span>
-                        <span class="item-revenue">&#8377;1,245.00</span>
-                    </div>
-                    <div class="add-ons-item">
-                        <span class="item-name">Extended Warranty</span>
-                        <span class="item-revenue">&#8377;895.00</span
-                        </div>
+                
         </section>
 
         <!-- Daily Tasks Section -->
@@ -762,88 +502,63 @@
             </div>
         </section>
 
-        <!-- Customer Feedback Section -->
-        <section id="customer-feedback-section" class="section">
-            <div class="header"><h1>Customer Feedback</h1></div>
-            <div class="card">
-                <div class="card-header"><h2>Recent Feedback</h2></div>
-                <div class="feedback-item">
-                    <div class="feedback-header">
-                        <span class="customer-name">John Doe</span>
-                        <span class="rating">★★★★★</span>
-                    </div>
-                    <p class="feedback-text">Great product and fast shipping. Will definitely buy again!</p>
-                </div>
-                <div class="feedback-item">
-                    <div class="feedback-header">
-                        <span class="customer-name">Sarah Johnson</span>
-                        <span class="rating">★★★★☆</span>
-                    </div>
-                    <p class="feedback-text">Quality exceeded my expectations. Would recommend to others.</p>
-                </div>
-            </div>
-        </section>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const sections = document.querySelectorAll('.section');
-            const navLinks = document.querySelectorAll('.nav-links a');
-            const sidebar = document.querySelector('.sidebar');
-            const toggleBtn = document.querySelector('.toggle-btn');
-
-            // Sidebar Toggle Button
-            toggleBtn.addEventListener('click', function () {
-                sidebar.classList.toggle('active');
-            });
-
-            // Show only the first section on load
-            sections.forEach(section => section.style.display = 'none');
-            document.getElementById('my-leads').style.display = 'block';
-            navLinks[0].classList.add('active');
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', function (event) {
-                    event.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetSection = document.getElementById(targetId);
-
-                    // Hide all sections first
-                    sections.forEach(section => section.style.display = 'none');
-
-                    // Show only the clicked section
-                    if (targetSection) {
-                        targetSection.style.display = 'block';
-                    }
-
-                    // Remove active class from all links & add to clicked one
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
-
-                    // Close sidebar on mobile after selection
-                    sidebar.classList.remove('active');
-    if (targetSection) {
-        targetSection.classList.add('active-section');
-        
-        // Scroll to top of page
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+    
+    document.addEventListener('DOMContentLoaded', function () {
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const sidebar = document.querySelector('.sidebar');
+        const toggleBtn = document.querySelector('.toggle-btn');
+    
+        // Sidebar Toggle Button
+        toggleBtn.addEventListener('click', function () {
+            sidebar.classList.toggle('active');
         });
-    }
-                });
-                
+    
+        // Show only the first section on load
+        sections.forEach(section => section.style.display = 'none');
+        document.getElementById('my-leads').style.display = 'block';
+        navLinks[0].classList.add('active');
+    
+        navLinks.forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+    
+                // Hide all sections first
+                sections.forEach(section => section.style.display = 'none');
+    
+                // Show only the clicked section
+                if (targetSection) {
+                    targetSection.style.display = 'block';
+                    targetSection.classList.add('active-section');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+    
+                // Remove active class from all links & add to clicked one
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+    
+                // Close sidebar on mobile after selection
+                sidebar.classList.remove('active');
             });
         });
-        document.addEventListener("DOMContentLoaded", function() {
+    
         document.querySelector("a[href='#logout']").addEventListener("click", function(event) {
             event.preventDefault();
             window.location.href = "index.html";
         });
-
-    // Graphs Configuration
+    
+        // Call function to render graphs
+        renderCharts();
+    });
+    
+    // Function to render graphs
     function renderCharts() {
         // Lead Conversion Chart
         const leadChartCtx = document.getElementById('lead-conversion-chart');
@@ -868,51 +583,60 @@
                 }
             });
         }
-
-        // Add-ons Sales Performance Chart
-        const addonsChartCtx = document.getElementById('addons-chart');
+    
+        // Add-ons Sales Performance Chart (Cross Selling Graph)
+        const addonsChartCtx = document.getElementById("addons-chart");
         if (addonsChartCtx) {
             new Chart(addonsChartCtx, {
-                type: 'bar',
+                type: "bar",
                 data: {
-                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                    datasets: [{
-                        label: 'Add-on Sales',
-                        data: [12, 15, 18, 14, 20, 22],
-                        backgroundColor: ['#4285F4', '#EA4335', '#FBBC05', '#34A853', '#FF6D00', '#8E24AA']
-                    }]
+                    labels: ["Sunroof", "Extended Warranty", "Seat Covers", "GPS Tracker", "Insurance"],
+                    datasets: [
+                        {
+                            label: "Sold with Car Purchase",
+                            data: [50, 30, 45, 20, 40],
+                            backgroundColor: "rgba(54, 162, 235, 0.7)", // Blue
+                        },
+                        {
+                            label: "Sold Separately",
+                            data: [20, 25, 30, 15, 35],
+                            backgroundColor: "rgba(255, 99, 132, 0.7)", // Red
+                        }
+                    ]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: "#555",
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    },
                     scales: {
                         x: {
-                            grid: {
-                                display: false
-                            },
-                            ticks: {
-                                color: '#555'
-                            }
+                            stacked: true,
+                            grid: { display: false },
+                            ticks: { color: "#555" }
                         },
                         y: {
+                            stacked: true,
                             beginAtZero: true,
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.1)'
-                            },
-                            ticks: {
-                                color: '#555'
-                            }
+                            grid: { color: "rgba(0, 0, 0, 0.1)" },
+                            ticks: { color: "#555" }
                         }
                     }
                 }
             });
         }
     }
-        
-    renderCharts();
-});
-
-</script>
+    
+    </script>
+    
 
 <!-- Motivational Pop-up -->
 <!-- Motivational Pop-up -->
@@ -1093,7 +817,228 @@
             arrow.style.transform = `rotate(${angle - 90}deg)`;
         }, 100);
     });
-</script>
 
+    
+document.addEventListener('DOMContentLoaded', function () {
+    const filterDropdown = document.getElementById('model-filter');
+    const tableRows = document.querySelectorAll('#addon-sales-table tbody tr');
+
+    filterDropdown.addEventListener('change', function () {
+        const selectedModel = this.value;
+
+        tableRows.forEach(row => {
+            if (selectedModel === 'all' || row.dataset.model === selectedModel) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+});
+
+</script>
+<div id="customer-details-popup" class="popup">
+    <div class="popup-content details-popup">
+        <span class="popup-close" id="close-details-popup">&times;</span>
+        <h2>Customer Details</h2>
+        <div class="customer-info">
+            <div class="detail-row">
+                <span class="detail-label">Customer Name:</span>
+                <span class="detail-value" id="customer-name-value">-</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Customer ID:</span>
+                <span class="detail-value" id="customer-id-value">-</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Email:</span>
+                <span class="detail-value" id="customer-email-value">-</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Phone:</span>
+                <span class="detail-value" id="customer-phone-value">-</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Model:</span>
+                <span class="detail-value" id="customer-model-value">-</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Variant:</span>
+                <span class="detail-value" id="customer-variant-value">-</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Color:</span>
+                <span class="detail-value" id="customer-color-value">-</span>
+            </div>
+        </div>
+        <div class="contact-actions">
+            <button class="action-btn message-btn" id="message-btn">
+                <span class="action-icon">💬</span>
+                <span>Message</span>
+            </button>
+            <button class="action-btn call-btn" id="call-btn">
+                <span class="action-icon">📞</span>
+                <span>Call</span>
+            </button>
+            <button class="action-btn email-btn" id="email-btn">
+                <span class="action-icon">✉️</span>
+                <span>Email</span>
+            </button>
+        </div>
+    </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+        // Customer data - simulating database
+        const customerData = {
+            '371831': {
+                name: 'John Smith',
+                email: 'john.smith@example.com',
+                phone: '+91 98765 43210',
+                model: 'KIA Seltos',
+                variant: 'GTX+ 1.4',
+                color: 'Aurora Black Pearl'
+            },
+            '371837': {
+                name: 'Sarah Johnson',
+                email: 'sarah.j@example.com',
+                phone: '+91 87654 32109',
+                model: 'KIA Sonet',
+                variant: 'HTX DCT',
+                color: 'Intense Red'
+            },
+            '371835': {
+                name: 'Michael Brown pvt. ltd.',
+                email: 'info@michaelbrown.com',
+                phone: '+91 76543 21098',
+                model: 'KIA Carnival',
+                variant: 'Limousine Plus',
+                color: 'Glacier White Pearl'
+            },
+            '371832': {
+                name: 'Emily Davis',
+                email: 'emily.davis@example.com',
+                phone: '+91 65432 10987',
+                model: 'KIA EV6',
+                variant: 'GT Line',
+                color: 'Moonscape Matte'
+            },
+            '371833': {
+                name: 'David Wilson',
+                email: 'david.wilson@example.com',
+                phone: '+91 54321 09876',
+                model: 'KIA Sportage',
+                variant: 'X-Line AWD',
+                color: 'Shadow Matte Gray'
+            },
+            '949731': {
+                name: 'Mark Johnson',
+                email: 'mark.johnson@example.com',
+                phone: '+91 98765 12345',
+                model: 'KIA Seltos',
+                variant: 'HTX CVT',
+                color: 'Imperial Blue'
+            },
+            '949732': {
+                name: 'Susan Miller',
+                email: 'susan.miller@example.com',
+                phone: '+91 87654 23456',
+                model: 'KIA Sonet',
+                variant: 'GTX+',
+                color: 'Beige Gold'
+            },
+            '949733': {
+                name: 'Thomas Anderson',
+                email: 'thomas.a@example.com',
+                phone: '+91 76543 34567',
+                model: 'KIA Carens',
+                variant: 'Luxury Plus 7 DCT',
+                color: 'Gravity Grey'
+            },
+            '129831': {
+                name: 'Jennifer Lewis',
+                email: 'jennifer.l@example.com', 
+                phone: '+91 65432 45678',
+                model: 'KIA Seltos',
+                variant: 'HTX',
+                color: 'Steel Grey'
+            },
+            '129832': {
+                name: 'William Chen',
+                email: 'william.chen@example.com',
+                phone: '+91 54321 56789',
+                model: 'KIA EV6',
+                variant: 'GT-Line',
+                color: 'Yacht Blue'
+            }
+        };
+
+        // Get all details buttons
+        const detailButtons = document.querySelectorAll('#leads-table .btn-outline, #followups-table .btn-primary');
+        
+        // Get the popup elements
+        const detailsPopup = document.getElementById('customer-details-popup');
+        const closeDetailsBtn = document.getElementById('close-details-popup');
+        
+         
+        detailButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Get the customer ID from the row
+                const row = this.closest('tr');
+                const customerId = row.querySelector('td:nth-child(2)').textContent;
+                const customerInfo = customerData[customerId] || {};
+                
+                // Populate the popup with customer data
+                document.getElementById('customer-name-value').textContent = customerInfo.name || '-';
+                document.getElementById('customer-id-value').textContent = customerId || '-';
+                document.getElementById('customer-email-value').textContent = customerInfo.email || '-';
+                document.getElementById('customer-phone-value').textContent = customerInfo.phone || '-';
+                document.getElementById('customer-model-value').textContent = customerInfo.model || '-';
+                document.getElementById('customer-variant-value').textContent = customerInfo.variant || '-';
+                document.getElementById('customer-color-value').textContent = customerInfo.color || '-';
+                
+                // Show the popup
+                detailsPopup.style.display = 'flex';
+            });
+        });
+        
+        // Close popup when clicking the X button
+        closeDetailsBtn.addEventListener('click', function() {
+            detailsPopup.style.display = 'none';
+        });
+        
+        // Close popup when clicking outside the popup content
+        detailsPopup.addEventListener('click', function(event) {
+            if (event.target === detailsPopup) {
+                detailsPopup.style.display = 'none';
+            }
+        });
+        
+        // Handle action buttons
+        document.getElementById('message-btn').addEventListener('click', function() {
+            const phoneNumber = document.getElementById('customer-phone-value').textContent;
+            if (phoneNumber !== '-') {
+                // Open messaging app or service (simplified for demo)
+                alert(`Opening messaging app for ${phoneNumber}`);
+            }
+        });
+        
+        document.getElementById('call-btn').addEventListener('click', function() {
+            const phoneNumber = document.getElementById('customer-phone-value').textContent;
+            if (phoneNumber !== '-') {
+                // Make a call (simplified for demo)
+                window.location.href = `tel:${phoneNumber.replace(/\s+/g, '')}`;
+            }
+        });
+        
+        document.getElementById('email-btn').addEventListener('click', function() {
+            const email = document.getElementById('customer-email-value').textContent;
+            if (email !== '-') {
+                // Open email client
+                window.location.href = `mailto:${email}`;
+            }
+        });
+    });
+</script>
 </body>
 </html>
