@@ -9,8 +9,24 @@
 <body>
 
 <!-- Mobile Nav Toggle (visible on small screens) -->
-<button class="mobile-nav-toggle" id="mobileNavToggle">☰</button>
 
+<header class="mobile-header" id="mobileHeader">
+    <div class="mobile-header-content">
+        <div class="logo-container">
+            <img src="kia-logo.png" alt="KIA Logo" class="mobile-logo">
+        </div>
+        <button class="mobile-nav-toggle" id="mobileNavToggle">☰</button>
+    </div>
+</header>
+<div class="mobile-location-container">
+    <select id="locationSelect" class="location-select">
+        <option value="all">All Locations</option>
+        <option value="shivamogga">Shivamogga</option>
+        <option value="chitradurga">Chitradurga</option>
+        <option value="chikmangaluru">Chikkamagaluru</option>
+        <option value="davanagere">Davanagere</option>
+    </select>
+</div>
 <!-- Updated Header with new structure -->
 <div class="top-section">
     <div class="top-section-right">
@@ -59,12 +75,12 @@
                 <span class="nav-text">Sales Performance</span>
             </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a href="#service" class="nav-link" data-section="service">
                 <div class="nav-icon">🔄</div>
                 <span class="nav-text">Service Performance</span>
             </a>
-        </li>
+        </li> -->
         <li class="nav-item">
             <a href="#comparative" class="nav-link" data-section="comparative">
                 <div class="nav-icon">📈</div>
@@ -72,9 +88,9 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#predictive" class="nav-link" data-section="predictive">
+            <a href="#annual-targets" class="nav-link" data-section="annual-targets">
                 <div class="nav-icon">🔮</div>
-                <span class="nav-text">Predictive Analytics</span>
+                <span class="nav-text">Annual Targets</span>
             </a>
         </li>
         <li class="nav-item">
@@ -84,7 +100,7 @@
             </a>
         </li>
     </ul>
-    <button class="toggle-sidebar" id="toggleSidebar">◀ Collapse</button>
+    <button class="toggle-sidebar" id="toggleSidebar"></button>
 </div>
 
 <!-- Main Content Area -->
@@ -125,10 +141,11 @@
         <div class="dashboard-grid">
             <div class="card chart-card">
                 <div class="chart-card-header">
-                    <h3>Vehicles Sold by Model</h3>
+                    <h3>Vehicles Sold per Location</h3>
                     <div class="chart-controls">
-                        <button class="chart-control-btn">Monthly</button>
-                        <button class="chart-control-btn">Quarterly</button>
+                        <button class="chart-control-btn">Booking</button>
+                        <button class="chart-control-btn">Enquiry</button>
+                        <button class="chart-control-btn">Retail</button>
                     </div>
                 </div>
                 <div class="chart-container">
@@ -136,20 +153,85 @@
                 </div>
             </div>
             <div class="card chart-card">
-                <div class="chart-card-header">
-                    <h3>Enquiries vs Conversions</h3>
-                    <div class="chart-controls">
-                        <button class="chart-control-btn">All</button>
-                        <button class="chart-control-btn">By Model</button>
-                    </div>
-                </div>
-                <div class="chart-container">
-                    <canvas id="enquiriesConversionsChart"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <div class="card chart-card">
+    <div class="chart-card-header">
+        <h3>Enquiries vs Conversions</h3>
+        <!-- <div class="chart-controls">
+            <button class="chart-control-btn">Booking</button>
+            <button class="chart-control-btn">Enquiry</button>
+            <button class="chart-control-btn">Retail</button>
+        </div> -->
+    </div>
+    <!-- <div class="card chart-card">
+    <div class="chart-card-header">
+        <h3>Enquiries vs Conversions</h3>
+        <!-- <div class="chart-controls">
+            <button class="chart-control-btn">Booking</button>
+            <button class="chart-control-btn">Enquiry</button>
+            <button class="chart-control-btn">Retail</button>
+        </div> -->
+    <!-- </div> -->
+     <div class="table-container">
+        <table style="height: auto;">
+            <thead>
+                <tr style="height: 40px;">
+                    <th rowspan="2"></th>
+                    <th colspan="3">ENQUIRY</th>
+                    <th rowspan="2">TD</th>
+                    <th rowspan="2">TD%</th>
+                    <th colspan="3">BOOKING</th>
+                    <th colspan="3">RETAILS</th>
+                    <th rowspan="2">E-B</th>
+                    <th rowspan="2">B-R</th>
+                </tr>
+                <tr style="height: 40px;">
+                    <th>TGT</th>
+                    <th>ACH</th>
+                    <th>%</th>
+                    <th>TGT</th>
+                    <th>ACH</th>
+                    <th>%</th>
+                    <th>TGT</th>
+                    <th>ACH</th>
+                    <th>%</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="height: 50px;">
+                    <td>TOTAL</td>
+                    <td>135</td>
+                    <td>11</td>
+                    <td>8%</td>
+                    <td>6</td>
+                    <td>55%</td>
+                    <td>21</td>
+                    <td>3</td>
+                    <td>14%</td>
+                    <td>16</td>
+                    <td>0</td>
+                    <td>0%</td>
+                    <td>27%</td>
+                    <td>0%</td>
+                </tr>
+                <tr style="height: 50px;">
+                    <td>GRAND TOTAL</td>
+                    <td>645</td>
+                    <td>60</td>
+                    <td>9%</td>
+                    <td>41</td>
+                    <td>68%</td>
+                    <td>91</td>
+                    <td>11</td>
+                    <td>12%</td>
+                    <td>64</td>
+                    <td>0</td>
+                    <td>0%</td>
+                    <td>18%</td>
+                    <td>0%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        <!-- <div class="card chart-card">
             <div class="chart-card-header">
                 <h3>Monthly Revenue Trends</h3>
                 <div class="chart-controls">
@@ -160,7 +242,7 @@
             <div class="chart-container">
                 <canvas id="revenueChart"></canvas>
             </div>
-        </div>
+        </div> -->
     </section>
 
     <!-- Target Allocation Section -->
@@ -206,9 +288,70 @@
                 <div class="chart-card-header">
                     <h3>Enquiries vs Sales Conversion</h3>
                 </div>
-                <div class="chart-container">
+                <div class="table-container">
+        <table style="height: auto;">
+            <thead>
+                <tr style="height: 40px;">
+                    <th rowspan="2"></th>
+                    <th colspan="3">ENQUIRY</th>
+                    <th rowspan="2">TD</th>
+                    <th rowspan="2">TD%</th>
+                    <th colspan="3">BOOKING</th>
+                    <th colspan="3">RETAILS</th>
+                    <th rowspan="2">E-B</th>
+                    <th rowspan="2">B-R</th>
+                </tr>
+                <tr style="height: 40px;">
+                    <th>TGT</th>
+                    <th>ACH</th>
+                    <th>%</th>
+                    <th>TGT</th>
+                    <th>ACH</th>
+                    <th>%</th>
+                    <th>TGT</th>
+                    <th>ACH</th>
+                    <th>%</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="height: 50px;">
+                    <td>TOTAL</td>
+                    <td>135</td>
+                    <td>11</td>
+                    <td>8%</td>
+                    <td>6</td>
+                    <td>55%</td>
+                    <td>21</td>
+                    <td>3</td>
+                    <td>14%</td>
+                    <td>16</td>
+                    <td>0</td>
+                    <td>0%</td>
+                    <td>27%</td>
+                    <td>0%</td>
+                </tr>
+                <tr style="height: 50px;">
+                    <td>GRAND TOTAL</td>
+                    <td>645</td>
+                    <td>60</td>
+                    <td>9%</td>
+                    <td>41</td>
+                    <td>68%</td>
+                    <td>91</td>
+                    <td>11</td>
+                    <td>12%</td>
+                    <td>64</td>
+                    <td>0</td>
+                    <td>0%</td>
+                    <td>18%</td>
+                    <td>0%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+                <!-- <div class="chart-container">
                     <canvas id="enquiriesSalesChart"></canvas>
-                </div>
+                </div> -->
             </div>
         </div>
         
@@ -593,6 +736,11 @@
                 <h3>Sales by Vehicle Type</h3>
             </div>
             <div class="chart-container">
+                <div class="chart-controls">
+                    <button class="chart-control-btn">Booking</button>
+                    <button class="chart-control-btn">Enquiry</button>
+                    <button class="chart-control-btn">Retail</button>
+                </div>
                 <canvas id="vehicleTypeChart"></canvas>
             </div>
         </div>
@@ -601,59 +749,108 @@
             <h3>Sales Executive Performance</h3>
             <div class="table-container">
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Sales Target</th>
-                            <th>Achieved</th>
-                            <th>Achievement %</th>
-                            <th>Revenue Generated</th>
-                            <th>Commission Earned</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>David Kim</td>
-                            <td>30</td>
-                            <td>38</td>
-                            <td>126.7%</td>
-                            <td>&#8377;1,482,000</td>
-                            <td>&#8377;44,460</td>
-                        </tr>
-                        <tr>
-                            <td>Lisa Carter</td>
-                            <td>30</td>
-                            <td>32</td>
-                            <td>106.7%</td>
-                            <td>&#8377;1,256,000</td>
-                            <td>&#8377;37,680</td>
-                        </tr>
-                        <tr>
-                            <td>Marcus Johnson</td>
-                            <td>25</td>
-                            <td>28</td>
-                            <td>112.0%</td>
-                            <td>&#8377;1,078,000</td>
-                            <td>&#8377;32,340</td>
-                        </tr>
-                        <tr>
-                            <td>Jennifer Thompson</td>
-                            <td>25</td>
-                            <td>22</td>
-                            <td>88.0%</td>
-                            <td>&#8377;841,000</td>
-                            <td>&#8377;25,230</td>
-                        </tr>
-                        <tr>
-                            <td>Carlos Rodriguez</td>
-                            <td>20</td>
-                            <td>19</td>
-                            <td>95.0%</td>
-                            <td>&#8377;722,000</td>
-                            <td>&#8377;21,660</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <tr>
+            <th rowspan="2">KEC'S</th>
+            <th colspan="3" class="main-header">ENQUIRY</th>
+            <th rowspan="2">TD</th>
+            <th rowspan="2">TD%</th>
+            <th colspan="3" class="main-header">BOOKING</th>
+            <th colspan="3" class="main-header">RETAILS</th>
+            <th rowspan="2">E-B</th>
+            <th rowspan="2">B-R</th>
+        </tr>
+        <tr>
+            <th class="column-header">TGT</th>
+            <th class="column-header">ACH</th>
+            <th class="column-header">%</th>
+            <th class="column-header">TGT</th>
+            <th class="column-header">ACH</th>
+            <th class="column-header">%</th>
+            <th class="column-header">TGT</th>
+            <th class="column-header">ACH</th>
+            <th class="column-header">%</th>
+        </tr>
+        <tr>
+            <td>David Kim</td>
+            <td>30</td>
+            <td>38</td>
+            <td class="green">126.7%</td>
+            <td>28</td>
+            <td class="green">93%</td>
+            <td>20</td>
+            <td>22</td>
+            <td class="green">110%</td>
+            <td>15</td>
+            <td>17</td>
+            <td class="green">113%</td>
+            <td>73%</td>
+            <td>77%</td>
+        </tr>
+        <tr>
+            <td>Lisa Carter</td>
+            <td>30</td>
+            <td>32</td>
+            <td class="green">106.7%</td>
+            <td>25</td>
+            <td class="green">78%</td>
+            <td>18</td>
+            <td>15</td>
+            <td class="yellow">83%</td>
+            <td>12</td>
+            <td>10</td>
+            <td class="yellow">83%</td>
+            <td>60%</td>
+            <td>67%</td>
+        </tr>
+        <tr>
+            <td>Marcus Johnson</td>
+            <td>25</td>
+            <td>28</td>
+            <td class="green">112.0%</td>
+            <td>20</td>
+            <td class="green">71%</td>
+            <td>15</td>
+            <td>12</td>
+            <td class="yellow">80%</td>
+            <td>10</td>
+            <td>8</td>
+            <td class="yellow">80%</td>
+            <td>60%</td>
+            <td>67%</td>
+        </tr>
+        <tr>
+            <td>Jennifer Thompson</td>
+            <td>25</td>
+            <td>22</td>
+            <td class="yellow">88.0%</td>
+            <td>18</td>
+            <td class="yellow">82%</td>
+            <td>12</td>
+            <td>8</td>
+            <td class="red">67%</td>
+            <td>8</td>
+            <td>5</td>
+            <td class="red">63%</td>
+            <td>48%</td>
+            <td>63%</td>
+        </tr>
+        <tr>
+            <td>Carlos Rodriguez</td>
+            <td>20</td>
+            <td>19</td>
+            <td class="yellow">95.0%</td>
+            <td>15</td>
+            <td class="yellow">79%</td>
+            <td>10</td>
+            <td>7</td>
+            <td class="red">70%</td>
+            <td>7</td>
+            <td>4</td>
+            <td class="red">57%</td>
+            <td>47%</td>
+            <td>57%</td>
+        </tr>
+    </table>
             </div>
         </div>
     </section>
@@ -775,7 +972,7 @@
             </div>
         </div>
 
-        <div class="dashboard-grid">
+        <!-- <div class="dashboard-grid">
             <div class="card chart-card">
                 <div class="chart-card-header">
                     <h3>Customer Satisfaction Scores</h3>
@@ -792,65 +989,173 @@
                     <canvas id="pricingChart"></canvas>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="card">
             <h3>Competitor Performance Metrics</h3>
             <div class="table-container">
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Brand</th>
-                            <th>Market Share</th>
-                            <th>YoY Growth</th>
-                            <th>Avg. Price Point</th>
-                            <th>Customer Satisfaction</th>
-                            <th>Brand Reputation</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>KIA</td>
-                            <td>8.2%</td>
-                            <td>↑ 1.3%</td>
-                            <td>&#8377;38,750</td>
-                            <td>4.8/5</td>
-                            <td>8.4/10</td>
-                        </tr>
-                        <tr>
-                            <td>Competitor A</td>
-                            <td>11.4%</td>
-                            <td>↑ 0.8%</td>
-                            <td>&#8377;42,300</td>
-                            <td>4.6/5</td>
-                            <td>8.7/10</td>
-                        </tr>
-                        <tr>
-                            <td>Competitor B</td>
-                            <td>9.8%</td>
-                            <td>↓ 0.2%</td>
-                            <td>&#8377;39,100</td>
-                            <td>4.5/5</td>
-                            <td>8.5/10</td>
-                        </tr>
-                        <tr>
-                            <td>Competitor C</td>
-                            <td>7.1%</td>
-                            <td>↑ 1.1%</td>
-                            <td>&#8377;36,900</td>
-                            <td>4.7/5</td>
-                            <td>8.2/10</td>
-                        </tr>
-                        <tr>
-                            <td>Competitor D</td>
-                            <td>9.2%</td>
-                            <td>↑ 0.5%</td>
-                            <td>&#8377;41,200</td>
-                            <td>4.5/5</td>
-                            <td>8.8/10</td>
-                        </tr>
-                    </tbody>
-                </table>
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Manufacturer</th>
+            <th>JAN</th>
+            <th>FEB</th>
+            <th>MAR</th>
+            <th>APR</th>
+            <th>MAY</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>HONDA CARS INDIA LTD</td>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+            <td>0</td>
+            <td>0</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>HYUNDAI MOTOR INDIA LTD KIA INDIA</td>
+            <td>35</td>
+            <td>25</td>
+            <td>35</td>
+            <td>33</td>
+            <td>0</td>
+            <td>128</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>PRIVATE LIMITED MAHINDRA</td>
+            <td>13</td>
+            <td>8</td>
+            <td>13</td>
+            <td>9</td>
+            <td>0</td>
+            <td>43</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>MAHINDRA & MAHINDRA LIMITED (MARUTI)</td>
+            <td>44</td>
+            <td>30</td>
+            <td>30</td>
+            <td>33</td>
+            <td>0</td>
+            <td>137</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>SUZUKI INDIA LTD</td>
+            <td>140</td>
+            <td>123</td>
+            <td>93</td>
+            <td>116</td>
+            <td>0</td>
+            <td>472</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>MG MOTOR INDIA PVT</td>
+            <td>1</td>
+            <td>1</td>
+            <td>3</td>
+            <td>2</td>
+            <td>0</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>NISSAN MOTOR INDIA PVT LTD</td>
+            <td>1</td>
+            <td>2</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>RENAULT INDIA PVT LTD</td>
+            <td>2</td>
+            <td>3</td>
+            <td>2</td>
+            <td>0</td>
+            <td>0</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>SKODA AUTO VOLKSWAGEN INDIA PVT LTD</td>
+            <td>5</td>
+            <td>7</td>
+            <td>3</td>
+            <td>6</td>
+            <td>0</td>
+            <td>21</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>TATA MOTORS PASSENGER VEHICLES LTD</td>
+            <td>47</td>
+            <td>35</td>
+            <td>47</td>
+            <td>38</td>
+            <td>0</td>
+            <td>167</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>TATA PASSENGER ELECTRIC MOBILITY LTD</td>
+            <td>4</td>
+            <td>1</td>
+            <td>2</td>
+            <td>1</td>
+            <td>0</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>TOYOTA KIRLOSKAR MOTOR PVT LTD</td>
+            <td>26</td>
+            <td>26</td>
+            <td>17</td>
+            <td>26</td>
+            <td>0</td>
+            <td>95</td>
+        </tr>
+        <tr class="bg-warning font-weight-bold">
+            <td colspan="2" style="vertical-align: middle; text-align: center;">
+                <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                    <span><strong>Total</strong></span>
+                </div>
+            </td>
+            <td style="text-align: center; vertical-align: middle;">319</td>
+            <td style="text-align: center; vertical-align: middle;">262</td>
+            <td style="text-align: center; vertical-align: middle;">252</td>
+            <td style="text-align: center; vertical-align: middle;">264</td>
+            <td style="text-align: center; vertical-align: middle;">0</td>
+            <td style="text-align: center; vertical-align: middle;">1097</td>
+        </tr>
+        <tr class="bg-info text-white">
+            <td colspan="2" style="vertical-align: middle; text-align: center;">
+                <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                    <span><strong>% Share</strong></span>
+                </div>
+            </td>
+            <td style="text-align: center; vertical-align: middle;">29%</td>
+            <td style="text-align: center; vertical-align: middle;">24%</td>
+            <td style="text-align: center; vertical-align: middle;">23%</td>
+            <td style="text-align: center; vertical-align: middle;">24%</td>
+            <td style="text-align: center; vertical-align: middle;">0%</td>
+            <td style="text-align: center; vertical-align: middle;">100%</td>
+        </tr>
+    </tbody>
+</table>
             </div>
         </div>
     </section>
@@ -946,6 +1251,791 @@
             </div>
         </div>
     </section>
+    <!-- Annual Targets Section -->
+<section id="annual-targets" class="dashboard-section">
+    <div class="section-header">
+        <h1>Annual Targets</h1>
+        <p>Company Target Plans for Calendar Years</p>
+    </div>
+
+    <!-- Wholesale Plan -->
+    <div class="card">
+        <h3>Wholesale Plan</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>CY'23</th>
+                        <th>CY'24</th>
+                        <th>CY'25</th>
+                        <th>January</th>
+                        <th>February</th>
+                        <th>March</th>
+                        <th>April</th>
+                        <th>May</th>
+                        <th>June</th>
+                        <th>July</th>
+                        <th>August</th>
+                        <th>September</th>
+                        <th>October</th>
+                        <th>November</th>
+                        <th>December</th>
+                        <th>Gr Vs CY24</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Seltos</td>
+                        <td>1240</td>
+                        <td>1480</td>
+                        <td>1720</td>
+                        <td>135</td>
+                        <td>140</td>
+                        <td>145</td>
+                        <td>140</td>
+                        <td>145</td>
+                        <td>150</td>
+                        <td>145</td>
+                        <td>150</td>
+                        <td>155</td>
+                        <td>140</td>
+                        <td>135</td>
+                        <td>140</td>
+                        <td>16.2%</td>
+                    </tr>
+                    <tr>
+                        <td>Sonet</td>
+                        <td>980</td>
+                        <td>1150</td>
+                        <td>1320</td>
+                        <td>105</td>
+                        <td>110</td>
+                        <td>115</td>
+                        <td>110</td>
+                        <td>115</td>
+                        <td>120</td>
+                        <td>110</td>
+                        <td>105</td>
+                        <td>110</td>
+                        <td>105</td>
+                        <td>110</td>
+                        <td>105</td>
+                        <td>14.8%</td>
+                    </tr>
+                    <tr>
+                        <td>Carens</td>
+                        <td>840</td>
+                        <td>960</td>
+                        <td>1080</td>
+                        <td>85</td>
+                        <td>90</td>
+                        <td>95</td>
+                        <td>90</td>
+                        <td>95</td>
+                        <td>90</td>
+                        <td>95</td>
+                        <td>90</td>
+                        <td>85</td>
+                        <td>90</td>
+                        <td>85</td>
+                        <td>90</td>
+                        <td>12.5%</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td><strong>Total</strong></td>
+                        <td><strong>3060</strong></td>
+                        <td><strong>3590</strong></td>
+                        <td><strong>4120</strong></td>
+                        <td><strong>325</strong></td>
+                        <td><strong>340</strong></td>
+                        <td><strong>355</strong></td>
+                        <td><strong>340</strong></td>
+                        <td><strong>355</strong></td>
+                        <td><strong>360</strong></td>
+                        <td><strong>350</strong></td>
+                        <td><strong>345</strong></td>
+                        <td><strong>350</strong></td>
+                        <td><strong>335</strong></td>
+                        <td><strong>330</strong></td>
+                        <td><strong>335</strong></td>
+                        <td><strong>14.8%</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Source Wise Enquiry Plan -->
+    <div class="card">
+        <h3>Source Wise Enquiry Plan</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Enquiry Source</th>
+                        <th>CY'23</th>
+                        <th>CY'24</th>
+                        <th>CY'25</th>
+                        <th>January</th>
+                        <th>February</th>
+                        <th>March</th>
+                        <th>April</th>
+                        <th>May</th>
+                        <th>June</th>
+                        <th>July</th>
+                        <th>August</th>
+                        <th>September</th>
+                        <th>October</th>
+                        <th>November</th>
+                        <th>December</th>
+                        <th>Gr Vs CY24</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Showroom Walk-in</td>
+                        <td>3240</td>
+                        <td>3780</td>
+                        <td>4320</td>
+                        <td>350</td>
+                        <td>365</td>
+                        <td>370</td>
+                        <td>360</td>
+                        <td>365</td>
+                        <td>370</td>
+                        <td>365</td>
+                        <td>360</td>
+                        <td>355</td>
+                        <td>350</td>
+                        <td>345</td>
+                        <td>365</td>
+                        <td>14.3%</td>
+                    </tr>
+                    <tr>
+                        <td>Digital/Website</td>
+                        <td>2850</td>
+                        <td>3420</td>
+                        <td>4275</td>
+                        <td>345</td>
+                        <td>350</td>
+                        <td>365</td>
+                        <td>355</td>
+                        <td>360</td>
+                        <td>370</td>
+                        <td>365</td>
+                        <td>360</td>
+                        <td>355</td>
+                        <td>350</td>
+                        <td>345</td>
+                        <td>355</td>
+                        <td>25.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Referrals</td>
+                        <td>1740</td>
+                        <td>1920</td>
+                        <td>2280</td>
+                        <td>185</td>
+                        <td>190</td>
+                        <td>195</td>
+                        <td>190</td>
+                        <td>195</td>
+                        <td>200</td>
+                        <td>195</td>
+                        <td>190</td>
+                        <td>185</td>
+                        <td>180</td>
+                        <td>185</td>
+                        <td>190</td>
+                        <td>18.8%</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td><strong>Total</strong></td>
+                        <td><strong>7830</strong></td>
+                        <td><strong>9120</strong></td>
+                        <td><strong>10875</strong></td>
+                        <td><strong>880</strong></td>
+                        <td><strong>905</strong></td>
+                        <td><strong>930</strong></td>
+                        <td><strong>905</strong></td>
+                        <td><strong>920</strong></td>
+                        <td><strong>940</strong></td>
+                        <td><strong>925</strong></td>
+                        <td><strong>910</strong></td>
+                        <td><strong>895</strong></td>
+                        <td><strong>880</strong></td>
+                        <td><strong>875</strong></td>
+                        <td><strong>910</strong></td>
+                        <td><strong>19.2%</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Enquiry Plan -->
+    <div class="card">
+        <h3>Enquiry Plan</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>CY'23</th>
+                        <th>CY'24</th>
+                        <th>CY'25</th>
+                        <th>January</th>
+                        <th>February</th>
+                        <th>March</th>
+                        <th>April</th>
+                        <th>May</th>
+                        <th>June</th>
+                        <th>July</th>
+                        <th>August</th>
+                        <th>September</th>
+                        <th>October</th>
+                        <th>November</th>
+                        <th>December</th>
+                        <th>Gr Vs CY24</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Seltos</td>
+                        <td>3150</td>
+                        <td>3720</td>
+                        <td>4650</td>
+                        <td>380</td>
+                        <td>390</td>
+                        <td>395</td>
+                        <td>385</td>
+                        <td>390</td>
+                        <td>395</td>
+                        <td>390</td>
+                        <td>385</td>
+                        <td>380</td>
+                        <td>385</td>
+                        <td>380</td>
+                        <td>395</td>
+                        <td>25.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Sonet</td>
+                        <td>2640</td>
+                        <td>3120</td>
+                        <td>3720</td>
+                        <td>300</td>
+                        <td>310</td>
+                        <td>315</td>
+                        <td>310</td>
+                        <td>315</td>
+                        <td>320</td>
+                        <td>315</td>
+                        <td>310</td>
+                        <td>305</td>
+                        <td>310</td>
+                        <td>305</td>
+                        <td>305</td>
+                        <td>19.2%</td>
+                    </tr>
+                    <tr>
+                        <td>Carens</td>
+                        <td>2040</td>
+                        <td>2280</td>
+                        <td>2505</td>
+                        <td>200</td>
+                        <td>205</td>
+                        <td>220</td>
+                        <td>210</td>
+                        <td>215</td>
+                        <td>225</td>
+                        <td>220</td>
+                        <td>215</td>
+                        <td>210</td>
+                        <td>205</td>
+                        <td>190</td>
+                        <td>190</td>
+                        <td>9.9%</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td><strong>Total</strong></td>
+                        <td><strong>7830</strong></td>
+                        <td><strong>9120</strong></td>
+                        <td><strong>10875</strong></td>
+                        <td><strong>880</strong></td>
+                        <td><strong>905</strong></td>
+                        <td><strong>930</strong></td>
+                        <td><strong>905</strong></td>
+                        <td><strong>920</strong></td>
+                        <td><strong>940</strong></td>
+                        <td><strong>925</strong></td>
+                        <td><strong>910</strong></td>
+                        <td><strong>895</strong></td>
+                        <td><strong>900</strong></td>
+                        <td><strong>875</strong></td>
+                        <td><strong>890</strong></td>
+                        <td><strong>19.2%</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Exchange Volumes Plan -->
+    <div class="card">
+        <h3>Exchange Volumes Plan</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>CY'23</th>
+                        <th>CY'24</th>
+                        <th>CY'25</th>
+                        <th>January</th>
+                        <th>February</th>
+                        <th>March</th>
+                        <th>April</th>
+                        <th>May</th>
+                        <th>June</th>
+                        <th>July</th>
+                        <th>August</th>
+                        <th>September</th>
+                        <th>October</th>
+                        <th>November</th>
+                        <th>December</th>
+                        <th>Gr Vs CY24</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Seltos</td>
+                        <td>420</td>
+                        <td>480</td>
+                        <td>576</td>
+                        <td>46</td>
+                        <td>48</td>
+                        <td>50</td>
+                        <td>48</td>
+                        <td>50</td>
+                        <td>48</td>
+                        <td>50</td>
+                        <td>48</td>
+                        <td>46</td>
+                        <td>48</td>
+                        <td>46</td>
+                        <td>48</td>
+                        <td>20.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Sonet</td>
+                        <td>360</td>
+                        <td>408</td>
+                        <td>480</td>
+                        <td>38</td>
+                        <td>40</td>
+                        <td>42</td>
+                        <td>40</td>
+                        <td>42</td>
+                        <td>40</td>
+                        <td>42</td>
+                        <td>40</td>
+                        <td>38</td>
+                        <td>40</td>
+                        <td>38</td>
+                        <td>40</td>
+                        <td>17.6%</td>
+                    </tr>
+                    <tr>
+                        <td>Carens</td>
+                        <td>240</td>
+                        <td>288</td>
+                        <td>336</td>
+                        <td>26</td>
+                        <td>28</td>
+                        <td>30</td>
+                        <td>28</td>
+                        <td>30</td>
+                        <td>28</td>
+                        <td>30</td>
+                        <td>28</td>
+                        <td>26</td>
+                        <td>28</td>
+                        <td>26</td>
+                        <td>28</td>
+                        <td>16.7%</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td><strong>Total</strong></td>
+                        <td><strong>1020</strong></td>
+                        <td><strong>1176</strong></td>
+                        <td><strong>1392</strong></td>
+                        <td><strong>110</strong></td>
+                        <td><strong>116</strong></td>
+                        <td><strong>122</strong></td>
+                        <td><strong>116</strong></td>
+                        <td><strong>122</strong></td>
+                        <td><strong>116</strong></td>
+                        <td><strong>122</strong></td>
+                        <td><strong>116</strong></td>
+                        <td><strong>110</strong></td>
+                        <td><strong>116</strong></td>
+                        <td><strong>110</strong></td>
+                        <td><strong>116</strong></td>
+                        <td><strong>18.4%</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Accessories Plan -->
+    <div class="card">
+        <h3>Accessories Plan</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>CY'23</th>
+                        <th>CY'24</th>
+                        <th>CY'25</th>
+                        <th>January</th>
+                        <th>February</th>
+                        <th>March</th>
+                        <th>April</th>
+                        <th>May</th>
+                        <th>June</th>
+                        <th>July</th>
+                        <th>August</th>
+                        <th>September</th>
+                        <th>October</th>
+                        <th>November</th>
+                        <th>December</th>
+                        <th>Gr Vs CY24</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Seltos</td>
+                        <td>12,40,000</td>
+                        <td>14,80,000</td>
+                        <td>17,20,000</td>
+                        <td>1,35,000</td>
+                        <td>1,40,000</td>
+                        <td>1,45,000</td>
+                        <td>1,40,000</td>
+                        <td>1,45,000</td>
+                        <td>1,50,000</td>
+                        <td>1,45,000</td>
+                        <td>1,50,000</td>
+                        <td>1,55,000</td>
+                        <td>1,40,000</td>
+                        <td>1,35,000</td>
+                        <td>1,40,000</td>
+                        <td>16.2%</td>
+                    </tr>
+                    <tr>
+                        <td>Sonet</td>
+                        <td>9,80,000</td>
+                        <td>11,50,000</td>
+                        <td>13,20,000</td>
+                        <td>1,05,000</td>
+                        <td>1,10,000</td>
+                        <td>1,15,000</td>
+                        <td>1,10,000</td>
+                        <td>1,15,000</td>
+                        <td>1,20,000</td>
+                        <td>1,10,000</td>
+                        <td>1,05,000</td>
+                        <td>1,10,000</td>
+                        <td>1,05,000</td>
+                        <td>1,10,000</td>
+                        <td>1,05,000</td>
+                        <td>14.8%</td>
+                    </tr>
+                    <tr>
+                        <td>Carens</td>
+                        <td>8,40,000</td>
+                        <td>9,60,000</td>
+                        <td>10,80,000</td>
+                        <td>85,000</td>
+                        <td>90,000</td>
+                        <td>95,000</td>
+                        <td>90,000</td>
+                        <td>95,000</td>
+                        <td>90,000</td>
+                        <td>95,000</td>
+                        <td>90,000</td>
+                        <td>85,000</td>
+                        <td>90,000</td>
+                        <td>85,000</td>
+                        <td>90,000</td>
+                        <td>12.5%</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td><strong>Total</strong></td>
+                        <td><strong>30,60,000</strong></td>
+                        <td><strong>35,90,000</strong></td>
+                        <td><strong>41,20,000</strong></td>
+                        <td><strong>3,25,000</strong></td>
+                        <td><strong>3,40,000</strong></td>
+                        <td><strong>3,55,000</strong></td>
+                        <td><strong>3,40,000</strong></td>
+                        <td><strong>3,55,000</strong></td>
+                        <td><strong>3,60,000</strong></td>
+                        <td><strong>3,50,000</strong></td>
+                        <td><strong>3,45,000</strong></td>
+                        <td><strong>3,50,000</strong></td>
+                        <td><strong>3,35,000</strong></td>
+                        <td><strong>3,30,000</strong></td>
+                        <td><strong>3,35,000</strong></td>
+                        <td><strong>14.8%</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Kia Finance Plan -->
+    <div class="card">
+        <h3>Kia Finance Plan (Tie Up)</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>KIA Finance</th>
+                        <th>CY'23</th>
+                        <th>CY'24</th>
+                        <th>CY'25</th>
+                        <th>January</th>
+                        <th>February</th>
+                        <th>March</th>
+                        <th>April</th>
+                        <th>May</th>
+                        <th>June</th>
+                        <th>July</th>
+                        <th>August</th>
+                        <th>September</th>
+                        <th>October</th>
+                        <th>November</th>
+                        <th>December</th>
+                        <th>Gr Vs CY24</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HDFC Bank</td>
+                        <td>1020</td>
+                        <td>1176</td>
+                        <td>1380</td>
+                        <td>110</td>
+                        <td>115</td>
+                        <td>120</td>
+                        <td>115</td>
+                        <td>120</td>
+                        <td>125</td>
+                        <td>120</td>
+                        <td>115</td>
+                        <td>110</td>
+                        <td>115</td>
+                        <td>110</td>
+                        <td>105</td>
+                        <td>17.3%</td>
+                    </tr>
+                    <tr>
+                        <td>ICICI Bank</td>
+                        <td>840</td>
+                        <td>960</td>
+                        <td>1080</td>
+                        <td>85</td>
+                        <td>90</td>
+                        <td>95</td>
+                        <td>90</td>
+                        <td>95</td>
+                        <td>95</td>
+                        <td>90</td>
+                        <td>85</td>
+                        <td>90</td>
+                        <td>95</td>
+                        <td>85</td>
+                        <td>85</td>
+                        <td>12.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Axis Bank</td>
+                        <td>600</td>
+                        <td>720</td>
+                        <td>840</td>
+                        <td>65</td>
+                        <td>70</td>
+                        <td>75</td>
+                        <td>70</td>
+                        <td>75</td>
+                        <td>70</td>
+                        <td>75</td>
+                        <td>70</td>
+                        <td>65</td>
+                        <td>70</td>
+                        <td>65</td>
+                        <td>70</td>
+                        <td>16.7%</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td><strong>Total</strong></td>
+                        <td><strong>2460</strong></td>
+                        <td><strong>2856</strong></td>
+                        <td><strong>3300</strong></td>
+                        <td><strong>260</strong></td>
+                        <td><strong>275</strong></td>
+                        <td><strong>290</strong></td>
+                        <td><strong>275</strong></td>
+                        <td><strong>290</strong></td>
+                        <td><strong>290</strong></td>
+                        <td><strong>285</strong></td>
+                        <td><strong>270</strong></td>
+                        <td><strong>265</strong></td>
+                        <td><strong>280</strong></td>
+                        <td><strong>260</strong></td>
+                        <td><strong>260</strong></td>
+                        <td><strong>15.5%</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- CSS for Annual Targets Section (Add this to your existing CSS or inline) -->
+<style>
+    .total-row {
+        background-color: #f5f7fa;
+        font-weight: 500;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+        margin-top: 1rem;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.85rem;
+    }
+    
+    th, td {
+        padding: 0.6rem;
+        text-align: center;
+        border-bottom: 1px solid #e1e5eb;
+    }
+    
+    th {
+        background-color: #f5f7fa;
+        font-weight: 600;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    
+    tr:hover {
+        background-color: #f9fafc;
+    }
+    
+    td:first-child, th:first-child {
+        text-align: left;
+        position: sticky;
+        left: 0;
+        background-color: #fff;
+        z-index: 5;
+    }
+    
+    .total-row td:first-child {
+        background-color: #f5f7fa;
+    }
+    
+    tr:hover td:first-child {
+        background-color: #f5f7fa;
+    }
+
+    /* table {
+            border-collapse: collapse;
+            width: 100%;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 5px;
+            font-size: 12px;
+        } */
+        /* th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        } */
+        .red {
+            background-color: #ffb3b3;
+        }
+        .yellow {
+            background-color: #ffffb3;
+        }
+        .green {
+            background-color: #b3ffb3;
+        }
+        .orange {
+            background-color: #ffcc99;
+        }
+        .column-header {
+            text-align: center;
+            font-weight: bold;
+            background-color: #f2f2f2;
+        }
+        .main-header {
+            text-align: center;
+            font-weight: bold;
+            background-color: #e6e6e6;
+        }
+
+</style>
+
+<!-- Update the nav item href to point to the correct section -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Update the Annual Targets link in the navigation
+    const annualTargetsLink = document.querySelector('.nav-item a[data-section="predictive"]');
+    if (annualTargetsLink) {
+        annualTargetsLink.href = "#annual-targets";
+        annualTargetsLink.setAttribute('data-section', 'annual-targets');
+    }
+    
+    // Add event listener for this section
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const sectionId = this.getAttribute('data-section');
+            if (sectionId) {
+                // Hide all sections
+                document.querySelectorAll('.dashboard-section').forEach(section => {
+                    section.classList.remove('active-section');
+                });
+                
+                // Show selected section
+                const selectedSection = document.getElementById(sectionId) || document.getElementById('annual-targets');
+                if (selectedSection) {
+                    selectedSection.classList.add('active-section');
+                }
+                
+                // Update active state in navigation
+                document.querySelectorAll('.nav-link').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                this.classList.add('active');
+            }
+        });
+    });
+});
+</script>
 </div>
 
 
