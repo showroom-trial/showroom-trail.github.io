@@ -12,16 +12,30 @@
 </head>
 <body>
     <!-- Mobile Toggle Button -->
-    <button class="toggle-btn">
+    <!-- <button class="toggle-btn">
         <i class="fas fa-bars"></i>
-    </button>
+    </button> -->
+    <header class="mobile-header" id="mobileHeader">
+        <div class="mobile-header-content">
+            <div class="logo-container">
+                <img src="kia-logo.png" alt="KIA Logo" class="mobile-logo">
+            </div>
+            <button class="toggle-btn" id="mobileNavToggle">☰</button>
+        </div>
+    </header>
     
+    <!-- <div class="top-section">
+        <div class="top-section-right">
+            <img src="kia-logo.png" alt="KIA Logo" class="header-logo">
+        </div>
+    </div> -->
+
     <!-- Dashboard Container -->
     <div class="dashboard-container">
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="sidebar-header">
-            <!-- <div class="logo-container">
+               <!-- <div class="logo-container">
                     <div class="logo">KIA</div>
                     <div class="dashboard-type">Team Lead Dashboard</div>
                 </div>-->
@@ -46,6 +60,10 @@
                 <a href="#" data-section="followups-section">
                     <i class="fas fa-phone"></i> Follow-ups
                 </a>
+                <a href="#" data-section="etbr-section">
+                    <i class="fas fa-table"></i> ETBR
+                </a>
+
                 <a href="#" data-section="addons-section">
                     <i class="fas fa-tags"></i> Add-ons Performance
                 </a>
@@ -70,7 +88,7 @@
         <!-- KIA Logo -->
 <div class="kia-logo-container">
     <img src="kia-logo.png" alt="KIA Logo" class="kia-logo">
-</div>
+</div> 
         <!-- Main Content -->
         <div class="main-content">
             <!-- 1. Lead Allocation Section -->
@@ -201,6 +219,7 @@
                         <thead>
                             <tr>
                                 <th>Customer Name</th>
+                                <th>Customer ID</th>
                                 <th>Contact</th>
                                 <th>Lead Source</th>
                                 <th>Interested Model</th>
@@ -213,15 +232,17 @@
                         <tbody>
                             <tr id="lead-1">
                                 <td data-label="Customer Name">James Wilson</td>
+                                <td data-label="Customer ID">CUS-101</td>
                                 <td data-label="Contact">+1 234-567-8901</td>
                                 <td data-label="Lead Source" data-source="Website">Website</td>
                                 <td data-label="Interested Model">KIA Sportage</td>
                                 <td data-label="Assigned Executive" data-executive="Mark Wilson">Mark Wilson</td>
+                                <td data-label="Executive ID">EMP-2201</td>
                                 <td data-label="Last Update">10 Mar, 2025</td>
                                 <td data-label="Status">
-                                    <span class="status-badge status-new">New</span>
+                                    <span class="status-badge status-Hot">Hot</span>
                                 </td>
-                                <td data-label="Action">
+                                <!--<td data-label="Action">
                                     <select class="status-select">
                                         <option value="New" selected>New</option>
                                         <option value="In Progress">In Progress</option>
@@ -229,99 +250,21 @@
                                         <option value="Closed-Won">Closed-Won</option>
                                         <option value="Closed-Lost">Closed-Lost</option>
                                     </select>
-                                </td>
+                                </td>-->
                             </tr>
                             <tr id="lead-2">
                                 <td data-label="Customer Name">Emily Johnson</td>
+                                <td data-label="Customer ID">CUS-102</td>
                                 <td data-label="Contact">+1 234-567-8902</td>
                                 <td data-label="Lead Source" data-source="Walk-in">Walk-in</td>
                                 <td data-label="Interested Model">KIA EV6</td>
                                 <td data-label="Assigned Executive" data-executive="Sarah Davis">Sarah Davis</td>
+                                <td data-label="Executive ID">EMP-2202</td>
                                 <td data-label="Last Update">9 Mar, 2025</td>
                                 <td data-label="Status">
-                                    <span class="status-badge status-progress">In Progress</span>
+                                    <span class="status-badge status-Cold">Cold</span>
                                 </td>
-                                <td data-label="Action">
-                                    <select class="status-select">
-                                        <option value="New">New</option>
-                                        <option value="In Progress" selected>In Progress</option>
-                                        <option value="Follow-up">Follow-up</option>
-                                        <option value="Closed-Won">Closed-Won</option>
-                                        <option value="Closed-Lost">Closed-Lost</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr id="lead-3">
-                                <td data-label="Customer Name">David Brown</td>
-                                <td data-label="Contact">+1 234-567-8903</td>
-                                <td data-label="Lead Source" data-source="Referral">Referral</td>
-                                <td data-label="Interested Model">KIA Telluride</td>
-                                <td data-label="Assigned Executive" data-executive="Robert Johnson">Robert Johnson</td>
-                                <td data-label="Last Update">8 Mar, 2025</td>
-                                <td data-label="Status">
-                                    <span class="status-badge status-followup">Follow-up</span>
-                                </td>
-                                <td data-label="Action">
-                                    <select class="status-select">
-                                        <option value="New">New</option>
-                                        <option value="In Progress">In Progress</option>
-                                        <option value="Follow-up" selected>Follow-up</option>
-                                        <option value="Closed-Won">Closed-Won</option>
-                                        <option value="Closed-Lost">Closed-Lost</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr id="lead-4">
-                                <td data-label="Customer Name">Sarah Miller</td>
-                                <td data-label="Contact">+1 234-567-8904</td>
-                                <td data-label="Lead Source" data-source="Social Media">Social Media</td>
-                                <td data-label="Interested Model">KIA Sorento</td>
-                                <td data-label="Assigned Executive" data-executive="Jennifer Adams">Jennifer Adams</td>
-                                <td data-label="Last Update">7 Mar, 2025</td>
-                                <td data-label="Status">
-                                    <span class="status-badge status-won">Closed-Won</span>
-                                </td>
-                                <td data-label="Action">
-                                    <select class="status-select">
-                                        <option value="New">New</option>
-                                        <option value="In Progress">In Progress</option>
-                                        <option value="Follow-up">Follow-up</option>
-                                        <option value="Closed-Won" selected>Closed-Won</option>
-                                        <option value="Closed-Lost">Closed-Lost</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr id="lead-5">
-                                <td data-label="Customer Name">Michael Thompson</td>
-                                <td data-label="Contact">+1 234-567-8905</td>
-                                <td data-label="Lead Source" data-source="Website">Website</td>
-                                <td data-label="Interested Model">KIA K5</td>
-                                <td data-label="Assigned Executive" data-executive="Michael Carter">Michael Carter</td>
-                                <td data-label="Last Update">6 Mar, 2025</td>
-                                <td data-label="Status">
-                                    <span class="status-badge status-lost">Closed-Lost</span>
-                                </td>
-                                <td data-label="Action">
-                                    <select class="status-select">
-                                        <option value="New">New</option>
-                                        <option value="In Progress">In Progress</option>
-                                        <option value="Follow-up">Follow-up</option>
-                                        <option value="Closed-Won">Closed-Won</option>
-                                        <option value="Closed-Lost" selected>Closed-Lost</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr id="lead-6">
-                                <td data-label="Customer Name">Jessica Taylor</td>
-                                <td data-label="Contact">+1 234-567-8906</td>
-                                <td data-label="Lead Source" data-source="Walk-in">Walk-in</td>
-                                <td data-label="Interested Model">KIA Sportage</td>
-                                <td data-label="Assigned Executive" data-executive="Mark Wilson">Mark Wilson</td>
-                                <td data-label="Last Update">10 Mar, 2025</td>
-                                <td data-label="Status">
-                                    <span class="status-badge status-new">New</span>
-                                </td>
-                                <td data-label="Action">
+                                <!--<td data-label="Action">
                                     <select class="status-select">
                                         <option value="New" selected>New</option>
                                         <option value="In Progress">In Progress</option>
@@ -329,27 +272,117 @@
                                         <option value="Closed-Won">Closed-Won</option>
                                         <option value="Closed-Lost">Closed-Lost</option>
                                     </select>
-                                </td>
+                                </td>-->
                             </tr>
-                            <tr id="lead-7">
-                                <td data-label="Customer Name">Daniel Harris</td>
-                                <td data-label="Contact">+1 234-567-8907</td>
+                            <tr id="lead-3">
+                                <td data-label="Customer Name">David Brown</td>
+                                <td data-label="Customer ID">CUS-103</td>
+                                <td data-label="Contact">+1 234-567-8903</td>
                                 <td data-label="Lead Source" data-source="Referral">Referral</td>
-                                <td data-label="Interested Model">KIA EV6</td>
-                                <td data-label="Assigned Executive" data-executive="Sarah Davis">Sarah Davis</td>
-                                <td data-label="Last Update">9 Mar, 2025</td>
+                                <td data-label="Interested Model">KIA Telluride</td>
+                                <td data-label="Assigned Executive" data-executive="Robert Johnson">Robert Johnson</td>
+                                <td data-label="Executive ID">EMP-2203</td>
+                                <td data-label="Last Update">8 Mar, 2025</td>
                                 <td data-label="Status">
-                                    <span class="status-badge status-progress">In Progress</span>
+                                    <span class="status-badge status-Cold">Cold</span>
                                 </td>
-                                <td data-label="Action">
+                               <!--<td data-label="Action">
                                     <select class="status-select">
-                                        <option value="New">New</option>
-                                        <option value="In Progress" selected>In Progress</option>
+                                        <option value="New" selected>New</option>
+                                        <option value="In Progress">In Progress</option>
                                         <option value="Follow-up">Follow-up</option>
                                         <option value="Closed-Won">Closed-Won</option>
                                         <option value="Closed-Lost">Closed-Lost</option>
                                     </select>
+                                </td>-->
+                            </tr>
+                            <tr id="lead-4">
+                                <td data-label="Customer Name">Sarah Miller</td>
+                                <td data-label="Customer ID">CUS-104</td>
+                                <td data-label="Contact">+1 234-567-8904</td>
+                                <td data-label="Lead Source" data-source="Social Media">Social Media</td>
+                                <td data-label="Interested Model">KIA Sorento</td>
+                                <td data-label="Assigned Executive" data-executive="Jennifer Adams">Jennifer Adams</td>
+                                <td data-label="Executive ID">EMP-2204</td>
+                                <td data-label="Last Update">7 Mar, 2025</td>
+                                <td data-label="Status">
+                                    <span class="status-badge status-Warm">Warm</span>
                                 </td>
+                                <!--<td data-label="Action">
+                                    <select class="status-select">
+                                        <option value="New" selected>New</option>
+                                        <option value="In Progress">In Progress</option>
+                                        <option value="Follow-up">Follow-up</option>
+                                        <option value="Closed-Won">Closed-Won</option>
+                                        <option value="Closed-Lost">Closed-Lost</option>
+                                    </select>
+                                </td>-->
+                            </tr>
+                            <tr id="lead-5">
+                                <td data-label="Customer Name">Michael Thompson</td>
+                                <td data-label="Customer ID">CUS-105</td>
+                                <td data-label="Contact">+1 234-567-8905</td>
+                                <td data-label="Lead Source" data-source="Website">Website</td>
+                                <td data-label="Interested Model">KIA K5</td>
+                                <td data-label="Assigned Executive" data-executive="Michael Carter">Michael Carter</td>
+                                <td data-label="Executive ID">EMP-2205</td>
+                                <td data-label="Last Update">6 Mar, 2025</td>
+                                <td data-label="Status">
+                                    <span class="status-badge status-Hot">Hot</span>
+                                </td>
+                                <!--<td data-label="Action">
+                                    <select class="status-select">
+                                        <option value="New" selected>New</option>
+                                        <option value="In Progress">In Progress</option>
+                                        <option value="Follow-up">Follow-up</option>
+                                        <option value="Closed-Won">Closed-Won</option>
+                                        <option value="Closed-Lost">Closed-Lost</option>
+                                    </select>
+                                </td>-->
+                            </tr>
+                            <tr id="lead-6">
+                                <td data-label="Customer Name">Jessica Taylor</td>
+                                <td data-label="Customer ID">CUS-106</td>
+                                <td data-label="Contact">+1 234-567-8906</td>
+                                <td data-label="Lead Source" data-source="Walk-in">Walk-in</td>
+                                <td data-label="Interested Model">KIA Sportage</td>
+                                <td data-label="Assigned Executive" data-executive="Mark Wilson">Mark Wilson</td>
+                                <td data-label="Executive ID">EMP-2201</td>
+                                <td data-label="Last Update">10 Mar, 2025</td>
+                                <td data-label="Status">
+                                    <span class="status-badge status-Cold">Cold</span>
+                                </td>
+                               <!--<td data-label="Action">
+                                    <select class="status-select">
+                                        <option value="New" selected>New</option>
+                                        <option value="In Progress">In Progress</option>
+                                        <option value="Follow-up">Follow-up</option>
+                                        <option value="Closed-Won">Closed-Won</option>
+                                        <option value="Closed-Lost">Closed-Lost</option>
+                                    </select>
+                                </td>-->
+                            </tr>
+                            <tr id="lead-7">
+                                <td data-label="Customer Name">Daniel Harris</td>
+                                <td data-label="Customer ID">CUS-107</td>
+                                <td data-label="Contact">+1 234-567-8907</td>
+                                <td data-label="Lead Source" data-source="Referral">Referral</td>
+                                <td data-label="Interested Model">KIA EV6</td>
+                                <td data-label="Assigned Executive" data-executive="Sarah Davis">Sarah Davis</td>
+                                <td data-label="Executive ID">EMP-2202</td>
+                                <td data-label="Last Update">9 Mar, 2025</td>
+                                <td data-label="Status">
+                                    <span class="status-badge status-Warm">Warm</span>
+                                </td>
+                                <!--<td data-label="Action">
+                                    <select class="status-select">
+                                        <option value="New" selected>New</option>
+                                        <option value="In Progress">In Progress</option>
+                                        <option value="Follow-up">Follow-up</option>
+                                        <option value="Closed-Won">Closed-Won</option>
+                                        <option value="Closed-Lost">Closed-Lost</option>
+                                    </select>
+                                </td>-->
                             </tr>
                         </tbody>
                     </table>
@@ -512,31 +545,144 @@
             
             <!-- Follow-ups Section -->
             <div class="dashboard-section" id="followups-section">
-                <div class="section-header">
-                    <h2>Follow-ups</h2>
-                </div>
-                
-                <div class="alert-container">
-                    <div class="alert-card urgent">
-                        <div class="alert-icon">
-                            <i class="fas fa-exclamation-circle"></i>
-                        </div>
-                        <div class="alert-content">
-                            <div class="alert-title">5 Urgent Follow-ups Due Today</div>
-                            <div class="alert-subtitle">Prioritize these customers</div>
-                        </div>
-                    </div>
-                    
-                    <div class="alert-card upcoming">
-                        <div class="alert-icon">
-                            <i class="fas fa-calendar-alt"></i>
-                        </div>
-                        <div class="alert-content">
-                            <div class="alert-title">12 Follow-ups Tomorrow</div>
-                            <div class="alert-subtitle">Prepare in advance</div>
-                        </div>
-                    </div>
-                </div>
+    <div class="section-header">
+        <h2>Follow-ups</h2>
+    </div>
+
+    <div class="alert-container">
+        <div class="alert-card urgent">
+            <div class="alert-icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="alert-content">
+                <div class="alert-title">5 Urgent Follow-ups Due Today</div>
+                <div class="alert-subtitle">Prioritize these customers</div>
+            </div>
+        </div>
+
+        <div class="alert-card upcoming">
+            <div class="alert-icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="alert-content">
+                <div class="alert-title">12 Follow-ups Tomorrow</div>
+                <div class="alert-subtitle">Prepare in advance</div>
+            </div>
+        </div>
+    </div>
+
+<style>
+/* General styling for the Follow-ups section */
+#followups-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Animation for the section */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Alert container styling */
+.alert-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Alert card styling */
+.alert-card {
+    flex: 1 1 calc(50% - 10px);
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover effect for alert cards */
+.alert-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Alert icon styling */
+.alert-icon {
+    flex: 0 0 auto;
+    font-size: 30px;
+    color: #f44336; /* Default color for urgent */
+    margin-right: 15px;
+    animation: pulse 1.5s infinite;
+}
+
+/* Pulse animation for icons */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Alert content styling */
+.alert-content {
+    flex: 1 1 auto;
+}
+
+/* Alert title styling */
+.alert-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Alert subtitle styling */
+.alert-subtitle {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Specific styles for urgent alerts */
+.alert-card.urgent .alert-icon {
+    color: #f44336; /* Red for urgent */
+}
+
+.alert-card.urgent .alert-title {
+    color: #f44336;
+}
+
+/* Specific styles for upcoming alerts */
+.alert-card.upcoming .alert-icon {
+    color: #4caf50; /* Green for upcoming */
+}
+
+.alert-card.upcoming .alert-title {
+    color: #4caf50;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .alert-card {
+        flex: 1 1 100%;
+    }
+}
+</style>
                 
                 <div class="table-container">
                     <div class="table-header">
@@ -806,7 +952,7 @@
                                 <th>Total Sales</th>
                                 <th>Leads Closed</th>
                                 <th>Conversion Rate</th>
-                                <th>Revenue Generated</th>
+                                <!--<th>Revenue Generated</th>-->
                                 <th>Add-ons Sold</th>
                                 <th>Customer Satisfaction</th>
                             </tr>
@@ -818,7 +964,7 @@
                                 <td data-label="Total Sales">16</td>
                                 <td data-label="Leads Closed">16/42</td>
                                 <td data-label="Conversion Rate">38%</td>
-                                <td data-label="Revenue Generated">$624,000</td>
+                               <!--<td data-label="Revenue Generated">$156,000</td>-->
                                 <td data-label="Add-ons Sold">61</td>
                                 <td data-label="Customer Satisfaction">4.8/5</td>
                             </tr>
@@ -828,7 +974,7 @@
                                 <td data-label="Total Sales">14</td>
                                 <td data-label="Leads Closed">14/40</td>
                                 <td data-label="Conversion Rate">35%</td>
-                                <td data-label="Revenue Generated">$546,000</td>
+                               <!--<td data-label="Revenue Generated">$156,000</td>-->
                                 <td data-label="Add-ons Sold">52</td>
                                 <td data-label="Customer Satisfaction">4.6/5</td>
                             </tr>
@@ -838,7 +984,7 @@
                                 <td data-label="Total Sales">12</td>
                                 <td data-label="Leads Closed">12/38</td>
                                 <td data-label="Conversion Rate">29%</td>
-                                <td data-label="Revenue Generated">$468,000</td>
+                               <!--<td data-label="Revenue Generated">$156,000</td>-->
                                 <td data-label="Add-ons Sold">44</td>
                                 <td data-label="Customer Satisfaction">4.5/5</td>
                             </tr>
@@ -848,7 +994,7 @@
                                 <td data-label="Total Sales">10</td>
                                 <td data-label="Leads Closed">10/36</td>
                                 <td data-label="Conversion Rate">27%</td>
-                                <td data-label="Revenue Generated">$390,000</td>
+                               <!--<td data-label="Revenue Generated">$156,000</td>-->
                                 <td data-label="Add-ons Sold">34</td>
                                 <td data-label="Customer Satisfaction">4.3/5</td>
                             </tr>
@@ -858,7 +1004,7 @@
                                 <td data-label="Total Sales">4</td>
                                 <td data-label="Leads Closed">4/24</td>
                                 <td data-label="Conversion Rate">16%</td>
-                                <td data-label="Revenue Generated">$156,000</td>
+                               <!--<td data-label="Revenue Generated">$156,000</td>-->
                                 <td data-label="Add-ons Sold">12</td>
                                 <td data-label="Customer Satisfaction">3.9/5</td>
                             </tr>
@@ -943,7 +1089,7 @@
                         </div>
                     </div>
                     <table id="feedback-table">
-                        <thead>
+                        <thead class="feedback-table-header">
                             <tr>
                                 <th>Customer</th>
                                 <th>Rating</th>
@@ -953,7 +1099,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="positive-feedback">
+                            <tr class="positive-feedback" style="background-color: rgba(76, 175, 80, 0.1);">
                                 <td data-label="Customer">John Smith</td>
                                 <td data-label="Rating">
                                     <div class="stars">⭐⭐⭐⭐⭐</div>
@@ -962,7 +1108,7 @@
                                 <td data-label="Date">Mar 9, 2025</td>
                                 <td data-label="Feedback">Mark was incredibly helpful and knowledgeable about all the KIA models. He made my buying experience stress-free and enjoyable.</td>
                             </tr>
-                            <tr class="positive-feedback">
+                            <tr class="positive-feedback" style="background-color: rgba(76, 175, 80, 0.1);">
                                 <td data-label="Customer">Amanda Jones</td>
                                 <td data-label="Rating">
                                     <div class="stars">⭐⭐⭐⭐</div>
@@ -971,7 +1117,7 @@
                                 <td data-label="Date">Mar 8, 2025</td>
                                 <td data-label="Feedback">Sarah was patient and took the time to understand exactly what I needed. She recommended the perfect car for my family.</td>
                             </tr>
-                            <tr class="neutral-feedback">
+                            <tr class="neutral-feedback" style="background-color: rgba(255, 193, 7, 0.1);">
                                 <td data-label="Customer">Robert Miller</td>
                                 <td data-label="Rating">
                                     <div class="stars">⭐⭐⭐</div>
@@ -980,7 +1126,7 @@
                                 <td data-label="Date">Mar 7, 2025</td>
                                 <td data-label="Feedback">The process was good overall, but I had to wait longer than expected for my test drive. Jennifer was knowledgeable though.</td>
                             </tr>
-                            <tr class="negative-feedback">
+                            <tr class="negative-feedback" style="background-color: rgba(244, 67, 54, 0.1);">
                                 <td data-label="Customer">Thomas Wright</td>
                                 <td data-label="Rating">
                                     <div class="stars">⭐⭐</div>
@@ -989,7 +1135,7 @@
                                 <td data-label="Date">Mar 5, 2025</td>
                                 <td data-label="Feedback">Michael seemed disinterested and didn't answer my questions thoroughly. I felt rushed through the process.</td>
                             </tr>
-                            <tr class="positive-feedback">
+                            <tr class="positive-feedback" style="background-color: rgba(76, 175, 80, 0.1);">
                                 <td data-label="Customer">Elizabeth Chen</td>
                                 <td data-label="Rating">
                                     <div class="stars">⭐⭐⭐⭐⭐</div>
@@ -1002,6 +1148,136 @@
                     </table>
                 </div>
             </div>
+            <!-- ETBR Section -->
+<div id="etbr-section" class="dashboard-section">
+    <div class="section-header">
+        <h1 class="section-title">Expected To Be Reported (ETBR)</h1>
+    </div>
+
+    <div class="cards-container">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Pending Reports</h3>
+            </div>
+            <div class="card-value">6</div>
+            <div class="card-subtitle">
+                <span class="trend-down">↓ 2 from last week</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Completed Reports</h3>
+            </div>
+            <div class="card-value">24</div>
+            <div class="card-subtitle">
+                <span class="trend-up">↑ 5 from last week</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Executives Reporting</h3>
+            </div>
+            <div class="card-value">6/8</div>
+            <div class="card-subtitle">
+                <span class="trend-up">Good Consistency</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Table: Team Members -->
+    <div class="table-container">
+        <div class="table-header">
+            <h3 class="table-title">Your Team's ETBR Details</h3>
+            <div class="table-actions">
+                <input type="file" id="excelFile" accept=".xlsx" class="dashboard-btn" />
+                <button class="export-btn" data-table="leads-table">
+                                <i class="fas fa-download"></i> Export
+                </button>
+            </div>
+        </div>
+        <table id="etbr-full-table">
+    <thead>
+        <tr>
+            <th>Executive</th>
+            <th>KEC'S</th>
+            <th>ENQUIRY</th>
+            <th>TGT</th>
+            <th>ACH</th>
+            <th>%</th>
+            <th>TD</th>
+            <th>TD%</th>
+            <th>BOOKING</th>
+            <th>TGT</th>
+            <th>%</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Shilpa</td><td>–</td><td>–</td><td>2</td><td>5</td><td>1</td><td>35</td><td>3</td><td>9%</td><td>2</td><td>67%</td></tr>
+        <tr><td>Prathap</td><td>–</td><td>–</td><td>1</td><td>4</td><td>1</td><td>50</td><td>9</td><td>18%</td><td>8</td><td>89%</td></tr>
+        <tr><td>Dhanush E</td><td>–</td><td>–</td><td>–</td><td>0</td><td>0</td><td>40</td><td>0</td><td>0%</td><td>0</td><td>0%</td></tr>
+        <tr><td>Darshan</td><td>–</td><td>–</td><td>–</td><td>4</td><td>2</td><td>40</td><td>4</td><td>10%</td><td>4</td><td>100%</td></tr>
+        <tr><td>Kavya</td><td>–</td><td>–</td><td>–</td><td>2</td><td>0</td><td>30</td><td>3</td><td>10%</td><td>2</td><td>67%</td></tr>
+        <tr><td>Mohana</td><td>–</td><td>–</td><td>–</td><td>1</td><td>0</td><td>20</td><td>1</td><td>5%</td><td>1</td><td>100%</td></tr>
+        <tr><td>Yashwanth</td><td>–</td><td>–</td><td>–</td><td>3</td><td>1</td><td>45</td><td>4</td><td>9%</td><td>3</td><td>75%</td></tr>
+        <tr><td>Mallikarjun</td><td>–</td><td>–</td><td>–</td><td>1</td><td>0</td><td>35</td><td>1</td><td>3%</td><td>1</td><td>100%</td></tr>
+        <tr>
+            <td><strong>TEAM TOTAL</strong></td>
+            <td>–</td>
+            <td>–</td>
+            <td><strong>–</strong></td>
+            <td><strong>20</strong></td>
+            <td><strong>4</strong></td>
+            <td><strong>260</strong></td>
+            <td><strong>24</strong></td>
+            <td><strong>9%</strong></td>
+            <td><strong>20</strong></td>
+            <td><strong>83%</strong></td>
+        </tr>
+    </tbody>
+</table>
+    </div>
+
+    <!-- Team Leader Comparison Table -->
+    <div class="table-container">
+        <div class="table-header">
+            <h3 class="table-title">Team Leader Comparison</h3>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Team Leader</th>
+                    <th>Total Target</th>
+                    <th>Total Achieved</th>
+                    <th>Overall %</th>
+                    <th>KEC's</th>
+                    <th>ENQUIRY</th>
+                    <th>TD</th>
+                    <th>TD%</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>You (Your Team)</strong></td>
+                    <td>260</td><td>24</td><td>9%</td>
+                    <td>–</td><td>–</td><td>20</td><td>10%</td>
+                </tr>
+                <tr>
+                    <td>Leader B</td>
+                    <td>215</td><td>24</td><td>11%</td>
+                    <td>–</td><td>–</td><td>14</td><td>13%</td>
+                </tr>
+                <tr>
+                    <td>Leader C</td>
+                    <td>135</td><td>11</td><td>8%</td>
+                    <td>–</td><td>–</td><td>6</td><td>14%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
     <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
@@ -1083,7 +1359,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (logoutButton) {
         logoutButton.addEventListener("click", function(event) {
             event.preventDefault();
-            window.location.href = "login.html"; // Redirect to login page
+            window.location.href = "index.html"; // Redirect to login page
         });
     }
     
