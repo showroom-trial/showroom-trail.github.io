@@ -10,9 +10,7 @@
 </head>
 <body>
  <!-- Mobile Toggle Button -->
-  
     <button class="toggle-btn">
-        ☰
         <i class="fas fa-bars"></i>
     </button>
  <!-- Dashboard Container -->
@@ -47,12 +45,7 @@
             <a href="#target-allocation" data-section="target-allocation-section">
                 <i class="fas fa-bullseye"></i> Target Allocation
             </a>
-            <a href="#location" data-section="location-section">
-                <i class="fas fa-map-marker-alt"></i> Location Comparisons
-            </a>
-            <a href="#predictive" data-section="predictive-section">
-                <i class="fas fa-lightbulb"></i> Predictive Insights
-            </a>
+        
             <a href="#logout" id="logout-btn" class="nav-link">
                 <div class="nav-icon">🔒</div>
                 <span class="nav-text">Logout</span>
@@ -129,10 +122,10 @@
                     <div class="search-filter">
                         <input type="text" id="enquirySearch" placeholder="Search customer...">
                         <select id="statusFilter">
-                            <option value="all">All Status</option>
-                            <option value="new">New</option>
-                            <option value="progress">In Progress</option>
-                            <option value="closed">Closed</option>
+                            <option value="all">type</option>
+                            <option value="new">Hot</option>
+                            <option value="progress">Warm</option>
+                            <option value="closed">Cold</option>
                         </select>
                         <select id="sourceFilter">
                             <option value="all">All Sources</option>
@@ -147,90 +140,98 @@
                     <thead>
                         <tr>
                             <th>Customer Name</th>
+                            <th>Customer ID</th>
                             <th>Contact</th>
                             <th>Enquiry Source</th>
                             <th>Date</th>
                             <th>Assigned To</th>
-                            <th>Status</th>
+                            <th>Type</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>John Smith</td>
+                            <td>C2022010001</td>
                             <td>+1 234-567-8901</td>
                             <td>Website</td>
                             <td>10 Mar, 2025</td>
                             <td>Mark Wilson</td>
-                            <td><span class="status-badge status-new">New</span></td>
+                            <td><span class="Type-badge Type-Hot">Hot</span></td>
                             <td>
-                                <button class="status-update-btn" data-id="1">Update</button>
+                                <button class="status-update-btn" data-id="1">Details</button>
                             </td>
                         </tr>
                         <tr>
                             <td>Emma Johnson</td>
+                            <td>C2022010002</td>
                             <td>+1 234-567-8902</td>
                             <td>Walk-in</td>
                             <td>9 Mar, 2025</td>
                             <td>Sarah Davis</td>
-                            <td><span class="status-badge status-progress">In Progress</span></td>
+                            <td><span class="Type-badge Type-Hot">Hot</span></td>
                             <td>
-                                <button class="status-update-btn" data-id="2">Update</button>
+                                <button class="status-update-btn" data-id="2">Details</button>
                             </td>
                         </tr>
                         <tr>
                             <td>Michael Brown</td>
+                            <td>C2022010003</td>
                             <td>+1 234-567-8903</td>
                             <td>Referral</td>
                             <td>9 Mar, 2025</td>
                             <td>Robert Johnson</td>
-                            <td><span class="status-badge status-progress">In Progress</span></td>
+                            <td><span class="Type-badge Type-Warm">Warm</span></td>
                             <td>
-                                <button class="status-update-btn" data-id="3">Update</button>
+                                <button class="status-update-btn" data-id="3">Details</button>
                             </td>
                         </tr>
                         <tr>
                             <td>Jennifer Davis</td>
+                            <td>C2022010004</td>
                             <td>+1 234-567-8904</td>
                             <td>Social Media</td>
                             <td>8 Mar, 2025</td>
                             <td>Mark Wilson</td>
-                            <td><span class="status-badge status-closed">Closed</span></td>
+                            <td><span class="Type-badge Type-Cold">Cold</span></td>
                             <td>
-                                <button class="status-update-btn" data-id="4">Update</button>
+                                <button class="status-update-btn" data-id="4">Details</button>
                             </td>
                         </tr>
                         <tr>
                             <td>David Wilson</td>
+                            <td>C2022010005</td>
                             <td>+1 234-567-8905</td>
                             <td>Website</td>
                             <td>8 Mar, 2025</td>
                             <td>Sarah Davis</td>
-                            <td><span class="status-badge status-new">New</span></td>
+                            <td><span class="Type-badge Type-Warm">Warm</span></td>
                             <td>
-                                <button class="status-update-btn" data-id="5">Update</button>
+                                <button class="status-update-btn" data-id="5">Details</button>
                             </td>
                         </tr>
                         <tr>
                             <td>Lisa Roberts</td>
+                            <td>C2022010006</td>
                             <td>+1 234-567-8906</td>
                             <td>Walk-in</td>
                             <td>7 Mar, 2025</td>
                             <td>Robert Johnson</td>
-                            <td><span class="status-badge status-progress">In Progress</span></td>
+                            <td><span class="Type-badge Type-Cold">Cold</span></td>
                             <td>
-                                <button class="status-update-btn" data-id="6">Update</button>
+                                <button class="status-update-btn" data-id="6">Details</button>
                             </td>
                         </tr>
                         <tr>
                             <td>James Thompson</td>
+                            <td>C2022010007</td>
                             <td>+1 234-567-8907</td>
                             <td>Referral</td>
                             <td>7 Mar, 2025</td>
                             <td>Mark Wilson</td>
-                            <td><span class="status-badge status-closed">Closed</span></td>
+                            <td><span class="Type-badge Type-Hot"></span>Hot</td>
                             <td>
-                                <button class="status-update-btn" data-id="7">Update</button>
+                                <button class="status-update-btn" data-id="7">Details</button>
                             </td>
                         </tr>
                     </tbody>
@@ -328,6 +329,7 @@
                     <thead>
                         <tr>
                             <th>Customer</th>
+                            <th>Customer ID</th>
                             <th>Model</th>
                             <th>Sale Date</th>
                             <th>Price</th>
@@ -337,7 +339,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Jennifer Davis</td>
+                            <td>Jennifer Davis</td> 
+                            <td>C2022010001</td>
                             <td>KIA Sportage</td>
                             <td>10 Mar, 2025</td>
                             <td>&#8377;34,500</td>
@@ -346,6 +349,7 @@
                         </tr>
                         <tr>
                             <td>Christopher Lee</td>
+                            <td>C2022010002</td>
                             <td>KIA Sorento</td>
                             <td>10 Mar, 2025</td>
                             <td>&#8377;41,200</td>
@@ -354,6 +358,7 @@
                         </tr>
                         <tr>
                             <td>Jessica Miller</td>
+                            <td>C2022010003</td>
                             <td>KIA EV6</td>
                             <td>10 Mar, 2025</td>
                             <td>&#8377;56,800</td>
@@ -362,6 +367,7 @@
                         </tr>
                         <tr>
                             <td>Michael Harris</td>
+                            <td>C2022010004</td>
                             <td>KIA K5</td>
                             <td>9 Mar, 2025</td>
                             <td>&#8377;32,100</td>
@@ -370,6 +376,7 @@
                         </tr>
                         <tr>
                             <td>Emily Wilson</td>
+                            <td>C2022010005</td>
                             <td>KIA Telluride</td>
                             <td>9 Mar, 2025</td>
                             <td>&#8377;49,700</td>
@@ -379,8 +386,261 @@
                     </tbody>
                 </table>
             </div>
+            <!-- Sales Performance Section -->
+            <section id="sales" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Sales Performance</h1>
+                    <p>Q1 2025</p>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="card metric-card">
+                        <h3>Total Vehicles Sold</h3>
+                        <div class="metric-value">356</div>
+                        <div class="trend trend-up">
+                            <span>↑ 8.2% YoY</span>
+                        </div>
+                    </div>
+                    <div class="card metric-card">
+                        <h3>Avg. Sale Price</h3>
+                        <div class="metric-value">&#8377;38,750</div>
+                        <div class="trend trend-up">
+                            <span>↑ 3.1% YoY</span>
+                        </div>
+                    </div>
+                    <div class="card metric-card">
+                        <h3>Profit Margin</h3>
+                        <div class="metric-value">12.8%</div>
+                        <div class="trend trend-down">
+                            <span>↓ 0.5% YoY</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card chart-card">
+                    <div class="chart-card-header">
+                        <h3>Sales by Vehicle Type</h3>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-controls">
+                            <button class="chart-control-btn">Booking</button>
+                            <button class="chart-control-btn">Enquiry</button>
+                            <button class="chart-control-btn">Retail</button>
+                        </div>
+                        <canvas id="vehicleTypeChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Sales Executive Performance</h3>
+                    <div class="table-container">
+                        <table>
+                <tr>
+                    <th rowspan="2">KEC'S</th>
+                    <th colspan="3" class="main-header">ENQUIRY</th>
+                    <th rowspan="2">TD</th>
+                    <th rowspan="2">TD%</th>
+                    <th colspan="3" class="main-header">BOOKING</th>
+                    <th colspan="3" class="main-header">RETAILS</th>
+                    <th rowspan="2">E-B</th>
+                    <th rowspan="2">B-R</th>
+                </tr>
+                <tr>
+                    <th class="column-header">TGT</th>
+                    <th class="column-header">ACH</th>
+                    <th class="column-header">%</th>
+                    <th class="column-header">TGT</th>
+                    <th class="column-header">ACH</th>
+                    <th class="column-header">%</th>
+                    <th class="column-header">TGT</th>
+                    <th class="column-header">ACH</th>
+                    <th class="column-header">%</th>
+                </tr>
+                <tr>
+                    <td>David Kim</td>
+                    <td>30</td>
+                    <td>38</td>
+                    <td class="green">126.7%</td>
+                    <td>28</td>
+                    <td class="green">93%</td>
+                    <td>20</td>
+                    <td>22</td>
+                    <td class="green">110%</td>
+                    <td>15</td>
+                    <td>17</td>
+                    <td class="green">113%</td>
+                    <td>73%</td>
+                    <td>77%</td>
+                </tr>
+                <tr>
+                    <td>Lisa Carter</td>
+                    <td>30</td>
+                    <td>32</td>
+                    <td class="green">106.7%</td>
+                    <td>25</td>
+                    <td class="green">78%</td>
+                    <td>18</td>
+                    <td>15</td>
+                    <td class="yellow">83%</td>
+                    <td>12</td>
+                    <td>10</td>
+                    <td class="yellow">83%</td>
+                    <td>60%</td>
+                    <td>67%</td>
+                </tr>
+                <tr>
+                    <td>Marcus Johnson</td>
+                    <td>25</td>
+                    <td>28</td>
+                    <td class="green">112.0%</td>
+                    <td>20</td>
+                    <td class="green">71%</td>
+                    <td>15</td>
+                    <td>12</td>
+                    <td class="yellow">80%</td>
+                    <td>10</td>
+                    <td>8</td>
+                    <td class="yellow">80%</td>
+                    <td>60%</td>
+                    <td>67%</td>
+                </tr>
+                <tr>
+                    <td>Jennifer Thompson</td>
+                    <td>25</td>
+                    <td>22</td>
+                    <td class="yellow">88.0%</td>
+                    <td>18</td>
+                    <td class="yellow">82%</td>
+                    <td>12</td>
+                    <td>8</td>
+                    <td class="red">67%</td>
+                    <td>8</td>
+                    <td>5</td>
+                    <td class="red">63%</td>
+                    <td>48%</td>
+                    <td>63%</td>
+                </tr>
+                <tr>
+                    <td>Carlos Rodriguez</td>
+                    <td>20</td>
+                    <td>19</td>
+                    <td class="yellow">95.0%</td>
+                    <td>15</td>
+                    <td class="yellow">79%</td>
+                    <td>10</td>
+                    <td>7</td>
+                    <td class="red">70%</td>
+                    <td>7</td>
+                    <td>4</td>
+                    <td class="red">57%</td>
+                    <td>47%</td>
+                    <td>57%</td>
+                </tr>
+            </table>
+                    </div>
+                </div>
+            </section>
+            <!-- Service Performance Section -->
+            <section id="service" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Service Performance</h1>
+                    <p>Q1 2025</p>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="card metric-card">
+                        <h3>Total Service Orders</h3>
+                        <div class="metric-value">483</div>
+                        <div class="trend trend-up">
+                            <span>↑ 4.8% YoY</span>
+                        </div>
+                    </div>
+                    <div class="card metric-card">
+                        <h3>Avg. Service Value</h3>
+                        <div class="metric-value">&#8377;342</div>
+                        <div class="trend trend-up">
+                            <span>↑ 2.7% YoY</span>
+                        </div>
+                    </div>
+                    <div class="card metric-card">
+                        <h3>Customer Satisfaction</h3>
+                        <div class="metric-value">4.8/5</div>
+                        <div class="trend trend-up">
+                            <span>↑ 0.2 vs Last Quarter</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card chart-card">
+                    <div class="chart-card-header">
+                        <h3>Service Types Distribution</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="serviceTypeChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Technician Performance</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Orders Completed</th>
+                                    <th>Avg. Completion Time</th>
+                                    <th>Labor Hours</th>
+                                    <th>Customer Rating</th>
+                                    <th>Efficiency Score</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Mike Reynolds</td>
+                                    <td>87</td>
+                                    <td>2.3 hrs</td>
+                                    <td>212 hrs</td>
+                                    <td>4.9/5</td>
+                                    <td>96%</td>
+                                </tr>
+                                <tr>
+                                    <td>Samantha Lee</td>
+                                    <td>79</td>
+                                    <td>2.5 hrs</td>
+                                    <td>198 hrs</td>
+                                    <td>4.8/5</td>
+                                    <td>93%</td>
+                                </tr>
+                                <tr>
+                                    <td>Robert Jackson</td>
+                                    <td>84</td>
+                                    <td>2.4 hrs</td>
+                                    <td>206 hrs</td>
+                                    <td>4.7/5</td>
+                                    <td>91%</td>
+                                </tr>
+                                <tr>
+                                    <td>Angela Martinez</td>
+                                    <td>78</td>
+                                    <td>2.6 hrs</td>
+                                    <td>190 hrs</td>
+                                    <td>4.8/5</td>
+                                    <td>89%</td>
+                                </tr>
+                                <tr>
+                                    <td>Kevin Chen</td>
+                                    <td>82</td>
+                                    <td>2.4 hrs</td>
+                                    <td>201 hrs</td>
+                                    <td>4.7/5</td>
+                                    <td>90%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
         </div>
-        
         <!-- 3. Add-ons & Cross-selling Section -->
         <div id="addons-section" class="dashboard-section">
             <div class="section-header">
@@ -580,7 +840,8 @@
                         <tr>
                             <th>Rank</th>
                             <th>Representative</th>
-                            <th>Sales (MTD)</th>
+                            <th>Representative ID</th>
+                            <th>Sales </th>
                             <th>Conversion Rate</th>
                             <th>Avg. Sale Value</th>
                             <th>Add-on Attach Rate</th>
@@ -591,6 +852,7 @@
                         <tr>
                             <td>1</td>
                             <td>Mark Wilson</td>
+                            <td>EKA30801</td>
                             <td>16</td>
                             <td>38%</td>
                             <td>&#8377;42,800</td>
@@ -604,6 +866,7 @@
                         <tr>
                             <td>2</td>
                             <td>Sarah Davis</td>
+                            <td>EKA30802</td>
                             <td>14</td>
                             <td>35%</td>
                             <td>&#8377;39,200</td>
@@ -617,6 +880,7 @@
                         <tr>
                             <td>3</td>
                             <td>Robert Johnson</td>
+                            <td>EKA30803</td>
                             <td>12</td>
                             <td>29%</td>
                             <td>&#8377;44,500</td>
@@ -630,6 +894,7 @@
                         <tr>
                             <td>4</td>
                             <td>Jennifer Adams</td>
+                            <td>EKA30804</td>
                             <td>10</td>
                             <td>26%</td>
                             <td>&#8377;38,700</td>
@@ -643,6 +908,7 @@
                         <tr>
                             <td>5</td>
                             <td>Michael Carter</td>
+                            <td>EKA30805</td>
                             <td>8</td>
                             <td>22%</td>
                             <td>&#8377;36,500</td>
@@ -752,10 +1018,8 @@
             </div>
         
             <!-- Target Allocation Table (Editable) -->
-            <div class="table-container" id="team-allocation">
-                <div class="table-header">
-                    <h3 class="table-title">Allocate Targets to Team Leads</h3>
-                </div>
+            <div class="table-container" id="team-allocation" style="display: block;">
+                <h3>Allocate Targets to Team Leads</h3>
                 <table>
                     <thead>
                         <tr>
@@ -803,301 +1067,41 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-        
-        
-        
 
-        <!-- 7. Location Comparisons Section -->
-        <div id="location-section" class="dashboard-section">
-            <div class="section-header">
-                <h1 class="section-title">Location Comparisons</h1>
-            </div>
-            
-            <div class="cards-container">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Top Performing Branch</h3>
-                    </div>
-                    <div class="card-value">Shivamogga</div>
-                    <div class="card-subtitle">
-                        <span>48 sales this month</span>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Most Improved</h3>
-                    </div>
-                    <div class="card-value">Davanagere</div>
-                    <div class="card-subtitle">
-                        <span class="trend-up">↑ 18% from last month</span>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Highest Conversion</h3>
-                    </div>
-                    <div class="card-value">Chitradurga</div>
-                    <div class="card-subtitle">
-                        <span>38% conversion rate</span>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Lowest inventory</h3>
-                    </div>
-                    <div class="card-value">Chikkamagaluru</div>
-                    <div class="card-value"></div>
-                    <div class="card-subtitle">
-                        <span class="trend-down">↓ 8 units remaining</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="chart-container">
-                <div class="chart-header">
-                    <h3 class="chart-title">Sales Performance by Location</h3>
-                </div>
-                <canvas id="locationPerformanceChart"></canvas>
-            </div>
-            
-            <div class="chart-container">
-                <div class="chart-header">
-                    <h3 class="chart-title">Model Popularity by Location</h3>
-                </div>
-                <canvas id="modelByLocationChart"></canvas>
-            </div>
-            
-            <div class="table-container">
-                <div class="table-header">
-                    <h3 class="table-title">Location Performance Comparison</h3>
-                </div>
+            <!-- Model Allocation Table -->
+            <div class="table-container" id="model-allocation" style="display: none;">
+                <h3>Allocate Targets by Model</h3>
                 <table>
                     <thead>
                         <tr>
-                            <th>Location</th>
-                            <th>Monthly Sales</th>
-                            <th>Conversion Rate</th>
-                            <th>Avg. Sale Value</th>
-                            <th>Top Model</th>
-                            <th>Team Size</th>
+                            <th>Model</th>
+                            <th>Allocated Target</th>
+                            <th>Achieved Sales</th>
                             <th>Target Progress</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Shivamogga</td>
-                            <td>48</td>
-                            <td>36%</td>
-                            <td>&#8377;42,500</td>
-                            <td>Sportage</td>
-                            <td>6</td>
-                            <td>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 80%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Davanagere</td>
-                            <td>42</td>
-                            <td>38%</td>
-                            <td>&#8377;38,700</td>
-                            <td>K5</td>
-                            <td>5</td>
-                            <td>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 70%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Chitradurga</td>
-                            <td>38</td>
-                            <td>31%</td>
-                            <td>&#8377;46,200</td>
-                            <td>Telluride</td>
-                            <td>4</td>
-                            <td>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 63%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Chikkamagaluru</td>
-                            <td>34</td>
-                            <td>29%</td>
-                            <td>&#8377;41,800</td>
-                            <td>Sorento</td>
-                            <td>4</td>
-                            <td>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 57%;"></div>
-                                </div>
-                            </td>
-                        </tr>
+                        <!-- Example rows -->
                     </tbody>
                 </table>
             </div>
-        </div>
-        
-        <!-- 8. Predictive Insights Section -->
-        <div id="predictive-section" class="dashboard-section">
-            <div class="section-header">
-                <h1 class="section-title">Predictive Insights</h1>
-            </div>
-            
-            <div class="cards-container">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Projected Monthly Sales</h3>
-                    </div>
-                    <div class="card-value">214</div>
-                    <div class="card-subtitle">
-                        <span class="trend-up">↑ 12% from last month</span>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Projected Revenue</h3>
-                    </div>
-                    <div class="card-value">&#8377;8.6M</div>
-                    <div class="card-subtitle">
-                        <span class="trend-up">↑ 8% from last month</span>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Trending Model</h3>
-                    </div>
-                    <div class="card-value">KIA EV6</div>
-                    <div class="card-subtitle">
-                        <span class="trend-up">↑ 24% growth prediction</span>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">High-Value Leads</h3>
-                    </div>
-                    <div class="card-value">28</div>
-                    <div class="card-subtitle">
-                        <span>Conversion potential: 65%</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="chart-container">
-                <div class="chart-header">
-                    <h3 class="chart-title">Sales Forecast (Next 3 Months)</h3>
-                </div>
-                <canvas id="salesForecastChart"></canvas>
-            </div>
-            
-            <div class="chart-container">
-                <div class="chart-header">
-                    <h3 class="chart-title">Model Trend Predictions</h3>
-                </div>
-                <canvas id="modelTrendChart"></canvas>
-            </div>
-            
-            <div class="table-container">
-                <div class="table-header">
-                    <h3 class="table-title">High-Value Lead Predictions</h3>
-                </div>
+
+            <!-- Location Allocation Table -->
+            <div class="table-container" id="location-allocation" style="display: none;">
+                <h3>Allocate Targets by Location</h3>
                 <table>
                     <thead>
                         <tr>
-                            <th>Customer</th>
-                            <th>Contact</th>
-                            <th>Interested Model</th>
-                            <th>Lead Source</th>
-                            <th>Last Interaction</th>
-                            <th>Conversion Probability</th>
-                            <th>Predicted Value</th>
+                            <th>Location</th>
+                            <th>Allocated Target</th>
+                            <th>Achieved Sales</th>
+                            <th>Target Progress</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Thomas Roberts</td>
-                            <td>+1 234-567-8910</td>
-                            <td>KIA Telluride</td>
-                            <td>Website</td>
-                            <td>8 Mar, 2025</td>
-                            <td><span class="status-badge prediction-high">78%</span></td>
-                            <td>&#8377;52,400</td>
-                        </tr>
-                        <tr>
-                            <td>Rachel Stevens</td>
-                            <td>+1 234-567-8911</td>
-                            <td>KIA EV6</td>
-                            <td>Social Media</td>
-                            <td>9 Mar, 2025</td>
-                            <td><span class="status-badge prediction-high">72%</span></td>
-                            <td>&#8377;58,600</td>
-                        </tr>
-                        <tr>
-                            <td>Daniel Harris</td>
-                            <td>+1 234-567-8912</td>
-                            <td>KIA Sorento</td>
-                            <td>Walk-in</td>
-                            <td>7 Mar, 2025</td>
-                            <td><span class="status-badge prediction-high">68%</span></td>
-                            <td>&#8377;46,800</td>
-                        </tr>
-                        <tr>
-                            <td>Olivia Martinez</td>
-                            <td>+1 234-567-8913</td>
-                            <td>KIA Sportage</td>
-                            <td>Referral</td>
-                            <td>10 Mar, 2025</td>
-                            <td><span class="status-badge prediction-medium">56%</span></td>
-                            <td>&#8377;38,200</td>
-                        </tr>
-                        <tr>
-                            <td>Lucas Thompson</td>
-                            <td>+1 234-567-8914</td>
-                            <td>KIA K5</td>
-                            <td>Website</td>
-                            <td>6 Mar, 2025</td>
-                            <td><span class="status-badge prediction-medium">52%</span></td>
-                            <td>&#8377;34,600</td>
-                        </tr>
+                        <!-- Example rows -->
                     </tbody>
                 </table>
-            </div>
-            
-            <div class="chart-container">
-                <div class="chart-header">
-                    <h3 class="chart-title">Seasonal Demand Heatmap</h3>
-                </div>
-                <div class="heatmap-container">
-                    <div class="heatmap-cell heat-level-1">Jan</div>
-                    <div class="heatmap-cell heat-level-2">Feb</div>
-                    <div class="heatmap-cell heat-level-3">Mar</div>
-                    <div class="heatmap-cell heat-level-3">Apr</div>
-                    <div class="heatmap-cell heat-level-4">May</div>
-                    <div class="heatmap-cell heat-level-5">Jun</div>
-                    <div class="heatmap-cell heat-level-5">Jul</div>
-                    <div class="heatmap-cell heat-level-4">Aug</div>
-                    <div class="heatmap-cell heat-level-4">Sep</div>
-                    <div class="heatmap-cell heat-level-3">Oct</div>
-                    <div class="heatmap-cell heat-level-2">Nov</div>
-                    <div class="heatmap-cell heat-level-1">Dec</div>
-                </div>
-                <div class="heatmap-legend">
-                    <span class="legend-item heat-level-1">Low Demand</span>
-                    <span class="legend-item heat-level-2">Moderate Demand</span>
-                    <span class="legend-item heat-level-3">Average Demand</span>
-                    <span class="legend-item heat-level-4">High Demand</span>
-                    <span class="legend-item heat-level-5">Peak Demand</span>
-                </div>
             </div>
         </div>
     </div>
@@ -1614,6 +1618,36 @@
                 }
             });
         });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const filterButtons = document.querySelectorAll(".filter-btn");
+            const tables = {
+                team: document.getElementById("team-allocation"),
+                model: document.getElementById("model-allocation"),
+                location: document.getElementById("location-allocation"),
+            };
+
+            filterButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    // Remove 'active' class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove("active"));
+
+                    // Add 'active' class to the clicked button
+                    this.classList.add("active");
+
+                    // Get the filter type from the button's data attribute
+                    const filterType = this.getAttribute("data-filter");
+
+                    // Hide all tables
+                    Object.values(tables).forEach(table => table.style.display = "none");
+
+                    // Show the table corresponding to the selected filter
+                    if (tables[filterType]) {
+                        tables[filterType].style.display = "block";
+                    }
+                });
+            });
+        });
         
         // Initialize with the first section active
         document.querySelector('.sidebar-menu a').classList.add('active');
@@ -1764,7 +1798,67 @@
         });
     });
 
-    
     </script>
+    <!-- Customer Details Modal -->
+<div id="detailsModal" class="modal">
+  <div class="modal-content">
+    <span class="close-button" onclick="closeModal()">&times;</span>
+    <h2>Customer Details</h2>
+    <p><strong>Name:</strong> <span id="custName"></span></p>
+    <p><strong>Customer ID:</strong> <span id="custId"></span></p>
+    <p><strong>Email:</strong> <span id="custEmail"></span></p>
+    <p><strong>Phone:</strong> <span id="custPhone"></span></p>
+    <p><strong>Model:</strong> <span id="custModel"></span></p>
+    <p><strong>Variant:</strong> <span id="custVariant"></span></p>
+    <p><strong>Color:</strong> <span id="custColor"></span></p>
+
+    <div class="action-icons">
+      <a id="mailLink" href="#" title="Send Email"><i class="fas fa-envelope"></i></a>
+      <a id="callLink" href="#" title="Call"><i class="fas fa-phone"></i></a>
+      <a id="msgLink" href="#" title="Message"><i class="fas fa-comment-dots"></i></a>
+    </div>
+  </div>
+</div>
+<script>
+// Example static data – replace with dynamic logic if needed
+const customerDetails = {
+    "1": { name: "John Smith", id: "C2022010001", email: "john@example.com", phone: "+1 234-567-8901", model: "Sportage", variant: "GTX", color: "White" },
+    "2": { name: "Emma Johnson", id: "C2022010002", email: "emma@example.com", phone: "+1 234-567-8902", model: "Sorento", variant: "EX", color: "Black" },
+    "3": { name: "Michael Brown", id: "C2022010003", email: "michael@example.com", phone: "+1 234-567-8903", model: "Telluride", variant: "LX", color: "Red" },
+    // Add more as needed
+};
+
+document.querySelectorAll(".status-update-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const id = btn.dataset.id;
+        const data = customerDetails[id];
+        if (data) {
+            document.getElementById("custName").textContent = data.name;
+            document.getElementById("custId").textContent = data.id;
+            document.getElementById("custEmail").textContent = data.email;
+            document.getElementById("custPhone").textContent = data.phone;
+            document.getElementById("custModel").textContent = data.model;
+            document.getElementById("custVariant").textContent = data.variant;
+            document.getElementById("custColor").textContent = data.color;
+
+            document.getElementById("mailLink").href = `mailto:${data.email}`;
+            document.getElementById("callLink").href = `tel:${data.phone}`;
+            document.getElementById("msgLink").href = `sms:${data.phone}`;
+
+            document.getElementById("detailsModal").style.display = "block";
+        }
+    });
+});
+
+function closeModal() {
+    document.getElementById("detailsModal").style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target === document.getElementById("detailsModal")) {
+        closeModal();
+    }
+};
+</script>
 </body>
 </html>
