@@ -6,12 +6,20 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="mobile-nav-toggle" id="mobileNavToggle">
-        <i class="fas fa-bars"></i>
-    </div>
-
+    <header class="mobile-header" id="mobileHeader">
+        <div class="mobile-header-content">
+            <div class="logo-container">
+                <img src="kia-logo.png" alt="KIA Logo" class="mobile-logo">
+            </div>
+            <button class="mobile-nav-toggle" id="mobileNavToggle">☰</button>
+        </div>
+    </header>
+    
     <div class="top-section">
         <div class="top-section-right">
             <img src="kia-logo.png" alt="KIA Logo" class="header-logo">
@@ -36,31 +44,18 @@
                     <li data-tab="employee"><i class="fas fa-users"></i> Employee Management</li>
                     <li data-tab="vehicle"><i class="fas fa-car"></i> Vehicle Management</li>
                     <li data-tab="addons"><i class="fas fa-puzzle-piece"></i> Add-ons Management</li>
-                    <li data-tab="service"><i class="fas fa-tools"></i> Service Information</li>
+                    <li data-tab="sales"><i class="fas fa-chart-line"></i> Sales Management</li>
+                    <!-- <li data-tab="enquiry"><i class="fas fa-question-circle"></i> Enquiry Management</li> -->
+                    <li data-tab="additional"><i class="fas fa-plus-circle"></i> Additional Options</li>
+                    <!-- <li data-tab="follow-ups"><i class="fas fa-clipboard-check"></i> Follow-ups</li> -->
                     <li id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</li>
                 </ul>
             </nav>
         </aside>
 
-
         <!-- Main Content -->
         <main class="main-content">
             <header class="top-header"></header>
-            <!--<header class="top-header">
-                <div class="search-box">
-                    <input type="text" placeholder="Search...">
-                    <i class="fas fa-search"></i>
-                </div>
-                <div class="header-actions">
-                    <div class="notification">
-                        <i class="fas fa-bell"></i>
-                        <span class="badge">3</span>
-                    </div>
-                    <div class="settings">
-                        <i class="fas fa-cog"></i>
-                    </div>
-                </div>
-            </header>-->
 
             <!-- Dashboard Section -->
             <section class="content-section active" id="dashboard">
@@ -138,12 +133,15 @@
                 </div>
             </section>
 
-
             <!-- Employee Management Section -->
             <section class="content-section" id="employee">
                 <div class="section-header">
                     <h2 class="section-title">Employee Management</h2>
-                    <button class="action-btn"><i class="fas fa-plus"></i> Add New Employee</button>
+                    <div class="header-actions">
+                        <button class="action-btn add-btn"><i class="fas fa-plus"></i> Add New</button>
+                        <button class="action-btn import-btn"><i class="fas fa-file-import"></i> Import</button>
+                        <button class="action-btn export-btn"><i class="fas fa-file-export"></i> Export</button>
+                    </div>
                 </div>
 
                 <div class="search-filter">
@@ -152,20 +150,29 @@
                         <i class="fas fa-search"></i>
                     </div>
                     <div class="filter">
-                        <select>
+                        <select id="employee-role-filter">
                             <option value="">All Roles</option>
                             <option value="gm">General Manager</option>
                             <option value="sales">Sales Executive</option>
                             <option value="service">Service Manager</option>
                         </select>
-                        <select>
+                        <select id="employee-location-filter">
                             <option value="">All Locations</option>
                             <option value="main">Main Branch Showroom</option>
                             <option value="downtown">Chitradurga Branch</option>
                             <option value="east">Chikmangluru Branch</option>
-                            <option value="east">Chikmangluru Branch</option>
                         </select>
+                        <div class="date-range">
+                            <input type="date" id="employee-start-date" placeholder="Start Date">
+                            <input type="date" id="employee-end-date" placeholder="End Date">
+                        </div>
                     </div>
+                </div>
+
+                <div class="view-options">
+                    <button class="view-btn active" data-view="all"><i class="fas fa-th-list"></i> View All</button>
+                    <button class="view-btn" data-view="date"><i class="fas fa-calendar-alt"></i> By Date</button>
+                    <button class="view-btn" data-view="category"><i class="fas fa-tags"></i> By Category</button>
                 </div>
 
                 <div class="table-container">
@@ -206,7 +213,7 @@
                             <tr>
                                 <td>Michael Wilson</td>
                                 <td>Service Manager</td>
-                                <td>Chikmangluru Branchh</td>
+                                <td>Chikmangluru Branch</td>
                                 <td>m.wilson@company.com</td>
                                 <td>Nov 10, 2023</td>
                                 <td class="actions">
@@ -223,7 +230,11 @@
             <section class="content-section" id="vehicle">
                 <div class="section-header">
                     <h2 class="section-title">Vehicle Management</h2>
-                    <button class="action-btn"><i class="fas fa-plus"></i> Add New Vehicle</button>
+                    <div class="header-actions">
+                        <button class="action-btn add-btn"><i class="fas fa-plus"></i> Add New</button>
+                        <button class="action-btn import-btn"><i class="fas fa-file-import"></i> Import</button>
+                        <button class="action-btn export-btn"><i class="fas fa-file-export"></i> Export</button>
+                    </div>
                 </div>
 
                 <div class="search-filter">
@@ -232,19 +243,29 @@
                         <i class="fas fa-search"></i>
                     </div>
                     <div class="filter">
-                        <select>
+                        <select id="vehicle-year-filter">
                             <option value="">All Years</option>
                             <option value="2025">2025</option>
                             <option value="2024">2024</option>
                             <option value="2023">2023</option>
                         </select>
-                        <select>
+                        <select id="vehicle-type-filter">
                             <option value="">All Types</option>
                             <option value="sedan">Sedan</option>
                             <option value="suv">SUV</option>
                             <option value="truck">Truck</option>
                         </select>
+                        <div class="date-range">
+                            <input type="date" id="vehicle-start-date" placeholder="Start Date">
+                            <input type="date" id="vehicle-end-date" placeholder="End Date">
+                        </div>
                     </div>
+                </div>
+
+                <div class="view-options">
+                    <button class="view-btn active" data-view="all"><i class="fas fa-th-list"></i> View All</button>
+                    <button class="view-btn" data-view="date"><i class="fas fa-calendar-alt"></i> By Date</button>
+                    <button class="view-btn" data-view="category"><i class="fas fa-tags"></i> By Category</button>
                 </div>
 
                 <div class="table-container">
@@ -264,7 +285,7 @@
                             <tr>
                                 <td>Seltos</td>
                                 <td>2025</td>
-                                <td>&#8377 3,52,990</td>
+                                <td>&#8377; 3,52,990</td>
                                 <td>Electric</td>
                                 <td>Automatic</td>
                                 <td><span class="status available">Available</span></td>
@@ -276,7 +297,7 @@
                             <tr>
                                 <td>EV6</td>
                                 <td>2024</td>
-                                <td>&#8377 7,28,455</td>
+                                <td>&#8377; 7,28,455</td>
                                 <td>2.5L I4</td>
                                 <td>8-Speed Auto</td>
                                 <td><span class="status available">Available</span></td>
@@ -288,7 +309,7 @@
                             <tr>
                                 <td>Sonet</td>
                                 <td>2025</td>
-                                <td>&#8377 4,34,585</td>
+                                <td>&#8377; 4,34,585</td>
                                 <td>3.5L EcoBoost</td>
                                 <td>10-Speed Auto</td>
                                 <td><span class="status unavailable">Out of Stock</span></td>
@@ -306,7 +327,11 @@
             <section class="content-section" id="addons">
                 <div class="section-header">
                     <h2 class="section-title">Add-ons Management</h2>
-                    <button class="action-btn"><i class="fas fa-plus"></i> Add New Add-on</button>
+                    <div class="header-actions">
+                        <button class="action-btn add-btn"><i class="fas fa-plus"></i> Add New</button>
+                        <button class="action-btn import-btn"><i class="fas fa-file-import"></i> Import</button>
+                        <button class="action-btn export-btn"><i class="fas fa-file-export"></i> Export</button>
+                    </div>
                 </div>
 
                 <div class="search-filter">
@@ -315,14 +340,24 @@
                         <i class="fas fa-search"></i>
                     </div>
                     <div class="filter">
-                        <select>
+                        <select id="addon-category-filter">
                             <option value="">All Categories</option>
                             <option value="exterior">Exterior</option>
                             <option value="interior">Interior</option>
                             <option value="performance">Performance</option>
                             <option value="warranty">Warranty</option>
                         </select>
+                        <div class="date-range">
+                            <input type="date" id="addon-start-date" placeholder="Start Date">
+                            <input type="date" id="addon-end-date" placeholder="End Date">
+                        </div>
                     </div>
+                </div>
+
+                <div class="view-options">
+                    <button class="view-btn active" data-view="all"><i class="fas fa-th-list"></i> View All</button>
+                    <button class="view-btn" data-view="date"><i class="fas fa-calendar-alt"></i> By Date</button>
+                    <button class="view-btn" data-view="category"><i class="fas fa-tags"></i> By Category</button>
                 </div>
 
                 <div class="table-container">
@@ -340,7 +375,7 @@
                             <tr>
                                 <td>Premium Sound System</td>
                                 <td>Interior</td>
-                                <td>&#8377 1,200</td>
+                                <td>&#8377; 1,200</td>
                                 <td>All Models</td>
                                 <td class="actions">
                                     <button class="edit-btn"><i class="fas fa-edit"></i></button>
@@ -350,7 +385,7 @@
                             <tr>
                                 <td>Extended Warranty</td>
                                 <td>Warranty</td>
-                                <td>&#8377 2,500</td>
+                                <td>&#8377; 2,500</td>
                                 <td>All Models</td>
                                 <td class="actions">
                                     <button class="edit-btn"><i class="fas fa-edit"></i></button>
@@ -360,7 +395,7 @@
                             <tr>
                                 <td>Alloy Wheels</td>
                                 <td>Exterior</td>
-                                <td>&#8377 800</td>
+                                <td>&#8377; 800</td>
                                 <td>Sedan, SUV</td>
                                 <td class="actions">
                                     <button class="edit-btn"><i class="fas fa-edit"></i></button>
@@ -372,69 +407,552 @@
                 </div>
             </section>
 
-            <!-- Service Information Section -->
-            <section class="content-section" id="service">
+            <!-- Sales Management Section -->
+            <section class="content-section" id="sales">
                 <div class="section-header">
-                    <h2 class="section-title">Service Information</h2>
-                    <button class="action-btn"><i class="fas fa-plus"></i> Add New Service</button>
+                    <h2 class="section-title">Sales Management</h2>
+                    <div class="header-actions">
+                        <button class="action-btn add-btn"><i class="fas fa-plus"></i> Add New</button>
+                        <button class="action-btn import-btn"><i class="fas fa-file-import"></i> Import</button>
+                        <button class="action-btn export-btn"><i class="fas fa-file-export"></i> Export</button>
+                    </div>
                 </div>
 
                 <div class="search-filter">
                     <div class="search">
-                        <input type="text" placeholder="Search services...">
+                        <input type="text" placeholder="Search sales...">
                         <i class="fas fa-search"></i>
                     </div>
                     <div class="filter">
-                        <select>
-                            <option value="">All Types</option>
-                            <option value="maintenance">Maintenance</option>
-                            <option value="repair">Repair</option>
-                            <option value="inspection">Inspection</option>
+                        <select id="sales-executive-filter">
+                            <option value="">All Executives</option>
+                            <option value="john">John Smith</option>
+                            <option value="sarah">Sarah Johnson</option>
+                            <option value="michael">Michael Wilson</option>
                         </select>
+                        <select id="sales-model-filter">
+                            <option value="">All Models</option>
+                            <option value="seltos">Seltos</option>
+                            <option value="ev6">EV6</option>
+                            <option value="sonet">Sonet</option>
+                        </select>
+                        <div class="date-range">
+                            <input type="date" id="sales-start-date" placeholder="Start Date">
+                            <input type="date" id="sales-end-date" placeholder="End Date">
+                        </div>
                     </div>
+                </div>
+
+                <div class="view-options">
+                    <button class="view-btn active" data-view="all"><i class="fas fa-th-list"></i> View All</button>
+                    <button class="view-btn" data-view="date"><i class="fas fa-calendar-alt"></i> By Date</button>
+                    <button class="view-btn" data-view="category"><i class="fas fa-tags"></i> By Category</button>
                 </div>
 
                 <div class="table-container">
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>Service Name</th>
-                                <th>Type</th>
-                                <th>Price Range</th>
-                                <th>Duration</th>
-                                <th>Applicable Vehicles</th>
+                                <th>Invoice #</th>
+                                <th>Vehicle Model</th>
+                                <th>Sales Executive</th>
+                                <th>Customer</th>
+                                <th>Sale Date</th>
+                                <th>Sale Amount</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Oil Change</td>
-                                <td>Maintenance</td>
-                                <td>&#8377 45 - &#8377 80</td>
-                                <td>30 mins</td>
-                                <td>All (except Electric)</td>
+                                <td>INV-2025-001</td>
+                                <td>Seltos</td>
+                                <td>Sarah Johnson</td>
+                                <td>Rahul Sharma</td>
+                                <td>Apr 15, 2025</td>
+                                <td>&#8377; 3,52,990</td>
                                 <td class="actions">
                                     <button class="edit-btn"><i class="fas fa-edit"></i></button>
                                     <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Tire Rotation</td>
-                                <td>Maintenance</td>
-                                <td>&#8377  30 - &#8377  50</td>
-                                <td>45 mins</td>
-                                <td>All Models</td>
+                                <td>INV-2025-002</td>
+                                <td>EV6</td>
+                                <td>Michael Wilson</td>
+                                <td>Priya Patel</td>
+                                <td>Apr 10, 2025</td>
+                                <td>&#8377; 7,28,455</td>
                                 <td class="actions">
                                     <button class="edit-btn"><i class="fas fa-edit"></i></button>
                                     <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Battery Replacement</td>
-                                <td>Repair</td>
-                                <td>&#8377  150 - &#8377  300</td>
-                                <td>1 hour</td>
-                                <td>All Models</td>
+                                <td>INV-2025-003</td>
+                                <td>Sonet</td>
+                                <td>John Smith</td>
+                                <td>Arjun Singh</td>
+                                <td>Apr 5, 2025</td>
+                                <td>&#8377; 4,34,585</td>
+                                <td class="actions">
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Enquiry Management Section -->
+            <section class="content-section" id="enquiry">
+                <div class="section-header">
+                    <h2 class="section-title">Enquiry Management</h2>
+                    <div class="header-actions">
+                        <button class="action-btn add-btn"><i class="fas fa-plus"></i> Add New</button>
+                        <button class="action-btn import-btn"><i class="fas fa-file-import"></i> Import</button>
+                        <button class="action-btn export-btn"><i class="fas fa-file-export"></i> Export</button>
+                    </div>
+                </div>
+
+                <div class="search-filter">
+                    <div class="search">
+                        <input type="text" placeholder="Search enquiries...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="filter">
+                        <select id="enquiry-status-filter">
+                            <option value="">All Status</option>
+                            <option value="open">Open</option>
+                            <option value="inprogress">In Progress</option>
+                            <option value="closed">Closed</option>
+                        </select>
+                        <select id="enquiry-source-filter">
+                            <option value="">All Sources</option>
+                            <option value="website">Website</option>
+                            <option value="phone">Phone</option>
+                            <option value="walkin">Walk-in</option>
+                        </select>
+                        <div class="date-range">
+                            <input type="date" id="enquiry-start-date" placeholder="Start Date">
+                            <input type="date" id="enquiry-end-date" placeholder="End Date">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="view-options">
+                    <button class="view-btn active" data-view="all"><i class="fas fa-th-list"></i> View All</button>
+                    <button class="view-btn" data-view="date"><i class="fas fa-calendar-alt"></i> By Date</button>
+                    <button class="view-btn" data-view="category"><i class="fas fa-tags"></i> By Category</button>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Enquiry ID</th>
+                                <th>Customer Name</th>
+                                <th>Contact</th>
+                                <th>Vehicle Interest</th>
+                                <th>Source</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ENQ-2025-001</td>
+                                <td>Aditya Mehta</td>
+                                <td>aditya@email.com</td>
+                                <td>Seltos</td>
+                                <td>Website</td>
+                                <td>May 10, 2025</td>
+                                <td><span class="status open">Open</span></td>
+                                <td class="actions">
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>ENQ-2025-002</td>
+                                <td>Sonia Gupta</td>
+                                <td>sonia@email.com</td>
+                                <td>EV6</td>
+                                <td>Phone</td>
+                                <td>May 9, 2025</td>
+                                <td><span class="status inprogress">In Progress</span></td>
+                                <td class="actions">
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>ENQ-2025-003</td>
+                                <td>Vikram Krishnan</td>
+                                <td>vikram@email.com</td>
+                                <td>Sonet</td>
+                                <td>Walk-in</td>
+                                <td>May 8, 2025</td>
+                                <td><span class="status closed">Closed</span></td>
+                                <td class="actions">
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Additional Options Section -->
+            <section class="content-section" id="additional">
+                <h2 class="section-title">Additional Options</h2>
+                
+                <!-- Region Info -->
+                <div class="card-container">
+                    <div class="option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="option-details">
+                            <h3>Region Information</h3>
+                            <p>Add and manage regional information for dealerships</p>
+                            <div class="option-actions">
+                                <button class="action-btn add-btn"><i class="fas fa-plus"></i> Add New Region</button>
+                                <button class="action-btn import-btn"><i class="fas fa-file-import"></i> Import</button>
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i> View Regions</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Comparison Report -->
+                    <div class="option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="option-details">
+                            <h3>Comparison Reports</h3>
+                            <p>Generate and view comparison reports across regions, models, and time periods</p>
+                            <div class="option-actions">
+                                <button class="action-btn add-btn"><i class="fas fa-plus"></i> Create Report</button>
+                                <button class="action-btn import-btn"><i class="fas fa-file-import"></i> Import Data</button>
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i> View Reports</button>
+                            </div>
+                            <!-- Additional Options Section (continued from existing code) -->
+<!-- Already existing cards for Region Info and Comparison Reports are preserved -->
+                        </div>
+                    </div>
+
+                    <!-- Service Management -->
+                    <!-- <div class="option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                        <div class="option-details">
+                            <h3>Service Management</h3>
+                            <p>Add and manage service packages and maintenance options</p>
+                            <div class="option-actions">
+                                <button class="action-btn add-btn"><i class="fas fa-plus"></i> Add Service</button>
+                                <button class="action-btn import-btn"><i class="fas fa-file-import"></i> Import</button>
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i> View Services</button>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- Inventory Control -->
+                    <!-- <div class="option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                        <div class="option-details">
+                            <h3>Inventory Control</h3>
+                            <p>Manage parts inventory and stock levels across locations</p>
+                            <div class="option-actions">
+                                <button class="action-btn add-btn"><i class="fas fa-plus"></i> Add Inventory</button>
+                                <button class="action-btn import-btn"><i class="fas fa-file-import"></i> Import</button>
+                                <button class="action-btn view-btn"><i class="fas fa-eye"></i> View Inventory</button>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+
+                <!-- Additional Options Management Tables -->
+                <div class="tables-container">
+                    <!-- Region Information Table -->
+                    <div class="table-section" id="region-table-section">
+                        <div class="section-header">
+                            <h3>Region Information</h3>
+                            <div class="header-actions">
+                                <button class="action-btn add-btn"><i class="fas fa-plus"></i> Add New</button>
+                                <button class="action-btn import-btn"><i class="fas fa-file-import"></i> Import</button>
+                                <button class="action-btn export-btn"><i class="fas fa-file-export"></i> Export</button>
+                            </div>
+                        </div>
+
+                        <div class="search-filter">
+                            <div class="search">
+                                <input type="text" placeholder="Search regions...">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="filter">
+                                <select id="region-state-filter">
+                                    <option value="">All States</option>
+                                    <option value="karnataka">Karnataka</option>
+                                    <option value="tamil-nadu">Tamil Nadu</option>
+                                    <option value="maharashtra">Maharashtra</option>
+                                </select>
+                                <div class="date-range">
+                                    <input type="date" id="region-start-date" placeholder="Start Date">
+                                    <input type="date" id="region-end-date" placeholder="End Date">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="view-options">
+                            <button class="view-btn active" data-view="all"><i class="fas fa-th-list"></i> View All</button>
+                            <button class="view-btn" data-view="date"><i class="fas fa-calendar-alt"></i> By Date</button>
+                            <button class="view-btn" data-view="category"><i class="fas fa-tags"></i> By Category</button>
+                        </div>
+
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Region ID</th>
+                                        <th>Region Name</th>
+                                        <th>State</th>
+                                        <th>Branch Count</th>
+                                        <th>Manager</th>
+                                        <th>Date Added</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>REG-001</td>
+                                        <td>Bangalore Urban</td>
+                                        <td>Karnataka</td>
+                                        <td>3</td>
+                                        <td>Rajesh Kumar</td>
+                                        <td>Jan 15, 2025</td>
+                                        <td class="actions">
+                                            <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                            <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>REG-002</td>
+                                        <td>Chennai Metro</td>
+                                        <td>Tamil Nadu</td>
+                                        <td>2</td>
+                                        <td>Anita Desai</td>
+                                        <td>Feb 20, 2025</td>
+                                        <td class="actions">
+                                            <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                            <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>REG-003</td>
+                                        <td>Mumbai Central</td>
+                                        <td>Maharashtra</td>
+                                        <td>4</td>
+                                        <td>Vikas Patil</td>
+                                        <td>Mar 10, 2025</td>
+                                        <td class="actions">
+                                            <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                            <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Reports Table -->
+                    <div class="table-section" id="comparison-table-section">
+                        <div class="section-header">
+                            <h3>Comparison Reports</h3>
+                            <div class="header-actions">
+                                <button class="action-btn add-btn"><i class="fas fa-plus"></i> Create New</button>
+                                <button class="action-btn import-btn"><i class="fas fa-file-import"></i> Import</button>
+                                <button class="action-btn export-btn"><i class="fas fa-file-export"></i> Export</button>
+                            </div>
+                        </div>
+
+                        <div class="search-filter">
+                            <div class="search">
+                                <input type="text" placeholder="Search reports...">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="filter">
+                                <select id="report-type-filter">
+                                    <option value="">All Types</option>
+                                    <option value="sales">Sales Comparison</option>
+                                    <option value="performance">Performance Comparison</option>
+                                    <option value="regional">Regional Comparison</option>
+                                </select>
+                                <div class="date-range">
+                                    <input type="date" id="report-start-date" placeholder="Start Date">
+                                    <input type="date" id="report-end-date" placeholder="End Date">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="view-options">
+                            <button class="view-btn active" data-view="all"><i class="fas fa-th-list"></i> View All</button>
+                            <button class="view-btn" data-view="date"><i class="fas fa-calendar-alt"></i> By Date</button>
+                            <button class="view-btn" data-view="category"><i class="fas fa-tags"></i> By Category</button>
+                        </div>
+
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Report ID</th>
+                                        <th>Report Name</th>
+                                        <th>Type</th>
+                                        <th>Time Period</th>
+                                        <th>Created By</th>
+                                        <th>Creation Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>RPT-2025-001</td>
+                                        <td>Q1 Regional Sales Comparison</td>
+                                        <td>Sales Comparison</td>
+                                        <td>Jan-Mar 2025</td>
+                                        <td>John Smith</td>
+                                        <td>Apr 5, 2025</td>
+                                        <td class="actions">
+                                            <button class="view-details-btn"><i class="fas fa-eye"></i></button>
+                                            <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                            <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>RPT-2025-002</td>
+                                        <td>Vehicle Model Performance</td>
+                                        <td>Performance Comparison</td>
+                                        <td>Q1 2025</td>
+                                        <td>Sarah Johnson</td>
+                                        <td>Apr 10, 2025</td>
+                                        <td class="actions">
+                                            <button class="view-details-btn"><i class="fas fa-eye"></i></button>
+                                            <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                            <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>RPT-2025-003</td>
+                                        <td>Branch Performance Analysis</td>
+                                        <td>Regional Comparison</td>
+                                        <td>Mar 2025</td>
+                                        <td>Michael Wilson</td>
+                                        <td>Apr 15, 2025</td>
+                                        <td class="actions">
+                                            <button class="view-details-btn"><i class="fas fa-eye"></i></button>
+                                            <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                            <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Follow-ups Section -->
+            <section class="content-section" id="follow-ups">
+                <div class="section-header">
+                    <h2 class="section-title">Follow-ups</h2>
+                    <div class="header-actions">
+                        <button class="action-btn add-btn"><i class="fas fa-plus"></i> Add New</button>
+                        <button class="action-btn import-btn"><i class="fas fa-file-import"></i> Import</button>
+                        <button class="action-btn export-btn"><i class="fas fa-file-export"></i> Export</button>
+                    </div>
+                </div>
+
+                <div class="search-filter">
+                    <div class="search">
+                        <input type="text" placeholder="Search follow-ups...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="filter">
+                        <select id="followup-status-filter">
+                            <option value="">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="completed">Completed</option>
+                            <option value="scheduled">Scheduled</option>
+                        </select>
+                        <select id="followup-type-filter">
+                            <option value="">All Types</option>
+                            <option value="sale">Sales</option>
+                            <option value="service">Service</option>
+                            <option value="enquiry">Enquiry</option>
+                        </select>
+                        <div class="date-range">
+                            <input type="date" id="followup-start-date" placeholder="Start Date">
+                            <input type="date" id="followup-end-date" placeholder="End Date">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="view-options">
+                    <button class="view-btn active" data-view="all"><i class="fas fa-th-list"></i> View All</button>
+                    <button class="view-btn" data-view="date"><i class="fas fa-calendar-alt"></i> By Date</button>
+                    <button class="view-btn" data-view="category"><i class="fas fa-tags"></i> By Category</button>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Follow-up ID</th>
+                                <th>Customer Name</th>
+                                <th>Type</th>
+                                <th>Assigned To</th>
+                                <th>Due Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>FUP-2025-001</td>
+                                <td>Aditya Mehta</td>
+                                <td>Enquiry</td>
+                                <td>Sarah Johnson</td>
+                                <td>May 15, 2025</td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td class="actions">
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>FUP-2025-002</td>
+                                <td>Priya Patel</td>
+                                <td>Service</td>
+                                <td>Michael Wilson</td>
+                                <td>May 20, 2025</td>
+                                <td><span class="status scheduled">Scheduled</span></td>
+                                <td class="actions">
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>FUP-2025-003</td>
+                                <td>Arjun Singh</td>
+                                <td>Sales</td>
+                                <td>John Smith</td>
+                                <td>May 12, 2025</td>
+                                <td><span class="status completed">Completed</span></td>
                                 <td class="actions">
                                     <button class="edit-btn"><i class="fas fa-edit"></i></button>
                                     <button class="delete-btn"><i class="fas fa-trash-alt"></i></button>
@@ -446,282 +964,7 @@
             </section>
         </main>
     </div>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const mobileNavToggle = document.getElementById('mobileNavToggle');
-    const sidebar = document.getElementById('sidebar');
-    const sidebarNavItems = document.querySelectorAll('.sidebar-nav li');
-    const contentSections = document.querySelectorAll('.content-section');
 
-    // Function to switch tabs
-    function switchTab(tabElement) {
-        // Handle logout separately
-        if (tabElement.id === 'logout-btn') {
-            window.location.href = 'index.html';
-            return;
-        }
-
-        // Get the tab/section ID
-        const tabId = tabElement.getAttribute('data-tab');
-        
-        // Remove active class from all nav items and sections
-        sidebarNavItems.forEach(item => {
-            item.classList.remove('active');
-        });
-        contentSections.forEach(section => {
-            section.classList.remove('active');
-        });
-        
-        // Add active class to current nav item and section
-        tabElement.classList.add('active');
-        const activeSection = document.getElementById(tabId);
-        
-        if (activeSection) {
-            activeSection.classList.add('active');
-        }
-
-        // Close mobile sidebar
-        closeMobileSidebar();
-    }
-
-    // Function to close mobile sidebar
-    function closeMobileSidebar() {
-        sidebar.classList.remove('mobile-active');
-        document.body.classList.remove('sidebar-open');
-    }
-
-    // Add click event listeners to sidebar navigation items
-    sidebarNavItems.forEach(item => {
-        item.addEventListener('click', function(event) {
-            // Prevent default behavior and stop propagation
-            event.preventDefault();
-            event.stopPropagation();
-
-            // Call switch tab function
-            switchTab(this);
-        });
-    });
-
-    // Mobile navigation toggle
-    mobileNavToggle.addEventListener('click', function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        
-        // Toggle sidebar
-        sidebar.classList.toggle('mobile-active');
-        document.body.classList.toggle('sidebar-open');
-    });
-
-    // Close sidebar when clicking outside
-    document.addEventListener('click', function(event) {
-        if (sidebar.classList.contains('mobile-active') && 
-            !sidebar.contains(event.target) && 
-            !mobileNavToggle.contains(event.target)) {
-            closeMobileSidebar();
-        }
-    });
-
-    // Prevent scroll when sidebar is open
-    function toggleBodyScroll() {
-        if (sidebar.classList.contains('mobile-active')) {
-            document.body.style.overflow = 'hidden';
-            document.body.style.position = 'fixed';
-            document.body.style.width = '100%';
-        } else {
-            document.body.style.overflow = 'auto';
-            document.body.style.position = 'static';
-            document.body.style.width = 'auto';
-        }
-    }
-
-    // Handle window resize
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            // Reset for desktop view
-            closeMobileSidebar();
-        }
-        toggleBodyScroll();
-    });
-
-    // Initial body scroll toggle
-    toggleBodyScroll();
-
-    // Debug logging
-    console.log('Mobile navigation script initialized');
-    console.log('Sidebar nav items:', sidebarNavItems.length);
-});
-document.addEventListener('DOMContentLoaded', function() {
-    const mobileNavToggle = document.getElementById('mobileNavToggle');
-    const sidebar = document.getElementById('sidebar');
-    const tabs = document.querySelectorAll('.sidebar-nav li');
-    const sections = document.querySelectorAll('.content-section');
-    const mainContent = document.querySelector('.main-content');
-
-    // Debugging function to log touch and click events
-    function logTouchInteraction(element) {
-        element.addEventListener('touchstart', function(e) {
-            console.log('Touchstart event triggered on:', element);
-            e.stopPropagation();
-        });
-
-        element.addEventListener('click', function(e) {
-            console.log('Click event triggered on:', element);
-            e.stopPropagation();
-        });
-    }
-
-    // Apply logging to all sidebar navigation items
-    tabs.forEach(tab => {
-        logTouchInteraction(tab);
-    });
-
-    // Comprehensive tab switching function
-    function switchTab(tabElement) {
-        // Logout handling
-        if (tabElement.id === 'logout-btn') {
-            window.location.href = 'index.html';
-            return;
-        }
-
-        const tabId = tabElement.getAttribute('data-tab');
-        
-        // Remove active states
-        tabs.forEach(t => t.classList.remove('active'));
-        sections.forEach(s => s.classList.remove('active'));
-        
-        // Add active states
-        tabElement.classList.add('active');
-        const activeSection = document.getElementById(tabId);
-        activeSection.classList.add('active');
-
-        // Close mobile sidebar
-        if (window.innerWidth <= 768) {
-            sidebar.classList.remove('mobile-active');
-            document.body.classList.remove('sidebar-open');
-        }
-
-        // Scroll to top
-        mainContent.scrollTop = 0;
-    }
-
-    // Enhanced event listeners for tabs
-    tabs.forEach(tab => {
-        // Multiple event listeners for cross-browser compatibility
-        tab.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            switchTab(this);
-        });
-
-        tab.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            switchTab(this);
-        }, { passive: false });
-    });
-
-    // Mobile navigation toggle
-    function toggleSidebar(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        sidebar.classList.toggle('mobile-active');
-        document.body.classList.toggle('sidebar-open');
-    }
-
-    mobileNavToggle.addEventListener('click', toggleSidebar);
-    mobileNavToggle.addEventListener('touchstart', toggleSidebar, { passive: false });
-
-    // Sidebar close logic
-    document.addEventListener('click', function(event) {
-        if (sidebar.classList.contains('mobile-active') && 
-            !sidebar.contains(event.target) && 
-            !mobileNavToggle.contains(event.target)) {
-            sidebar.classList.remove('mobile-active');
-            document.body.classList.remove('sidebar-open');
-        }
-    });
-
-    // Responsive handling
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            sidebar.classList.remove('mobile-active');
-            document.body.classList.remove('sidebar-open');
-            document.body.style.overflow = 'auto';
-        }
-    });
-});
-document.addEventListener('DOMContentLoaded', () => {
-    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-    const sidebar = document.querySelector('.sidebar');
-    const body = document.body;
-
-    mobileNavToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('mobile-active');
-        body.classList.toggle('sidebar-open');
-    });
-
-    // Close sidebar when clicking outside
-    document.addEventListener('click', (event) => {
-        if (!sidebar.contains(event.target) && 
-            !mobileNavToggle.contains(event.target) && 
-            sidebar.classList.contains('mobile-active')) {
-            sidebar.classList.remove('mobile-active');
-            body.classList.remove('sidebar-open');
-        }
-    });
-});
-document.addEventListener('DOMContentLoaded', function() {
-    const mobileNavToggle = document.getElementById('mobileNavToggle');
-    const sidebar = document.getElementById('sidebar');
-    const sidebarNavItems = document.querySelectorAll('.sidebar-nav li');
-    const contentSections = document.querySelectorAll('.content-section');
-    const overlay = document.createElement('div');
-    overlay.classList.add('sidebar-overlay');
-    document.body.appendChild(overlay);
-
-    function switchTab(tabElement) {
-        if (tabElement.id === 'logout-btn') {
-            window.location.href = 'index.html';
-            return;
-        }
-        
-        const tabId = tabElement.getAttribute('data-tab');
-        sidebarNavItems.forEach(item => item.classList.remove('active'));
-        contentSections.forEach(section => section.classList.remove('active'));
-        
-        tabElement.classList.add('active');
-        document.getElementById(tabId).classList.add('active');
-        closeMobileSidebar();
-    }
-
-    function closeMobileSidebar() {
-        sidebar.classList.remove('mobile-active');
-        document.body.classList.remove('sidebar-open');
-        overlay.style.opacity = '0';
-        setTimeout(() => overlay.style.visibility = 'hidden', 300);
-    }
-
-    sidebarNavItems.forEach(item => {
-        item.addEventListener('click', function(event) {
-            event.preventDefault();
-            switchTab(this);
-        });
-    });
-
-    mobileNavToggle.addEventListener('click', function(event) {
-        event.preventDefault();
-        sidebar.classList.toggle('mobile-active');
-        document.body.classList.toggle('sidebar-open');
-        if (sidebar.classList.contains('mobile-active')) {
-            overlay.style.visibility = 'visible';
-            overlay.style.opacity = '1';
-        } else {
-            closeMobileSidebar();
-        }
-    });
-
-    overlay.addEventListener('click', closeMobileSidebar);
-});
-    </script>
+    <script src="admin.js"></script>
 </body>
 </html>
