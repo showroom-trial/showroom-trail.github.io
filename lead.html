@@ -70,7 +70,7 @@
                 <a href="#" data-section="comparison-section">
                     <i class="fas fa-trophy"></i> Executive Comparison
                 </a>
-                <a href="#" data-section="feedback-section">
+              <!---  <a href="#" data-section="feedback-section">
                     <i class="fas fa-comment"></i> Customer Feedback
                 </a>
                 <!--<a href="#" data-section="settings-section">
@@ -726,11 +726,11 @@
                                         <span>85%</span>
                                     </div>
                                 </td>
-                                <td data-label="Status"><span class="status-badge urgent">Today</span></td>
+                                <td data-label="Status"><span class="status-badge status-Hot">Today</span></td>
                                 <td data-label="Actions">
                                     <button class="action-btn"><i class="fas fa-phone"></i></button>
                                     <button class="action-btn"><i class="fas fa-envelope"></i></button>
-                                    <button class="action-btn"><i class="fas fa-check-circle"></i></button>
+                                    <!--<button class="action-btn"><i class="fas fa-check-circle"></i></button>-->
                                 </td>
                             </tr>
                             <tr class="urgent-row">
@@ -744,11 +744,11 @@
                                         <span>60%</span>
                                     </div>
                                 </td>
-                                <td data-label="Status"><span class="status-badge urgent">Today</span></td>
+                                <td data-label="Status"><span class="status-badge status-Hot">Today</span></td>
                                 <td data-label="Actions">
                                     <button class="action-btn"><i class="fas fa-phone"></i></button>
                                     <button class="action-btn"><i class="fas fa-envelope"></i></button>
-                                    <button class="action-btn"><i class="fas fa-check-circle"></i></button>
+                                    <!--<button class="action-btn"><i class="fas fa-check-circle"></i></button>-->
                                 </td>
                             </tr>
                             <tr>
@@ -762,11 +762,11 @@
                                         <span>78%</span>
                                     </div>
                                 </td>
-                                <td data-label="Status"><span class="status-badge upcoming">Tomorrow</span></td>
+                                <td data-label="Status"><span class="status-badge status-Warm">Tomorrow</span></td>
                                 <td data-label="Actions">
                                     <button class="action-btn"><i class="fas fa-phone"></i></button>
                                     <button class="action-btn"><i class="fas fa-envelope"></i></button>
-                                    <button class="action-btn"><i class="fas fa-check-circle"></i></button>
+                                    <!--<button class="action-btn"><i class="fas fa-check-circle"></i></button>-->
                                 </td>
                             </tr>
                             <tr>
@@ -780,11 +780,11 @@
                                         <span>35%</span>
                                     </div>
                                 </td>
-                                <td data-label="Status"><span class="status-badge scheduled">Scheduled</span></td>
+                                <td data-label="Status"><span class="status-badge status-Cold">Scheduled</span></td>
                                 <td data-label="Actions">
                                     <button class="action-btn"><i class="fas fa-phone"></i></button>
                                     <button class="action-btn"><i class="fas fa-envelope"></i></button>
-                                    <button class="action-btn"><i class="fas fa-check-circle"></i></button>
+                                    <!--<button class="action-btn"><i class="fas fa-check-circle"></i></button>-->
                                 </td>
                             </tr>
                             <tr class="overdue-row">
@@ -798,11 +798,11 @@
                                         <span>55%</span>
                                     </div>
                                 </td>
-                                <td data-label="Status"><span class="status-badge overdue">Overdue</span></td>
+                                <td data-label="Status"><span class="status-badge status-Hot">Overdue</span></td>
                                 <td data-label="Actions">
                                     <button class="action-btn"><i class="fas fa-phone"></i></button>
                                     <button class="action-btn"><i class="fas fa-envelope"></i></button>
-                                    <button class="action-btn"><i class="fas fa-check-circle"></i></button>
+                                    <!--<button class="action-btn"><i class="fas fa-check-circle"></i></button>-->
                                 </td>
                             </tr>
                         </tbody>
@@ -1211,17 +1211,19 @@
             <th>BOOKING</th>
             <th>TGT</th>
             <th>%</th>
+            <th>E/B</th>
+            <th>B/R</th>
         </tr>
     </thead>
     <tbody>
-        <tr><td>Shilpa</td><td>–</td><td>–</td><td>2</td><td>5</td><td>1</td><td>35</td><td>3</td><td>9%</td><td>2</td><td>67%</td></tr>
-        <tr><td>Prathap</td><td>–</td><td>–</td><td>1</td><td>4</td><td>1</td><td>50</td><td>9</td><td>18%</td><td>8</td><td>89%</td></tr>
-        <tr><td>Dhanush E</td><td>–</td><td>–</td><td>–</td><td>0</td><td>0</td><td>40</td><td>0</td><td>0%</td><td>0</td><td>0%</td></tr>
-        <tr><td>Darshan</td><td>–</td><td>–</td><td>–</td><td>4</td><td>2</td><td>40</td><td>4</td><td>10%</td><td>4</td><td>100%</td></tr>
-        <tr><td>Kavya</td><td>–</td><td>–</td><td>–</td><td>2</td><td>0</td><td>30</td><td>3</td><td>10%</td><td>2</td><td>67%</td></tr>
-        <tr><td>Mohana</td><td>–</td><td>–</td><td>–</td><td>1</td><td>0</td><td>20</td><td>1</td><td>5%</td><td>1</td><td>100%</td></tr>
-        <tr><td>Yashwanth</td><td>–</td><td>–</td><td>–</td><td>3</td><td>1</td><td>45</td><td>4</td><td>9%</td><td>3</td><td>75%</td></tr>
-        <tr><td>Mallikarjun</td><td>–</td><td>–</td><td>–</td><td>1</td><td>0</td><td>35</td><td>1</td><td>3%</td><td>1</td><td>100%</td></tr>
+        <tr><td>Shilpa</td><td>–</td><td>–</td><td>2</td><td>5</td><td>1</td><td>35</td><td>3</td><td>9%</td><td>2</td><td>67%</td><td>10%</td><td>8%</td></tr>
+        <tr><td>Prathap</td><td>–</td><td>–</td><td>1</td><td>4</td><td>1</td><td>50</td><td>9</td><td>18%</td><td>8</td><td>89%</td><td>10%</td><td>8%</td></tr>
+        <tr><td>Dhanush E</td><td>–</td><td>–</td><td>–</td><td>0</td><td>0</td><td>40</td><td>0</td><td>0%</td><td>0</td><td>0%</td><td>10%</td><td>8%</td></tr>
+        <tr><td>Darshan</td><td>–</td><td>–</td><td>–</td><td>4</td><td>2</td><td>40</td><td>4</td><td>10%</td><td>4</td><td>100%</td><td>6%</td><td>6%</td></tr>
+        <tr><td>Kavya</td><td>–</td><td>–</td><td>–</td><td>2</td><td>0</td><td>30</td><td>3</td><td>10%</td><td>2</td><td>67%</td><td>7%</td><td>7%</td></tr>
+        <tr><td>Mohana</td><td>–</td><td>–</td><td>–</td><td>1</td><td>0</td><td>20</td><td>1</td><td>5%</td><td>1</td><td>100%</td><td>5%</td><td>7%</td></tr>
+        <tr><td>Yashwanth</td><td>–</td><td>–</td><td>–</td><td>3</td><td>1</td><td>45</td><td>4</td><td>9%</td><td>3</td><td>75%</td><td>12%</td><td>4%</td></tr>
+        <tr><td>Mallikarjun</td><td>–</td><td>–</td><td>–</td><td>1</td><td>0</td><td>35</td><td>1</td><td>3%</td><td>1</td><td>100%</td><td>7%</td><td>6%</td></tr>
         <tr>
             <td><strong>TEAM TOTAL</strong></td>
             <td>–</td>
@@ -1250,28 +1252,28 @@
                     <th>Team Leader</th>
                     <th>Total Target</th>
                     <th>Total Achieved</th>
-                    <th>Overall %</th>
-                    <th>KEC's</th>
+                    <th>E/B</th>
+                    <!--<th>KEC's</th>
                     <th>ENQUIRY</th>
-                    <th>TD</th>
-                    <th>TD%</th>
+                    <th>TD</th>-->
+                    <th>B/R</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><strong>You (Your Team)</strong></td>
                     <td>260</td><td>24</td><td>9%</td>
-                    <td>–</td><td>–</td><td>20</td><td>10%</td>
+                    <!--<td>–</td><td>–</td><td>20</td>--><td>10%</td>
                 </tr>
                 <tr>
                     <td>Leader B</td>
                     <td>215</td><td>24</td><td>11%</td>
-                    <td>–</td><td>–</td><td>14</td><td>13%</td>
+                    <!--<td>–</td><td>–</td><td>20</td>--><td>13%</td>
                 </tr>
                 <tr>
                     <td>Leader C</td>
                     <td>135</td><td>11</td><td>8%</td>
-                    <td>–</td><td>–</td><td>6</td><td>14%</td>
+                    <!--<td>–</td><td>–</td><td>20</td>--><td>14%</td>
                 </tr>
             </tbody>
         </table>
