@@ -103,7 +103,7 @@ function createCharts() {
         charts.vehiclesSold = new Chart(vehicleCtx, {
             type: 'bar',
             data: {
-                labels: ['Seltos', 'Sonet', 'Carens', 'EV6', 'Carnival'],
+                labels: ['Overall', 'Shivamogga', 'Chitradurga', 'chikkamagaluru', 'Davangere'],
                 datasets: [{
                     label: 'Units Sold',
                     data: [45, 36, 28, 8, 7],
