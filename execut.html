@@ -10,19 +10,37 @@
 <body>
     <button class="toggle-btn">☰</button>
 
-    <div class="sidebar">
-        <div class="brand">
-            <h2>Welcome</h2>
-            <p>Consultant</p>
+    <!-- Replace the existing sidebar section with this enhanced version -->
+<div class="sidebar">
+    <div class="brand enhanced-profile">
+        <div class="profile-container">
+            
+            <div class="profile-info">
+                <h2 class="profile-welcome">Welcome</h2>
+                <p class="profile-name">Andrew</p>
+                <p class="profile-role">Sales Consultant</p>
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">28</span>
+                        <span class="stat-label">Active Leads</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">85%</span>
+                        <span class="stat-label">Target</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <ul class="nav-links">
-            <li><a href="#my-leads" class="active">📋 My Leads</a></li>
-            <li><a href="#customer-interactions">🗣️ Follow-ups</a></li>
-            <li><a href="#addons-section">🛒 Add-ons Sales</a></li>
-            <li><a href="#daily-tasks-section">✓ Daily Tasks</a></li>
-            <li><a href="#logout">🔒 Logout</a></li>
-        </ul>
     </div>
+    <ul class="nav-links">
+        <li><a href="#my-leads" class="active">📋 My Leads</a></li>
+        <li><a href="#customer-interactions">🗣️ Follow-ups</a></li>
+        <li><a href="#addons-section">🛒 Add-ons Sales</a></li>
+        <li><a href="#daily-tasks-section">✓ Daily Tasks</a></li>
+        <li><a href="#logout">🔒 Logout</a></li>
+    </ul>
+</div>
 
     <div class="top-section">
         <div class="top-section-right">
@@ -311,31 +329,74 @@
                 </div>                                               
             </div>
             
-            <div class="cards-row">
-                <div class="card small-card">
-                    <div class="card-header">
-                        <h2>Total Add-on Revenue</h2>
-                    </div>
-                    <div class="stat-value">&#8377;24,850</div>
-                    <div class="stat-label">Last 30 days</div>
-                </div>
-                
-                <div class="card small-card">
-                    <div class="card-header">
-                        <h2>Conversion Rate</h2>
-                    </div>
-                    <div class="stat-value">42%</div>
-                    <div class="stat-label">Customers purchasing add-ons</div>
-                </div>
-                
-                <div class="card small-card">
-                    <div class="card-header">
-                        <h2>Most Popular</h2>
-                    </div>
-                    <div class="stat-value">Extended Warranty</div>
-                    <div class="stat-label">58 units sold this month</div>
-                </div>
+            <!-- Replace the existing cards-row section with this enhanced black & white version -->
+<div class="cards-row enhanced-stats-row">
+    <div class="card small-card enhanced-card revenue-card">
+        <div class="card-icon">
+            <div class="icon-circle revenue-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2V22M17 5H9.5C8.57 5 7.75 5.84 7.75 6.88S8.57 8.75 9.5 8.75H14.5C15.43 8.75 16.25 9.59 16.25 10.62S15.43 12.5 14.5 12.5H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </div>
+        </div>
+        <div class="card-content">
+            <div class="card-header">
+                <h3>Total Add-on Revenue</h3>
+            </div>
+            <div class="stat-value">₹24,850</div>
+            <div class="stat-label">Last 30 days</div>
+            <div class="stat-trend positive">
+                <span class="trend-icon">↗</span>
+                <span class="trend-text">+12.5% from last month</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card small-card enhanced-card conversion-card">
+        <div class="card-icon">
+            <div class="icon-circle conversion-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 4H18C19.1046 4 20 4.89543 20 6V18C20 19.1046 19.1046 20 18 20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H8" stroke="currentColor" stroke-width="2"/>
+                    <path d="M15 2H9C8.44772 2 8 2.44772 8 3V5C8 5.55228 8.44772 6 9 6H15C15.5523 6 16 5.55228 16 5V3C16 2.44772 15.5523 2 15 2Z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="card-header">
+                <h3>Conversion Rate</h3>
+            </div>
+            <div class="stat-value">42%</div>
+            <div class="stat-label">Customers purchasing add-ons</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 42%"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card small-card enhanced-card popular-card">
+        <div class="card-icon">
+            <div class="icon-circle popular-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="card-header">
+                <h3>Most Popular</h3>
+            </div>
+            <div class="stat-value">Extended Warranty</div>
+            <div class="stat-label">58 units sold this month</div>
+            <div class="popularity-indicator">
+                <div class="popularity-stars">
+                    <span>★★★★★</span>
+                </div>
+                <span class="popularity-text">Top Seller</span>
+            </div>
+        </div>
+    </div>
+</div>
             
             <div class="card">
                 <div class="card-header">
@@ -365,52 +426,68 @@
                     </select>
                 </div>
                 
-                <table id="addon-sales-table">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Customer Name</th>
-                            <th>Vehicle Model</th>
-                            <th>Add-on Item</th>
-                            <th>Category</th>
-                            <th>Price (₹)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr data-model="KIA Seltos">
-                            <td>2025-03-15</td>
-                            <td>Rahul Sharma</td>
-                            <td>KIA Seltos</td>
-                            <td>Sunroof</td>
-                            <td>Exterior</td>
-                            <td>₹1,24,500</td>
-                        </tr>
-                        <tr data-model="KIA Sonet">
-                            <td>2025-03-10</td>
-                            <td>Priya Verma</td>
-                            <td>KIA Sonet</td>
-                            <td>Seat Covers</td>
-                            <td>Interior</td>
-                            <td>₹41,500</td>
-                        </tr>
-                        <tr data-model="KIA Carens">
-                            <td>2025-03-08</td>
-                            <td>Amit Gupta</td>
-                            <td>KIA Carens</td>
-                            <td>GPS Tracker</td>
-                            <td>Electronics</td>
-                            <td>₹62,250</td>
-                        </tr>
-                        <tr data-model="KIA EV6">
-                            <td>2025-03-05</td>
-                            <td>Neha Rao</td>
-                            <td>KIA EV6</td>
-                            <td>Extended Warranty</td>
-                            <td>Warranty</td>
-                            <td>₹1,66,000</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <!-- Replace the existing table in the Add-ons section with this updated version -->
+<table id="addon-sales-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Customer Name</th>
+            <th>Vehicle Model</th>
+            <th>Add-on Item</th>
+            <th>Category</th>
+            <th>Retail Price (₹)</th>
+            <th>Tax %</th>
+            <th>GST (₹)</th>
+            <th>Sales Price (₹)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-model="KIA Seltos">
+            <td>2025-03-15</td>
+            <td>Rahul Sharma</td>
+            <td>KIA Seltos</td>
+            <td>Sunroof</td>
+            <td>Exterior</td>
+            <td>₹1,05,500</td>
+            <td>18%</td>
+            <td>₹19,000</td>
+            <td>₹1,24,500</td>
+        </tr>
+        <tr data-model="KIA Sonet">
+            <td>2025-03-10</td>
+            <td>Priya Verma</td>
+            <td>KIA Sonet</td>
+            <td>Seat Covers</td>
+            <td>Interior</td>
+            <td>₹35,170</td>
+            <td>18%</td>
+            <td>₹6,330</td>
+            <td>₹41,500</td>
+        </tr>
+        <tr data-model="KIA Carens">
+            <td>2025-03-08</td>
+            <td>Amit Gupta</td>
+            <td>KIA Carens</td>
+            <td>GPS Tracker</td>
+            <td>Electronics</td>
+            <td>₹52,750</td>
+            <td>18%</td>
+            <td>₹9,500</td>
+            <td>₹62,250</td>
+        </tr>
+        <tr data-model="KIA EV6">
+            <td>2025-03-05</td>
+            <td>Neha Rao</td>
+            <td>KIA EV6</td>
+            <td>Extended Warranty</td>
+            <td>Warranty</td>
+            <td>₹1,40,680</td>
+            <td>18%</td>
+            <td>₹25,320</td>
+            <td>₹1,66,000</td>
+        </tr>
+    </tbody>
+</table>
                 
                 <div class="pagination">
                     <button class="pagination-btn">Previous</button>
@@ -423,58 +500,6 @@
                 </div>
             </div>
             
-            <div class="card">
-                <div class="card-header">
-                    <h2>Recommended Add-ons</h2>
-                </div>
-                
-                <div class="form-group">
-                    <label for="customer-addon-select">Select Customer</label>
-                    <select id="customer-addon-select" class="form-control">
-                        <option value="">Choose a customer</option>
-                        <option value="1">Mark Johnson</option>
-                        <option value="2">Susan Miller</option>
-                        <option value="3">Thomas Anderson</option>
-                        <option value="4">Jennifer Lewis</option>
-                        <option value="5">William Chen</option>
-                    </select>
-                </div>
-                
-                <div class="recommended-addons-container">
-                    <h3>Recommended Add-ons</h3>
-                    <table class="recommended-addons-table">
-                        <thead>
-                            <tr>
-                                <th>Add-on Name</th>
-                                <th>Description</th>
-                                <th>Price (₹)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Sunroof</td>
-                                <td>Enhance your ride with a premium sunroof.</td>
-                                <td>1,24,500</td>
-                            </tr>
-                            <tr>
-                                <td>Seat Covers</td>
-                                <td>Comfortable and stylish seat covers.</td>
-                                <td>41,500</td>
-                            </tr>
-                            <tr>
-                                <td>GPS Tracker</td>
-                                <td>Track your car in real time for safety.</td>
-                                <td>62,250</td>
-                            </tr>
-                            <tr>
-                                <td>Extended Warranty</td>
-                                <td>Extra protection for your vehicle.</td>
-                                <td>1,66,000</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
         </section>
 
         <!-- Daily Tasks Section -->
@@ -585,55 +610,80 @@
         }
     
         // Add-ons Sales Performance Chart (Cross Selling Graph)
-        const addonsChartCtx = document.getElementById("addons-chart");
-        if (addonsChartCtx) {
-            new Chart(addonsChartCtx, {
-                type: "bar",
-                data: {
-                    labels: ["Sunroof", "Extended Warranty", "Seat Covers", "GPS Tracker", "Insurance"],
-                    datasets: [
-                        {
-                            label: "Sold with Car Purchase",
-                            data: [50, 30, 45, 20, 40],
-                            backgroundColor: "rgba(54, 162, 235, 0.7)", // Blue
-                        },
-                        {
-                            label: "Sold Separately",
-                            data: [20, 25, 30, 15, 35],
-                            backgroundColor: "rgba(255, 99, 132, 0.7)", // Red
+        // Replace the existing Add-ons Sales Performance Chart code with this updated version
+
+// Add-ons Sales Performance Chart (Single Bar Graph)
+const addonsChartCtx = document.getElementById("addons-chart");
+if (addonsChartCtx) {
+    new Chart(addonsChartCtx, {
+        type: "bar",
+        data: {
+            labels: ["Sunroof", "Extended Warranty", "Seat Covers", "GPS Tracker", "Insurance"],
+            datasets: [
+                {
+                    label: "Units Sold",
+                    data: [70, 55, 75, 35, 75],
+                    backgroundColor: "rgba(54, 162, 235, 0.8)", // Blue color
+                    borderColor: "rgba(54, 162, 235, 1)",
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: "#555",
+                        font: {
+                            size: 14
                         }
-                    ]
+                    }
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            labels: {
-                                color: "#555",
-                                font: {
-                                    size: 14
-                                }
-                            }
+                title: {
+                    display: true,
+                    text: 'Add-on Items Sales Performance',
+                    color: "#333",
+                    font: {
+                        size: 16,
+                        weight: 'bold'
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: { display: false },
+                    ticks: { 
+                        color: "#555",
+                        font: {
+                            size: 12
+                        }
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    grid: { color: "rgba(0, 0, 0, 0.1)" },
+                    ticks: { 
+                        color: "#555",
+                        font: {
+                            size: 12
                         }
                     },
-                    scales: {
-                        x: {
-                            stacked: true,
-                            grid: { display: false },
-                            ticks: { color: "#555" }
-                        },
-                        y: {
-                            stacked: true,
-                            beginAtZero: true,
-                            grid: { color: "rgba(0, 0, 0, 0.1)" },
-                            ticks: { color: "#555" }
+                    title: {
+                        display: true,
+                        text: 'Units Sold',
+                        color: "#555",
+                        font: {
+                            size: 14,
+                            weight: 'bold'
                         }
                     }
                 }
-            });
+            }
         }
-    }
+    });
+}}
     
     </script>
     
@@ -1039,6 +1089,235 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Add this JavaScript code to your existing script section in execut.html
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Sample notes data for demonstration
+    const notesDatabase = {
+        '129831': {
+            customerName: 'Jennifer Lewis',
+            notes: [
+                {
+                    date: 'Mar 9, 2025 9:30 AM',
+                    note: 'Customer interested in Seltos HTX variant. Discussed various financing options including 0% interest for first 6 months. Customer wants to compare with competitors before making final decision. Follow-up scheduled for next week.',
+                    addedBy: 'Sales Executive'
+                }
+            ]
+        },
+        '129832': {
+            customerName: 'William Chen',
+            notes: [
+                {
+                    date: 'Mar 8, 2025 3:45 PM',
+                    note: 'Excellent test drive experience with EV6. Customer very impressed with acceleration and tech features. Showed interest in GT-Line variant with premium package. Concerns about charging infrastructure discussed. Provided charging station map.',
+                    addedBy: 'Sales Executive'
+                }
+            ]
+        },
+        '129833': {
+            customerName: 'Katherine Wright',
+            notes: [
+                {
+                    date: 'Mar 8, 2025 11:15 AM',
+                    note: 'Sent detailed brochure and pricing for Carnival Limousine Plus. Customer needs 8-seater for family use. Budget discussion - looking for financing options. Interested in extended warranty and maintenance package.',
+                    addedBy: 'Sales Executive'
+                }
+            ]
+        },
+        '129834': {
+            customerName: 'Daniel Martinez',
+            notes: [
+                {
+                    date: 'Mar 7, 2025 2:00 PM',
+                    note: 'Follow-up after successful test drive. Customer ready to purchase but wants to add sunroof, premium audio system and extended warranty. Preparing final quotation with all add-ons. Very promising lead.',
+                    addedBy: 'Sales Executive'
+                }
+            ]
+        },
+        '129835': {
+            customerName: 'Sarah Johnson',
+            notes: [
+                {
+                    date: 'Mar 7, 2025 10:30 AM',
+                    note: 'Customer inquired about Sportage delivery timeline. Current waiting period is 6-8 weeks. Customer okay with waiting. Discussed color options - prefers Gravity Grey. Booking amount discussed.',
+                    addedBy: 'Sales Executive'
+                }
+            ]
+        },
+        '129836': {
+            customerName: 'Michael Rodriguez',
+            notes: [
+                {
+                    date: 'Mar 6, 2025 4:00 PM',
+                    note: 'Finalized all details for Sorento purchase. Selected Glacier White Pearl color with HTX trim. All paperwork completed. Delivery scheduled for next month. Customer very satisfied with service.',
+                    addedBy: 'Sales Executive'
+                }
+            ]
+        }
+    };
+
+    // Get all "View Notes" buttons from the interactions table
+    const viewNotesButtons = document.querySelectorAll('#interactions-table .btn-outline');
+    
+    viewNotesButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Get customer ID from the row
+            const row = this.closest('tr');
+            const customerId = row.querySelector('td:nth-child(3)').textContent.trim();
+            const customerData = notesDatabase[customerId];
+            
+            if (customerData) {
+                showNotesPopup(customerId, customerData);
+            } else {
+                showNotesPopup(customerId, {
+                    customerName: row.querySelector('td:nth-child(2)').textContent.trim(),
+                    notes: []
+                });
+            }
+        });
+    });
+
+    function showNotesPopup(customerId, customerData) {
+        // Create popup HTML
+        const popupHTML = `
+            <div id="notes-popup" class="popup">
+                <div class="popup-content notes-popup-content">
+                    <span class="popup-close" id="close-notes-popup">&times;</span>
+                    <h2>Customer Notes - ${customerData.customerName}</h2>
+                    <div class="notes-container">
+                        <div class="existing-notes" id="existing-notes">
+                            ${customerData.notes.length > 0 ? 
+                                customerData.notes.map(note => `
+                                    <div class="note-item">
+                                        <div class="note-header">
+                                            <span class="note-date">${note.date}</span>
+                                            <span class="note-author">by ${note.addedBy}</span>
+                                        </div>
+                                        <div class="note-content">${note.note}</div>
+                                    </div>
+                                `).join('') : 
+                                '<p class="no-notes">No notes available for this customer.</p>'
+                            }
+                        </div>
+                        <div class="add-note-section">
+                            <h3>Add New Note</h3>
+                            <textarea id="new-note-input" placeholder="Enter your note here..." rows="4"></textarea>
+                            <div class="note-actions">
+                                <button id="save-note-btn" class="btn btn-primary">Save Note</button>
+                                <button id="cancel-note-btn" class="btn btn-outline">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Remove existing popup if any
+        const existingPopup = document.getElementById('notes-popup');
+        if (existingPopup) {
+            existingPopup.remove();
+        }
+
+        // Add popup to body
+        document.body.insertAdjacentHTML('beforeend', popupHTML);
+
+        // Get popup elements
+        const popup = document.getElementById('notes-popup');
+        const closeBtn = document.getElementById('close-notes-popup');
+        const saveBtn = document.getElementById('save-note-btn');
+        const cancelBtn = document.getElementById('cancel-note-btn');
+        const noteInput = document.getElementById('new-note-input');
+
+        // Show popup
+        popup.style.display = 'flex';
+
+        // Close popup events
+        closeBtn.addEventListener('click', () => popup.remove());
+        cancelBtn.addEventListener('click', () => popup.remove());
+        
+        // Close popup when clicking outside
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) popup.remove();
+        });
+
+        // Save note functionality
+        saveBtn.addEventListener('click', function() {
+            const noteText = noteInput.value.trim();
+            if (noteText) {
+                // Create new note object
+                const newNote = {
+                    date: new Date().toLocaleString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric',
+                        hour: 'numeric',
+                        minute: '2-digit',
+                        hour12: true
+                    }),
+                    note: noteText,
+                    addedBy: 'Sales Executive'
+                };
+
+                // Add to database (in real app, this would be sent to server)
+                if (!notesDatabase[customerId]) {
+                    notesDatabase[customerId] = {
+                        customerName: customerData.customerName,
+                        notes: []
+                    };
+                }
+                notesDatabase[customerId].notes.unshift(newNote);
+
+                // Update the notes display
+                const existingNotesDiv = document.getElementById('existing-notes');
+                const newNoteHTML = `
+                    <div class="note-item new-note">
+                        <div class="note-header">
+                            <span class="note-date">${newNote.date}</span>
+                            <span class="note-author">by ${newNote.addedBy}</span>
+                        </div>
+                        <div class="note-content">${newNote.note}</div>
+                    </div>
+                `;
+
+                if (existingNotesDiv.innerHTML.includes('No notes available')) {
+                    existingNotesDiv.innerHTML = newNoteHTML;
+                } else {
+                    existingNotesDiv.insertAdjacentHTML('afterbegin', newNoteHTML);
+                }
+
+                // Clear input and show success message
+                noteInput.value = '';
+                showSuccessMessage('Note saved successfully!');
+            } else {
+                alert('Please enter a note before saving.');
+            }
+        });
+    }
+
+    function showSuccessMessage(message) {
+        const successDiv = document.createElement('div');
+        successDiv.className = 'success-message';
+        successDiv.textContent = message;
+        successDiv.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 10000;
+            font-weight: bold;
+        `;
+        
+        document.body.appendChild(successDiv);
+        
+        setTimeout(() => {
+            successDiv.remove();
+        }, 3000);
+    }
+});
 </script>
 </body>
 </html>
