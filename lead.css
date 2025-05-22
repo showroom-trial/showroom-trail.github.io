@@ -961,3 +961,81 @@ body {
     }
   }
 
+
+  #etbr-full-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Main heading row */
+#etbr-full-table .main-heading-row th {
+    background: linear-gradient(90deg, #2ca4e0 80%, #5299bd 100%);
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: 700;
+    border-right: 2px solid #fff;s
+    text-align: center;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(63,81,181,0.08);
+    transition: background 0.3s;
+}
+
+/* Sub heading row */
+#etbr-full-table .sub-heading-row th {
+    background: #e3e6f3;
+    color: #8a7d7d;
+    font-size: 1em;
+    font-weight: 600;
+    border-right: 2px solid #bbb;
+    text-align: center;
+    letter-spacing: 0.2px;
+    transition: background 0.3s;
+}
+
+/* Column separation for all cells */
+#etbr-full-table th, #etbr-full-table td {
+    border-right: 2px solid #bbb;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 12px;
+    text-align: center;
+}
+
+/* Remove border from last column */
+#etbr-full-table th:last-child, #etbr-full-table td:last-child {
+    border-right: none;
+}
+
+/* Thicker borders between main column groups */
+#etbr-full-table .enquiry-end,
+#etbr-full-table .booking-end,
+#etbr-full-table .td-group,
+#etbr-full-table .eb-group,
+#etbr-full-table .br-group {
+    border-right: 4px solid #efe4e4 !important;
+}
+
+/* Zebra striping for rows */
+#etbr-full-table tbody tr:nth-child(even) {
+    background-color: #f7f9fc;
+}
+
+/* Row hover effect */
+#etbr-full-table tbody tr:hover {
+    background-color: #e8eaf6;
+    transition: background 0.2s;
+}
+
+/* Rounded corners for the table */
+#etbr-full-table th:first-child {
+    border-top-left-radius: 8px;
+}
+#etbr-full-table th:last-child {
+    border-top-right-radius: 8px;
+}
