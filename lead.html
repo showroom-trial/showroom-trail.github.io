@@ -1191,54 +1191,98 @@
         <div class="table-header">
             <h3 class="table-title">Your Team's ETBR Details</h3>
             <div class="table-actions">
-                <input type="file" id="excelFile" accept=".xlsx" class="dashboard-btn" />
+               <!-- <input type="file" id="excelFile" accept=".xlsx" class="dashboard-btn" />-->
                 <button class="export-btn" data-table="leads-table">
                                 <i class="fas fa-download"></i> Export
                 </button>
             </div>
         </div>
-        <table id="etbr-full-table">
+    <table id="etbr-full-table">
     <thead>
-        <tr>
-            <th>Executive</th>
-            <th>KEC'S</th>
-            <th>ENQUIRY</th>
-            <th>TGT</th>
-            <th>ACH</th>
-            <th>%</th>
-            <th>TD</th>
-            <th>TD%</th>
-            <th>BOOKING</th>
-            <th>TGT</th>
-            <th>%</th>
-            <th>E/B</th>
-            <th>B/R</th>
+        <tr class="main-heading-row">
+            <th rowspan="2">KEC's</th>
+            <th colspan="3" class="enquiry-group">ENQUIRY</th>
+            <th rowspan="2" class="td-group">TD</th>
+            <th rowspan="2" class="td-group">TD%</th>
+            <th colspan="3" class="booking-group">BOOKING</th>
+            <th rowspan="2" class="eb-group">E/B</th>
+            <th rowspan="2" class="br-group">B/R</th>
+        </tr>
+        <tr class="sub-heading-row">
+            <th class="enquiry-group">TGT</th>
+            <th class="enquiry-group">ACH</th>
+            <th class="enquiry-group enquiry-end">%</th>
+            <th class="booking-group">TGT</th>
+            <th class="booking-group">ACH</th>
+            <th class="booking-group booking-end">%</th>
         </tr>
     </thead>
     <tbody>
-        <tr><td>Shilpa</td><td>–</td><td>–</td><td>2</td><td>5</td><td>1</td><td>35</td><td>3</td><td>9%</td><td>2</td><td>67%</td><td>10%</td><td>8%</td></tr>
-        <tr><td>Prathap</td><td>–</td><td>–</td><td>1</td><td>4</td><td>1</td><td>50</td><td>9</td><td>18%</td><td>8</td><td>89%</td><td>10%</td><td>8%</td></tr>
-        <tr><td>Dhanush E</td><td>–</td><td>–</td><td>–</td><td>0</td><td>0</td><td>40</td><td>0</td><td>0%</td><td>0</td><td>0%</td><td>10%</td><td>8%</td></tr>
-        <tr><td>Darshan</td><td>–</td><td>–</td><td>–</td><td>4</td><td>2</td><td>40</td><td>4</td><td>10%</td><td>4</td><td>100%</td><td>6%</td><td>6%</td></tr>
-        <tr><td>Kavya</td><td>–</td><td>–</td><td>–</td><td>2</td><td>0</td><td>30</td><td>3</td><td>10%</td><td>2</td><td>67%</td><td>7%</td><td>7%</td></tr>
-        <tr><td>Mohana</td><td>–</td><td>–</td><td>–</td><td>1</td><td>0</td><td>20</td><td>1</td><td>5%</td><td>1</td><td>100%</td><td>5%</td><td>7%</td></tr>
-        <tr><td>Yashwanth</td><td>–</td><td>–</td><td>–</td><td>3</td><td>1</td><td>45</td><td>4</td><td>9%</td><td>3</td><td>75%</td><td>12%</td><td>4%</td></tr>
-        <tr><td>Mallikarjun</td><td>–</td><td>–</td><td>–</td><td>1</td><td>0</td><td>35</td><td>1</td><td>3%</td><td>1</td><td>100%</td><td>7%</td><td>6%</td></tr>
+        <tr>
+            <td>Shilpa</td>
+            <td>2</td><td>5</td><td>1%</td>
+            <td>35</td><td>3%</td>
+            <td>2</td><td>9</td><td>67%</td>
+            <td>10%</td><td>8%</td>
+        </tr>
+        <tr>
+            <td>Prathap</td>
+            <td>1</td><td>4</td><td>1%</td>
+            <td>50</td><td>9%</td>
+            <td>8</td><td>18</td><td>89%</td>
+            <td>10%</td><td>8%</td>
+        </tr>
+        <tr>
+            <td>Dhanush E</td>
+            <td>–</td><td>0</td><td>0%</td>
+            <td>40</td><td>0%</td>
+            <td>0</td><td>0</td><td>0%</td>
+            <td>10%</td><td>8%</td>
+        </tr>
+        <tr>
+            <td>Darshan</td>
+            <td>–</td><td>4</td><td>2%</td>
+            <td>40</td><td>4%</td>
+            <td>4</td><td>10</td><td>100%</td>
+            <td>6%</td><td>6%</td>
+        </tr>
+        <tr>
+            <td>Kavya</td>
+            <td>–</td><td>2</td><td>0%</td>
+            <td>30</td><td>3%</td>
+            <td>2</td><td>10</td><td>67%</td>
+            <td>7%</td><td>7%</td>
+        </tr>
+        <tr>
+            <td>Mohana</td>
+            <td>–</td><td>1</td><td>0%</td>
+            <td>20</td><td>1%</td>
+            <td>1</td><td>5</td><td>100%</td>
+            <td>5%</td><td>7%</td>
+        </tr>
+        <tr>
+            <td>Yashwanth</td>
+            <td>–</td><td>3</td><td>1%</td>
+            <td>45</td><td>4%</td>
+            <td>3</td><td>9</td><td>75%</td>
+            <td>12%</td><td>4%</td>
+        </tr>
+        <tr>
+            <td>Mallikarjun</td>
+            <td>–</td><td>1</td><td>0%</td>
+            <td>35</td><td>1%</td>
+            <td>1</td><td>3</td><td>100%</td>
+            <td>7%</td><td>6%</td>
+        </tr>
         <tr>
             <td><strong>TEAM TOTAL</strong></td>
-            <td>–</td>
-            <td>–</td>
-            <td><strong>–</strong></td>
-            <td><strong>20</strong></td>
-            <td><strong>4</strong></td>
-            <td><strong>260</strong></td>
-            <td><strong>24</strong></td>
-            <td><strong>9%</strong></td>
-            <td><strong>20</strong></td>
-            <td><strong>83%</strong></td>
+            <td><strong>3</strong></td><td><strong>21</strong></td><td><strong>5%</strong></td>
+            <td><strong>260</strong></td><td><strong>24%</strong></td>
+            <td><strong>21</strong></td><td><strong>64</strong></td><td><strong>83%</strong></td>
+            <td><strong>9%</strong></td><td><strong>7%</strong></td>
         </tr>
     </tbody>
-</table>
+</table> 
     </div>
 
     <!-- Team Leader Comparison Table -->
@@ -1263,7 +1307,7 @@
                 <tr>
                     <td><strong>You (Your Team)</strong></td>
                     <td>260</td><td>24</td><td>9%</td>
-                    <!--<td>–</td><td>–</td><td>20</td>--><td>10%</td>
+                    <!--<td>–</td><td>–</td><td>20</td>--><td>7%</td>
                 </tr>
                 <tr>
                     <td>Leader B</td>
