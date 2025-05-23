@@ -6,6 +6,7 @@
     <title>KIA Sales Manager Dashboard</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
     <link rel="stylesheet" href="sales.css">
 </head>
 <body>
@@ -20,7 +21,8 @@
     <div class="sidebar">
         <div class="sidebar-header">
             <div class="user-info">
-                <div class="user-avatar">
+                <div class="user-avatar">A</div>
+                <div class="user-details">
                     <i class="fas fa-user"></i>
                 </div>
                 <div>
@@ -31,18 +33,23 @@
         </div>
         <div class="sidebar-menu">
             <a href="#enquiry" class="active" data-section="enquiry-section">
+                <div class="nav-icon">📋</div>
                 <i class="fas fa-envelope"></i> Enquiry Management
             </a>
             <a href="#sales" data-section="sales-section">
+                <div class="nav-icon">📊</div>
                 <i class="fas fa-chart-line"></i> Sales Tracking
             </a>
             <a href="#addons" data-section="addons-section">
-                <i class="fas fa-tags"></i> Add-ons & Cross-selling
+                <div class="nav-icon">🔧</div>
+                <i class="fas fa-tags"></i> Accessories 
             </a>
             <a href="#team" data-section="team-section">
+                <div class="nav-icon">📈</div>
                 <i class="fas fa-users"></i> Team Performance
             </a>
             <a href="#target-allocation" data-section="target-allocation-section">
+                <div class="nav-icon">🎯</div>
                 <i class="fas fa-bullseye"></i> Target Allocation
             </a>
         
@@ -91,16 +98,6 @@
                     <div class="card-value">32%</div>
                     <div class="card-subtitle">
                         <span class="trend-up">↑ 3% from last week</span>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Avg. Response Time</h3>
-                    </div>
-                    <div class="card-value">42m</div>
-                    <div class="card-subtitle">
-                        <span class="trend-up"> </span>
                     </div>
                 </div>
             </div>
@@ -250,7 +247,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Total Sales  (this week)</h3>
                     </div>
-                    <div class="card-value">28</div>
+                    <div class="card-value">28/60</div>
                     <div class="card-subtitle">
                         <span class="trend-up">↑ 16% from last week</span>
                     </div>
@@ -273,21 +270,11 @@
                 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Revenue (This week)</h3>
-                    </div>
-                    <div class="card-value">&#8377;342K</div>
-                    <div class="card-subtitle">
-                        <span class="trend-up">↑ 12% from last week</span>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header">
                         <h3 class="card-title">Top Performer</h3>
                     </div>
                     <div class="card-value">Mark Wilson</div>
                     <div class="card-subtitle">
-                        <span>12 Sales this week</span>
+                        <span>12 Sales</span>
                     </div>
                 </div>
             </div>
@@ -295,16 +282,36 @@
             <div class="chart-container">
                 <div class="chart-header">
                     <h3 class="chart-title">Daily Sales Performance</h3>
+                    <div class="search-filter">
+                        <input type="text" placeholder="Search by model">
+                        <select>
+                            <option>All Models</option>
+                            <option>Sportage</option>
+                            <option>Sorento</option>
+                            <option>Telluride</option>
+                            <option>K5</option>
+                            <option>EV6</option>
+                        </select>
+                    </div>
                 </div>
                 <canvas id="dailySalesChart"></canvas>
             </div>
             
             <div class="chart-container">
                 <div class="chart-header">
-                    <h3 class="chart-title">Weekly/Monthly Sales Trends</h3>
+                    <h3 class="chart-title">Monthly Sales Trends</h3>
                     <div class="chart-filters">
-                        <button class="filter-btn active" data-period="weekly">Weekly</button>
-                        <button class="filter-btn" data-period="monthly">Monthly</button>
+                         <div class="search-filter">
+                        <input type="text" placeholder="Search by model">
+                        <select>
+                            <option>All Models</option>
+                            <option>Sportage</option>
+                            <option>Sorento</option>
+                            <option>Telluride</option>
+                            <option>K5</option>
+                            <option>EV6</option>
+                        </select>
+                    </div>
                     </div>
                 </div>
                 <canvas id="salesTrendChart"></canvas>
@@ -332,7 +339,6 @@
                             <th>Customer ID</th>
                             <th>Model</th>
                             <th>Sale Date</th>
-                            <th>Price</th>
                             <th>Sales Executive</th>
                             <th>Add-ons</th>
                         </tr>
@@ -343,7 +349,6 @@
                             <td>C2022010001</td>
                             <td>KIA Sportage</td>
                             <td>10 Mar, 2025</td>
-                            <td>&#8377;34,500</td>
                             <td>Mark Wilson</td>
                             <td>Navigation, Premium Audio</td>
                         </tr>
@@ -352,7 +357,6 @@
                             <td>C2022010002</td>
                             <td>KIA Sorento</td>
                             <td>10 Mar, 2025</td>
-                            <td>&#8377;41,200</td>
                             <td>Sarah Davis</td>
                             <td>Leather Package, Winter Kit</td>
                         </tr>
@@ -361,7 +365,6 @@
                             <td>C2022010003</td>
                             <td>KIA EV6</td>
                             <td>10 Mar, 2025</td>
-                            <td>&#8377;56,800</td>
                             <td>Robert Johnson</td>
                             <td>Home Charger, Tech Package</td>
                         </tr>
@@ -370,7 +373,6 @@
                             <td>C2022010004</td>
                             <td>KIA K5</td>
                             <td>9 Mar, 2025</td>
-                            <td>&#8377;32,100</td>
                             <td>Mark Wilson</td>
                             <td>Premium Audio</td>
                         </tr>
@@ -379,7 +381,6 @@
                             <td>C2022010005</td>
                             <td>KIA Telluride</td>
                             <td>9 Mar, 2025</td>
-                            <td>&#8377;49,700</td>
                             <td>Sarah Davis</td>
                             <td>Towing Package, Premium Interior</td>
                         </tr>
@@ -644,13 +645,13 @@
         <!-- 3. Add-ons & Cross-selling Section -->
         <div id="addons-section" class="dashboard-section">
             <div class="section-header">
-                <h1 class="section-title">Add-ons & Cross-selling</h1>
+                <h1 class="section-title">Accessories</h1>
             </div>
             
             <div class="cards-container">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Add-on Revenue</h3>
+                        <h3 class="card-title">Accessory Revenue</h3>
                     </div>
                     <div class="card-value">&#8377;68.3K</div>
                     <div class="card-subtitle">
@@ -660,7 +661,7 @@
                 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Attachment Rate</h3>
+                        <h3 class="card-title">Conversion Rate</h3>
                     </div>
                     <div class="card-value">84%</div>
                     <div class="card-subtitle">
@@ -670,17 +671,7 @@
                 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Avg. Add-ons Per Sale</h3>
-                    </div>
-                    <div class="card-value">2.7</div>
-                    <div class="card-subtitle">
-                        <span class="trend-up">↑ 0.3 from last month</span>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Top Add-on</h3>
+                        <h3 class="card-title">Top Accessory</h3>
                     </div>
                     <div class="card-value">Premium Audio</div>
                     <div class="card-subtitle">
@@ -691,28 +682,28 @@
             
             <div class="chart-container">
                 <div class="chart-header">
-                    <h3 class="chart-title">Add-on Distribution by Type</h3>
+                    <h3 class="chart-title">Accessory Distribution by Type</h3>
                 </div>
                 <canvas id="addonDistributionChart"></canvas>
             </div>
             
             <div class="chart-container">
                 <div class="chart-header">
-                    <h3 class="chart-title">Add-on Attachment Rate by Model</h3>
+                    <h3 class="chart-title">Accessory Attachment Rate by Model</h3>
                 </div>
                 <canvas id="addonByModelChart"></canvas>
             </div>
             
             <div class="table-container">
                 <div class="table-header">
-                    <h3 class="table-title">Top Performing Add-ons</h3>
+                    <h3 class="table-title">Top Performing Accessories</h3>
                 </div>
                 <table>
                     <thead>
                         <tr>
-                            <th>Add-on Name</th>
+                            <th>Accessory Name</th>
                             <th>Category</th>
-                            <th>Attachment Rate</th>
+                            <th>Conversion Rate</th>
                             <th>Revenue</th>
                             <th>Avg. Price</th>
                             <th>Trend</th>
@@ -775,22 +766,12 @@
                     <div class="card-header">
                         <h3 class="card-title">Total Team Sales</h3>
                     </div>
-                    <div class="card-value">128</div>
+                    <div class="card-value">128/200</div>
                     <div class="card-subtitle">
                         <span class="trend-up">↑ 12% from last month</span>
                     </div>
                 </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Avg. Sales Per Rep</h3>
-                    </div>
-                    <div class="card-value">10.6</div>
-                    <div class="card-subtitle">
-                        <span class="trend-up">↑ 0.8 from last month</span>
-                    </div>
-                </div>
-                
+
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Monthly Target</h3>
@@ -830,7 +811,27 @@
                 </div>
                 <canvas id="conversionFunnelChart"></canvas>
             </div>
+            <div class="header">
+                <h1>Team Performance</h1>
+            </div>
             
+            <div class="controls-container">
+                <div class="dropdown-container">
+                    <button class="dropdown-btn" id="dropdownBtn">Teams</button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a onclick="selectTeam('Team 1')">Team 1</a>
+                        <a onclick="selectTeam('Team 2')">Team 2</a>
+                        <a onclick="clearTeam()">Teams</a>
+                    </div>
+                </div>
+                <button class="export-btn" id="exportBtn">Export to Excel</button>
+            </div>
+            
+            <div id="teamMembersTableContainer">
+                <div class="no-team-message">
+                    Please select a team from the dropdown to view performance data
+                </div>
+            </div>
             <div class="table-container">
                 <div class="table-header">
                     <h3 class="table-title">Sales Team Ranking</h3>
@@ -843,8 +844,6 @@
                             <th>Representative ID</th>
                             <th>Sales </th>
                             <th>Conversion Rate</th>
-                            <th>Avg. Sale Value</th>
-                            <th>Add-on Attach Rate</th>
                             <th>Target Progress</th>
                         </tr>
                     </thead>
@@ -855,8 +854,6 @@
                             <td>EKA30801</td>
                             <td>16</td>
                             <td>38%</td>
-                            <td>&#8377;42,800</td>
-                            <td>92%</td>
                             <td>
                                 <div class="progress-bar">
                                     <div class="progress-fill" style="width: 80%;"></div>
@@ -869,8 +866,6 @@
                             <td>EKA30802</td>
                             <td>14</td>
                             <td>35%</td>
-                            <td>&#8377;39,200</td>
-                            <td>86%</td>
                             <td>
                                 <div class="progress-bar">
                                     <div class="progress-fill" style="width: 70%;"></div>
@@ -883,8 +878,6 @@
                             <td>EKA30803</td>
                             <td>12</td>
                             <td>29%</td>
-                            <td>&#8377;44,500</td>
-                            <td>76%</td>
                             <td>
                                 <div class="progress-bar">
                                     <div class="progress-fill" style="width: 60%;"></div>
@@ -896,8 +889,6 @@
                             <td>Jennifer Adams</td>
                             <td>EKA30804</td>
                             <td>10</td>
-                            <td>26%</td>
-                            <td>&#8377;38,700</td>
                             <td>82%</td>
                             <td>
                                 <div class="progress-bar">
@@ -910,8 +901,6 @@
                             <td>Michael Carter</td>
                             <td>EKA30805</td>
                             <td>8</td>
-                            <td>22%</td>
-                            <td>&#8377;36,500</td>
                             <td>74%</td>
                             <td>
                                 <div class="progress-bar">
@@ -927,7 +916,7 @@
         <!-- 6. Target Allocation -->
         <div id="target-allocation-section" class="dashboard-section">
             <div class="section-header">
-                <h1 class="section-title">Target Allocation</h1>
+                <h1 class="section-title">Targets</h1>
             </div>
         
             <div class="cards-container">
@@ -936,7 +925,7 @@
                         <h3 class="card-title">Total Target</h3>
                     </div>
                     <div class="card-value" id="total-target">500</div>
-                    <div class="card-subtitle">Overall Target Distribution</div>
+                    <div class="card-subtitle">Overall Targets</div>
                 </div>
         
                 <div class="card">
@@ -946,20 +935,96 @@
                     <div class="card-value" id="achieved-target">250</div>
                     <div class="card-subtitle">50% Completed</div>
                 </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Sales Target</h3>
+                    </div>
+                    <div class="card-value" id="sales-target">25</div>
+                    <div class="card-subtitle">this month</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Revenue Target(₹)</h3>
+                    </div>
+                    <div class="card-value" id="revenue-target">25,00,000.00</div>
+                    <div class="card-subtitle">this mounth</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Accessories Sales Target(₹)</h3>
+                    </div>
+                    <div class="card-value" id="accessories-target">3,00,000.00</div>
+                    <div class="card-subtitle">this month</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Enquiries Target</h3>
+                    </div>
+                    <div class="card-value" id="enquiries-target">150</div>
+                    <div class="card-subtitle">this month</div>
+                </div>
+                 <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Conversion Target</h3>
+                    </div>
+                    <div class="card-value" id="conversion-target">100</div>
+                    <div class="card-subtitle">this month</div>
+                </div>
             </div>
-            <!-- Assign Target Section -->
-            <div class="assign-target-container">
-                <h2>Assign Targets</h2>
-                <label for="team-select">Select Team:</label>
-                <select id="team-select">
-                    <option value="teamA">Team A</option>
-                    <option value="teamB">Team B</option>
-                </select>
-
-                <label for="target-input">Set Target:</label>
-                <input type="number" id="target-input" placeholder="Enter target value">
-
-            <button id="assign-target-btn">Assign Target</button>
+            
+            <!-- Set Targets Section -->
+            <div class="section-header">
+                <h1>Assign Targets</h1>
+            </div>
+            
+            <div class="controls">
+                <div class="filter-group">
+                    <select id="targetLocationSelect" class="filter-dropdown">
+                        <option value="all">Teams</option>
+                        <option value="shivamogga">Team 1</option>
+                        <option value="chitradurga">Team 2</option>
+                        <option value="chikmangaluru">Team 3</option>
+                        <option value="davanagere">Team 4</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Target Configuration</h3>
+                <div class="target-form-container">
+                    <form id="targetForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="salesTarget">Sales Target (units)</label>
+                                <input type="number" id="salesTarget" class="form-input" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="revenueTarget">Revenue Target (₹)</label>
+                                <input type="number" id="revenueTarget" class="form-input" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="accessoriesTarget">Accessories Sales Target (₹)</label>
+                                <input type="number" id="accessoriesTarget" class="form-input" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="enquiriesTarget">Enquiries Target</label>
+                                <input type="number" id="enquiriesTarget" class="form-input" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="conversionTarget">Conversion Target (%)</label>
+                                <input type="number" id="conversionTarget" class="form-input" min="0" max="100">
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="primary-btn">Assign Targets</button>
+                            <button type="button" class="primary-btn">
+                                <div class="export-icon">📊</div>
+                                <span class="export-text">Import CSV</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
 
             <!-- Target History Section -->
@@ -1007,102 +1072,6 @@
                         </tbody>
                     </table>
                 </div>
-
-        
-            <!-- Filter Buttons for Allocation Breakdown -->
-            <div class="button-container">
-                <button class="filter-btn active" data-filter="team">By Team</button>
-                <button class="filter-btn" data-filter="model">By Model</button>
-                <button class="filter-btn" data-filter="location">By Location</button>
-                <button class="filter-btn export-btn">Export Report</button>
-            </div>
-        
-            <!-- Target Allocation Table (Editable) -->
-            <div class="table-container" id="team-allocation" style="display: block;">
-                <h3>Allocate Targets to Team Leads</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Team Lead</th>
-                            <th>Allocated Target</th>
-                            <th>Achieved Sales</th>
-                            <th>Target Progress</th>
-                            <th>Rank</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>John Smith</td>
-                            <td><input type="number" class="target-input" value="150" data-team="teamA"></td>
-                            <td id="achieved-teamA">100</td>
-                            <td>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" id="progress-teamA" style="width: 67%;"></div>
-                                </div>
-                            </td>
-                            <td class="rank">1</td>
-                        </tr>
-                        <tr>
-                            <td>Emily Johnson</td>
-                            <td><input type="number" class="target-input" value="120" data-team="teamB"></td>
-                            <td id="achieved-teamB">80</td>
-                            <td>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" id="progress-teamB" style="width: 67%;"></div>
-                                </div>
-                            </td>
-                            <td class="rank">2</td>
-                        </tr>
-                        <tr>
-                            <td>Michael Brown</td>
-                            <td><input type="number" class="target-input" value="110" data-team="teamC"></td>
-                            <td id="achieved-teamC">70</td>
-                            <td>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" id="progress-teamC" style="width: 64%;"></div>
-                                </div>
-                            </td>
-                            <td class="rank">3</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Model Allocation Table -->
-            <div class="table-container" id="model-allocation" style="display: none;">
-                <h3>Allocate Targets by Model</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Model</th>
-                            <th>Allocated Target</th>
-                            <th>Achieved Sales</th>
-                            <th>Target Progress</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Example rows -->
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Location Allocation Table -->
-            <div class="table-container" id="location-allocation" style="display: none;">
-                <h3>Allocate Targets by Location</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Location</th>
-                            <th>Allocated Target</th>
-                            <th>Achieved Sales</th>
-                            <th>Target Progress</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Example rows -->
-                    </tbody>
-                </table>
-            </div>
         </div>
     </div>
     
@@ -1305,8 +1274,13 @@
             const teamPerformanceChart = new Chart(teamPerformanceCtx, {
                 type: 'bar',
                 data: {
-                    labels: ['Mark W.', 'Sarah D.', 'Robert J.', 'Jennifer A.', 'Michael C.'],
+                    labels: ['Team 1.', 'Team 2.', 'Team 3.', 'Team 4.', 'Team 5.'],
                     datasets: [{
+                        label: 'Target',
+                        data: [20, 18, 16, 14, 12],
+                        backgroundColor: '#457B9D'
+                    },
+                    {
                         label: 'Sales',
                         data: [16, 14, 12, 10, 8],
                         backgroundColor: '#e76f51'
@@ -1351,7 +1325,7 @@
             const conversionFunnelChart = new Chart(conversionFunnelCtx, {
                 type: 'bar',
                 data: {
-                    labels: ['Enquiries', 'Test Drives', 'Negotiations', 'Sales'],
+                    labels: ['Enquiries', 'Test Drives', 'Bookings', 'Sales'],
                     datasets: [{
                         label: 'Conversion Funnel',
                         data: [400, 240, 160, 128],
@@ -1859,6 +1833,260 @@ window.onclick = function(event) {
         closeModal();
     }
 };
+ // Team Performance Data with totals
+        const teamData = [
+            {
+                teamLeader: 'CHETHAN',
+                teamNumber: 'Team 1',
+                members: [
+                    { name: 'Shilpa', enquiryTGT: 35, enquiryACH: 3, enquiryPercentage: 9, td: 2, tdPercentage: 67, bookingTGT: 6, bookingACH: 0, bookingPercentage: 0, retailsTGT: 4, retailsACH: 0, retailsPercentage: 0, financeACH: 0, financePercentage: 0, insuranceACH: 0, insurancePercentage: 0, ebPercentage: 50,brPercentage: 0 },
+                    { name: 'Prathap', enquiryTGT: 50, enquiryACH: 9, enquiryPercentage: 18, td: 8, tdPercentage: 89, bookingTGT: 6, bookingACH: 1, bookingPercentage: 17, retailsTGT: 5, retailsACH: 1, retailsPercentage: 20, financeACH: 0, financePercentage: 0, insuranceACH: 0, insurancePercentage: 0, ebPercentage: 38, brPercentage: 100 },
+                    { name: 'Dhanush E', enquiryTGT: 40, enquiryACH: 0, enquiryPercentage: 0, td: 0, tdPercentage: 0, bookingTGT: 6, bookingACH: 0, bookingPercentage: 0, retailsTGT: 4, retailsACH: 0, retailsPercentage: 0, financeACH: 0, financePercentage: 0, insuranceACH: 0, insurancePercentage: 0, ebPercentage: 0, brPercentage: 0 },
+                    { name: 'Darshan', enquiryTGT: 40, enquiryACH: 4, enquiryPercentage: 10, td: 4, tdPercentage: 100, bookingTGT: 6, bookingACH: 2, bookingPercentage: 33, retailsTGT: 4, retailsACH: 2, retailsPercentage: 50, financeACH: 1, financePercentage: 25, insuranceACH: 0, insurancePercentage: 0, ebPercentage: 50, brPercentage: 100 },
+                    { name: 'Kavya', enquiryTGT: 30, enquiryACH: 3, enquiryPercentage: 10, td: 2, tdPercentage: 67, bookingTGT: 5, bookingACH: 0, bookingPercentage: 0, retailsTGT: 3, retailsACH: 0, retailsPercentage: 0, financeACH: 0, financePercentage: 0, insuranceACH: 0, insurancePercentage: 0, ebPercentage: 33, brPercentage: 0 },
+                    { name: 'Mohana', enquiryTGT: 20, enquiryACH: 1, enquiryPercentage: 5, td: 1, tdPercentage: 100, bookingTGT: 1, bookingACH: 0, bookingPercentage: 0, retailsTGT: 1, retailsACH: 0, retailsPercentage: 0, financeACH: 0, financePercentage: 0, insuranceACH: 0, insurancePercentage: 0, ebPercentage: 100, brPercentage: 0 },
+                    { name: 'Yashwanth', enquiryTGT: 45, enquiryACH: 4, enquiryPercentage: 9, td: 3, tdPercentage: 75, bookingTGT: 6, bookingACH: 1, bookingPercentage: 17, retailsTGT: 4, retailsACH: 1, retailsPercentage: 25, financeACH: 0, financePercentage: 0, insuranceACH: 0, insurancePercentage: 0, ebPercentage: 67,brPercentage: 100 }
+                ],
+                totals: { enquiryTGT: 260, enquiryACH: 24, enquiryPercentage: 9, td: 20, tdPercentage: 83, bookingTGT: 36, bookingACH: 4, bookingPercentage: 10, retailsTGT: 25, retailsACH: 4, retailsPercentage: 16, financeACH: 1, financePercentage: 4, insuranceACH: 0, insurancePercentage: 0, ebPercentage: 50,brPercentage: 100 }
+            },
+            {
+                teamLeader: 'MANJUNATH',
+                teamNumber: 'Team 2',
+                members: [
+                    { name: 'Mallikarjun', enquiryTGT: 35, enquiryACH: 1, enquiryPercentage: 3, td: 1, tdPercentage: 100, bookingTGT: 5, bookingACH: 0, bookingPercentage: 0, retailsTGT: 3, retailsACH: 0, retailsPercentage: 0, financeACH: 0, financePercentage: 0, insuranceACH: 0, insurancePercentage: 0, ebPercentage: 100, brPercentage: 0 },
+                    { name: 'Srikanth D', enquiryTGT: 40, enquiryACH: 5, enquiryPercentage: 13, td: 3, tdPercentage: 60, bookingTGT: 6, bookingACH: 0, bookingPercentage: 0, retailsTGT: 4, retailsACH: 0, retailsPercentage: 0, financeACH: 0, financePercentage: 0, insuranceACH: 0, insurancePercentage: 0, ebPercentage: 40,brPercentage: 0 },
+                    { name: 'Srikanth BS', enquiryTGT: 45, enquiryACH: 5, enquiryPercentage: 11, td: 3, tdPercentage: 60, bookingTGT: 6, bookingACH: 2, bookingPercentage: 33, retailsTGT: 4, retailsACH: 2, retailsPercentage: 50, financeACH: 1, financePercentage: 25, insuranceACH: 1, insurancePercentage: 25, ebPercentage: 40, brPercentage: 100 },
+                    { name: 'Chinamay', enquiryTGT: 20, enquiryACH: 0, enquiryPercentage: 0, td: 0, tdPercentage: 0, bookingTGT: 1, bookingACH: 0, bookingPercentage: 0, retailsTGT: 1, retailsACH: 0, retailsPercentage: 0, financeACH: 0, financePercentage: 0, insuranceACH: 0, insurancePercentage: 0, ebPercentage: 0,brPercentage: 0 },
+                    { name: 'Divya', enquiryTGT: 45, enquiryACH: 4, enquiryPercentage: 9, td: 3, tdPercentage: 75, bookingTGT: 6, bookingACH: 0, bookingPercentage: 0, retailsTGT: 4, retailsACH: 0, retailsPercentage: 0, financeACH: 0, financePercentage: 0, insuranceACH: 0, insurancePercentage: 0, ebPercentage: 50, brPercentage: 0 },
+                    { name: 'Dhanush(new)', enquiryTGT: 30, enquiryACH: 3, enquiryPercentage: 10, td: 2, tdPercentage: 67, bookingTGT: 4, bookingACH: 1, bookingPercentage: 25, retailsTGT: 3, retailsACH: 1, retailsPercentage: 33, financeACH: 0, financePercentage: 0, insuranceACH: 0, insurancePercentage: 0,ebPercentage: 33,brPercentage: 100 },
+                    { name: 'Rudresh', enquiryTGT: 35, enquiryACH: 7, enquiryPercentage: 20, td: 3, tdPercentage: 43, bookingTGT: 6, bookingACH: 1, bookingPercentage: 17, retailsTGT: 4, retailsACH: 1, retailsPercentage: 25, financeACH: 0, financePercentage: 0, insuranceACH: 0, insurancePercentage: 0, ebPercentage: 29, brPercentage: 100 }
+                ],
+                totals: { enquiryTGT: 215, enquiryACH: 24, enquiryPercentage: 9, td: 14, tdPercentage: 58, bookingTGT: 29, bookingACH: 4, bookingPercentage: 13, retailsTGT: 23, retailsACH: 4, retailsPercentage: 17, financeACH: 1, financePercentage: 4, insuranceACH: 1, insurancePercentage: 4, ebPercentage: 42, brPercentage: 100 }
+            }
+        ];
+
+        // DOM Elements
+        const dropdownBtn = document.getElementById('dropdownBtn');
+        const teamMembersTableContainer = document.getElementById('teamMembersTableContainer');
+        const exportBtn = document.getElementById('exportBtn');
+
+        // Get background color class based on percentage
+        function getPercentageColor(percentage) {
+            if (percentage === 0) return 'red-bg';
+            if (percentage <= 20) return 'yellow-bg';
+            return 'green-bg';
+        }
+
+        // Select Team
+        function selectTeam(teamNumber) {
+            // Update dropdown button text
+            dropdownBtn.textContent = teamNumber;
+            
+            // Find team data
+            const selectedTeam = teamData.find(team => team.teamNumber === teamNumber);
+            
+            if (selectedTeam) {
+                displayTeamMembers(selectedTeam);
+            }
+        }
+
+        // Display Team Members
+        function displayTeamMembers(selectedTeam) {
+            // Create table
+            const table = document.createElement('table');
+            table.classList.add('performance-table');
+
+            // Create header rows
+            const headerRow1 = table.insertRow();
+            const headerRow2 = table.insertRow();
+
+            // Row 1 - Section headers
+            const teamLeaderHeader = document.createElement('th');
+            teamLeaderHeader.textContent = 'TEAM LEADERS';
+            teamLeaderHeader.rowSpan = 2;
+            teamLeaderHeader.classList.add('team-name-cell');
+            headerRow1.appendChild(teamLeaderHeader);
+
+            const kecHeader = document.createElement('th');
+            kecHeader.textContent = "KEC'S";
+            kecHeader.rowSpan = 2;
+            headerRow1.appendChild(kecHeader);
+
+            const enquiryHeader = document.createElement('th');
+            enquiryHeader.textContent = 'ENQUIRY';
+            enquiryHeader.colSpan = 3;
+            headerRow1.appendChild(enquiryHeader);
+
+            const tdHeader = document.createElement('th');
+            tdHeader.textContent = 'TD';
+            tdHeader.rowSpan = 2;
+            headerRow1.appendChild(tdHeader);
+
+            const tdPercentHeader = document.createElement('th');
+            tdPercentHeader.textContent = 'TD%';
+            tdPercentHeader.rowSpan = 2;
+            headerRow1.appendChild(tdPercentHeader);
+
+            const bookingHeader = document.createElement('th');
+            bookingHeader.textContent = 'BOOKING';
+            bookingHeader.colSpan = 3;
+            headerRow1.appendChild(bookingHeader);
+
+            const retailsHeader = document.createElement('th');
+            retailsHeader.textContent = 'RETAILS';
+            retailsHeader.colSpan = 3;
+            headerRow1.appendChild(retailsHeader);
+
+            const financeHeader = document.createElement('th');
+            financeHeader.textContent = 'FINANCE';
+            financeHeader.colSpan = 2;
+            headerRow1.appendChild(financeHeader);
+
+            const insuranceHeader = document.createElement('th');
+            insuranceHeader.textContent = 'INSURANCE';
+            insuranceHeader.colSpan = 2;
+            headerRow1.appendChild(insuranceHeader);
+
+            const ebPercentHeader = document.createElement('th');
+            ebPercentHeader.textContent = 'E-B';
+            ebPercentHeader.rowSpan = 2;
+            headerRow1.appendChild(ebPercentHeader);
+
+            const brPercentHeader = document.createElement('th');
+            brPercentHeader.textContent = 'B-R';
+            brPercentHeader.rowSpan = 2;
+            headerRow1.appendChild(brPercentHeader);
+
+            // Row 2 - Column headers
+            const subHeaders = ['TGT', 'ACH', '%', 'TGT', 'ACH', '%', 'TGT', 'ACH', '%', 'ACH', '%', 'ACH', '%'];
+            subHeaders.forEach(text => {
+                const th = document.createElement('th');
+                th.textContent = text;
+                headerRow2.appendChild(th);
+            });
+
+            // Team members rows
+            selectedTeam.members.forEach(member => {
+                const row = table.insertRow();
+                
+                // Team leader cell (only for first member)
+                if (member === selectedTeam.members[0]) {
+                    const teamLeaderCell = document.createElement('td');
+                    teamLeaderCell.textContent = selectedTeam.teamLeader;
+                    teamLeaderCell.rowSpan = selectedTeam.members.length + 1; // +1 for total row
+                    teamLeaderCell.classList.add('team-leader-cell');
+                    row.appendChild(teamLeaderCell);
+                }
+
+                row.insertCell().textContent = member.name;
+                row.insertCell().textContent = member.enquiryTGT;
+                row.insertCell().textContent = member.enquiryACH;
+                
+                const enquiryPercentCell = row.insertCell();
+                enquiryPercentCell.textContent = `${member.enquiryPercentage}%`;
+                enquiryPercentCell.classList.add(getPercentageColor(member.enquiryPercentage));
+                
+                row.insertCell().textContent = member.td;
+                
+                const tdPercentCell = row.insertCell();
+                tdPercentCell.textContent = `${member.tdPercentage}%`;
+                tdPercentCell.classList.add(getPercentageColor(member.tdPercentage));
+                
+                row.insertCell().textContent = member.bookingTGT;
+                row.insertCell().textContent = member.bookingACH;
+                
+                const bookingPercentCell = row.insertCell();
+                bookingPercentCell.textContent = `${member.bookingPercentage}%`;
+                bookingPercentCell.classList.add(getPercentageColor(member.bookingPercentage));
+
+                // RETAILS columns
+                row.insertCell().textContent = member.retailsTGT;
+                row.insertCell().textContent = member.retailsACH;
+                
+                const retailsPercentCell = row.insertCell();
+                retailsPercentCell.textContent = `${member.retailsPercentage}%`;
+                retailsPercentCell.classList.add(getPercentageColor(member.retailsPercentage));
+
+                // FINANCE columns
+                row.insertCell().textContent = member.financeACH;
+                
+                const financePercentCell = row.insertCell();
+                financePercentCell.textContent = `${member.financePercentage}%`;
+                financePercentCell.classList.add(getPercentageColor(member.financePercentage));
+
+                // INSURANCE columns
+                row.insertCell().textContent = member.insuranceACH;
+                
+                const insurancePercentCell = row.insertCell();
+                insurancePercentCell.textContent = `${member.insurancePercentage}%`;
+                insurancePercentCell.classList.add(getPercentageColor(member.insurancePercentage));
+
+                // E-B columns
+                const ebPercentCell = row.insertCell();
+                ebPercentCell.textContent = `${member.ebPercentage}%`;
+                ebPercentCell.classList.add(getPercentageColor(member.ebPercentage));
+
+                // B-R columns
+                const brPercentCell = row.insertCell();
+                brPercentCell.textContent = `${member.brPercentage}%`;
+                brPercentCell.classList.add(getPercentageColor(member.brPercentage));
+            });
+
+            // Team total row
+            const totalRow = table.insertRow();
+            totalRow.classList.add('team-total-row');
+            totalRow.insertCell().textContent = 'TEAM TOTAL';
+            totalRow.insertCell().textContent = selectedTeam.totals.enquiryTGT;
+            totalRow.insertCell().textContent = selectedTeam.totals.enquiryACH;
+            totalRow.insertCell().textContent = `${selectedTeam.totals.enquiryPercentage}%`;
+            totalRow.insertCell().textContent = selectedTeam.totals.td;
+            totalRow.insertCell().textContent = `${selectedTeam.totals.tdPercentage}%`;
+            totalRow.insertCell().textContent = selectedTeam.totals.bookingTGT;
+            totalRow.insertCell().textContent = selectedTeam.totals.bookingACH;
+            totalRow.insertCell().textContent = `${selectedTeam.totals.bookingPercentage}%`;
+            totalRow.insertCell().textContent = selectedTeam.totals.retailsTGT;
+            totalRow.insertCell().textContent = selectedTeam.totals.retailsACH;
+            totalRow.insertCell().textContent = `${selectedTeam.totals.retailsPercentage}%`;
+            totalRow.insertCell().textContent = selectedTeam.totals.financeACH;
+            totalRow.insertCell().textContent = `${selectedTeam.totals.financePercentage}%`;
+            totalRow.insertCell().textContent = selectedTeam.totals.insuranceACH;
+            totalRow.insertCell().textContent = `${selectedTeam.totals.insurancePercentage}%`;
+            totalRow.insertCell().textContent = `${selectedTeam.totals.ebTDPercentage}%`;
+            totalRow.insertCell().textContent = `${selectedTeam.totals.brTDPercentage}%`;
+
+            // Clear previous content and add new table
+            teamMembersTableContainer.innerHTML = '';
+            teamMembersTableContainer.appendChild(table);
+        }
+
+        // Clear Team (show all teams message)
+        function clearTeam() {
+            dropdownBtn.textContent = 'All Teams';
+            teamMembersTableContainer.innerHTML = '<div class="no-team-message">Please select a team from the dropdown to view performance data</div>';
+        }
+
+        // Export to Excel
+        function exportToExcel() {
+            const table = teamMembersTableContainer.querySelector('table');
+            if (!table) {
+                alert('Please select a team first');
+                return;
+            }
+
+            // Convert table to worksheet
+            const ws = XLSX.utils.table_to_sheet(table);
+            
+            // Create workbook
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'Team Performance');
+            
+            // Save file
+            const teamName = dropdownBtn.textContent.replace(' ', '_').toLowerCase();
+            XLSX.writeFile(wb, `${teamName}_performance.xlsx`);
+        }
+
+        // Initialize
+        exportBtn.addEventListener('click', exportToExcel);
 </script>
 </body>
 </html>
