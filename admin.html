@@ -43,7 +43,7 @@
                     <li class="active" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
                     <li data-tab="employee"><i class="fas fa-users"></i> Employee Management</li>
                     <li data-tab="vehicle"><i class="fas fa-car"></i> Vehicle Management</li>
-                    <li data-tab="addons"><i class="fas fa-puzzle-piece"></i>Accessorie Management</li>
+                    <li data-tab="addons"><i class="fas fa-puzzle-piece"></i> Accessory Management</li>
                     <li data-tab="sales"><i class="fas fa-chart-line"></i> Sales Management</li>
                     <!-- <li data-tab="enquiry"><i class="fas fa-question-circle"></i> Enquiry Management</li> -->
                     <li data-tab="additional"><i class="fas fa-plus-circle"></i> Additional Options</li>
@@ -84,19 +84,19 @@
                             <i class="fas fa-puzzle-piece"></i>
                         </div>
                         <div class="stat-info">
-                            <h3>Total Add-ons</h3>
+                            <h3>Total Accessories</h3>
                             <p class="stat-number">32</p>
                         </div>
                     </div>
-                    <div class="stat-card">
+                    <!-- <div class="stat-card">
                         <div class="stat-icon service-icon">
                             <i class="fas fa-tools"></i>
                         </div>
-                        <div class="stat-info">
+                        <!-- <div class="stat-info">
                             <h3>Total Services</h3>
                             <p class="stat-number">18</p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="recent-activity">
                     <h2 class="section-title">Recent Activity</h2>
@@ -115,17 +115,17 @@
                                 <span class="timestamp">Yesterday, 3:30 PM</span>
                             </div>
                         </div>
-                        <div class="activity-item">
+                        <!-- <div class="activity-item">
                             <div class="activity-icon"><i class="fas fa-tools"></i></div>
                             <div class="activity-details">
                                 <p>Service pricing updated for Oil Change</p>
                                 <span class="timestamp">Mar 22, 2025, 1:15 PM</span>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="activity-item">
                             <div class="activity-icon"><i class="fas fa-puzzle-piece"></i></div>
                             <div class="activity-details">
-                                <p>New add-on Premium Sound System added</p>
+                                <p>New Accessory Premium Sound System added</p>
                                 <span class="timestamp">Mar 21, 2025, 11:20 AM</span>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                             <option value="">All Roles</option>
                             <option value="gm">General Manager</option>
                             <option value="sales">Sales Executive</option>
-                            <option value="service">Service Manager</option>
+                            <!-- <option value="service">Service Manager</option> -->
                         </select>
                         <select id="employee-location-filter">
                             <option value="">All Locations</option>
@@ -364,7 +364,7 @@
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>Accessories Name</th>
+                                <th>Accessory Name</th>
                                 <th>Category</th>
                                 <th>Price</th>
                                 <th>Applicable Models</th>
@@ -502,6 +502,303 @@
                         </tbody>
                     </table>
                 </div>
+
+<div class="section-header">
+                    <h2 class="section-title">Performance Ratio</h2>
+                    <div class="header-actions">
+                        <button class="action-btn add-btn"><i class="fas fa-plus"></i> Add New</button>
+                        <button class="action-btn import-btn"><i class="fas fa-file-import"></i> Import</button>
+                        <button class="action-btn export-btn"><i class="fas fa-file-export"></i> Export</button>
+                    </div>
+                </div>
+
+                <div class="search-filter">
+                    <div class="search">
+                        <input type="text" placeholder="Search Executive...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="filter">
+                        <select id="sales-executive-filter">
+                            <option value="">All Locations</option>
+                            <option value="john">Shivamogga</option>
+                            <option value="sarah">Chikkamagaluru</option>
+                            <option value="michael">Chitradurga</option>
+                            <option value="michael">Davanagere</option>
+                        </select>
+                        <!-- <select id="sales-model-filter">
+                            <option value="">All Models</option>
+                            <option value="seltos">Seltos</option>
+                            <option value="ev6">EV6</option>
+                            <option value="sonet">Sonet</option>
+                        </select> -->
+                        <div class="date-range">
+                            <input type="date" id="sales-start-date" placeholder="Start Date">
+                            <input type="date" id="sales-end-date" placeholder="End Date">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="view-options">
+                    <button class="view-btn active" data-view="all"><i class="fas fa-th-list"></i> View All</button>
+                    <button class="view-btn" data-view="date"><i class="fas fa-calendar-alt"></i> By Date</button>
+                    <!-- <button class="view-btn" data-view="category"><i class="fas fa-tags"></i> By Category</button> -->
+                </div>                
+                <table>
+        <thead>
+            <tr>
+                <th rowspan="2">TEAM LEADERS</th>
+                <th rowspan="2">KEC'S</th>
+                <th colspan="3">ENQUIRY</th>
+                <th rowspan="2">TD</th>
+                <th rowspan="2">TD%</th>
+                <th colspan="3">BOOKING</th>
+                <th colspan="3">RETAILS</th>
+                <th rowspan="2">E-B</th>
+                <th rowspan="2">B-R</th>
+            </tr>
+            <tr>
+                <th>TGT</th>
+                <th>ACH</th>
+                <th>%</th>
+                <th>TGT</th>
+                <th>ACH</th>
+                <th>%</th>
+                <th>TGT</th>
+                <th>ACH</th>
+                <th>%</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="team-header">
+                <td rowspan="7">YY</td>
+                <td>xx</td>
+                <td>35</td>
+                <td>3</td>
+                <td class="yellow-bg">9%</td>
+                <td>2</td>
+                <td class="yellow-bg">67%</td>
+                <td>6</td>
+                <td>0</td>
+                <td class="red-bg">0%</td>
+                <td>4</td>
+                <td>0</td>
+                <td class="green-bg">0%</td>
+                <td>0%</td>
+                <td>0%</td>
+            </tr>
+            <tr>
+                <td>xx</td>
+                <td>50</td>
+                <td>9</td>
+                <td class="green-bg">18%</td>
+                <td>8</td>
+                <td class="yellow-bg">89%</td>
+                <td>6</td>
+                <td>1</td>
+                <td class="green-bg">17%</td>
+                <td>5</td>
+                <td>0</td>
+                <td class="green-bg">0%</td>
+                <td>11%</td>
+                <td>0%</td>
+            </tr>
+            <tr>
+                <td>xx</td>
+                <td>40</td>
+                <td>0</td>
+                <td class="red-bg">0%</td>
+                <td>0</td>
+                <td class="red-bg">0%</td>
+                <td>6</td>
+                <td>0</td>
+                <td class="red-bg">0%</td>
+                <td>2</td>
+                <td>0</td>
+                <td class="green-bg">0%</td>
+                <td>0%</td>
+                <td>0%</td>
+            </tr>
+            <tr>
+                <td>xx</td>
+                <td>40</td>
+                <td>4</td>
+                <td class="red-bg">10%</td>
+                <td>4</td>
+                <td class="green-bg">100%</td>
+                <td>6</td>
+                <td>2</td>
+                <td class="yellow-bg">33%</td>
+                <td>4</td>
+                <td>0</td>
+                <td class="green-bg">0%</td>
+                <td>50%</td>
+                <td>0%</td>
+            </tr>
+            <tr>
+                <td>xx</td>
+                <td>30</td>
+                <td>3</td>
+                <td class="yellow-bg">10%</td>
+                <td>2</td>
+                <td class="yellow-bg">67%</td>
+                <td>5</td>
+                <td>0</td>
+                <td class="red-bg">0%</td>
+                <td>3</td>
+                <td>0</td>
+                <td class="green-bg">0%</td>
+                <td>0%</td>
+                <td>0%</td>
+            </tr>
+            <tr>
+                <td>xx</td>
+                <td>20</td>
+                <td>1</td>
+                <td class="red-bg">5%</td>
+                <td>1</td>
+                <td class="green-bg">100%</td>
+                <td>1</td>
+                <td>0</td>
+                <td class="red-bg">0%</td>
+                <td>1</td>
+                <td>0</td>
+                <td class="green-bg">0%</td>
+                <td>0%</td>
+                <td>0%</td>
+            </tr>
+            <tr>
+                <td>xx</td>
+                <td>45</td>
+                <td>4</td>
+                <td class="yellow-bg">9%</td>
+                <td>3</td>
+                <td class="yellow-bg">75%</td>
+                <td>6</td>
+                <td>1</td>
+                <td class="green-bg">17%</td>
+                <td>4</td>
+                <td>0</td>
+                <td class="green-bg">0%</td>
+                <td>25%</td>
+                <td>0%</td>
+            </tr>
+            <tr class="total-row">
+                <td colspan="2">TEAM TOTAL</td>
+                <td>260</td>
+                <td>24</td>
+                <td class="yellow-bg">9%</td>
+                <td>20</td>
+                <td class="yellow-bg">83%</td>
+                <td>36</td>
+                <td>4</td>
+                <td class="yellow-bg">10%</td>
+                <td>23</td>
+                <td>0</td>
+                <td class="green-bg">0%</td>
+                <td>17%</td>
+                <td>0%</td>
+            </tr>
+            <tr class="team-header">
+                <td rowspan="4">YYY</td>
+                <td>xx</td>
+                <td>30</td>
+                <td>3</td>
+                <td class="yellow-bg">10%</td>
+                <td>2</td>
+                <td class="yellow-bg">67%</td>
+                <td>6</td>
+                <td>1</td>
+                <td class="green-bg">17%</td>
+                <td>5</td>
+                <td>0</td>
+                <td class="green-bg">0%</td>
+                <td>33%</td>
+                <td>0%</td>
+            </tr>
+            <tr>
+                <td>xx</td>
+                <td>25</td>
+                <td>2</td>
+                <td class="yellow-bg">8%</td>
+                <td>0</td>
+                <td class="red-bg">0%</td>
+                <td>3</td>
+                <td>0</td>
+                <td class="red-bg">0%</td>
+                <td>2</td>
+                <td>0</td>
+                <td class="green-bg">0%</td>
+                <td>0%</td>
+                <td>0%</td>
+            </tr>
+            <tr>
+                <td>xx</td>
+                <td>40</td>
+                <td>2</td>
+                <td class="red-bg">5%</td>
+                <td>2</td>
+                <td class="green-bg">100%</td>
+                <td>6</td>
+                <td>1</td>
+                <td class="green-bg">17%</td>
+                <td>4</td>
+                <td>0</td>
+                <td class="green-bg">0%</td>
+                <td>50%</td>
+                <td>0%</td>
+            </tr>
+            <tr>
+                <td>xx</td>
+                <td>40</td>
+                <td>4</td>
+                <td class="yellow-bg">10%</td>
+                <td>2</td>
+                <td class="red-bg">50%</td>
+                <td>6</td>
+                <td>1</td>
+                <td class="green-bg">17%</td>
+                <td>5</td>
+                <td>0</td>
+                <td class="green-bg">0%</td>
+                <td>25%</td>
+                <td>0%</td>
+            </tr>
+            <tr class="total-row">
+                <td colspan="2">TOTAL</td>
+                <td>135</td>
+                <td>11</td>
+                <td class="yellow-bg">8%</td>
+                <td>6</td>
+                <td class="red-bg">55%</td>
+                <td>21</td>
+                <td>3</td>
+                <td class="green-bg">14%</td>
+                <td>16</td>
+                <td>0</td>
+                <td class="green-bg">0%</td>
+                <td>27%</td>
+                <td>0%</td>
+            </tr>
+            <tr class="total-row">
+                <td colspan="2">GRAND TOTAL</td>
+                <td>645</td>
+                <td>60</td>
+                <td class="yellow-bg">9%</td>
+                <td>41</td>
+                <td class="yellow-bg">68%</td>
+                <td>91</td>
+                <td>11</td>
+                <td class="yellow-bg">12%</td>
+                <td>64</td>
+                <td>0</td>
+                <td class="green-bg">0%</td>
+                <td>18%</td>
+                <td>0%</td>
+            </tr>
+        </tbody>
+    </table>
+
+
             </section>
 
             <!-- Enquiry Management Section -->
@@ -964,6 +1261,54 @@
             </section>
         </main>
     </div>
+
+ <style>
+         table {
+            border-collapse: collapse;
+            width: 100%;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+        }
+        
+        th, td {
+            border: 2px solid #b6b6b6;
+            text-align: center;
+            padding: 4px;
+            height: 25px;
+        }
+        
+        th {
+            background-color: #000;
+            color: white;
+            font-weight: bold;
+        }
+         
+        .team-header {
+            background-color: #d3d3d3;
+            font-weight: bold;
+        }
+        
+        .total-row {
+            background-color: #e0e0e0;
+            font-weight: bold;
+        }
+        
+        .red-bg {
+            background-color: #ff9999;
+        }
+        
+        .yellow-bg {
+            background-color: #ffff99;
+        }
+        
+        .green-bg {
+            background-color: #99ff99;
+        }
+        
+        .light-gray {
+            background-color: #f0f0f0;
+        }
+    </style>    
 
     <script src="admin.js"></script>
 </body>
