@@ -66,7 +66,7 @@
         <li class="nav-item">
             <a href="#addons" class="nav-link" data-section="addons">
                 <div class="nav-icon">🔧</div>
-                <span class="nav-text">Add-ons Sales</span>
+                <span class="nav-text">Accessories Sales</span>
             </a>
         </li>
         <li class="nav-item">
@@ -115,21 +115,21 @@
         <!-- Key Metrics Cards -->
         <div class="dashboard-grid">
             <div class="card metric-card">
-                <h3>Total Sales Revenue</h3>
+                <h3>Total Sales Revenue in the month of May</h3>
                 <div class="metric-value">&#8377;5.2M</div>
                 <div class="trend trend-up">
                     <span>↑ 12.5% vs Last Month</span>
                 </div>
             </div>
             <div class="card metric-card">
-                <h3>Total Enquiries</h3>
+                <h3>Total Enquiries in the month of May</h3>
                 <div class="metric-value">182</div>
                 <div class="trend trend-up">
                     <span>↑ 4.6% vs Last Month</span>
                 </div>
             </div>
             <div class="card metric-card">
-                <h3>Monthly Vehicles Sold</h3>
+                <h3>Monthly Vehicles Sold in the month of May</h3>
                 <div class="metric-value">124</div>
                 <div class="trend trend-down">
                     <span>↓ 3.1% vs Last Month</span>
@@ -143,8 +143,8 @@
                 <div class="chart-card-header">
                     <h3>Vehicles Sold per Location</h3>
                     <div class="chart-controls">
-                        <button class="chart-control-btn">Booking</button>
                         <button class="chart-control-btn">Enquiry</button>
+                        <button class="chart-control-btn">Booking</button>
                         <button class="chart-control-btn">Retail</button>
                     </div>
                 </div>
@@ -152,6 +152,7 @@
                     <canvas id="vehiclesSoldChart"></canvas>
                 </div>
             </div>
+        </div>    
             <div class="card chart-card">
     <div class="chart-card-header">
         <h3>Enquiries vs Conversions</h3>
@@ -170,6 +171,7 @@
             <button class="chart-control-btn">Retail</button>
         </div> -->
     <!-- </div> -->
+     <div>
      <div class="table-container">
         <table style="height: auto;">
             <thead>
@@ -254,22 +256,32 @@
 
         <div class="controls">
             <div class="filter-group">
-                <select class="filter-dropdown">
+                <!-- <select class="filter-dropdown">
                     <option value="all">All Locations</option>
                     <option value="shivamogga">Shivamogga</option>
                     <option value="chitradurga">Chitradurga</option>
                     <option value="chikmangaluru">Chikkmagaluru</option>
                     <option value="davanagere">Davanagere</option>
-                </select>
+                </select> -->
+            
+            <select id="monthSelect" class="filter-dropdown">
+                <option value="yearly">Yearly</option>
+                <option value="january">January</option>
+                <option value="february">February</option>
+                <option value="march">March</option>
+                <option value="april">April</option>
+                <option value="may">May</option>
+                <option value="june">June</option>
+                <option value="july">July</option>
+                <option value="august">August</option>
+                <option value="september">September</option>
+                <option value="october">October</option>
+                <option value="november">November</option>
+                <option value="december">December</option>
+            </select>
                 <select class="filter-dropdown">
-                    <option value="monthly">Monthly</option>
-                    <option value="quarterly">Quarterly</option>
-                    <option value="yearly">Yearly</option>
-                </select>
-                <select class="filter-dropdown">
-                    <option value="all">All Departments</option>
+                    <!-- <option value="all">All Departments</option> -->
                     <option value="sales">Sales</option>
-                    <option value="service">Service</option>
                     <option value="accessories">Accessories</option>
                 </select>
             </div>
@@ -284,6 +296,8 @@
                     <canvas id="locationTargetsChart"></canvas>
                 </div>
             </div>
+        </div>
+        <div>
             <div class="card chart-card">
                 <div class="chart-card-header">
                     <h3>Enquiries vs Sales Conversion</h3>
@@ -356,14 +370,14 @@
         </div>
         
         <div class="dashboard-grid">
-            <div class="card chart-card">
+            <!-- <div class="card chart-card">
                 <div class="chart-card-header">
                     <h3>Department-Wise Target Achievement</h3>
                 </div>
                 <div class="chart-container">
                     <canvas id="departmentTargetsChart"></canvas>
                 </div>
-            </div>
+            </div> -->
             <div class="card chart-card">
                 <div class="chart-card-header">
                     <h3>Target Achievement Progress</h3>
@@ -374,8 +388,10 @@
             </div>
         </div>
 
-        <div class="card">
-            <h3>Detailed Target Allocation</h3>
+        <div class="card chart-card">
+            <div class="chart-card-header">
+            <h3> Detailed Target Allocation</h3>
+            </div>
             <div class="table-container">
                 <table>
                     <thead>
@@ -383,7 +399,7 @@
                             <th>Location</th>
                             <th>Department</th>
                             <th>Monthly Target</th>
-                            <th>Quarterly Target</th>
+                            <!-- <th>Quarterly Target</th> -->
                             <th>Yearly Target</th>
                             <th>Current Achievement</th>
                             <th>Achievement %</th>
@@ -395,7 +411,7 @@
                             <td>Sales</td>
                             <td>25 units</td>
                             <td>75 units</td>
-                            <td>300 units</td>
+                            <!-- <td>300 units</td> -->
                             <td>22 units</td>
                             <td>88%</td>
                         </tr>
@@ -404,7 +420,7 @@
                             <td>Sales</td>
                             <td>20 units</td>
                             <td>60 units</td>
-                            <td>240 units</td>
+                            <!-- <td>240 units</td> -->
                             <td>18 units</td>
                             <td>90%</td>
                         </tr>
@@ -413,7 +429,7 @@
                             <td>Sales</td>
                             <td>18 units</td>
                             <td>54 units</td>
-                            <td>216 units</td>
+                            <!-- <td>216 units</td> -->
                             <td>15 units</td>
                             <td>83%</td>
                         </tr>
@@ -422,11 +438,11 @@
                             <td>Sales</td>
                             <td>22 units</td>
                             <td>66 units</td>
-                            <td>264 units</td>
+                            <!-- <td>264 units</td> -->
                             <td>20 units</td>
                             <td>91%</td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td>Shivamogga</td>
                             <td>Service</td>
                             <td>120 orders</td>
@@ -434,17 +450,17 @@
                             <td>1440 orders</td>
                             <td>115 orders</td>
                             <td>96%</td>
-                        </tr>
+                        </tr> -->
                         <tr>
                             <td>Chitradurga</td>
                             <td>Accessories</td>
                             <td>&#8377;85,000</td>
                             <td>&#8377;255,000</td>
-                            <td>&#8377;1,020,000</td>
+                            <!-- <td>&#8377;1,020,000</td> -->
                             <td>&#8377;78,500</td>
                             <td>92%</td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td>Chikmangaluru</td>
                             <td>Service</td>
                             <td>105 orders</td>
@@ -452,13 +468,13 @@
                             <td>1260 orders</td>
                             <td>98 orders</td>
                             <td>93%</td>
-                        </tr>
+                        </tr> -->
                         <tr>
                             <td>Davanagere</td>
                             <td>Accessories</td>
                             <td>&#8377;90,000</td>
                             <td>&#8377;270,000</td>
-                            <td>&#8377;1,080,000</td>
+                            <!-- <td>&#8377;1,080,000</td> -->
                             <td>&#8377;85,000</td>
                             <td>94%</td>
                         </tr>
@@ -469,77 +485,116 @@
 
         <!-- Set Targets Section -->
         <div class="section-header">
-            <h1>Set Targets</h1>
-            <p>Configure targets for upcoming periods</p>
+        <h1>Set Targets</h1>
+        <p>Configure targets for upcoming periods</p>
+    </div>
+    
+    <div class="controls">
+        <div class="filter-group">
+            <select id="monthSelect" class="filter-dropdown">
+                <option value="january">January</option>
+                <option value="february">February</option>
+                <option value="march">March</option>
+                <option value="april">April</option>
+                <option value="may">May</option>
+                <option value="june">June</option>
+                <option value="july">July</option>
+                <option value="august">August</option>
+                <option value="september">September</option>
+                <option value="october">October</option>
+                <option value="november">November</option>
+                <option value="december">December</option>
+            </select>
         </div>
+    </div>
+    
+    <div class="target-configuration">
+        <h2>Target Configuration</h2>
         
-        <div class="controls">
-            <div class="filter-group">
-                <select id="targetPeriodSelect" class="filter-dropdown">
-                    <option value="monthly">Monthly</option>
-                    <option value="quarterly">Quarterly</option>
-                    <option value="yearly">Yearly</option>
-                </select>
-                <select id="targetLocationSelect" class="filter-dropdown">
-                    <option value="all">All Locations</option>
-                    <option value="shivamogga">Shivamogga</option>
-                    <option value="chitradurga">Chitradurga</option>
-                    <option value="chikmangaluru">Chikmangaluru</option>
-                    <option value="davanagere">Davanagere</option>
-                </select>
-                <select id="targetDepartmentSelect" class="filter-dropdown">
-                    <option value="all">All Departments</option>
-                    <option value="sales">Sales</option>
-                    <option value="service">Service</option>
-                    <option value="accessories">Accessories</option>
-                </select>
-            </div>
-        </div>
-        
-        <div class="card">
-            <h3>Target Configuration</h3>
-            <div class="target-form-container">
-                <form id="targetForm">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="salesTarget">Sales Target (units)</label>
-                            <input type="number" id="salesTarget" class="form-input" min="0">
-                        </div>
-                        <div class="form-group">
-                            <label for="revenueTarget">Revenue Target (₹)</label>
-                            <input type="number" id="revenueTarget" class="form-input" min="0">
-                        </div>
-                        <div class="form-group">
-                            <label for="serviceTarget">Service Orders Target</label>
-                            <input type="number" id="serviceTarget" class="form-input" min="0">
-                        </div>
-                        <div class="form-group">
-                            <label for="accessoriesTarget">Accessories Sales Target (₹)</label>
-                            <input type="number" id="accessoriesTarget" class="form-input" min="0">
-                        </div>
-                        <div class="form-group">
-                            <label for="enquiriesTarget">Enquiries Target</label>
-                            <input type="number" id="enquiriesTarget" class="form-input" min="0">
-                        </div>
-                        <div class="form-group">
-                            <label for="conversionTarget">Conversion Target (%)</label>
-                            <input type="number" id="conversionTarget" class="form-input" min="0" max="100">
-                        </div>
+        <form id="targetForm">
+            <div class="target-grid">
+                <div class="target-field">
+                    <label for="wholesalePlan">Wholesale Plan (units)</label>
+                    <div class="input-container">
+                        <input 
+                            type="number" 
+                            id="wholesalePlan" 
+                            class="target-input" 
+                            placeholder="" 
+                            min="0"
+                        >
+                        <span class="suggested-value" onclick="applySuggestion('wholesalePlan', 850)">850</span>
                     </div>
-                    
-                    <div class="form-actions">
-                        <button type="button" id="loadCurrentTargets" class="secondary-btn">Load Current</button>
-                        <button type="submit" class="primary-btn">Save Targets</button>
-                        <button type="button" class="primary-btn">
-                            <div class="export-icon">📊</div>
-                            <span class="export-text">Export CSV</span>
-                        </button>
+                </div>
+                
+                <div class="target-field">
+                    <label for="sourceWiseEnquiry">Source Wise Enquiry Plan</label>
+                    <div class="input-container">
+                        <input 
+                            type="number" 
+                            id="sourceWiseEnquiry" 
+                            class="target-input" 
+                            placeholder="" 
+                            min="0"
+                        >
+                        <span class="suggested-value" onclick="applySuggestion('sourceWiseEnquiry', 1200)">1200</span>
                     </div>
-                </form>
+                </div>
+                
+                <div class="target-field">
+                    <label for="enquiryPlan">Enquiry Plan</label>
+                    <div class="input-container">
+                        <input 
+                            type="number" 
+                            id="enquiryPlan" 
+                            class="target-input" 
+                            placeholder="" 
+                            min="0"
+                        >
+                        <span class="suggested-value" onclick="applySuggestion('enquiryPlan', 1500)">1500</span>
+                    </div>
+                </div>
+                
+                <div class="target-field">
+                    <label for="exchangeVolumes">Exchange Volumes Plan</label>
+                    <div class="input-container">
+                        <input 
+                            type="number" 
+                            id="exchangeVolumes" 
+                            class="target-input" 
+                            placeholder="" 
+                            min="0"
+                        >
+                        <span class="suggested-value" onclick="applySuggestion('exchangeVolumes', 300)">300</span>
+                    </div>
+                </div>
+                
+                <div class="target-field">
+                    <label for="accessoriesPlan">Accessories Plan (₹)</label>
+                    <div class="input-container">
+                        <input 
+                            type="number" 
+                            id="accessoriesPlan" 
+                            class="target-input" 
+                            placeholder="" 
+                            min="0"
+                        >
+                        <span class="suggested-value" onclick="applySuggestion('accessoriesPlan', 250000)">₹2,50,000</span>
+                    </div>
+                </div>
             </div>
-        </div>
+            
+            <div class="form-actions">
+                <button type="button" id="loadCurrentBtn" class="btn btn-secondary">Load Current</button>
+                <button type="submit" class="btn btn-primary">Save Targets</button>
+                <button type="button" id="importBtn" class="btn btn-primary">
+                    <span class="import-icon"></span>
+                    Import CSV
+                </button>
+            </div>
+        </form>
         
-        <div class="card">
+        <!-- <div class="card">
             <h3>Current Targets Overview</h3>
             <div class="table-container">
                 <table id="targetsTable">
@@ -621,26 +676,29 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div> -->
     </section>
 
     <!-- Add-ons Sales Section -->
     <section id="addons" class="dashboard-section">
         <div class="section-header">
-            <h1>Add-ons Sales</h1>
+            <h1>Accessories Sales</h1>
             <p>Total Revenue: &#8377;382,450</p>
         </div>
 
         <div class="card chart-card">
             <div class="chart-card-header">
-                <h3>Add-ons Revenue by Category</h3>
+                <h3>Accessories Revenue by Category</h3>
             </div>
             <div class="chart-container">
                 <canvas id="addonsChart"></canvas>
             </div>
         </div>
 
-        <div class="card">
+        <div class="card chart-card">
+            <div class="chart-card-header">
+                <h3>Accessories </h3>
+            </div>
             <div class="table-container">
                 <table>
                     <thead>
@@ -704,31 +762,63 @@
     <section id="sales" class="dashboard-section">
         <div class="section-header">
             <h1>Sales Performance</h1>
-            <p>Q1 2025</p>
+            <p>Month of May</p>
         </div>
 
         <div class="dashboard-grid">
             <div class="card metric-card">
-                <h3>Total Vehicles Sold</h3>
+                <h3>Total Vehicles Sold in the month of May</h3>
                 <div class="metric-value">356</div>
                 <div class="trend trend-up">
                     <span>↑ 8.2% YoY</span>
                 </div>
             </div>
+        </div>    
+        <div class="dashboard-grid">
             <div class="card metric-card">
+                <h3>Shivamogga</h3>
+                <div class="metric-value">150</div>
+                <div class="trend trend-up">
+                    <span>↑ 8.2% YoY</span>
+                </div>
+            </div>
+            <div class="card metric-card">
+                <h3>Chitradurga</h3>
+                <div class="metric-value">100</div>
+                <div class="trend trend-up">
+                    <span>↑ 8.2% YoY</span>
+                </div>
+            </div>
+        </div>    
+            <div class="dashboard-grid">
+            <div class="card metric-card">
+                <h3>Davanagere</h3>
+                <div class="metric-value">50</div>
+                <div class="trend trend-up">
+                    <span>↑ 8.2% YoY</span>
+                </div>
+            </div>
+            <div class="card metric-card">
+                <h3>Chikkamagaluru</h3>
+                <div class="metric-value">50</div>
+                <div class="trend trend-up">
+                    <span>↑ 8.2% YoY</span>
+                </div>
+            </div>
+            <!-- <div class="card metric-card">
                 <h3>Avg. Sale Price</h3>
                 <div class="metric-value">&#8377;38,750</div>
                 <div class="trend trend-up">
                     <span>↑ 3.1% YoY</span>
                 </div>
-            </div>
-            <div class="card metric-card">
+            </div> -->
+            <!-- <div class="card metric-card">
                 <h3>Profit Margin</h3>
                 <div class="metric-value">12.8%</div>
                 <div class="trend trend-down">
                     <span>↓ 0.5% YoY</span>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="card chart-card">
@@ -737,16 +827,18 @@
             </div>
             <div class="chart-container">
                 <div class="chart-controls">
-                    <button class="chart-control-btn">Booking</button>
                     <button class="chart-control-btn">Enquiry</button>
+                    <button class="chart-control-btn">Booking</button>
                     <button class="chart-control-btn">Retail</button>
                 </div>
                 <canvas id="vehicleTypeChart"></canvas>
             </div>
         </div>
 
-        <div class="card">
-            <h3>Sales Executive Performance</h3>
+        <div class="card chart-card">
+            <div class="chart-card-header">
+                <h3>Sales Executive Performance</h3>
+            </div>
             <div class="table-container">
                 <table>
         <tr>
@@ -864,7 +956,7 @@
 
         <div class="dashboard-grid">
             <div class="card metric-card">
-                <h3>Total Service Orders</h3>
+                <h3>Total Service Orders in the month of May</h3>
                 <div class="metric-value">483</div>
                 <div class="trend trend-up">
                     <span>↑ 4.8% YoY</span>
@@ -991,8 +1083,10 @@
             </div>
         </div> -->
 
-        <div class="card">
+        <div class="card chart-card">
+            <div class="chart-card-header">
             <h3>Competitor Performance Metrics</h3>
+            </div>
             <div class="table-container">
                 <table>
     <thead>
@@ -1256,11 +1350,23 @@
     <div class="section-header">
         <h1>Annual Targets</h1>
         <p>Company Target Plans for Calendar Years</p>
-    </div>
+                        <!-- <button type="button" class="primary-btn">
+                            <div class="export-icon">📊</div>
+                            <span class="export-text">Import CSV</span>
+                        </button> -->
+                    </div>
+                    <div class="section-header">
+                    <button type="button" class="primary-btn">
+                            <div class="export-icon">📊</div>
+                            <span class="export-text">Import CSV</span>
+                        </button>
+                        </div>
 
     <!-- Wholesale Plan -->
-    <div class="card">
+    <div class="card chart-card">
+            <div class="chart-card-header">
         <h3>Wholesale Plan</h3>
+            </div>
         <div class="table-container">
             <table>
                 <thead>
@@ -1367,8 +1473,10 @@
     </div>
 
     <!-- Source Wise Enquiry Plan -->
-    <div class="card">
+    <div class="card chart-card">
+            <div class="chart-card-header">
         <h3>Source Wise Enquiry Plan</h3>
+            </div>
         <div class="table-container">
             <table>
                 <thead>
@@ -1475,8 +1583,10 @@
     </div>
 
     <!-- Enquiry Plan -->
-    <div class="card">
+    <div class="card chart-card">
+            <div class="chart-card-header">
         <h3>Enquiry Plan</h3>
+            </div>
         <div class="table-container">
             <table>
                 <thead>
@@ -1583,8 +1693,10 @@
     </div>
 
     <!-- Exchange Volumes Plan -->
-    <div class="card">
+    <div class="card chart-card">
+            <div class="chart-card-header">
         <h3>Exchange Volumes Plan</h3>
+            </div>
         <div class="table-container">
             <table>
                 <thead>
@@ -1691,8 +1803,10 @@
     </div>
 
     <!-- Accessories Plan -->
-    <div class="card">
+    <div class="card chart-card">
+            <div class="chart-card-header">
         <h3>Accessories Plan</h3>
+            </div>
         <div class="table-container">
             <table>
                 <thead>
@@ -1799,8 +1913,10 @@
     </div>
 
     <!-- Kia Finance Plan -->
-    <div class="card">
+    <div class="card chart-card">
+            <div class="chart-card-header">
         <h3>Kia Finance Plan (Tie Up)</h3>
+            </div>
         <div class="table-container">
             <table>
                 <thead>
@@ -1909,7 +2025,80 @@
 
 <!-- CSS for Annual Targets Section (Add this to your existing CSS or inline) -->
 <style>
-    .total-row {
+.total-row {
+   background-color: #f5f7fa;
+   font-weight: 500;
+}
+
+.table-container {
+   overflow-x: auto;
+   margin-top: 1rem;
+   border: 2px solid #d1d5db;
+   border-radius: 8px;
+}
+
+table {
+   width: 100%;
+   border-collapse: collapse;
+   font-size: 0.85rem;
+}
+
+th, td {
+   padding: 0.6rem;
+   text-align: center;
+   border-bottom: 1px solid #e1e5eb;
+   border-right: 1px solid #e1e5eb;
+}
+
+th {
+   background-color: #f5f7fa;
+   font-weight: 600;
+   position: sticky;
+   top: 0;
+   z-index: 10;
+}
+
+tr:hover {
+   background-color: #f9fafc;
+}
+
+td:first-child, th:first-child {
+   text-align: left;
+   position: sticky;
+   left: 0;
+   background-color: #fff;
+   z-index: 5;
+}
+
+.total-row td:first-child {
+   background-color: #f5f7fa;
+}
+
+tr:hover td:first-child {
+   background-color: #f5f7fa;
+}
+
+/* Section borders - thicker lines to separate major sections */
+th:nth-child(1), td:nth-child(1) {
+   border-right: 2px solid #e1e5eb;
+}
+
+th:nth-child(5), td:nth-child(5) {
+   border-right: 2px solid #e1e5eb;
+}
+
+th:nth-child(6), td:nth-child(6) {
+   border-right: 2px solid #e1e5eb;
+}
+
+th:nth-child(9), td:nth-child(9) {
+   border-right: 2px solid #e1e5eb;
+}
+
+th:nth-child(12), td:nth-child(12) {
+   border-right: 2px solid #e1e5eb;
+}
+    /* .total-row {
         background-color: #f5f7fa;
         font-weight: 500;
     }
@@ -1957,7 +2146,7 @@
     
     tr:hover td:first-child {
         background-color: #f5f7fa;
-    }
+    } */
 
     /* table {
             border-collapse: collapse;
@@ -1994,6 +2183,215 @@
             text-align: center;
             font-weight: bold;
             background-color: #e6e6e6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 40px;
+            line-height: 1.6;
+        }
+        
+        .section-header {
+            margin-bottom: 30px;
+        }
+        
+        .section-header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+            color: #000;
+        }
+        
+        .section-header p {
+            font-size: 16px;
+            color: #666;
+            margin: 0;
+        }
+        
+        .controls {
+            margin-bottom: 40px;
+        }
+        
+        .filter-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-dropdown {
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: white;
+            font-size: 14px;
+            color: #333;
+            min-width: 160px;
+            cursor: pointer;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .filter-dropdown:focus {
+            outline: none;
+            border-color: #000;
+        }
+        
+        .target-configuration {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .target-configuration h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 30px;
+        }
+        
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .target-field {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .target-field label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .input-container {
+            position: relative;
+        }
+        
+        .target-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: white;
+            transition: border-color 0.2s ease;
+        }
+        
+        .target-input:focus {
+            outline: none;
+            border-color: #000;
+        }
+        
+        .target-input::placeholder {
+            color: #bbb;
+            font-style: italic;
+        }
+        
+        .suggested-value {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #bbb;
+            font-size: 14px;
+            cursor: pointer;
+            pointer-events: none;
+            transition: color 0.2s ease;
+        }
+        
+        .target-input:placeholder-shown + .suggested-value {
+            pointer-events: all;
+        }
+        
+        .suggested-value:hover {
+            color: #888;
+        }
+        
+        .target-input:not(:placeholder-shown) + .suggested-value {
+            display: none;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #333;
+            border: 1px solid #ccc;
+        }
+        
+        .btn-secondary:hover {
+            background: #f8f8f8;
+            border-color: #999;
+        }
+        
+        .btn-primary {
+            background: #000;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #333;
+        }
+        
+        .import-icon {
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            border-radius: 2px;
+            display: inline-block;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            
+            .target-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .form-actions {
+                justify-content: stretch;
+            }
+            
+            .btn {
+                flex: 1;
+                justify-content: center;
+            }
         }
 
 </style>
@@ -2035,6 +2433,72 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+const suggestions = {
+            wholesalePlan: 850,
+            sourceWiseEnquiry: 1200,
+            enquiryPlan: 1500,
+            exchangeVolumes: 300,
+            accessoriesPlan: 250000
+        };
+
+        // Apply suggested value when clicked
+        function applySuggestion(fieldId, value) {
+            const input = document.getElementById(fieldId);
+            input.value = value;
+            input.focus();
+        }
+
+        // Load current targets
+        document.getElementById('loadCurrentBtn').addEventListener('click', function() {
+            Object.keys(suggestions).forEach(key => {
+                const input = document.getElementById(key);
+                if (input) {
+                    input.value = suggestions[key];
+                }
+            });
+            alert('Current targets loaded successfully!');
+        });
+
+        // Handle form submission
+        document.getElementById('targetForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                month: document.getElementById('monthSelect').value,
+                wholesalePlan: document.getElementById('wholesalePlan').value,
+                sourceWiseEnquiry: document.getElementById('sourceWiseEnquiry').value,
+                enquiryPlan: document.getElementById('enquiryPlan').value,
+                exchangeVolumes: document.getElementById('exchangeVolumes').value,
+                accessoriesPlan: document.getElementById('accessoriesPlan').value
+            };
+            
+            console.log('Targets saved:', formData);
+            alert('Targets saved successfully!');
+        });
+
+        // Import CSV functionality
+        document.getElementById('importBtn').addEventListener('click', function() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.csv';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    console.log('CSV file selected:', file.name);
+                    alert('CSV import functionality would be implemented here');
+                }
+            };
+            input.click();
+        });
+
+        // Month selection handler
+        document.getElementById('monthSelect').addEventListener('change', function() {
+            const selectedMonth = this.value;
+            console.log('Selected month:', selectedMonth);
+        });
+
+        
 </script>
 </div>
 
