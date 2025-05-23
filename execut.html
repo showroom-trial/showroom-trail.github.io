@@ -1092,71 +1092,475 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add this JavaScript code to your existing script section in execut.html
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Sample notes data for demonstration
-    const notesDatabase = {
-        '129831': {
-            customerName: 'Jennifer Lewis',
-            notes: [
-                {
-                    date: 'Mar 9, 2025 9:30 AM',
-                    note: 'Customer interested in Seltos HTX variant. Discussed various financing options including 0% interest for first 6 months. Customer wants to compare with competitors before making final decision. Follow-up scheduled for next week.',
-                    addedBy: 'Sales Executive'
-                }
-            ]
-        },
-        '129832': {
-            customerName: 'William Chen',
-            notes: [
-                {
-                    date: 'Mar 8, 2025 3:45 PM',
-                    note: 'Excellent test drive experience with EV6. Customer very impressed with acceleration and tech features. Showed interest in GT-Line variant with premium package. Concerns about charging infrastructure discussed. Provided charging station map.',
-                    addedBy: 'Sales Executive'
-                }
-            ]
-        },
-        '129833': {
-            customerName: 'Katherine Wright',
-            notes: [
-                {
-                    date: 'Mar 8, 2025 11:15 AM',
-                    note: 'Sent detailed brochure and pricing for Carnival Limousine Plus. Customer needs 8-seater for family use. Budget discussion - looking for financing options. Interested in extended warranty and maintenance package.',
-                    addedBy: 'Sales Executive'
-                }
-            ]
-        },
-        '129834': {
-            customerName: 'Daniel Martinez',
-            notes: [
-                {
-                    date: 'Mar 7, 2025 2:00 PM',
-                    note: 'Follow-up after successful test drive. Customer ready to purchase but wants to add sunroof, premium audio system and extended warranty. Preparing final quotation with all add-ons. Very promising lead.',
-                    addedBy: 'Sales Executive'
-                }
-            ]
-        },
-        '129835': {
-            customerName: 'Sarah Johnson',
-            notes: [
-                {
-                    date: 'Mar 7, 2025 10:30 AM',
-                    note: 'Customer inquired about Sportage delivery timeline. Current waiting period is 6-8 weeks. Customer okay with waiting. Discussed color options - prefers Gravity Grey. Booking amount discussed.',
-                    addedBy: 'Sales Executive'
-                }
-            ]
-        },
-        '129836': {
-            customerName: 'Michael Rodriguez',
-            notes: [
-                {
-                    date: 'Mar 6, 2025 4:00 PM',
-                    note: 'Finalized all details for Sorento purchase. Selected Glacier White Pearl color with HTX trim. All paperwork completed. Delivery scheduled for next month. Customer very satisfied with service.',
-                    addedBy: 'Sales Executive'
-                }
-            ]
-        }
-    };
+// Add this entire script section to your existing HTML file
+// Replace the existing customer notes section with this enhanced version
 
+// Function to get dynamic dates relative to today
+function getDynamicDate(hoursFromNow) {
+    const now = new Date();
+    const futureDate = new Date(now.getTime() + (hoursFromNow * 60 * 60 * 1000));
+    return futureDate.toISOString().slice(0, 16); // Format for datetime-local input
+}
+
+function formatDisplayDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+    });
+}
+
+// Enhanced notes database with dynamic follow-up dates
+const notesDatabase = {
+    '129831': {
+        customerName: 'Jennifer Lewis',
+        nextFollowUp: getDynamicDate(-2), // 2 hours ago (OVERDUE)
+        notes: [
+            {
+                date: 'Mar 9, 2025 9:30 AM',
+                note: 'Customer interested in Seltos HTX variant. Discussed various financing options including 0% interest for first 6 months. Customer wants to compare with competitors before making final decision. Follow-up scheduled for next week.',
+                addedBy: 'Sales Executive',
+                hasFollowUp: true,
+                followUpDate: getDynamicDate(-2)
+            }
+        ]
+    },
+    '129832': {
+        customerName: 'William Chen',
+        nextFollowUp: getDynamicDate(2), // 2 hours from now (DUE SOON)
+        notes: [
+            {
+                date: 'Mar 8, 2025 3:45 PM',
+                note: 'Excellent test drive experience with EV6. Customer very impressed with acceleration and tech features. Showed interest in GT-Line variant with premium package. Concerns about charging infrastructure discussed. Provided charging station map.',
+                addedBy: 'Sales Executive',
+                hasFollowUp: true,
+                followUpDate: getDynamicDate(2)
+            }
+        ]
+    },
+    '129833': {
+        customerName: 'Katherine Wright',
+        nextFollowUp: getDynamicDate(48), // 2 days from now (SCHEDULED)
+        notes: [
+            {
+                date: 'Mar 8, 2025 11:15 AM',
+                note: 'Sent detailed brochure and pricing for Carnival Limousine Plus. Customer needs 8-seater for family use. Budget discussion - looking for financing options. Interested in extended warranty and maintenance package.',
+                addedBy: 'Sales Executive',
+                hasFollowUp: true,
+                followUpDate: getDynamicDate(48)
+            }
+        ]
+    },
+    '129834': {
+        customerName: 'Daniel Martinez',
+        nextFollowUp: getDynamicDate(12), // 12 hours from now (DUE SOON)
+        notes: [
+            {
+                date: 'Mar 7, 2025 2:00 PM',
+                note: 'Follow-up after successful test drive. Customer ready to purchase but wants to add sunroof, premium audio system and extended warranty. Preparing final quotation with all add-ons. Very promising lead.',
+                addedBy: 'Sales Executive',
+                hasFollowUp: true,
+                followUpDate: getDynamicDate(12)
+            }
+        ]
+    },
+    '129835': {
+        customerName: 'Sarah Johnson',
+        nextFollowUp: null, // No follow-up scheduled
+        notes: [
+            {
+                date: 'Mar 7, 2025 10:30 AM',
+                note: 'Customer inquired about Sportage delivery timeline. Current waiting period is 6-8 weeks. Customer okay with waiting. Discussed color options - prefers Gravity Grey. Booking amount discussed.',
+                addedBy: 'Sales Executive',
+                hasFollowUp: false
+            }
+        ]
+    },
+    '129836': {
+        customerName: 'Michael Rodriguez',
+        nextFollowUp: getDynamicDate(-48), // 2 days ago (OVERDUE)
+        notes: [
+            {
+                date: 'Mar 6, 2025 4:00 PM',
+                note: 'Finalized all details for Sorento purchase. Selected Glacier White Pearl color with HTX trim. All paperwork completed. Delivery scheduled for next month. Customer very satisfied with service.',
+                addedBy: 'Sales Executive',
+                hasFollowUp: true,
+                followUpDate: getDynamicDate(-48)
+            }
+        ]
+    }
+};
+
+// Function to check if follow-up is due soon (within 24 hours)
+function isFollowUpDueSoon(followUpDate) {
+    if (!followUpDate) return false;
+    
+    const now = new Date();
+    const followUp = new Date(followUpDate);
+    const timeDiff = followUp.getTime() - now.getTime();
+    const hoursDiff = timeDiff / (1000 * 3600);
+    
+    return hoursDiff <= 24 && hoursDiff > 0;
+}
+
+// Function to check if follow-up is overdue
+function isFollowUpOverdue(followUpDate) {
+    if (!followUpDate) return false;
+    
+    const now = new Date();
+    const followUp = new Date(followUpDate);
+    
+    return followUp.getTime() < now.getTime();
+}
+
+// Enhanced showNotesPopup function with alarm icons
+// Enhanced showNotesPopup function with alarm icons - NO AUTO SCROLL
+// Enhanced showNotesPopup function with alarm icons - NO AUTO SCROLL
+// Enhanced showNotesPopup function with alarm icons - FIXED BACKGROUND SCROLL
+// Enhanced showNotesPopup function with alarm icons - FIXED BACKGROUND SCROLL
+// Enhanced showNotesPopup function with alarm icons - FIXED BACKGROUND SCROLL
+function showNotesPopup(customerId, customerData) {
+    const hasFollowUp = customerData.nextFollowUp;
+    const isOverdue = isFollowUpOverdue(customerData.nextFollowUp);
+    const isDueSoon = isFollowUpDueSoon(customerData.nextFollowUp);
+    
+    // Determine alarm icon and status
+    let alarmIcon = '';
+    let alarmClass = '';
+    
+    if (isOverdue) {
+        alarmIcon = '🚨';
+        alarmClass = 'alarm-overdue';
+    } else if (isDueSoon) {
+        alarmIcon = '⏰';
+        alarmClass = 'alarm-due-soon';
+    } else if (hasFollowUp) {
+        alarmIcon = '📅';
+        alarmClass = 'alarm-scheduled';
+    }
+
+    // Create popup HTML with alarm
+    const popupHTML = `
+    <div id="notes-popup" class="popup">
+        <div class="popup-content notes-popup-content">
+            <span class="popup-close" id="close-notes-popup">&times;</span>
+            <div class="notes-header">
+                <h2>Customer Notes - ${customerData.customerName}</h2>
+                ${hasFollowUp ? `
+                    <div class="follow-up-alarm ${alarmClass}">
+                        <span class="alarm-icon">${alarmIcon}</span>
+                        <span class="alarm-text">${formatDisplayDate(customerData.nextFollowUp)}</span>
+                    </div>
+                ` : ''}
+            </div>
+                <div class="notes-container">
+                    <div class="existing-notes" id="existing-notes">
+                        ${customerData.notes.length > 0 ? 
+                            customerData.notes.map(note => `
+                                <div class="note-item">
+                                    <div class="note-header">
+                                        <span class="note-date">${note.date}</span>
+                                        <span class="note-author">by ${note.addedBy}</span>
+                                        ${note.hasFollowUp ? `
+                                            <span class="note-alarm-indicator ${isFollowUpOverdue(note.followUpDate) ? 'overdue' : isFollowUpDueSoon(note.followUpDate) ? 'due-soon' : 'scheduled'}">
+                                                ${isFollowUpOverdue(note.followUpDate) ? '🚨' : isFollowUpDueSoon(note.followUpDate) ? '⏰' : '📅'}
+                                            </span>
+                                        ` : ''}
+                                    </div>
+                                    <div class="note-content">${note.note}</div>
+                                    ${note.hasFollowUp ? `
+                                        <div class="note-followup">
+                                            <small>Follow-up: ${formatDisplayDate(note.followUpDate)}</small>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            `).join('') : 
+                            '<p class="no-notes">No notes available for this customer.</p>'
+                        }
+                    </div>
+                    <div class="add-note-section">
+                        <h3>Add New Note</h3>
+                        <textarea id="new-note-input" placeholder="Enter your note here..." rows="4"></textarea>
+                        <div class="follow-up-section">
+                            <label class="follow-up-checkbox">
+                                <input type="checkbox" id="add-followup-checkbox">
+                                <span class="checkmark"></span>
+                                Schedule Follow-up
+                            </label>
+                            <div id="followup-datetime" class="followup-datetime" style="display: none;">
+                                <input type="datetime-local" id="followup-date-input">
+                            </div>
+                        </div>
+                        <div class="note-actions">
+                            <button id="save-note-btn" class="btn btn-primary">Save Note</button>
+                            <button id="cancel-note-btn" class="btn btn-outline">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Remove existing popup if any
+    const existingPopup = document.getElementById('notes-popup');
+    if (existingPopup) {
+        existingPopup.remove();
+    }
+
+    // Store original body overflow to restore later
+    const originalBodyOverflow = document.body.style.overflow;
+
+    // Add popup to body
+    document.body.insertAdjacentHTML('beforeend', popupHTML);
+
+    // Get popup elements
+    const popup = document.getElementById('notes-popup');
+    const closeBtn = document.getElementById('close-notes-popup');
+    const saveBtn = document.getElementById('save-note-btn');
+    const cancelBtn = document.getElementById('cancel-note-btn');
+    const noteInput = document.getElementById('new-note-input');
+    const followUpCheckbox = document.getElementById('add-followup-checkbox');
+    const followUpDateTime = document.getElementById('followup-datetime');
+    const followUpDateInput = document.getElementById('followup-date-input');
+
+    // Show popup and prevent background scrolling
+    popup.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Prevent background scroll
+    
+    // Make sure popup content is scrollable
+    const popupContent = popup.querySelector('.notes-popup-content');
+    if (popupContent) {
+        popupContent.style.maxHeight = '90vh';
+        popupContent.style.overflowY = 'auto';
+        popupContent.style.overflowX = 'hidden';
+    }
+    
+    // Function to close popup and restore scrolling
+    function closePopup() {
+        document.body.style.overflow = originalBodyOverflow; // Restore background scroll
+        popup.remove();
+    }
+
+    // Handle follow-up checkbox
+    followUpCheckbox.addEventListener('change', function() {
+        followUpDateTime.style.display = this.checked ? 'block' : 'none';
+    });
+
+    // Close popup events - use the closePopup function
+    closeBtn.addEventListener('click', closePopup);
+    cancelBtn.addEventListener('click', closePopup);
+    
+    // Close popup when clicking outside
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) closePopup();
+    });
+
+    // Handle ESC key to close popup
+    function handleEscKey(e) {
+        if (e.key === 'Escape') {
+            closePopup();
+            document.removeEventListener('keydown', handleEscKey);
+        }
+    }
+    document.addEventListener('keydown', handleEscKey);
+
+    // Enhanced save note functionality with follow-up
+    saveBtn.addEventListener('click', function() {
+        const noteText = noteInput.value.trim();
+        if (noteText) {
+            const hasNewFollowUp = followUpCheckbox.checked;
+            const followUpDate = hasNewFollowUp ? followUpDateInput.value : null;
+            
+            // Create new note object
+            const newNote = {
+                date: new Date().toLocaleString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric',
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    hour12: true
+                }),
+                note: noteText,
+                addedBy: 'Sales Executive',
+                hasFollowUp: hasNewFollowUp,
+                followUpDate: followUpDate
+            };
+
+            // Add to database
+            if (!notesDatabase[customerId]) {
+                notesDatabase[customerId] = {
+                    customerName: customerData.customerName,
+                    notes: []
+                };
+            }
+            
+            // Update next follow-up date
+            if (hasNewFollowUp && followUpDate) {
+                notesDatabase[customerId].nextFollowUp = followUpDate;
+            }
+            
+            notesDatabase[customerId].notes.unshift(newNote);
+
+            // Update the notes display
+            const existingNotesDiv = document.getElementById('existing-notes');
+            const newNoteHTML = `
+                <div class="note-item new-note">
+                    <div class="note-header">
+                        <span class="note-date">${newNote.date}</span>
+                        <span class="note-author">by ${newNote.addedBy}</span>
+                        ${newNote.hasFollowUp ? `
+                            <span class="note-alarm-indicator scheduled">📅</span>
+                        ` : ''}
+                    </div>
+                    <div class="note-content">${newNote.note}</div>
+                    ${newNote.hasFollowUp ? `
+                        <div class="note-followup">
+                            <small>Follow-up: ${new Date(newNote.followUpDate).toLocaleString()}</small>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+
+            if (existingNotesDiv.innerHTML.includes('No notes available')) {
+                existingNotesDiv.innerHTML = newNoteHTML;
+            } else {
+                existingNotesDiv.insertAdjacentHTML('afterbegin', newNoteHTML);
+            }
+
+            // Clear inputs and show success message
+            noteInput.value = '';
+            followUpCheckbox.checked = false;
+            followUpDateTime.style.display = 'none';
+            followUpDateInput.value = '';
+            
+            showSuccessMessage('Note saved successfully!');
+            
+            // Refresh alarm icons
+            setTimeout(addAlarmIconsToTable, 500);
+        } else {
+            alert('Please enter a note before saving.');
+        }
+    });
+}
+    
+    const viewNotesButtons = document.querySelectorAll('#interactions-table .btn-outline');
+    console.log(`Found ${viewNotesButtons.length} view notes buttons`);
+    
+    viewNotesButtons.forEach((button, index) => {
+        try {
+            const row = button.closest('tr');
+            if (!row) {
+                console.log(`No row found for button ${index}`);
+                return;
+            }
+            
+            const customerIdCell = row.querySelector('td:nth-child(3)');
+            if (!customerIdCell) {
+                console.log(`No customer ID cell found for row ${index}`);
+                return;
+            }
+            
+            const customerId = customerIdCell.textContent.trim();
+            const customerData = notesDatabase[customerId];
+            
+            console.log(`Processing customer ${customerId}:`, customerData);
+            
+            if (customerData && customerData.nextFollowUp) {
+                const isOverdue = isFollowUpOverdue(customerData.nextFollowUp);
+                const isDueSoon = isFollowUpDueSoon(customerData.nextFollowUp);
+                
+                let alarmIcon = '';
+                let alarmClass = '';
+                
+                if (isOverdue) {
+                    alarmIcon = '🚨';
+                    alarmClass = 'table-alarm-overdue';
+                } else if (isDueSoon) {
+                    alarmIcon = '⏰';
+                    alarmClass = 'table-alarm-due-soon';
+                } else {
+                    alarmIcon = '📅';
+                    alarmClass = 'table-alarm-scheduled';
+                }
+                
+                // Add alarm icon next to the button
+                if (!button.parentNode.querySelector('.table-alarm-icon')) {
+                    const alarmSpan = document.createElement('span');
+                    alarmSpan.className = `table-alarm-icon ${alarmClass}`;
+                    alarmSpan.innerHTML = alarmIcon;
+                    alarmSpan.title = `Follow-up: ${formatDisplayDate(customerData.nextFollowUp)}`;
+                    button.parentNode.insertBefore(alarmSpan, button);
+                    console.log(`Added ${alarmIcon} alarm for ${customerData.customerName}`);
+                }
+            }
+        } catch (error) {
+            console.error(`Error processing button ${index}:`, error);
+        }
+    });
+
+function showSuccessMessage(message) {
+    const successDiv = document.createElement('div');
+    successDiv.className = 'success-message';
+    successDiv.textContent = message;
+    successDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        z-index: 10000;
+        font-weight: bold;
+    `;
+    
+    document.body.appendChild(successDiv);
+    
+    setTimeout(() => {
+        successDiv.remove();
+    }, 3000);
+}
+
+// Initialize everything when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded - Initializing alarms...');
+    
+    // Debug: Log the follow-up dates to console
+    console.log('Follow-up dates:');
+    Object.entries(notesDatabase).forEach(([id, data]) => {
+        if (data.nextFollowUp) {
+            const followUpDate = new Date(data.nextFollowUp);
+            const now = new Date();
+            const diff = followUpDate.getTime() - now.getTime();
+            const hoursDiff = diff / (1000 * 3600);
+            
+            console.log(`${data.customerName} (${id}):`, {
+                followUp: formatDisplayDate(data.nextFollowUp),
+                isOverdue: isFollowUpOverdue(data.nextFollowUp),
+                isDueSoon: isFollowUpDueSoon(data.nextFollowUp),
+                hoursDiff: hoursDiff.toFixed(1)
+            });
+        }
+    });
+    
+    // Wait a bit for the navigation to settle, then add alarms
+    setTimeout(() => {
+        addAlarmIconsToTable();
+    }, 1000);
+    
+    // Also add alarms when switching to the interactions section
+    const interactionsLink = document.querySelector('a[href="#customer-interactions"]');
+    if (interactionsLink) {
+        interactionsLink.addEventListener('click', function() {
+            setTimeout(addAlarmIconsToTable, 500);
+        });
+    }
+    
     // Get all "View Notes" buttons from the interactions table
     const viewNotesButtons = document.querySelectorAll('#interactions-table .btn-outline');
     
@@ -1177,146 +1581,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
-    function showNotesPopup(customerId, customerData) {
-        // Create popup HTML
-        const popupHTML = `
-            <div id="notes-popup" class="popup">
-                <div class="popup-content notes-popup-content">
-                    <span class="popup-close" id="close-notes-popup">&times;</span>
-                    <h2>Customer Notes - ${customerData.customerName}</h2>
-                    <div class="notes-container">
-                        <div class="existing-notes" id="existing-notes">
-                            ${customerData.notes.length > 0 ? 
-                                customerData.notes.map(note => `
-                                    <div class="note-item">
-                                        <div class="note-header">
-                                            <span class="note-date">${note.date}</span>
-                                            <span class="note-author">by ${note.addedBy}</span>
-                                        </div>
-                                        <div class="note-content">${note.note}</div>
-                                    </div>
-                                `).join('') : 
-                                '<p class="no-notes">No notes available for this customer.</p>'
-                            }
-                        </div>
-                        <div class="add-note-section">
-                            <h3>Add New Note</h3>
-                            <textarea id="new-note-input" placeholder="Enter your note here..." rows="4"></textarea>
-                            <div class="note-actions">
-                                <button id="save-note-btn" class="btn btn-primary">Save Note</button>
-                                <button id="cancel-note-btn" class="btn btn-outline">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-
-        // Remove existing popup if any
-        const existingPopup = document.getElementById('notes-popup');
-        if (existingPopup) {
-            existingPopup.remove();
-        }
-
-        // Add popup to body
-        document.body.insertAdjacentHTML('beforeend', popupHTML);
-
-        // Get popup elements
-        const popup = document.getElementById('notes-popup');
-        const closeBtn = document.getElementById('close-notes-popup');
-        const saveBtn = document.getElementById('save-note-btn');
-        const cancelBtn = document.getElementById('cancel-note-btn');
-        const noteInput = document.getElementById('new-note-input');
-
-        // Show popup
-        popup.style.display = 'flex';
-
-        // Close popup events
-        closeBtn.addEventListener('click', () => popup.remove());
-        cancelBtn.addEventListener('click', () => popup.remove());
-        
-        // Close popup when clicking outside
-        popup.addEventListener('click', (e) => {
-            if (e.target === popup) popup.remove();
-        });
-
-        // Save note functionality
-        saveBtn.addEventListener('click', function() {
-            const noteText = noteInput.value.trim();
-            if (noteText) {
-                // Create new note object
-                const newNote = {
-                    date: new Date().toLocaleString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                        year: 'numeric',
-                        hour: 'numeric',
-                        minute: '2-digit',
-                        hour12: true
-                    }),
-                    note: noteText,
-                    addedBy: 'Sales Executive'
-                };
-
-                // Add to database (in real app, this would be sent to server)
-                if (!notesDatabase[customerId]) {
-                    notesDatabase[customerId] = {
-                        customerName: customerData.customerName,
-                        notes: []
-                    };
-                }
-                notesDatabase[customerId].notes.unshift(newNote);
-
-                // Update the notes display
-                const existingNotesDiv = document.getElementById('existing-notes');
-                const newNoteHTML = `
-                    <div class="note-item new-note">
-                        <div class="note-header">
-                            <span class="note-date">${newNote.date}</span>
-                            <span class="note-author">by ${newNote.addedBy}</span>
-                        </div>
-                        <div class="note-content">${newNote.note}</div>
-                    </div>
-                `;
-
-                if (existingNotesDiv.innerHTML.includes('No notes available')) {
-                    existingNotesDiv.innerHTML = newNoteHTML;
-                } else {
-                    existingNotesDiv.insertAdjacentHTML('afterbegin', newNoteHTML);
-                }
-
-                // Clear input and show success message
-                noteInput.value = '';
-                showSuccessMessage('Note saved successfully!');
-            } else {
-                alert('Please enter a note before saving.');
-            }
-        });
-    }
-
-    function showSuccessMessage(message) {
-        const successDiv = document.createElement('div');
-        successDiv.className = 'success-message';
-        successDiv.textContent = message;
-        successDiv.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            z-index: 10000;
-            font-weight: bold;
-        `;
-        
-        document.body.appendChild(successDiv);
-        
-        setTimeout(() => {
-            successDiv.remove();
-        }, 3000);
-    }
 });
 </script>
 </body>
