@@ -400,7 +400,7 @@ if (targetProgressCtx) {
     const addonsCtx = document.getElementById('addonsChart');
     if (addonsCtx) {
         charts.addons = new Chart(addonsCtx, {
-            type: 'pie',
+            type: 'bar',
             data: {
                 labels: ['Protection Plans', 'Electronics', 'Interior Accessories', 'Exterior Accessories', 'Service Packages'],
                 datasets: [{
