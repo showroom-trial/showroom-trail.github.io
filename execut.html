@@ -36,18 +36,20 @@
     <ul class="nav-links">
         <li><a href="#my-leads" class="active">📋 My Leads</a></li>
         <li><a href="#customer-interactions">🗣️ Follow-ups</a></li>
-        <li><a href="#addons-section">🛒 Add-ons Sales</a></li>
+        <li><a href="#addons-section">🛒 Accessories Sales</a></li>
         <li><a href="#daily-tasks-section">✓ Daily Tasks</a></li>
         <li><a href="#logout">🔒 Logout</a></li>
     </ul>
 </div>
 
+    <div class="top-header">
     <div class="top-section">
-        <div class="top-section-right">
+        
             <img src="https://i.ibb.co/v6xgw8Wd/Kia-new-logo-black-removebg-preview.png" alt="KIA Logo" class="header-logo">
         </div>
     </div>
-
+    <!-- Your other header content like location selector goes here -->
+</div>
     <div class="main-content">
 
         <section id="my-leads" class="section active">
@@ -316,7 +318,7 @@
         <!-- Add-ons & Cross-selling Section -->
         <section id="addons-section" class="section">
             <div class="header">
-                <h1>Accessories and Cross selling</h1>
+                <h1>Accessories & Cross-selling</h1>
             </div>
             
             <div class="card">
@@ -341,7 +343,7 @@
         </div>
         <div class="card-content">
             <div class="card-header">
-                <h3>Total Add-on Revenue</h3>
+                <h3>Total Accessories Revenue</h3>
             </div>
             <div class="stat-value">₹24,850</div>
             <div class="stat-label">Last 30 days</div>
@@ -367,7 +369,7 @@
                 <h3>Conversion Rate</h3>
             </div>
             <div class="stat-value">42%</div>
-            <div class="stat-label">Customers purchasing add-ons</div>
+            <div class="stat-label">Customers purchasing Accessories</div>
             <div class="progress-bar">
                 <div class="progress-fill" style="width: 42%"></div>
             </div>
@@ -433,7 +435,7 @@
             <th>Date</th>
             <th>Customer Name</th>
             <th>Vehicle Model</th>
-            <th>Accessory Item</th>
+            <th>Accessories Item</th>
             <th>Category</th>
             <th>Retail Price (₹)</th>
             <th>Tax %</th>
@@ -1217,12 +1219,71 @@ function isFollowUpOverdue(followUpDate) {
     return followUp.getTime() < now.getTime();
 }
 
+// FIXED: Add the missing addAlarmIconsToTable function
+function addAlarmIconsToTable() {
+    console.log('Adding alarm icons to table...');
+    
+    // Remove existing alarm icons first
+    const existingAlarms = document.querySelectorAll('.table-alarm-icon');
+    existingAlarms.forEach(alarm => alarm.remove());
+    
+    const viewNotesButtons = document.querySelectorAll('#interactions-table .btn-outline');
+    console.log(`Found ${viewNotesButtons.length} view notes buttons`);
+    
+    viewNotesButtons.forEach((button, index) => {
+        try {
+            const row = button.closest('tr');
+            if (!row) {
+                console.log(`No row found for button ${index}`);
+                return;
+            }
+            
+            const customerIdCell = row.querySelector('td:nth-child(3)');
+            if (!customerIdCell) {
+                console.log(`No customer ID cell found for row ${index}`);
+                return;
+            }
+            
+            const customerId = customerIdCell.textContent.trim();
+            const customerData = notesDatabase[customerId];
+            
+            console.log(`Processing customer ${customerId}:`, customerData);
+            
+            if (customerData && customerData.nextFollowUp) {
+                const isOverdue = isFollowUpOverdue(customerData.nextFollowUp);
+                const isDueSoon = isFollowUpDueSoon(customerData.nextFollowUp);
+                
+                let alarmIcon = '';
+                let alarmClass = '';
+                
+                if (isOverdue) {
+                    alarmIcon = '🚨';
+                    alarmClass = 'table-alarm-overdue';
+                } else if (isDueSoon) {
+                    alarmIcon = '⏰';
+                    alarmClass = 'table-alarm-due-soon';
+                } else {
+                    alarmIcon = '📅';
+                    alarmClass = 'table-alarm-scheduled';
+                }
+                
+                // Add alarm icon next to the button
+                if (!button.parentNode.querySelector('.table-alarm-icon')) {
+                    const alarmSpan = document.createElement('span');
+                    alarmSpan.className = `table-alarm-icon ${alarmClass}`;
+                    alarmSpan.innerHTML = alarmIcon;
+                    alarmSpan.title = `Follow-up: ${formatDisplayDate(customerData.nextFollowUp)}`;
+                    button.parentNode.insertBefore(alarmSpan, button);
+                    console.log(`Added ${alarmIcon} alarm for ${customerData.customerName}`);
+                }
+            }
+        } catch (error) {
+            console.error(`Error processing button ${index}:`, error);
+        }
+    });
+}
+
 // Enhanced showNotesPopup function with alarm icons
-// Enhanced showNotesPopup function with alarm icons - NO AUTO SCROLL
-// Enhanced showNotesPopup function with alarm icons - NO AUTO SCROLL
-// Enhanced showNotesPopup function with alarm icons - FIXED BACKGROUND SCROLL
-// Enhanced showNotesPopup function with alarm icons - FIXED BACKGROUND SCROLL
-// Enhanced showNotesPopup function with alarm icons - FIXED BACKGROUND SCROLL
 function showNotesPopup(customerId, customerData) {
     const hasFollowUp = customerData.nextFollowUp;
     const isOverdue = isFollowUpOverdue(customerData.nextFollowUp);
@@ -1257,52 +1318,52 @@ function showNotesPopup(customerId, customerData) {
                     </div>
                 ` : ''}
             </div>
-                <div class="notes-container">
-                    <div class="existing-notes" id="existing-notes">
-                        ${customerData.notes.length > 0 ? 
-                            customerData.notes.map(note => `
-                                <div class="note-item">
-                                    <div class="note-header">
-                                        <span class="note-date">${note.date}</span>
-                                        <span class="note-author">by ${note.addedBy}</span>
-                                        ${note.hasFollowUp ? `
-                                            <span class="note-alarm-indicator ${isFollowUpOverdue(note.followUpDate) ? 'overdue' : isFollowUpDueSoon(note.followUpDate) ? 'due-soon' : 'scheduled'}">
-                                                ${isFollowUpOverdue(note.followUpDate) ? '🚨' : isFollowUpDueSoon(note.followUpDate) ? '⏰' : '📅'}
-                                            </span>
-                                        ` : ''}
-                                    </div>
-                                    <div class="note-content">${note.note}</div>
+            <div class="notes-container">
+                <div class="existing-notes" id="existing-notes">
+                    ${customerData.notes.length > 0 ? 
+                        customerData.notes.map(note => `
+                            <div class="note-item">
+                                <div class="note-header">
+                                    <span class="note-date">${note.date}</span>
+                                    <span class="note-author">by ${note.addedBy}</span>
                                     ${note.hasFollowUp ? `
-                                        <div class="note-followup">
-                                            <small>Follow-up: ${formatDisplayDate(note.followUpDate)}</small>
-                                        </div>
+                                        <span class="note-alarm-indicator ${isFollowUpOverdue(note.followUpDate) ? 'overdue' : isFollowUpDueSoon(note.followUpDate) ? 'due-soon' : 'scheduled'}">
+                                            ${isFollowUpOverdue(note.followUpDate) ? '🚨' : isFollowUpDueSoon(note.followUpDate) ? '⏰' : '📅'}
+                                        </span>
                                     ` : ''}
                                 </div>
-                            `).join('') : 
-                            '<p class="no-notes">No notes available for this customer.</p>'
-                        }
-                    </div>
-                    <div class="add-note-section">
-                        <h3>Add New Note</h3>
-                        <textarea id="new-note-input" placeholder="Enter your note here..." rows="4"></textarea>
-                        <div class="follow-up-section">
-                            <label class="follow-up-checkbox">
-                                <input type="checkbox" id="add-followup-checkbox">
-                                <span class="checkmark"></span>
-                                Schedule Follow-up
-                            </label>
-                            <div id="followup-datetime" class="followup-datetime" style="display: none;">
-                                <input type="datetime-local" id="followup-date-input">
+                                <div class="note-content">${note.note}</div>
+                                ${note.hasFollowUp ? `
+                                    <div class="note-followup">
+                                        <small>Follow-up: ${formatDisplayDate(note.followUpDate)}</small>
+                                    </div>
+                                ` : ''}
                             </div>
+                        `).join('') : 
+                        '<p class="no-notes">No notes available for this customer.</p>'
+                    }
+                </div>
+                <div class="add-note-section">
+                    <h3>Add New Note</h3>
+                    <textarea id="new-note-input" placeholder="Enter your note here..." rows="4"></textarea>
+                    <div class="follow-up-section">
+                        <label class="follow-up-checkbox">
+                            <input type="checkbox" id="add-followup-checkbox">
+                            <span class="checkmark"></span>
+                            Schedule Follow-up
+                        </label>
+                        <div id="followup-datetime" class="followup-datetime" style="display: none;">
+                            <input type="datetime-local" id="followup-date-input">
                         </div>
-                        <div class="note-actions">
-                            <button id="save-note-btn" class="btn btn-primary">Save Note</button>
-                            <button id="cancel-note-btn" class="btn btn-outline">Cancel</button>
-                        </div>
+                    </div>
+                    <div class="note-actions">
+                        <button id="save-note-btn" class="btn btn-primary">Save Note</button>
+                        <button id="cancel-note-btn" class="btn btn-outline">Cancel</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     `;
 
     // Remove existing popup if any
@@ -1311,8 +1372,9 @@ function showNotesPopup(customerId, customerData) {
         existingPopup.remove();
     }
 
-    // Store original body overflow to restore later
-    const originalBodyOverflow = document.body.style.overflow;
+    // FIXED: Store the current scroll position properly
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    console.log('Current scroll position:', scrollTop);
 
     // Add popup to body
     document.body.insertAdjacentHTML('beforeend', popupHTML);
@@ -1329,7 +1391,14 @@ function showNotesPopup(customerId, customerData) {
 
     // Show popup and prevent background scrolling
     popup.style.display = 'flex';
-    document.body.style.overflow = 'hidden'; // Prevent background scroll
+    
+    // FIXED: Prevent background scroll by fixing body position
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollTop}px`;
+    document.body.style.width = '100%';
+    document.body.style.left = '0';
+    document.body.style.right = '0';
     
     // Make sure popup content is scrollable
     const popupContent = popup.querySelector('.notes-popup-content');
@@ -1339,10 +1408,30 @@ function showNotesPopup(customerId, customerData) {
         popupContent.style.overflowX = 'hidden';
     }
     
-    // Function to close popup and restore scrolling
+    // FIXED: Function to close popup and restore scrolling properly
     function closePopup() {
-        document.body.style.overflow = originalBodyOverflow; // Restore background scroll
+        console.log('Closing popup, restoring scroll to:', scrollTop);
+        
+        // Remove the popup first
         popup.remove();
+        
+        // FIXED: Restore body styles completely
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        
+        // FIXED: Restore scroll position after a brief delay to ensure DOM is updated
+        setTimeout(() => {
+            window.scrollTo(0, scrollTop);
+            // Force a repaint
+            document.documentElement.style.scrollBehavior = 'auto';
+            setTimeout(() => {
+                document.documentElement.style.scrollBehavior = '';
+            }, 10);
+        }, 10);
     }
 
     // Handle follow-up checkbox
@@ -1399,9 +1488,10 @@ function showNotesPopup(customerId, customerData) {
                 };
             }
             
-            // Update next follow-up date
+            // FIXED: Update next follow-up date properly
             if (hasNewFollowUp && followUpDate) {
                 notesDatabase[customerId].nextFollowUp = followUpDate;
+                console.log(`Updated follow-up for ${customerId}:`, followUpDate);
             }
             
             notesDatabase[customerId].notes.unshift(newNote);
@@ -1440,68 +1530,54 @@ function showNotesPopup(customerId, customerData) {
             
             showSuccessMessage('Note saved successfully!');
             
-            // Refresh alarm icons
-            setTimeout(addAlarmIconsToTable, 500);
+            // FIXED: Refresh alarm icons with proper delay
+            setTimeout(() => {
+                console.log('Refreshing alarm icons after note save...');
+                addAlarmIconsToTable();
+            }, 500);
+            
+            // FIXED: Update the popup header alarm if new follow-up was added
+            if (hasNewFollowUp && followUpDate) {
+                const notesHeader = document.querySelector('.notes-header');
+                if (notesHeader) {
+                    const existingAlarm = notesHeader.querySelector('.follow-up-alarm');
+                    if (existingAlarm) {
+                        existingAlarm.remove();
+                    }
+                    
+                    // Determine new alarm status
+                    const newIsOverdue = isFollowUpOverdue(followUpDate);
+                    const newIsDueSoon = isFollowUpDueSoon(followUpDate);
+                    
+                    let newAlarmIcon = '';
+                    let newAlarmClass = '';
+                    
+                    if (newIsOverdue) {
+                        newAlarmIcon = '🚨';
+                        newAlarmClass = 'alarm-overdue';
+                    } else if (newIsDueSoon) {
+                        newAlarmIcon = '⏰';
+                        newAlarmClass = 'alarm-due-soon';
+                    } else {
+                        newAlarmIcon = '📅';
+                        newAlarmClass = 'alarm-scheduled';
+                    }
+                    
+                    const newAlarmHTML = `
+                        <div class="follow-up-alarm ${newAlarmClass}">
+                            <span class="alarm-icon">${newAlarmIcon}</span>
+                            <span class="alarm-text">${formatDisplayDate(followUpDate)}</span>
+                        </div>
+                    `;
+                    
+                    notesHeader.insertAdjacentHTML('beforeend', newAlarmHTML);
+                }
+            }
         } else {
             alert('Please enter a note before saving.');
         }
     });
 }
-    
-    const viewNotesButtons = document.querySelectorAll('#interactions-table .btn-outline');
-    console.log(`Found ${viewNotesButtons.length} view notes buttons`);
-    
-    viewNotesButtons.forEach((button, index) => {
-        try {
-            const row = button.closest('tr');
-            if (!row) {
-                console.log(`No row found for button ${index}`);
-                return;
-            }
-            
-            const customerIdCell = row.querySelector('td:nth-child(3)');
-            if (!customerIdCell) {
-                console.log(`No customer ID cell found for row ${index}`);
-                return;
-            }
-            
-            const customerId = customerIdCell.textContent.trim();
-            const customerData = notesDatabase[customerId];
-            
-            console.log(`Processing customer ${customerId}:`, customerData);
-            
-            if (customerData && customerData.nextFollowUp) {
-                const isOverdue = isFollowUpOverdue(customerData.nextFollowUp);
-                const isDueSoon = isFollowUpDueSoon(customerData.nextFollowUp);
-                
-                let alarmIcon = '';
-                let alarmClass = '';
-                
-                if (isOverdue) {
-                    alarmIcon = '🚨';
-                    alarmClass = 'table-alarm-overdue';
-                } else if (isDueSoon) {
-                    alarmIcon = '⏰';
-                    alarmClass = 'table-alarm-due-soon';
-                } else {
-                    alarmIcon = '📅';
-                    alarmClass = 'table-alarm-scheduled';
-                }
-                
-                // Add alarm icon next to the button
-                if (!button.parentNode.querySelector('.table-alarm-icon')) {
-                    const alarmSpan = document.createElement('span');
-                    alarmSpan.className = `table-alarm-icon ${alarmClass}`;
-                    alarmSpan.innerHTML = alarmIcon;
-                    alarmSpan.title = `Follow-up: ${formatDisplayDate(customerData.nextFollowUp)}`;
-                    button.parentNode.insertBefore(alarmSpan, button);
-                    console.log(`Added ${alarmIcon} alarm for ${customerData.customerName}`);
-                }
-            }
-        } catch (error) {
-            console.error(`Error processing button ${index}:`, error);
-        }
-    });
 
 function showSuccessMessage(message) {
     const successDiv = document.createElement('div');
@@ -1581,7 +1657,52 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // FIXED: Add a mutation observer to handle dynamically added buttons
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.addedNodes.length > 0) {
+                // Check if new buttons were added
+                const newButtons = document.querySelectorAll('#interactions-table .btn-outline:not([data-listener-added])');
+                if (newButtons.length > 0) {
+                    newButtons.forEach(button => {
+                        button.setAttribute('data-listener-added', 'true');
+                        button.addEventListener('click', function() {
+                            const row = this.closest('tr');
+                            const customerId = row.querySelector('td:nth-child(3)').textContent.trim();
+                            const customerData = notesDatabase[customerId];
+                            
+                            if (customerData) {
+                                showNotesPopup(customerId, customerData);
+                            } else {
+                                showNotesPopup(customerId, {
+                                    customerName: row.querySelector('td:nth-child(2)').textContent.trim(),
+                                    notes: []
+                                });
+                            }
+                        });
+                    });
+                    
+                    // Refresh alarms when new buttons are added
+                    setTimeout(addAlarmIconsToTable, 100);
+                }
+            }
+        });
+    });
+    
+    // Start observing
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
 });
+
+// FIXED: Add periodic refresh of alarms every 30 seconds to keep them updated
+setInterval(() => {
+    console.log('Periodic alarm refresh...');
+    addAlarmIconsToTable();
+}, 30000); // Refresh every 30 seconds
+
 </script>
 </body>
 </html>
