@@ -304,51 +304,97 @@ function createCharts() {
     }
 
     // Target progress chart
-    const targetProgressCtx = document.getElementById('targetProgressChart');
-    if (targetProgressCtx) {
-        charts.targetProgress = new Chart(targetProgressCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-                datasets: [
-                    {
-                        label: 'Target',
-                        data: [225, 240, 250, 260],
-                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'Projected',
-                        data: [215, 235, 245, 255],
-                        backgroundColor: 'rgba(255, 159, 64, 0.7)',
-                        borderColor: 'rgba(255, 159, 64, 1)',
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'Achieved',
-                        data: [205, 0, 0, 0],
-                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Units'
-                        }
+    // const targetProgressCtx = document.getElementById('targetProgressChart');
+    // if (targetProgressCtx) {
+    //     charts.targetProgress = new Chart(targetProgressCtx, {
+    //         type: 'bar',
+    //         data: {
+    //             labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+    //             datasets: [
+    //                 {
+    //                     label: 'Target',
+    //                     data: [225, 240, 250, 260],
+    //                     backgroundColor: 'rgba(54, 162, 235, 0.7)',
+    //                     borderColor: 'rgba(54, 162, 235, 1)',
+    //                     borderWidth: 1
+    //                 },
+    //                 {
+    //                     label: 'Projected',
+    //                     data: [215, 235, 245, 255],
+    //                     backgroundColor: 'rgba(255, 159, 64, 0.7)',
+    //                     borderColor: 'rgba(255, 159, 64, 1)',
+    //                     borderWidth: 1
+    //                 },
+    //                 {
+    //                     label: 'Achieved',
+    //                     data: [205, 0, 0, 0],
+    //                     backgroundColor: 'rgba(75, 192, 192, 0.7)',
+    //                     borderColor: 'rgba(75, 192, 192, 1)',
+    //                     borderWidth: 1
+    //                 }
+    //             ]
+    //         },
+    //         options: {
+    //             responsive: true,
+    //             maintainAspectRatio: false,
+    //             scales: {
+    //                 y: {
+    //                     beginAtZero: true,
+    //                     title: {
+    //                         display: true,
+    //                         text: 'Units'
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     });
+    // }
+
+const targetProgressCtx = document.getElementById('targetProgressChart');
+if (targetProgressCtx) {
+    charts.targetProgress = new Chart(targetProgressCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [
+                {
+                    label: 'Kia Target',
+                    data: [180, 185, 190, 195, 200, 205, 210, 215, 220, 225, 230, 235],
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Target',
+                    data: [175, 180, 185, 190, 195, 200, 205, 210, 215, 220, 225, 230],
+                    backgroundColor: 'rgba(255, 159, 64, 0.7)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Achieved',
+                    data: [170, 178, 182, 188, 0, 0, 0, 0, 0, 0, 0, 0],
+                    backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Units'
                     }
                 }
             }
-        });
-    }
+        }
+    });
+}
 
     // Add-ons Revenue Chart
     const addonsCtx = document.getElementById('addonsChart');
