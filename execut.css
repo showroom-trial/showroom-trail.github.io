@@ -722,13 +722,124 @@ img {
     margin: auto;
 }
 
+.top-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    height: 60px; /* Adjust height as needed */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+}
+
+/* Keep logo on the left */
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+/* Keep location selector on the right */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+    justify-content: flex-end;
+}
+
+/* Fix for your current HTML structure */
+.top-section {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    width: auto;
+}
+
+.top-section-right {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+}
+
+/* Ensure dropdown doesn't move */
+.location-select {
+    min-width: 150px;
+}
+
+/* Remove any background/border from top-section and its containers */
+.top-section {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.top-section-right {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Logo styling - remove any background/border effects */
+.header-logo {
+    height: 40px;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    /* If the image itself has a white background, try these: */
+    mix-blend-mode: multiply; /* This will blend away white backgrounds */
+    /* OR use this instead of mix-blend-mode: */
+    /* filter: drop-shadow(0 0 0 transparent); */
+}
+
+/* Alternative approach - if the above doesn't work, try this: */
+.header-logo-container {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
     .container {
         width: 95%;
     }
-
+    
     body {
         font-size: 14px;
+    }
+    
+    .top-header {
+        height: 50px; /* Adjust for mobile */
+        padding: 0 10px;
+    }
+
+    .location-select {
+        min-width: 120px;
+    }
+    
+    .header-logo {
+        height: 35px; /* Slightly smaller on mobile */
     }
 }
 
