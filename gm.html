@@ -505,8 +505,28 @@
                 <option value="november">November</option>
                 <option value="december">December</option>
             </select>
+
+            <select id="monthSelect" class="filter-dropdown">
+                <option value="january">Seltos</option>
+                <option value="february">Syros</option>
+                <option value="march">Sonet</option>
+                <option value="april">Carens</option>
+                <option value="may">Carnival</option>
+            </select>
+        
         </div>
     </div>
+    <!-- <div class="controls">
+        <div class="filter-group">
+            <select id="monthSelect" class="filter-dropdown">
+                <option value="january">Seltos</option>
+                <option value="february">Syros</option>
+                <option value="march">Sonet</option>
+                <option value="april">Carens</option>
+                <option value="may">Carnival</option>
+            </select>
+        </div>
+    </div> -->
     
     <div class="target-configuration">
         <h2>Target Configuration</h2>
@@ -527,7 +547,7 @@
                     </div>
                 </div>
                 
-                <div class="target-field">
+                <!-- <div class="target-field">
                     <label for="sourceWiseEnquiry">Source Wise Enquiry Plan</label>
                     <div class="input-container">
                         <input 
@@ -539,7 +559,7 @@
                         >
                         <span class="suggested-value" onclick="applySuggestion('sourceWiseEnquiry', 1200)">1200</span>
                     </div>
-                </div>
+                </div> -->
                 
                 <div class="target-field">
                     <label for="enquiryPlan">Enquiry Plan</label>
@@ -555,19 +575,6 @@
                     </div>
                 </div>
                 
-                <div class="target-field">
-                    <label for="exchangeVolumes">Exchange Volumes Plan</label>
-                    <div class="input-container">
-                        <input 
-                            type="number" 
-                            id="exchangeVolumes" 
-                            class="target-input" 
-                            placeholder="" 
-                            min="0"
-                        >
-                        <span class="suggested-value" onclick="applySuggestion('exchangeVolumes', 300)">300</span>
-                    </div>
-                </div>
                 
                 <div class="target-field">
                     <label for="accessoriesPlan">Accessories Plan (₹)</label>
@@ -584,6 +591,21 @@
                 </div>
             </div>
             
+            <div class="target-field">
+                    <label for="exchangeVolumes">Exchange Volumes Plan</label>
+                    <div class="input-container">
+                        <input 
+                            type="number" 
+                            id="exchangeVolumes" 
+                            class="target-input" 
+                            placeholder="" 
+                            min="0"
+                        >
+                        <span class="suggested-value" onclick="applySuggestion('exchangeVolumes', 300)">300</span>
+                    </div>
+                </div>
+
+
             <div class="form-actions">
                 <button type="button" id="loadCurrentBtn" class="btn btn-secondary">Load Current</button>
                 <button type="submit" class="btn btn-primary">Save Targets</button>
@@ -779,14 +801,14 @@
                 <h3>Shivamogga</h3>
                 <div class="metric-value">150</div>
                 <div class="trend trend-up">
-                    <span>150/200 Achieved</span>
+                    <span>↑ 8.2% YoY</span>
                 </div>
             </div>
             <div class="card metric-card">
                 <h3>Chitradurga</h3>
                 <div class="metric-value">100</div>
                 <div class="trend trend-up">
-                    <span>100/150 Achieved</span>
+                    <span>↑ 8.2% YoY</span>
                 </div>
             </div>
         </div>    
@@ -795,14 +817,14 @@
                 <h3>Davanagere</h3>
                 <div class="metric-value">50</div>
                 <div class="trend trend-up">
-                    <span>50/75 Achieved</span>
+                    <span>↑ 8.2% YoY</span>
                 </div>
             </div>
             <div class="card metric-card">
                 <h3>Chikkamagaluru</h3>
-                <div class="metric-value">56</div>
+                <div class="metric-value">50</div>
                 <div class="trend trend-up">
-                    <span>56/80 Achieved</span>
+                    <span>↑ 8.2% YoY</span>
                 </div>
             </div>
             <!-- <div class="card metric-card">
