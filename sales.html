@@ -987,33 +987,68 @@
                         <option value="davanagere">Team 4</option>
                     </select>
                 </div>
+        
+                <div class="filter-group">
+                    <select id="monthSelect" class="filter-dropdown">
+                        <option value="january">January</option>
+                        <option value="february">February</option>
+                        <option value="march">March</option>
+                        <option value="april">April</option>
+                        <option value="may">May</option>
+                        <option value="june">June</option>
+                        <option value="july">July</option>
+                        <option value="august">August</option>
+                        <option value="september">September</option>
+                        <option value="october">October</option>
+                        <option value="november">November</option>
+                        <option value="december">December</option>
+                    </select>
+                </div>
             </div>
-            
+
             <div class="card">
                 <h3>Target Configuration</h3>
                 <div class="target-form-container">
                     <form id="targetForm">
+                       <!-- Add this above your form in the Target Configuration card -->
+                        <button type="button" id="loadCurrentBtn" class="secondary-btn" style="margin-bottom: 16px;">Load Current Targets</button>
+
                         <div class="form-grid">
                             <div class="form-group">
                                 <label for="salesTarget">Sales Target (units)</label>
-                                <input type="number" id="salesTarget" class="form-input" min="0">
+                                <div style="display: flex; gap: 8px;">
+                                    <input type="number" id="salesTarget" class="form-input" min="0">
+                                    <button type="button" class="suggest-btn" onclick="applySuggestion('salesTarget', 5)">Suggest</button>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="revenueTarget">Revenue Target (₹)</label>
-                                <input type="number" id="revenueTarget" class="form-input" min="0">
+                                <div style="display: flex; gap: 8px;">
+                                    <input type="number" id="revenueTarget" class="form-input" min="0">
+                                    <button type="button" class="suggest-btn" onclick="applySuggestion('revenueTarget', 500000)">Suggest</button>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="accessoriesTarget">Accessories Sales Target (₹)</label>
-                                <input type="number" id="accessoriesTarget" class="form-input" min="0">
+                                <div style="display: flex; gap: 8px;">
+                                    <input type="number" id="accessoriesTarget" class="form-input" min="0">
+                                    <button type="button" class="suggest-btn" onclick="applySuggestion('accessoriesTarget', 30000)">Suggest</button>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="enquiriesTarget">Enquiries Target</label>
-                                <input type="number" id="enquiriesTarget" class="form-input" min="0">
+                                <div style="display: flex; gap: 8px;">
+                                    <input type="number" id="enquiriesTarget" class="form-input" min="0">
+                                    <button type="button" class="suggest-btn" onclick="applySuggestion('enquiriesTarget', 35)">Suggest</button>
+                                </div>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="conversionTarget">Conversion Target (%)</label>
-                                <input type="number" id="conversionTarget" class="form-input" min="0" max="100">
-                            </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <input type="number" id="conversionTarget" class="form-input" min="0" max="100">
+                                    <button type="button" class="suggest-btn" onclick="applySuggestion('conversionTarget', 8)">Suggest</button>
+                                </div>
+                            </div> -->
                         </div>
                         
                         <div class="form-actions">
@@ -2087,6 +2122,36 @@ window.onclick = function(event) {
 
         // Initialize
         exportBtn.addEventListener('click', exportToExcel);
+        // ...existing code...
+
+        // Suggested values for each field
+        const suggestions = {
+            salesTarget: 5,
+            revenueTarget: 500000,
+            accessoriesTarget: 30000,
+            enquiriesTarget: 35,
+            conversionTarget: 10
+        };
+
+        // Apply suggested value when clicked
+        function applySuggestion(fieldId, value) {
+            const input = document.getElementById(fieldId);
+            if (input) {
+                input.value = value;
+                input.focus();
+            }
+        }
+
+        // Load current targets into the form
+        document.getElementById('loadCurrentBtn').addEventListener('click', function() {
+            Object.keys(suggestions).forEach(key => {
+                const input = document.getElementById(key);
+                if (input) {
+                    input.value = suggestions[key];
+                }
+            });
+            alert('Current targets loaded successfully!');
+        });
 </script>
 </body>
 </html>
