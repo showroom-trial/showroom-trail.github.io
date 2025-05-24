@@ -1472,6 +1472,22 @@ html {
     vertical-align: middle;
 }
 
+/* Suggested Button */
+.suggest-btn {
+    background: #f3f3f3;
+    color: #0078d4;
+    border: 1px solid #0078d4;
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.suggest-btn:hover {
+    background: #0078d4;
+    color: #fff;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
     .card {
@@ -1485,4 +1501,18 @@ html {
         flex-direction: column;
         gap: 10px;
     }
+}
+.suggest-btn {
+    background: #f3f3f3;
+    color: #0078d4;
+    border: 1px solid #0078d4;
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.suggest-btn:hover {
+    background: #0078d4;
+    color: #fff;
 }
