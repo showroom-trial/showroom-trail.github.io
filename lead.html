@@ -60,12 +60,12 @@
                 <a href="#" data-section="followups-section">
                     <i class="fas fa-phone"></i> Follow-ups
                 </a>
-                <a href="#" data-section="etbr-section">
-                    <i class="fas fa-table"></i> ETBR
+                <a href="#" data-section="target-section">
+                    <i class="fas fa-table"></i> Target Allocation
                 </a>
 
                 <a href="#" data-section="addons-section">
-                    <i class="fas fa-tags"></i> Add-ons Performance
+                    <i class="fas fa-tags"></i> Accessory Performance
                 </a>
                 <a href="#" data-section="comparison-section">
                     <i class="fas fa-trophy"></i> Executive Comparison
@@ -107,6 +107,16 @@
                             <span class="trend-up">↑ 4 from yesterday</span>
                         </div>
                     </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Leads completed </h3>
+                        </div>
+                        <div class="card-value">40/82</div>
+                        <div class="card-subtitle">
+                            <span class="trend-up">↑ 4% from yesterday</span>
+                        </div>
+                    </div>
                     
                     <div class="card">
                         <div class="card-header">
@@ -144,7 +154,7 @@
                             <h3 class="table-title">Assigned Leads</h3>
                             <div class="table-buttons">
                                 <button id="target-reminder-btn" class="dashboard-btn">Target Reminder</button>
-                                <button id="assign-target-btn" class="dashboard-btn">Assign Target</button>
+                                <!--<button id="assign-target-btn" class="dashboard-btn">Assign Target</button>-->
                             </div>
                             <div class="table-actions">
                                 <!-- Your existing search, filter, exports elements remain untouched -->
@@ -195,7 +205,7 @@
 </div><!-- Transparent Layer -->
 <div id="assignTargetOverlay"></div>
 
-<!-- Mini-tab for Assign Target -->
+<!-- Mini-tab for Assign Target --
 <div id="assignTargetTab" class="mini-tab">
     <div class="mini-tab-header">
         <h3>Assign Target</h3>
@@ -214,7 +224,7 @@
         <input type="number" id="target" name="target" placeholder="Enter target" required>
         <button type="submit">Assign</button>
     </form>
-</div>
+</div>-->
                     <table id="leads-table">
                         <thead>
                             <tr>
@@ -541,10 +551,216 @@
                         </tbody>
                     </table>
                 </div>
+  <!----  <div class="cards-container">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Pending Reports</h3>
             </div>
-            
+            <div class="card-value">6</div>
+            <div class="card-subtitle">
+                <span class="trend-down">↓ 2 from last week</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Completed Reports</h3>
+            </div>
+            <div class="card-value">24</div>
+            <div class="card-subtitle">
+                <span class="trend-up">↑ 5 from last week</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Executives Reporting</h3>
+            </div>
+            <div class="card-value">6/8</div>
+            <div class="card-subtitle">
+                <span class="trend-up">Good Consistency</span>
+            </div>
+        </div>
+    </div>-->
+
+  <!-- ETBR Section --
+    <div class="section-header">
+        <h1 class="section-title">Enquiry Track Booking Report (ETBR)</h1>
+    </div>
+
+    <div class="cards-container">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Pending Reports</h3>
+            </div>
+            <div class="card-value">6</div>
+            <div class="card-subtitle">
+                <span class="trend-down">↓ 2 from last week</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Completed Reports</h3>
+            </div>
+            <div class="card-value">24</div>
+            <div class="card-subtitle">
+                <span class="trend-up">↑ 5 from last week</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Executives Reporting</h3>
+            </div>
+            <div class="card-value">6/8</div>
+            <div class="card-subtitle">
+                <span class="trend-up">Good Consistency</span>
+            </div>
+        </div>
+    </div>-->
+
+    <!-- Main Table: Team Members -->
+<div class="table-container">
+        <div class="table-header">
+        <div class="table-header">
+            <h3 class="table-title">Enquiry Track Booking Report (ETBR)</h3>
+        </div>
+            <div class="table-actions">
+               <!-- <input type="file" id="excelFile" accept=".xlsx" class="dashboard-btn" />-->
+                <button class="export-btn" data-table="leads-table">
+                                <i class="fas fa-download"></i> Export
+                </button>
+            </div>
+        </div>
+    <table id="etbr-full-table">
+    <thead>
+        <tr class="main-heading-row">
+            <th rowspan="2">KEC's</th>
+            <th colspan="3" class="enquiry-group">ENQUIRY</th>
+            <th rowspan="2" class="td-group">TD</th>
+            <th rowspan="2" class="td-group">TD%</th>
+            <th colspan="3" class="booking-group">BOOKING</th>
+            <th rowspan="2" class="eb-group">E/B</th>
+            <th rowspan="2" class="br-group">B/R</th>
+        </tr>
+        <tr class="sub-heading-row">
+            <th class="enquiry-group">TGT</th>
+            <th class="enquiry-group">ACH</th>
+            <th class="enquiry-group enquiry-end">%</th>
+            <th class="booking-group">TGT</th>
+            <th class="booking-group">ACH</th>
+            <th class="booking-group booking-end">%</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Shilpa</td>
+            <td>2</td><td>5</td><td>1%</td>
+            <td>35</td><td>3%</td>
+            <td>2</td><td>9</td><td>67%</td>
+            <td>10%</td><td>8%</td>
+        </tr>
+        <tr>
+            <td>Prathap</td>
+            <td>1</td><td>4</td><td>1%</td>
+            <td>50</td><td>9%</td>
+            <td>8</td><td>18</td><td>89%</td>
+            <td>10%</td><td>8%</td>
+        </tr>
+        <tr>
+            <td>Dhanush E</td>
+            <td>–</td><td>0</td><td>0%</td>
+            <td>40</td><td>0%</td>
+            <td>0</td><td>0</td><td>0%</td>
+            <td>10%</td><td>8%</td>
+        </tr>
+        <tr>
+            <td>Darshan</td>
+            <td>–</td><td>4</td><td>2%</td>
+            <td>40</td><td>4%</td>
+            <td>4</td><td>10</td><td>100%</td>
+            <td>6%</td><td>6%</td>
+        </tr>
+        <tr>
+            <td>Kavya</td>
+            <td>–</td><td>2</td><td>0%</td>
+            <td>30</td><td>3%</td>
+            <td>2</td><td>10</td><td>67%</td>
+            <td>7%</td><td>7%</td>
+        </tr>
+        <tr>
+            <td>Mohana</td>
+            <td>–</td><td>1</td><td>0%</td>
+            <td>20</td><td>1%</td>
+            <td>1</td><td>5</td><td>100%</td>
+            <td>5%</td><td>7%</td>
+        </tr>
+        <tr>
+            <td>Yashwanth</td>
+            <td>–</td><td>3</td><td>1%</td>
+            <td>45</td><td>4%</td>
+            <td>3</td><td>9</td><td>75%</td>
+            <td>12%</td><td>4%</td>
+        </tr>
+        <tr>
+            <td>Mallikarjun</td>
+            <td>–</td><td>1</td><td>0%</td>
+            <td>35</td><td>1%</td>
+            <td>1</td><td>3</td><td>100%</td>
+            <td>7%</td><td>6%</td>
+        </tr>
+        <tr>
+            <td><strong>TEAM TOTAL</strong></td>
+            <td><strong>3</strong></td><td><strong>21</strong></td><td><strong>5%</strong></td>
+            <td><strong>260</strong></td><td><strong>24%</strong></td>
+            <td><strong>21</strong></td><td><strong>64</strong></td><td><strong>83%</strong></td>
+            <td><strong>9%</strong></td><td><strong>7%</strong></td>
+        </tr>
+        </tbody>
+     </table> 
+</div>
+
+    <!-- Team Leader Comparison Table -->
+    <div class="table-container">
+        <div class="table-header">
+            <h3 class="table-title">Team Leader Comparison</h3>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Team Leader</th>
+                    <th>Total Target</th>
+                    <th>Total Achieved</th>
+                    <th>E/B</th>
+                    <!--<th>KEC's</th>
+                    <th>ENQUIRY</th>
+                    <th>TD</th>-->
+                    <th>B/R</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>You (Your Team)</strong></td>
+                    <td>260</td><td>24</td><td>9%</td>
+                    <!--<td>–</td><td>–</td><td>20</td>--><td>7%</td>
+                </tr>
+                <tr>
+                    <td>Leader B</td>
+                    <td>215</td><td>24</td><td>11%</td>
+                    <!--<td>–</td><td>–</td><td>20</td>--><td>13%</td>
+                </tr>
+                <tr>
+                    <td>Leader C</td>
+                    <td>135</td><td>11</td><td>8%</td>
+                    <!--<td>–</td><td>–</td><td>20</td>--><td>14%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
             <!-- Follow-ups Section -->
-            <div class="dashboard-section" id="followups-section">
+ <div class="dashboard-section" id="followups-section">
     <div class="section-header">
         <h2>Follow-ups</h2>
     </div>
@@ -570,8 +786,8 @@
             </div>
         </div>
     </div>
-
 <style>
+
 /* General styling for the Follow-ups section */
 #followups-section {
     padding: 20px;
@@ -683,7 +899,6 @@
     }
 }
 </style>
-                
                 <div class="table-container">
                     <div class="table-header">
                         <h3 class="table-title">Follow-up Schedule</h3>
@@ -813,20 +1028,20 @@
             <!-- Add-ons Performance Section -->
             <div class="dashboard-section" id="addons-section">
                 <div class="section-header">
-                    <h2>Add-ons Performance</h2>
+                    <h2>Accessories Performance</h2>
                 </div>
                 
                 <div class="charts-row">
                     <div class="chart-container half-width">
                         <div class="chart-header">
-                            <h3 class="chart-title">Add-ons Revenue Share</h3>
+                            <h3 class="chart-title">Accessories Revenue Share</h3>
                         </div>
                         <canvas id="addonsRevenueChart"></canvas>
                     </div>
                     
                     <div class="chart-container half-width">
                         <div class="chart-header">
-                            <h3 class="chart-title">Add-ons Sales Trend</h3>
+                            <h3 class="chart-title">Accessories Sales Trend</h3>
                         </div>
                         <canvas id="addonsTrendChart"></canvas>
                     </div>
@@ -834,7 +1049,7 @@
                 
                 <div class="table-container">
                     <div class="table-header">
-                        <h3 class="table-title">Add-ons Sales by Executive</h3>
+                        <h3 class="table-title">Accessories Sales by Executive</h3>
                     </div>
                     <table id="addons-table">
                         <thead>
@@ -844,7 +1059,7 @@
                                 <th>Insurance</th>
                                 <th>Accessories</th>
                                 <th>Service Package</th>
-                                <th>Total Add-ons Revenue</th>
+                                <th>Total Accessories Revenue</th>
                                 <th>% of Team Revenue</th>
                             </tr>
                         </thead>
@@ -904,7 +1119,7 @@
                 <div class="section-header">
                     <h2>Executive Comparison</h2>
                 </div>
-                
+                <!--
                 <div class="table-container">
                     <div class="table-header">
                         <h3 class="table-title">Sales Leaderboard</h3>
@@ -937,8 +1152,7 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-                
+                </div>-->
                 
                 <div class="table-container">
                     <div class="table-header">
@@ -951,10 +1165,10 @@
                                 <th>Executive Name</th>
                                 <th>Total Sales</th>
                                 <th>Leads Closed</th>
-                                <th>Conversion Rate</th>
-                                <!--<th>Revenue Generated</th>-->
-                                <th>Add-ons Sold</th>
-                                <th>Customer Satisfaction</th>
+                                <th>E/B</th>
+                                <th>B/R</th>
+                                <th>Accessories Sold</th>
+                                <!--<th>Customer Satisfaction</th>-->
                             </tr>
                         </thead>
                         <tbody>
@@ -964,9 +1178,9 @@
                                 <td data-label="Total Sales">16</td>
                                 <td data-label="Leads Closed">16/42</td>
                                 <td data-label="Conversion Rate">38%</td>
-                               <!--<td data-label="Revenue Generated">$156,000</td>-->
+                                <td data-label="Conversion Rate">28%</td>
                                 <td data-label="Add-ons Sold">61</td>
-                                <td data-label="Customer Satisfaction">4.8/5</td>
+                                <!--<td data-label="Customer Satisfaction">3.9/5</td>-->
                             </tr>
                             <tr class="rank-2">
                                 <td data-label="Rank">2</td>
@@ -974,9 +1188,9 @@
                                 <td data-label="Total Sales">14</td>
                                 <td data-label="Leads Closed">14/40</td>
                                 <td data-label="Conversion Rate">35%</td>
-                               <!--<td data-label="Revenue Generated">$156,000</td>-->
+                                <td data-label="Conversion Rate">30%</td>
                                 <td data-label="Add-ons Sold">52</td>
-                                <td data-label="Customer Satisfaction">4.6/5</td>
+                                <!--<td data-label="Customer Satisfaction">3.9/5</td>-->
                             </tr>
                             <tr class="rank-3">
                                 <td data-label="Rank">3</td>
@@ -984,9 +1198,9 @@
                                 <td data-label="Total Sales">12</td>
                                 <td data-label="Leads Closed">12/38</td>
                                 <td data-label="Conversion Rate">29%</td>
-                               <!--<td data-label="Revenue Generated">$156,000</td>-->
+                                <td data-label="Conversion Rate">20%</td>
                                 <td data-label="Add-ons Sold">44</td>
-                                <td data-label="Customer Satisfaction">4.5/5</td>
+                                <!--<td data-label="Customer Satisfaction">3.9/5</td>-->
                             </tr>
                             <tr>
                                 <td data-label="Rank">4</td>
@@ -994,9 +1208,9 @@
                                 <td data-label="Total Sales">10</td>
                                 <td data-label="Leads Closed">10/36</td>
                                 <td data-label="Conversion Rate">27%</td>
-                               <!--<td data-label="Revenue Generated">$156,000</td>-->
+                                <td data-label="Conversion Rate">25%</td>
                                 <td data-label="Add-ons Sold">34</td>
-                                <td data-label="Customer Satisfaction">4.3/5</td>
+                                <!--<td data-label="Customer Satisfaction">3.9/5</td>-->
                             </tr>
                             <tr>
                                 <td data-label="Rank">5</td>
@@ -1004,15 +1218,132 @@
                                 <td data-label="Total Sales">4</td>
                                 <td data-label="Leads Closed">4/24</td>
                                 <td data-label="Conversion Rate">16%</td>
-                               <!--<td data-label="Revenue Generated">$156,000</td>-->
+                                <td data-label="Conversion Rate">12%</td>
                                 <td data-label="Add-ons Sold">12</td>
-                                <td data-label="Customer Satisfaction">3.9/5</td>
+                                <!--<td data-label="Customer Satisfaction">3.9/5</td>-->
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            
+
+<!-- Target Allocation Section -->
+<div id="target-section" class="dashboard-section">
+<div class="responsive-dashboard-container">
+    <!-- All your cards, tables, forms, etc. go here -->
+<div class="table-container">
+ <div class="cards-container">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Total Leads </h3>
+                        </div>
+                        <div class="card-value">12</div>
+                        <div class="card-subtitle">
+                            <span class="trend-up">↑ 4 from yesterday</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Leads completed </h3>
+                        </div>
+                        <div class="card-value">40/82</div>
+                        <div class="card-subtitle">
+                            <span class="trend-up">↑ 4% from yesterday</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Pending Allocations</h3>
+                        </div>
+                        <div class="card-value">8</div>
+                        <div class="card-subtitle">
+                            <span>Need immediate attention</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">In Progress Leads</h3>
+                        </div>
+                        <div class="card-value">45</div>
+                        <div class="card-subtitle">
+                            <span class="trend-up">↑ 5% from last week</span>
+                        </div>
+                    </div>
+                    
+                
+                </div>
+    <div class="table-header">
+        <h3 class="table-title">Target Allocation</h3>
+    </div>
+    <form id="targetAllocationForm" autocomplete="off">
+        <label for="executiveSelect"><b>Select Executive:</b></label>
+        <select id="executiveSelect" required>
+            <!-- Options will be generated by JS -->
+        </select>
+        <div id="executiveDetails" style="margin: 18px 0 10px 0; color: #555; font-size: 1em;">
+            <!-- Executive details will be shown here -->
+        </div>
+        <div style="display: flex; gap: 45px; flex-wrap: wrap;">
+            <div>
+                <label>Sales Target</label><br>
+                <input type="number" id="salesInput" min="0" placeholder="Add Sales">
+            </div>
+            <div>
+                <label>Revenue Target</label><br>
+                <input type="number" id="revenueInput" min="0" placeholder="Add Revenue">
+            </div>
+            <div>
+                <label>Enquiry Target</label><br>
+                <input type="number" id="enquiryInput" min="0" placeholder="Add Enquiry">
+            </div>
+            <div>
+                <label>Booking Target</label><br>
+                <input type="number" id="bookingInput" min="0" placeholder="Add Booking">
+            </div>
+        </div>
+        <button type="submit" style="margin-top: 18px;">Assign Target</button>
+    </form>
+<!-- Assigned Targets Summary Table -->
+<div id="assigned-summary-table" class="table-container" style="margin-top:30px;">
+    <div class="table-header">
+        <hs3 class="table-title">Assigned Targets Summary</h3>
+    </div>
+    <div style="overflow-x:auto;">
+        <table id="summary-table">
+            <thead>
+                <tr>
+                    <th>Executive</th>
+                    <th>Sales<br><span style="font-weight:100;font-size:0.9em;"></span></th>
+                    <th>Revenue<br><span style="font-weight:300;font-size:0.9em;"></span></th>
+                    <th>Enquiry<br><span style="font-weight:300;font-size:0.9em;"></span></th>
+                    <th>Booking<br><span style="font-weight:300;font-size:0.9em;"></span></th>
+                </tr>
+            </thead>
+            <tbody id="assigned-summary-tbody">
+                <!-- JS will fill rows -->
+            </tbody>
+        </table>
+    </div>
+</div>
+    <!-- Alarm/Notification Corner -->
+    <div id="target-alarm" style="position:fixed;top:30px;right:30px;z-index:9999;display:none;background:#d8d1d1;color:#222;padding:16px 24px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.15);font-weight:bold;">
+        <i class="fas fa-bell"></i> Target updated!
+    </div>
+    <!-- Team Lead Target Info Alarm -->
+    <div id="lead-target-alarm" class="lead-target-alarm">
+        <div class="alarm-title">
+            <i class="fas fa-bullseye"></i> Team Target Overview
+        </div>
+        <div class="alarm-details" id="leadTargetAlarmDetails">
+            <!-- JS will fill this -->
+        </div>
+    </div>
+    <!-- ...rest of your page... -->
+    </div>
+</div>
             
             <!-- Customer Feedback Section -->
             <div class="dashboard-section" id="feedback-section">
@@ -1148,181 +1479,7 @@
                     </table>
                 </div>
             </div>
-            <!-- ETBR Section -->
-<div id="etbr-section" class="dashboard-section">
-    <div class="section-header">
-        <h1 class="section-title">Expected To Be Reported (ETBR)</h1>
-    </div>
-
-    <div class="cards-container">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Pending Reports</h3>
-            </div>
-            <div class="card-value">6</div>
-            <div class="card-subtitle">
-                <span class="trend-down">↓ 2 from last week</span>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Completed Reports</h3>
-            </div>
-            <div class="card-value">24</div>
-            <div class="card-subtitle">
-                <span class="trend-up">↑ 5 from last week</span>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Executives Reporting</h3>
-            </div>
-            <div class="card-value">6/8</div>
-            <div class="card-subtitle">
-                <span class="trend-up">Good Consistency</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Table: Team Members -->
-    <div class="table-container">
-        <div class="table-header">
-            <h3 class="table-title">Your Team's ETBR Details</h3>
-            <div class="table-actions">
-               <!-- <input type="file" id="excelFile" accept=".xlsx" class="dashboard-btn" />-->
-                <button class="export-btn" data-table="leads-table">
-                                <i class="fas fa-download"></i> Export
-                </button>
-            </div>
-        </div>
-    <table id="etbr-full-table">
-    <thead>
-        <tr class="main-heading-row">
-            <th rowspan="2">KEC's</th>
-            <th colspan="3" class="enquiry-group">ENQUIRY</th>
-            <th rowspan="2" class="td-group">TD</th>
-            <th rowspan="2" class="td-group">TD%</th>
-            <th colspan="3" class="booking-group">BOOKING</th>
-            <th rowspan="2" class="eb-group">E/B</th>
-            <th rowspan="2" class="br-group">B/R</th>
-        </tr>
-        <tr class="sub-heading-row">
-            <th class="enquiry-group">TGT</th>
-            <th class="enquiry-group">ACH</th>
-            <th class="enquiry-group enquiry-end">%</th>
-            <th class="booking-group">TGT</th>
-            <th class="booking-group">ACH</th>
-            <th class="booking-group booking-end">%</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Shilpa</td>
-            <td>2</td><td>5</td><td>1%</td>
-            <td>35</td><td>3%</td>
-            <td>2</td><td>9</td><td>67%</td>
-            <td>10%</td><td>8%</td>
-        </tr>
-        <tr>
-            <td>Prathap</td>
-            <td>1</td><td>4</td><td>1%</td>
-            <td>50</td><td>9%</td>
-            <td>8</td><td>18</td><td>89%</td>
-            <td>10%</td><td>8%</td>
-        </tr>
-        <tr>
-            <td>Dhanush E</td>
-            <td>–</td><td>0</td><td>0%</td>
-            <td>40</td><td>0%</td>
-            <td>0</td><td>0</td><td>0%</td>
-            <td>10%</td><td>8%</td>
-        </tr>
-        <tr>
-            <td>Darshan</td>
-            <td>–</td><td>4</td><td>2%</td>
-            <td>40</td><td>4%</td>
-            <td>4</td><td>10</td><td>100%</td>
-            <td>6%</td><td>6%</td>
-        </tr>
-        <tr>
-            <td>Kavya</td>
-            <td>–</td><td>2</td><td>0%</td>
-            <td>30</td><td>3%</td>
-            <td>2</td><td>10</td><td>67%</td>
-            <td>7%</td><td>7%</td>
-        </tr>
-        <tr>
-            <td>Mohana</td>
-            <td>–</td><td>1</td><td>0%</td>
-            <td>20</td><td>1%</td>
-            <td>1</td><td>5</td><td>100%</td>
-            <td>5%</td><td>7%</td>
-        </tr>
-        <tr>
-            <td>Yashwanth</td>
-            <td>–</td><td>3</td><td>1%</td>
-            <td>45</td><td>4%</td>
-            <td>3</td><td>9</td><td>75%</td>
-            <td>12%</td><td>4%</td>
-        </tr>
-        <tr>
-            <td>Mallikarjun</td>
-            <td>–</td><td>1</td><td>0%</td>
-            <td>35</td><td>1%</td>
-            <td>1</td><td>3</td><td>100%</td>
-            <td>7%</td><td>6%</td>
-        </tr>
-        <tr>
-            <td><strong>TEAM TOTAL</strong></td>
-            <td><strong>3</strong></td><td><strong>21</strong></td><td><strong>5%</strong></td>
-            <td><strong>260</strong></td><td><strong>24%</strong></td>
-            <td><strong>21</strong></td><td><strong>64</strong></td><td><strong>83%</strong></td>
-            <td><strong>9%</strong></td><td><strong>7%</strong></td>
-        </tr>
-    </tbody>
-</table> 
-    </div>
-
-    <!-- Team Leader Comparison Table -->
-    <div class="table-container">
-        <div class="table-header">
-            <h3 class="table-title">Team Leader Comparison</h3>
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Team Leader</th>
-                    <th>Total Target</th>
-                    <th>Total Achieved</th>
-                    <th>E/B</th>
-                    <!--<th>KEC's</th>
-                    <th>ENQUIRY</th>
-                    <th>TD</th>-->
-                    <th>B/R</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>You (Your Team)</strong></td>
-                    <td>260</td><td>24</td><td>9%</td>
-                    <!--<td>–</td><td>–</td><td>20</td>--><td>7%</td>
-                </tr>
-                <tr>
-                    <td>Leader B</td>
-                    <td>215</td><td>24</td><td>11%</td>
-                    <!--<td>–</td><td>–</td><td>20</td>--><td>13%</td>
-                </tr>
-                <tr>
-                    <td>Leader C</td>
-                    <td>135</td><td>11</td><td>8%</td>
-                    <!--<td>–</td><td>–</td><td>20</td>--><td>14%</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+          
 
     <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -1878,7 +2035,7 @@ function initializeCharts() {
     const addonsRevenueCanvas = document.getElementById('addonsRevenueChart');
     if (addonsRevenueCanvas) {
         new Chart(addonsRevenueCanvas, {
-            type: 'doughnut',
+            type: 'bar',
             data: addonsRevenueData,
             options: {
                 ...commonOptions,
@@ -1886,7 +2043,7 @@ function initializeCharts() {
                     ...commonOptions.plugins,
                     title: {
                         display: true,
-                        text: 'Add-ons Revenue Share',
+                        text: 'Accessories Revenue Share',
                         font: { size: 14 }
                     },
                     legend: {
@@ -1920,7 +2077,7 @@ function initializeCharts() {
                     ...commonOptions.plugins,
                     title: {
                         display: true,
-                        text: 'Add-ons Sales Trend',
+                        text: 'Accessories Sales Trend',
                         font: { size: 14 }
                     }
                 },
@@ -2261,7 +2418,7 @@ window.onload = function() {
 var salesCtx = document.getElementById('salesContributionChart')?.getContext('2d');
 if (salesCtx) {
     new Chart(salesCtx, {
-        type: 'doughnut',
+        type: 'bar',
         data: {
             labels: ['Mark Wilson', 'Sarah Davis', 'Robert Johnson', 'Jennifer Lee', 'Michael Brown'],
             datasets: [{
@@ -2535,6 +2692,118 @@ document.addEventListener("DOMContentLoaded", function () {
     if (menuItems.length > 0) {
         menuItems[0].click();
     }
+});// Place this JS at the end of your file or in a <script> tag after the HTML above
+// Place this JS at the end of your file or in a <script> tag after the HTML above
+document.addEventListener("DOMContentLoaded", function () {
+    // Executive data with completed and assigned targets
+    const executives = [
+        { name: "Mark Wilson", completed: { sales: 8, revenue: 120000, enquiry: 15, booking: 4 }, assigned: { sales: 12, revenue: 250000, enquiry: 30, booking: 8 } },
+        { name: "Sarah Davis", completed: { sales: 7, revenue: 90000, enquiry: 10, booking: 3 }, assigned: { sales: 10, revenue: 210000, enquiry: 22, booking: 7 } },
+        { name: "Robert Johnson", completed: { sales: 6, revenue: 70000, enquiry: 8, booking: 2 }, assigned: { sales: 8, revenue: 180000, enquiry: 18, booking: 5 } },
+        { name: "Jennifer Adams", completed: { sales: 5, revenue: 60000, enquiry: 7, booking: 2 }, assigned: { sales: 7, revenue: 150000, enquiry: 15, booking: 4 } },
+        { name: "Michael Carter", completed: { sales: 3, revenue: 40000, enquiry: 5, booking: 1 }, assigned: { sales: 5, revenue: 120000, enquiry: 10, booking: 3 } }
+    ];
+
+    let selectedIndex = 0;
+
+    // Populate dropdown
+    const execSelect = document.getElementById("executiveSelect");
+    executives.forEach((exec, idx) => {
+        const opt = document.createElement("option");
+        opt.value = idx;
+        opt.textContent = exec.name;
+        execSelect.appendChild(opt);
+    });
+
+    // Show executive details
+    function updateExecutiveDetails(idx) {
+        const exec = executives[idx];
+        document.getElementById("executiveDetails").innerHTML = `
+            <b>${exec.name}</b><br>
+            <span style="color:#888;">Sales: </span> <b>${exec.completed.sales}</b> / <b>${exec.assigned.sales}</b> &nbsp; 
+            <span style="color:#888;">Revenue: </span> <b>₹${exec.completed.revenue.toLocaleString()}</b> / <b>₹${exec.assigned.revenue.toLocaleString()}</b> &nbsp; 
+            <span style="color:#888;">Enquiry: </span> <b>${exec.completed.enquiry}</b> / <b>${exec.assigned.enquiry}</b> &nbsp; 
+            <span style="color:#888;">Booking: </span> <b>${exec.completed.booking}</b> / <b>${exec.assigned.booking}</b>
+        `;
+        // Clear input fields
+        document.getElementById("salesInput").value = "";
+        document.getElementById("revenueInput").value = "";
+        document.getElementById("enquiryInput").value = "";
+        document.getElementById("bookingInput").value = "";
+    }
+
+    execSelect.addEventListener("change", function () {
+        selectedIndex = parseInt(this.value, 10);
+        updateExecutiveDetails(selectedIndex);
+    });
+
+    // Initial display
+    updateExecutiveDetails(selectedIndex);
+
+    // Handle form submit
+    document.getElementById("targetAllocationForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const exec = executives[selectedIndex];
+        // Get new values (add to assigned)
+        const addSales = parseInt(document.getElementById("salesInput").value, 10) || 0;
+        const addRevenue = parseInt(document.getElementById("revenueInput").value, 10) || 0;
+        const addEnquiry = parseInt(document.getElementById("enquiryInput").value, 10) || 0;
+        const addBooking = parseInt(document.getElementById("bookingInput").value, 10) || 0;
+        exec.assigned.sales += addSales;
+        exec.assigned.revenue += addRevenue;
+        exec.assigned.enquiry += addEnquiry;
+        exec.assigned.booking += addBooking;
+
+        // Show alarm
+        const alarm = document.getElementById("target-alarm");
+        alarm.style.display = "block";
+        setTimeout(() => { alarm.style.display = "none"; }, 2500);
+
+        // Update details and summary
+        updateExecutiveDetails(selectedIndex);
+        updateSummaryTable();
+    });
+
+    // Update summary table
+    function updateSummaryTable() {
+        const tbody = document.getElementById("assigned-summary-tbody");
+        tbody.innerHTML = "";
+        executives.forEach(exec => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${exec.name}</td>
+                <td>${exec.completed.sales} / ${exec.assigned.sales}</td>
+                <td>₹${exec.completed.revenue.toLocaleString()} / ₹${exec.assigned.revenue.toLocaleString()}</td>
+                <td>${exec.completed.enquiry} / ${exec.assigned.enquiry}</td>
+                <td>${exec.completed.booking} / ${exec.assigned.booking}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+    function updateLeadTargetAlarm() {
+    // Calculate totals
+    let totalAssigned = { sales: 0, revenue: 0, enquiry: 0, booking: 0 };
+    let totalCompleted = { sales: 0, revenue: 0, enquiry: 0, booking: 0 };
+    executives.forEach(exec => {
+        totalAssigned.sales += exec.assigned.sales;
+        totalAssigned.revenue += exec.assigned.revenue;
+        totalAssigned.enquiry += exec.assigned.enquiry;
+        totalAssigned.booking += exec.assigned.booking;
+        totalCompleted.sales += exec.completed.sales;
+        totalCompleted.revenue += exec.completed.revenue;
+        totalCompleted.enquiry += exec.completed.enquiry;
+        totalCompleted.booking += exec.completed.booking;
+    });
+    document.getElementById("leadTargetAlarmDetails").innerHTML = `
+        <span><b>Sales:</b> ${totalCompleted.sales} / ${totalAssigned.sales}</span><br>
+        <span><b>Revenue:</b> ₹${totalCompleted.revenue.toLocaleString()} / ₹${totalAssigned.revenue.toLocaleString()}</span><br>
+        <span><b>Enquiry:</b> ${totalCompleted.enquiry} / ${totalAssigned.enquiry}</span><br>
+        <span><b>Booking:</b> ${totalCompleted.booking} / ${totalAssigned.booking}</span>
+    `;
+}
+    // After updateSummaryTable();
+updateSummaryTable();
+updateLeadTargetAlarm();
 });
 </script>
 </body>
