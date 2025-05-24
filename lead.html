@@ -942,11 +942,9 @@
                                     </div>
                                 </td>
                                 <td data-label="Status"><span class="status-badge status-Hot">Today</span></td>
-                                <td data-label="Actions">
-                                    <button class="action-btn"><i class="fas fa-phone"></i></button>
-                                    <button class="action-btn"><i class="fas fa-envelope"></i></button>
-                                    <!--<button class="action-btn"><i class="fas fa-check-circle"></i></button>-->
-                                </td>
+                                 <td>
+        <button class="status-update-btn" data-id="1">Details</button>
+    </td>
                             </tr>
                             <tr class="urgent-row">
                                 <td data-label="Lead Name">Emma Roberts</td>
@@ -960,12 +958,9 @@
                                     </div>
                                 </td>
                                 <td data-label="Status"><span class="status-badge status-Hot">Today</span></td>
-                                <td data-label="Actions">
-                                    <button class="action-btn"><i class="fas fa-phone"></i></button>
-                                    <button class="action-btn"><i class="fas fa-envelope"></i></button>
-                                    <!--<button class="action-btn"><i class="fas fa-check-circle"></i></button>-->
-                                </td>
-                            </tr>
+                                <td>
+        <button class="status-update-btn" data-id="2">Details</button>
+    </td>
                             <tr>
                                 <td data-label="Lead Name">David Thompson</td>
                                 <td data-label="Last Contact">Mar 9, 2025</td>
@@ -978,11 +973,9 @@
                                     </div>
                                 </td>
                                 <td data-label="Status"><span class="status-badge status-Warm">Tomorrow</span></td>
-                                <td data-label="Actions">
-                                    <button class="action-btn"><i class="fas fa-phone"></i></button>
-                                    <button class="action-btn"><i class="fas fa-envelope"></i></button>
-                                    <!--<button class="action-btn"><i class="fas fa-check-circle"></i></button>-->
-                                </td>
+                                 <td>
+                                <button class="status-update-btn" data-id="7">Details</button>
+                            </td>
                             </tr>
                             <tr>
                                 <td data-label="Lead Name">Richard Clark</td>
@@ -996,11 +989,9 @@
                                     </div>
                                 </td>
                                 <td data-label="Status"><span class="status-badge status-Cold">Scheduled</span></td>
-                                <td data-label="Actions">
-                                    <button class="action-btn"><i class="fas fa-phone"></i></button>
-                                    <button class="action-btn"><i class="fas fa-envelope"></i></button>
-                                    <!--<button class="action-btn"><i class="fas fa-check-circle"></i></button>-->
-                                </td>
+                                 <td>
+        <button class="status-update-btn" data-id="3">Details</button>
+    </td>
                             </tr>
                             <tr class="overdue-row">
                                 <td data-label="Lead Name">Patricia Hughes</td>
@@ -1014,11 +1005,9 @@
                                     </div>
                                 </td>
                                 <td data-label="Status"><span class="status-badge status-Hot">Overdue</span></td>
-                                <td data-label="Actions">
-                                    <button class="action-btn"><i class="fas fa-phone"></i></button>
-                                    <button class="action-btn"><i class="fas fa-envelope"></i></button>
-                                    <!--<button class="action-btn"><i class="fas fa-check-circle"></i></button>-->
-                                </td>
+                                 <td>
+        <button class="status-update-btn" data-id="4">Details</button>
+    </td>
                             </tr>
                         </tbody>
                     </table>
@@ -1230,109 +1219,84 @@
 <!-- Target Allocation Section -->
 <div id="target-section" class="dashboard-section">
 <div class="responsive-dashboard-container">
-    <!-- All your cards, tables, forms, etc. go here -->
-<div class="table-container">
- <div class="cards-container">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Total Leads </h3>
-                        </div>
-                        <div class="card-value">12</div>
-                        <div class="card-subtitle">
-                            <span class="trend-up">↑ 4 from yesterday</span>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Leads completed </h3>
-                        </div>
-                        <div class="card-value">40/82</div>
-                        <div class="card-subtitle">
-                            <span class="trend-up">↑ 4% from yesterday</span>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Pending Allocations</h3>
-                        </div>
-                        <div class="card-value">8</div>
-                        <div class="card-subtitle">
-                            <span>Need immediate attention</span>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">In Progress Leads</h3>
-                        </div>
-                        <div class="card-value">45</div>
-                        <div class="card-subtitle">
-                            <span class="trend-up">↑ 5% from last week</span>
-                        </div>
-                    </div>
-                    
-                
+    <!-- Alarm Card (static at top) -->
+    <div class="alarm-card" style="position:sticky;top:0;z-index:10;background:#fffbe7;color:#b26a00;border-left:6px solid #ffc107;padding:18px 24px;margin-bottom:18px;border-radius:8px;font-weight:bold;display:flex;align-items:center;box-shadow:0 2px 8px rgba(255,193,7,0.08);">
+        <i class="fas fa-bell" style="margin-right:12px;font-size:1.5em;"></i>
+        <span>Reminder: Please review and update your team's target allocations for this month!</span>
+    </div>
+
+    <!-- Cards Section -->
+    <div class="cards-container" style="display:flex;gap:18px;flex-wrap:wrap;margin-bottom:28px;">
+        <div class="card">
+            <div class="card-title">Sales Targets Assigned</div>
+            <div class="card-value" id="sales-assigned">--</div>
+            <div class="card-subtitle">By Sales Manager</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Sales Completed</div>
+            <div class="card-value" id="sales-completed">--</div>
+            <div class="card-subtitle"><span class="card-highlight" id="sales-progress"></span> completed</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Revenue Target Achieved</div>
+            <div class="card-value" id="revenue-achieved">--</div>
+            <div class="card-subtitle"><span class="card-highlight" id="revenue-progress"></span> achieved</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Accessories Target Achieved</div>
+            <div class="card-value" id="accessories-achieved">--</div>
+            <div class="card-subtitle"><span class="card-highlight" id="accessories-progress"></span> achieved</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Targets Assigned to Executives</div>
+            <div class="card-value" id="exec-targets">--</div>
+            <div class="card-subtitle">of total team targets</div>
+        </div>
+    </div>
+
+    <!-- Target Allocation Section -->
+    <div class="target-section" style="background:#f9f9f9;border-radius:10px;padding:24px;margin-bottom:32px;">
+        <h2 style="margin-bottom:18px;">Target Allocation</h2>
+        <form class="target-form" id="targetForm" autocomplete="off">
+            <label for="execSelect"><b>Select Executive:</b></label>
+            <select id="execSelect" required></select>
+            <div class="exec-details" id="execDetails"></div>
+            <div class="target-form-row" style="display:flex;gap:32px;flex-wrap:wrap;margin-bottom:18px;">
+                <div>
+                    <label>Sales Target</label>
+                    <input type="number" id="salesInput" min="0" placeholder="Add Sales">
                 </div>
-    <div class="table-header">
-        <h3 class="table-title">Target Allocation</h3>
+                <div>
+                    <label>Revenue Target</label>
+                    <input type="number" id="revenueInput" min="0" placeholder="Add Revenue">
+                </div>
+                <div>
+                    <label>Accessories Target</label>
+                    <input type="number" id="accessoriesInput" min="0" placeholder="Add Accessories">
+                </div>
+            </div>
+            <button type="submit">Assign Target</button>
+        </form>
     </div>
-    <form id="targetAllocationForm" autocomplete="off">
-        <label for="executiveSelect"><b>Select Executive:</b></label>
-        <select id="executiveSelect" required>
-            <!-- Options will be generated by JS -->
-        </select>
-        <div id="executiveDetails" style="margin: 18px 0 10px 0; color: #555; font-size: 1em;">
-            <!-- Executive details will be shown here -->
-        </div>
-        <div style="display: flex; gap: 45px; flex-wrap: wrap;">
-            <div>
-                <label>Sales Target</label><br>
-                <input type="number" id="salesInput" min="0" placeholder="Add Sales">
-            </div>
-            <div>
-                <label>Revenue Target</label><br>
-                <input type="number" id="revenueInput" min="0" placeholder="Add Revenue">
-            </div>
-            <div>
-                <label>Enquiry Target</label><br>
-                <input type="number" id="enquiryInput" min="0" placeholder="Add Enquiry">
-            </div>
-            <div>
-                <label>Booking Target</label><br>
-                <input type="number" id="bookingInput" min="0" placeholder="Add Booking">
-            </div>
-        </div>
-        <button type="submit" style="margin-top: 18px;">Assign Target</button>
-    </form>
-<!-- Assigned Targets Summary Table -->
-<div id="assigned-summary-table" class="table-container" style="margin-top:30px;">
-    <div class="table-header">
-        <hs3 class="table-title">Assigned Targets Summary</h3>
-    </div>
-    <div style="overflow-x:auto;">
-        <table id="summary-table">
+
+    <!-- Summary Table -->
+    <div class="table-container">
+        <div class="table-title">Executive Target Assignment Summary</div>
+        <table>
             <thead>
                 <tr>
                     <th>Executive</th>
-                    <th>Sales<br><span style="font-weight:100;font-size:0.9em;"></span></th>
-                    <th>Revenue<br><span style="font-weight:300;font-size:0.9em;"></span></th>
-                    <th>Enquiry<br><span style="font-weight:300;font-size:0.9em;"></span></th>
-                    <th>Booking<br><span style="font-weight:300;font-size:0.9em;"></span></th>
+                    <th>Sales (Completed / Assigned)</th>
+                    <th>Revenue (Achieved / Assigned)</th>
+                    <th>Accessories (Achieved / Assigned)</th>
                 </tr>
             </thead>
-            <tbody id="assigned-summary-tbody">
-                <!-- JS will fill rows -->
-            </tbody>
+            <tbody id="summaryBody"></tbody>
         </table>
     </div>
-</div>
-    <!-- Alarm/Notification Corner -->
-    <div id="target-alarm" style="position:fixed;top:30px;right:30px;z-index:9999;display:none;background:#d8d1d1;color:#222;padding:16px 24px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.15);font-weight:bold;">
-        <i class="fas fa-bell"></i> Target updated!
-    </div>
-    <!-- Team Lead Target Info Alarm -->
+
+    <!-- Team Lead Target Info Alarm --
     <div id="lead-target-alarm" class="lead-target-alarm">
         <div class="alarm-title">
             <i class="fas fa-bullseye"></i> Team Target Overview
@@ -1341,9 +1305,9 @@
             <!-- JS will fill this -->
         </div>
     </div>
-    <!-- ...rest of your page... -->
-    </div>
 </div>
+</div>
+
             
             <!-- Customer Feedback Section -->
             <div class="dashboard-section" id="feedback-section">
@@ -1479,7 +1443,6 @@
                     </table>
                 </div>
             </div>
-          
 
     <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -2801,10 +2764,139 @@ document.addEventListener("DOMContentLoaded", function () {
         <span><b>Booking:</b> ${totalCompleted.booking} / ${totalAssigned.booking}</span>
     `;
 }
+
     // After updateSummaryTable();
 updateSummaryTable();
 updateLeadTargetAlarm();
 });
+
+// ...existing code...
+// ...existing code...
+
+
+
+
+    // Example data for demonstration
+    const teamTargets = {
+        sales: 50,
+        revenue: 1000000,
+        accessories: 120
+    };
+    const executives = [
+        { name: "Mark Wilson", completed: { sales: 12, revenue: 220000, accessories: 30 }, assigned: { sales: 15, revenue: 250000, accessories: 35 } },
+        { name: "Sarah Davis", completed: { sales: 10, revenue: 180000, accessories: 22 }, assigned: { sales: 12, revenue: 210000, accessories: 25 } },
+        { name: "Robert Johnson", completed: { sales: 8, revenue: 140000, accessories: 18 }, assigned: { sales: 10, revenue: 180000, accessories: 20 } },
+        { name: "Jennifer Adams", completed: { sales: 7, revenue: 120000, accessories: 15 }, assigned: { sales: 8, revenue: 150000, accessories: 18 } },
+        { name: "Michael Carter", completed: { sales: 5, revenue: 90000, accessories: 10 }, assigned: { sales: 7, revenue: 120000, accessories: 12 } }
+    ];
+    let selectedExec = 0;
+
+    // Populate cards
+    function updateCards() {
+        // Team totals
+        let salesAssigned = teamTargets.sales;
+        let salesCompleted = executives.reduce((sum, e) => sum + e.completed.sales, 0);
+        let salesAssignedToExecs = executives.reduce((sum, e) => sum + e.assigned.sales, 0);
+
+        let revenueAssigned = teamTargets.revenue;
+        let revenueAchieved = executives.reduce((sum, e) => sum + e.completed.revenue, 0);
+        let revenueAssignedToExecs = executives.reduce((sum, e) => sum + e.assigned.revenue, 0);
+
+        let accessoriesAssigned = teamTargets.accessories;
+        let accessoriesAchieved = executives.reduce((sum, e) => sum + e.completed.accessories, 0);
+        let accessoriesAssignedToExecs = executives.reduce((sum, e) => sum + e.assigned.accessories, 0);
+
+        document.getElementById("sales-assigned").textContent = salesAssigned;
+        document.getElementById("sales-completed").textContent = salesCompleted + " / " + salesAssigned;
+        document.getElementById("sales-progress").textContent = Math.round((salesCompleted/salesAssigned)*100) + "%";
+        document.getElementById("revenue-achieved").textContent = "₹" + revenueAchieved.toLocaleString() + " / ₹" + revenueAssigned.toLocaleString();
+        document.getElementById("revenue-progress").textContent = Math.round((revenueAchieved/revenueAssigned)*100) + "%";
+        document.getElementById("accessories-achieved").textContent = accessoriesAchieved + " / " + accessoriesAssigned;
+        document.getElementById("accessories-progress").textContent = Math.round((accessoriesAchieved/accessoriesAssigned)*100) + "%";
+        document.getElementById("exec-targets").textContent = salesAssignedToExecs + " / " + salesAssigned;
+    }
+
+    // Populate executive dropdown
+    function populateExecDropdown() {
+        const select = document.getElementById("execSelect");
+        select.innerHTML = "";
+        executives.forEach((exec, idx) => {
+            const opt = document.createElement("option");
+            opt.value = idx;
+            opt.textContent = exec.name;
+            select.appendChild(opt);
+        });
+    }
+
+    // Show executive details
+    function updateExecDetails(idx) {
+        const exec = executives[idx];
+        document.getElementById("execDetails").innerHTML = `
+            <span>Sales: <b>${exec.completed.sales}</b> / <b>${exec.assigned.sales}</b></span> &nbsp;|&nbsp;
+            <span>Revenue: <b>₹${exec.completed.revenue.toLocaleString()}</b> / <b>₹${exec.assigned.revenue.toLocaleString()}</b></span> &nbsp;|&nbsp;
+            <span>Accessories: <b>${exec.completed.accessories}</b> / <b>${exec.assigned.accessories}</b></span>
+        `;
+        document.getElementById("salesInput").value = "";
+        document.getElementById("revenueInput").value = "";
+        document.getElementById("accessoriesInput").value = "";
+    }
+
+    // Update summary table
+    function updateSummaryTable() {
+        const tbody = document.getElementById("summaryBody");
+        tbody.innerHTML = "";
+        executives.forEach(exec => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${exec.name}</td>
+                <td>${exec.completed.sales} / ${exec.assigned.sales}</td>
+                <td>₹${exec.completed.revenue.toLocaleString()} / ₹${exec.assigned.revenue.toLocaleString()}</td>
+                <td>${exec.completed.accessories} / ${exec.assigned.accessories}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    // Handle form submit
+    document.getElementById("targetForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const exec = executives[selectedExec];
+        const addSales = parseInt(document.getElementById("salesInput").value, 10) || 0;
+        const addRevenue = parseInt(document.getElementById("revenueInput").value, 10) || 0;
+        const addAccessories = parseInt(document.getElementById("accessoriesInput").value, 10) || 0;
+        exec.assigned.sales += addSales;
+        exec.assigned.revenue += addRevenue;
+        exec.assigned.accessories += addAccessories;
+        updateExecDetails(selectedExec);
+        updateSummaryTable();
+        updateCards();
+        // Optionally, show a quick notification
+        document.querySelector('.alarm-card').style.background = "#e8f5e9";
+        document.querySelector('.alarm-card').style.color = "#388e3c";
+        document.querySelector('.alarm-card i').className = "fas fa-check-circle";
+        document.querySelector('.alarm-card span').textContent = "Target updated successfully!";
+        setTimeout(() => {
+            document.querySelector('.alarm-card').style.background = "#fffbe7";
+            document.querySelector('.alarm-card').style.color = "#b26a00";
+            document.querySelector('.alarm-card i').className = "fas fa-bell";
+            document.querySelector('.alarm-card span').textContent = "Reminder: Please review and update your team's target allocations for this month!";
+        }, 2000);
+    });
+
+    // Dropdown change
+    document.getElementById("execSelect").addEventListener("change", function() {
+        selectedExec = parseInt(this.value, 10);
+        updateExecDetails(selectedExec);
+    });
+
+    // Initial load
+    populateExecDropdown();
+    updateExecDetails(selectedExec);
+    updateSummaryTable();
+    updateCards();
+// ...existing code...
+// ...existing code...
+
 </script>
 </body>
 </html>
