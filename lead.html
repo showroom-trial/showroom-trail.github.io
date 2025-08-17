@@ -118,7 +118,7 @@
                         </div>
                     </div>
                     
-                    <div class="card">
+                    <!--<div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Pending Allocations</h3>
                         </div>
@@ -126,9 +126,9 @@
                         <div class="card-subtitle">
                             <span>Need immediate attention</span>
                         </div>
-                    </div>
+                    </div>-->
                     
-                    <div class="card">
+                    <!--<div class="card">
                         <div class="card-header">
                             <h3 class="card-title">In Progress Leads</h3>
                         </div>
@@ -136,17 +136,28 @@
                         <div class="card-subtitle">
                             <span class="trend-up">↑ 5% from last week</span>
                         </div>
-                    </div>
+                    </div>-->
                     
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Conversion Rate</h3>
-                        </div>
-                        <div class="card-value">32%</div>
-                        <div class="card-subtitle">
-                            <span class="trend-up">↑ 3% from last month</span>
-                        </div>
-                    </div>
+                    <div class="card card-er-br">
+    <div class="card-header">
+        <h3 class="card-title">E/B Ratio</h3>
+    </div>
+    <div class="card-value">3.57</div>
+    <div class="card-subtitle">
+        <span class="trend-up">↑ 0.2 from last month</span>
+    </div>
+</div>
+
+<div class="card card-er-br">
+    <div class="card-header">
+        <h3 class="card-title">B/R Ratio</h3>
+    </div>
+    <div class="card-value">1.14</div>
+    <div class="card-subtitle">
+        <span class="trend-up">↑ 0.05 from last month</span>
+    </div>
+</div>
+
                 </div>
                 
                 <div class="table-container">
@@ -424,8 +435,18 @@
                     </div>
                     
                     <div class="card">
+                        <div class="card-header"> 
+                            <h3 class="card-title">Total Team Booking(E/B)</h3>
+                        </div>
+                        <div class="card-value">74%</div>
+                        <div class="card-subtitle">
+                            <span class="trend-up">↑ 10% from last month</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Team Conversion Rate</h3>
+                            <h3 class="card-title">Total Team Retail (B/R)</h3>
                         </div>
                         <div class="card-value">32%</div>
                         <div class="card-subtitle">
@@ -433,15 +454,6 @@
                         </div>
                     </div>
                     
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Target Achievement</h3>
-                        </div>
-                        <div class="card-value">74%</div>
-                        <div class="card-subtitle">
-                            <span>Monthly target: 75 sales</span>
-                        </div>
-                    </div>
                     
                     <div class="card">
                         <div class="card-header">
@@ -477,8 +489,9 @@
                                 <th>Total Leads</th>
                                 <th>Active Leads</th>
                                 <th>Closed Sales</th>
-                                <th>Conversion Rate</th>
-                                <th>Contribution</th>
+                                <th>E/B Ratio</th>
+                                <th>B/R Ratio</th>
+                               <!--<th>Contribution</th>-->
                                 <th>Target Progress</th>
                             </tr>
                         </thead>
@@ -548,9 +561,15 @@
                                     </div>
                                 </td>
                             </tr>
+
                         </tbody>
                     </table>
                 </div>
+    <!-- Floating Customer Details Box -->
+     <div id="customer-popup" style="display:none; position:fixed; width:5in; height:4in; background:#fff; box-shadow:0 4px 12px rgba(0,0,0,0.2); padding:20px; border-radius:10px; top:20%; left:50%; transform:translateX(-50%); z-index:2000;">
+         <div style="text-align:right;"><button onclick="closePopup()" style="background:none;border:none;font-size:18px;">✖</button></div>
+         <div id="popup-content"></div>
+    </div>
   <!----  <div class="cards-container">
         <div class="card">
             <div class="card-header">
@@ -924,7 +943,7 @@
                                 <th>Last Contact</th>
                                 <th>Next Follow-up</th>
                                 <th>Assigned To</th>
-                                <th>Conversion Probability</th>
+                                <th>Lead stage</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -1214,6 +1233,77 @@
                         </tbody>
                     </table>
                 </div>
+
+                
+                <!-- === Executive Daily Tasks Module (inside Executive Comparison) === -->
+<div class="table-container" id="exec-task-module">
+  <div class="table-header">
+    <h3 class="table-title">Assign Daily Tasks</h3>
+  </div>
+
+  <!-- Task Form -->
+  <form id="execTaskForm" class="task-form" autocomplete="off">
+    <div class="task-form-row">
+      <div>
+        <label for="execTaskExecSelect">Executive Name</label>
+        <select id="execTaskExecSelect" required></select>
+      </div>
+      <div>
+        <label for="execTaskExecIdSelect">Executive ID</label>
+        <select id="execTaskExecIdSelect">
+          <option value="">Auto</option>
+        </select>
+      </div>
+      <div>
+        <label for="execTaskPriority">Priority</label>
+        <select id="execTaskPriority" required>
+          <option value="High">High</option>
+          <option value="Medium" selected>Medium</option>
+          <option value="Low">Low</option>
+        </select>
+      </div>
+      <div>
+        <label for="execTaskDueDate">Due Date</label>
+        <input type="date" id="execTaskDueDate">
+      </div>
+    </div>
+
+    <label for="execTaskDesc">Task Description</label>
+    <textarea id="execTaskDesc" placeholder="Describe the task..." required></textarea>
+
+    <button type="submit">Assign Task</button>
+  </form>
+</div>
+
+<!-- Task Summary (per Executive) -->
+<div class="table-container" id="exec-task-summary-container">
+  <div class="table-header">
+    <h3 class="table-title">Executive Task Summary</h3>
+    <div class="table-actions">
+      <button class="export-btn" data-table="exec-task-summary-table">
+        <i class="fas fa-download"></i> Export
+      </button>
+    </div>
+  </div>
+  <table id="exec-task-summary-table">
+    <thead>
+      <tr>
+        <th>Executive</th>
+        <th>Exec ID</th>
+        <th>Completed / Total</th>
+        <th>Active</th>
+        <th>High Pri</th>
+      </tr>
+    </thead>
+    <tbody id="execTaskSummaryBody">
+      <!-- JS fills -->
+    </tbody>
+  </table>
+</div>
+
+<!-- Expanded Task Detail Wrapper (auto-injected rows go here) -->
+<!-- When a summary row is clicked, a detail row is dynamically inserted right after it -->
+
             </div>
 
 <!-- Target Allocation Section -->
@@ -1798,13 +1888,13 @@ document.addEventListener("DOMContentLoaded", function () {
             font-weight: bold;
         }
         .rank-1 {
-            color: #ffd700; /* Gold */
+            color: #000; /* Gold */
         }
         .rank-2 {
-            color: #c0c0c0; /* Silver */
+            color: #000; /* Silver */
         }
         .rank-3 {
-            color: #cd7f32; /* Bronze */
+            color: #000; /* Bronze */
         }
         .sales-bar-container {
             width: 100%;
@@ -2897,6 +2987,380 @@ updateLeadTargetAlarm();
 // ...existing code...
 // ...existing code...
 
+
+document.querySelectorAll("#followup-table tbody tr").forEach(row => {
+    const probCell = row.querySelector('[data-label="Conversion Probability"]');
+    const span = probCell.querySelector("span");
+    const percent = parseInt(span.textContent.replace('%', '').trim());
+
+    let label = '';
+    if (percent > 95) label = 'Booked';
+    else if (percent > 76) label = 'B→R';
+    else if (percent > 51) label = 'T→B';
+    else if (percent > 35) label = 'E→T';
+    else if (percent > 15) label = 'Enquiry';
+    else label = 'New Lead';
+
+    if (label) {
+        span.innerHTML = `${percent}% <br><small style="color:#3f51b5;font-weight:bold;">${label}</small>`;
+    }
+});
+
+function closePopup() {
+    document.getElementById("customer-popup").style.display = "none";
+}
+
+document.querySelectorAll(".status-update-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+        const row = btn.closest("tr");
+        const name = row.querySelector('[data-label="Lead Name"]').textContent;
+        const contact = row.querySelector('[data-label="Last Contact"]').textContent;
+        const next = row.querySelector('[data-label="Next Follow-up"]').textContent;
+        const assigned = row.querySelector('[data-label="Assigned To"]').textContent;
+        const prob = row.querySelector('[data-label="Conversion Probability"] span').textContent;
+
+        document.getElementById("popup-content").innerHTML = `
+            <h3 style="margin-bottom:10px;">Customer Details</h3>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Last Contact:</strong> ${contact}</p>
+            <p><strong>Next Follow-up:</strong> ${next}</p>
+            <p><strong>Assigned To:</strong> ${assigned}</p>
+            <p><strong>Conversion:</strong> ${prob}</p>
+        `;
+        document.getElementById("customer-popup").style.display = "block";
+    });
+});
+
+
+
+
+/* ================================
+   Executive Tasks (Comparison Section)
+   ================================ */
+(function(){
+  const STORAGE_KEY = "kia-exec-tasks-v1";
+
+  // --------- Helpers ---------
+  function loadTasks(){
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return [];
+      const data = JSON.parse(raw);
+      return Array.isArray(data) ? data : [];
+    } catch(e){
+      console.warn("Failed to load tasks", e);
+      return [];
+    }
+  }
+  function saveTasks(list){
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+    } catch(e){
+      console.warn("Failed to save tasks", e);
+    }
+  }
+  let tasks = loadTasks();
+
+  // Build executive list + id map from DOM (Lead Allocation table preferred)
+  function buildExecMap(){
+    const map = {}; // name -> id (string)
+    // scan lead allocation
+    document.querySelectorAll('#leads-table tbody tr').forEach(row=>{
+      const nameCell = row.querySelector('[data-label="Assigned Executive"]');
+      const idCell = row.querySelector('[data-label="Executive ID"]');
+      if(!nameCell) return;
+      const name = nameCell.textContent.trim();
+      const id = idCell ? idCell.textContent.trim() : "";
+      if(name) map[name] = id;
+    });
+    // fallback: comparison table names
+    document.querySelectorAll('#comparison-table tbody tr').forEach(row=>{
+      const nameCell = row.querySelector('[data-label="Executive Name"]');
+      if(!nameCell) return;
+      const name = nameCell.textContent.trim();
+      if(name && !(name in map)) map[name] = ""; // no id
+    });
+    return map;
+  }
+  let execMap = buildExecMap();
+
+  function getExecNames(){ return Object.keys(execMap); }
+  function getExecId(name){ return execMap[name] || ""; }
+
+  // DOM refs
+  const form = document.getElementById("execTaskForm");
+  const nameSel = document.getElementById("execTaskExecSelect");
+  const idSel   = document.getElementById("execTaskExecIdSelect");
+  const prSel   = document.getElementById("execTaskPriority");
+  const dueInp  = document.getElementById("execTaskDueDate");
+  const descInp = document.getElementById("execTaskDesc");
+  const sumBody = document.getElementById("execTaskSummaryBody");
+  const sumTable = document.getElementById("exec-task-summary-table");
+
+  if(!form){ console.warn("Exec task module form missing; skipping init."); return; }
+
+  // Populate selects
+  function populateExecSelects(){
+    const names = getExecNames();
+    nameSel.innerHTML = `<option value="" disabled selected>Select Executive</option>`;
+    idSel.innerHTML = `<option value="">Auto</option>`;
+    names.forEach(n=>{
+      const opt = document.createElement("option");
+      opt.value = n;
+      opt.textContent = n;
+      nameSel.appendChild(opt);
+
+      const id = getExecId(n);
+      const idOpt = document.createElement("option");
+      idOpt.value = id;
+      idOpt.textContent = id || "(none)";
+      idSel.appendChild(idOpt);
+    });
+  }
+  populateExecSelects();
+
+  // Sync ID when name selected (auto fill)
+  nameSel.addEventListener("change", ()=>{
+    const id = getExecId(nameSel.value);
+    idSel.value = id;
+  });
+
+  // Submit new task
+  form.addEventListener("submit", e=>{
+    e.preventDefault();
+    const execName = nameSel.value;
+    if(!execName){ alert("Select executive."); return; }
+
+    let execId = idSel.value;
+    if(!execId){ execId = getExecId(execName); } // auto fallback
+
+    const priority = prSel.value;
+    const desc = descInp.value.trim();
+    if(!desc){ alert("Task description required."); return; }
+
+    const t = {
+      id: "et_" + Date.now(),
+      execName,
+      execId,
+      description: desc,
+      priority,
+      dueDate: dueInp.value || null,
+      status: "Pending",              // Pending | In Progress | Completed
+      createdDate: new Date().toISOString(),
+      completionDate: null
+    };
+    tasks.push(t);
+    saveTasks(tasks);
+    form.reset();
+    nameSel.selectedIndex = 0;
+    idSel.selectedIndex = 0;
+    prSel.value = "Medium";
+    renderSummary();
+  });
+
+  // ---- Summary Render ----
+  function renderSummary(){
+    execMap = buildExecMap(); // in case DOM changed
+    const names = getExecNames();
+    sumBody.innerHTML = "";
+    names.forEach(n=>{
+      const id = getExecId(n);
+      const myTasks = tasks.filter(t=>t.execName===n);
+      const total = myTasks.length;
+      const completed = myTasks.filter(t=>t.status==="Completed").length;
+      const active = total - completed;
+      const highPri = myTasks.filter(t=>t.priority==="High" && t.status!=="Completed").length;
+
+      const tr = document.createElement("tr");
+      tr.className = "exec-task-summary-row";
+      tr.setAttribute("data-exec", n);
+      tr.innerHTML = `
+        <td>${n}</td>
+        <td>${id || "-"}</td>
+        <td>${completed} / ${total}</td>
+        <td>${active}</td>
+        <td>${highPri}</td>
+      `;
+      sumBody.appendChild(tr);
+    });
+  }
+
+  // ---- Expand / Collapse Details ----
+  sumBody.addEventListener("click", e=>{
+    const row = e.target.closest("tr.exec-task-summary-row");
+    if(!row) return;
+    const name = row.getAttribute("data-exec");
+    toggleDetailRow(row, name);
+  });
+
+  function toggleDetailRow(summaryRow, execName){
+    // Already open?
+    const next = summaryRow.nextElementSibling;
+    if (next && next.classList.contains("exec-task-detail-row")){
+      next.remove();
+      return;
+    }
+    // close any other open detail rows
+    document.querySelectorAll(".exec-task-detail-row").forEach(el=>el.remove());
+
+    // Build detail table rows
+    const all = tasks.filter(t=>t.execName===execName);
+    const sorted = sortDetail(all);
+
+    const wrapTr = document.createElement("tr");
+    wrapTr.className = "exec-task-detail-row";
+    const td = document.createElement("td");
+    td.colSpan = 5;
+    td.innerHTML = buildDetailHtml(sorted);
+    wrapTr.appendChild(td);
+    summaryRow.insertAdjacentElement("afterend", wrapTr);
+
+    // attach detail button events
+    attachDetailRowEvents(wrapTr, sorted);
+  }
+
+  // Sort: incomplete first by dueDate->priority->created; then completed by completionDate desc
+  function sortDetail(list){
+    const prRank = {High:3, Medium:2, Low:1};
+    return list.slice().sort((a,b)=>{
+      const adone = a.status==="Completed";
+      const bdone = b.status==="Completed";
+      if(adone !== bdone) return adone?1:-1;
+      if(!adone){
+        const ad = a.dueDate ? new Date(a.dueDate) : new Date("9999-12-31");
+        const bd = b.dueDate ? new Date(b.dueDate) : new Date("9999-12-31");
+        if(ad-bd!==0) return ad-bd;
+        if(prRank[a.priority]!==prRank[b.priority]) return prRank[b.priority]-prRank[a.priority];
+        return new Date(a.createdDate)-new Date(b.createdDate);
+      }
+      const ac = a.completionDate?new Date(a.completionDate):0;
+      const bc = b.completionDate?new Date(b.completionDate):0;
+      return bc-ac;
+    });
+  }
+
+  function buildDetailHtml(list){
+    if(!list.length){
+      return `<div class="exec-task-detail-inner"><em>No tasks yet.</em></div>`;
+    }
+    let rows = "";
+    list.forEach(t=>{
+      const rowCls = priorityStripeClass(t.priority);
+      const pill = statusPill(t);
+      rows += `
+        <tr class="${rowCls}" data-id="${t.id}">
+          <td>${t.description}</td>
+          <td>${t.dueDate?fmtDate(t.dueDate):"-"}</td>
+          <td>${t.priority}</td>
+          <td>${pill}</td>
+          <td>
+            ${t.status!=="Completed" ? `<button class="dashboard-btn exec-task-done-btn" data-id="${t.id}">Done</button>` : `<button class="dashboard-btn exec-task-reopen-btn" data-id="${t.id}">Reopen</button>`}
+            <button class="dashboard-btn exec-task-del-btn" data-id="${t.id}">Delete</button>
+          </td>
+        </tr>
+      `;
+    });
+    return `
+      <div class="exec-task-detail-inner">
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Due</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  function priorityStripeClass(p){
+    if(p==="High") return "exec-task-row-high";
+    if(p==="Medium") return "exec-task-row-medium";
+    return "exec-task-row-low";
+  }
+
+  function statusPill(t){
+    const overdue = isOverdue(t);
+    let cls = "exec-task-pill ";
+    let txt = t.status;
+    if(t.status==="Completed") cls+="exec-task-completed";
+    else if(overdue){ cls+="exec-task-overdue"; txt="Overdue"; }
+    else if(t.status==="In Progress") cls+="exec-task-progress";
+    else cls+="exec-task-pending";
+    return `<span class="${cls}">${txt}</span>`;
+  }
+  function isOverdue(t){
+    if(t.status==="Completed") return false;
+    if(!t.dueDate) return false;
+    const today = new Date();
+    const due = new Date(t.dueDate);
+    return due < today.setHours(0,0,0,0);
+  }
+
+  function fmtDate(d){
+    const dt = new Date(d);
+    if(Number.isNaN(dt)) return d;
+    return dt.toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"});
+  }
+
+  function attachDetailRowEvents(detailRow, list){
+    detailRow.addEventListener("click", e=>{
+      const id = e.target.getAttribute("data-id");
+      if(!id) return;
+      const idx = tasks.findIndex(x=>x.id===id);
+      if(idx<0) return;
+
+      if(e.target.classList.contains("exec-task-done-btn")){
+        tasks[idx].status="Completed";
+        tasks[idx].completionDate=new Date().toISOString();
+      } else if(e.target.classList.contains("exec-task-reopen-btn")){
+        tasks[idx].status="Pending";
+        tasks[idx].completionDate=null;
+      } else if(e.target.classList.contains("exec-task-del-btn")){
+        if(confirm("Delete this task?")){
+          tasks.splice(idx,1);
+        } else return;
+      }
+      saveTasks(tasks);
+      renderSummary(); // this re-renders summary and collapses detail; optional: reopen same exec
+    });
+  }
+
+  // Export summary table CSV (reuses your pattern)
+  const exportBtn = document.querySelector('#exec-task-summary-container .export-btn');
+  if(exportBtn){
+    exportBtn.addEventListener("click", ()=>{
+      const table = sumTable;
+      if(!table) return;
+      const headers = Array.from(table.querySelectorAll('thead th')).map(th=>th.textContent.trim());
+      let csv = headers.join(',')+'\n';
+      table.querySelectorAll('tbody tr').forEach(tr=>{
+        const cells = Array.from(tr.children).map(td=> {
+          let t = td.textContent.trim().replace(/,/g,' ');
+          if(t.includes(' ')) t=`"${t}"`;
+          return t;
+        });
+        csv += cells.join(',')+'\n';
+      });
+      const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href=url;
+      a.download='executive-tasks-summary.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  }
+
+  // Initial paint
+  renderSummary();
+})();
 </script>
+
 </body>
 </html>
