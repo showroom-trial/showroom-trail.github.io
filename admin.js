@@ -1195,7 +1195,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (logoutBtn) {
         logoutBtn.addEventListener('click', function() {
             // In a real application, you'd perform a logout API call here
-            window.location.href = 'login.html';
+            window.location.href = 'index.html';
         });
     }
 
