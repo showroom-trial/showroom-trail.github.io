@@ -2122,3 +2122,685 @@ img {
     transition: transform 0.3s ease;
 }
 
+/* Base table styles - Clean White Theme */
+#addon-sales-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    border: 1px solid #000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Table header styles - White background, black text */
+#addon-sales-table thead th {
+    background-color: #fff;
+    color: #000;
+    font-weight: 700;
+    padding: 15px 12px;
+    text-align: left;
+    border-right: 1px solid #000;
+    border-bottom: 2px solid #000;
+    white-space: nowrap;
+    font-size: 14px;
+    min-width: 140px;
+}
+
+#addon-sales-table thead th:last-child {
+    border-right: none;
+}
+
+/* Table body styles - White background, black text */
+#addon-sales-table tbody td {
+    padding: 15px 12px;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    color: #000;
+    white-space: nowrap;
+    font-size: 13px;
+    background-color: #fff;
+    min-width: 140px;
+}
+
+#addon-sales-table tbody td:last-child {
+    border-right: none;
+}
+
+/* Alternating row colors - Very light gray and white */
+#addon-sales-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#addon-sales-table tbody tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
+/* Hover effect for rows */
+#addon-sales-table tbody tr:hover td {
+    background-color: #f0f0f0 !important;
+}
+
+/* Pagination styles - White theme */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.pagination-btn, .page-num {
+    padding: 8px 12px;
+    border: 1px solid #000;
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.pagination-btn:hover, .page-num:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+.page-num.active {
+    background-color: #e0e0e0;
+    color: #000;
+    border-color: #000;
+}
+
+/* MOBILE SCROLL SOLUTION - All columns visible */
+@media screen and (max-width: 768px) {
+    
+    /* Force the parent container to allow overflow */
+    body, html {
+        overflow-x: auto !important;
+    }
+    
+    /* If your table is inside a card/container */
+    .card, .container, .table-wrapper, .content {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+    
+    /* Direct table scrolling approach with all columns visible */
+    #addon-sales-table {
+        display: block !important;
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        white-space: nowrap !important;
+        width: 100% !important;
+        -webkit-overflow-scrolling: touch !important;
+        border: 1px solid #000;
+        border-radius: 8px;
+        min-width: 1100px !important; /* Increased to show all columns */
+    }
+    
+    #addon-sales-table thead,
+    #addon-sales-table tbody {
+        display: table !important;
+        width: 100% !important;
+        table-layout: fixed !important;
+        min-width: 1100px !important; /* Match table min-width */
+    }
+    
+    #addon-sales-table tr {
+        display: table-row !important;
+        width: 100% !important;
+    }
+    
+    #addon-sales-table th,
+    #addon-sales-table td {
+        display: table-cell !important;
+        padding: 12px 10px !important;
+        font-size: 12px !important;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        vertical-align: middle;
+        border-right: 1px solid #ddd !important;
+    }
+    
+    #addon-sales-table th:last-child,
+    #addon-sales-table td:last-child {
+        border-right: none !important;
+    }
+    
+    /* Specific column widths to ensure all column names are visible */
+    #addon-sales-table th:nth-child(1),
+    #addon-sales-table td:nth-child(1) {
+        width: 100px !important;
+        min-width: 100px !important; /* Date */
+    }
+    
+    #addon-sales-table th:nth-child(2),
+    #addon-sales-table td:nth-child(2) {
+        width: 140px !important;
+        min-width: 140px !important; /* Customer Name */
+    }
+    
+    #addon-sales-table th:nth-child(3),
+    #addon-sales-table td:nth-child(3) {
+        width: 120px !important;
+        min-width: 120px !important; /* Vehicle Model */
+    }
+    
+    #addon-sales-table th:nth-child(4),
+    #addon-sales-table td:nth-child(4) {
+        width: 150px !important;
+        min-width: 150px !important; /* Accessories Item */
+    }
+    
+    #addon-sales-table th:nth-child(5),
+    #addon-sales-table td:nth-child(5) {
+        width: 100px !important;
+        min-width: 100px !important; /* Category */
+    }
+    
+    #addon-sales-table th:nth-child(6),
+    #addon-sales-table td:nth-child(6) {
+        width: 130px !important;
+        min-width: 130px !important; /* Retail Price (₹) */
+    }
+    
+    #addon-sales-table th:nth-child(7),
+    #addon-sales-table td:nth-child(7) {
+        width: 80px !important;
+        min-width: 80px !important; /* Tax % */
+    }
+    
+    #addon-sales-table th:nth-child(8),
+    #addon-sales-table td:nth-child(8) {
+        width: 100px !important;
+        min-width: 100px !important; /* GST (₹) */
+    }
+    
+    #addon-sales-table th:nth-child(9),
+    #addon-sales-table td:nth-child(9) {
+        width: 130px !important;
+        min-width: 130px !important; /* Sales Price (₹) */
+    }
+    
+    /* Style the scrollbar - Clean white theme */
+    #addon-sales-table::-webkit-scrollbar {
+        height: 8px !important;
+    }
+    
+    #addon-sales-table::-webkit-scrollbar-track {
+        background: #fff !important;
+        border: 1px solid #ddd !important;
+        border-radius: 4px !important;
+    }
+    
+    #addon-sales-table::-webkit-scrollbar-thumb {
+        background: #ddd !important;
+        border-radius: 4px !important;
+        border: 1px solid #ccc !important;
+    }
+    
+    #addon-sales-table::-webkit-scrollbar-thumb:hover {
+        background: #bbb !important;
+    }
+    
+    /* Alternative wrapper method if needed */
+    .table-scroll-wrapper {
+        width: 100% !important;
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        -webkit-overflow-scrolling: touch !important;
+        border: 1px solid #000 !important;
+        border-radius: 8px !important;
+        background: #fff !important;
+    }
+    
+    .table-scroll-wrapper #addon-sales-table {
+        display: table !important;
+        min-width: 1100px !important;
+        margin: 0 !important;
+        border: none !important;
+        border-radius: 0 !important;
+    }
+}
+
+/* Very small screens - Adjust for phones */
+@media screen and (max-width: 480px) {
+    
+    #addon-sales-table {
+        min-width: 1000px !important; /* Slightly smaller for phones */
+    }
+    
+    #addon-sales-table thead,
+    #addon-sales-table tbody {
+        min-width: 1000px !important;
+    }
+    
+    #addon-sales-table th,
+    #addon-sales-table td {
+        padding: 10px 8px !important;
+        font-size: 11px !important;
+    }
+    
+    /* Adjust column widths for smaller screens */
+    #addon-sales-table th:nth-child(1),
+    #addon-sales-table td:nth-child(1) {
+        width: 90px !important;
+        min-width: 90px !important;
+    }
+    
+    #addon-sales-table th:nth-child(2),
+    #addon-sales-table td:nth-child(2) {
+        width: 120px !important;
+        min-width: 120px !important;
+    }
+    
+    #addon-sales-table th:nth-child(4),
+    #addon-sales-table td:nth-child(4) {
+        width: 130px !important;
+        min-width: 130px !important;
+    }
+    
+    .pagination-btn, .page-num {
+        padding: 6px 10px !important;
+        font-size: 11px !important;
+    }
+}
+
+.daily-task-content {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .daily-task-column {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .daily-task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .daily-task-add-btn {
+            background-color: #000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .daily-task-add-btn:hover {
+            background-color: #333;
+            transform: translateY(-1px);
+        }
+
+        .daily-task-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .daily-task-filter-btn {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+
+        .daily-task-filter-btn.active {
+            background-color: #000;
+            color: white;
+            border-color: #000;
+        }
+
+        .daily-task-filter-btn:hover {
+            border-color: #000;
+        }
+
+        .daily-task-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .daily-task-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background: white;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .daily-task-item:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-color: #ddd;
+        }
+
+        .daily-task-item.completed {
+            background-color: #f8f9fa;
+            border-color: #28a745;
+        }
+
+        .daily-task-item.overdue {
+            border-left: 4px solid #dc3545;
+            background-color: #fff5f5;
+        }
+
+        .daily-task-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #000;
+            border-radius: 4px;
+            margin-right: 15px;
+            cursor: pointer;
+            position: relative;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .daily-task-checkbox:checked {
+            background-color: #000;
+        }
+
+        .daily-task-checkbox:checked::after {
+            content: '✓';
+            position: absolute;
+            color: white;
+            font-size: 14px;
+            left: 3px;
+            top: -1px;
+        }
+
+        .daily-task-details {
+            flex: 1;
+        }
+
+        .daily-task-text {
+            font-weight: 500;
+            margin-bottom: 8px;
+            line-height: 1.4;
+            color: #333;
+        }
+
+        .daily-task-item.completed .daily-task-text {
+            text-decoration: line-through;
+            color: #666;
+        }
+
+        .daily-task-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .daily-task-priority {
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .daily-task-priority.high {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+        }
+
+        .daily-task-priority.medium {
+            background-color: #fff3e0;
+            color: #ef6c00;
+            border: 1px solid #ffcc02;
+        }
+
+        .daily-task-priority.low {
+            background-color: #e8f5e8;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+
+        .daily-task-due {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .daily-task-due.overdue {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .daily-task-assigned-by {
+            font-size: 12px;
+            color: #888;
+            font-style: italic;
+        }
+
+        .daily-task-actions {
+            display: flex;
+            gap: 5px;
+            margin-left: 10px;
+        }
+
+        .daily-task-action-btn {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 5px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .daily-task-action-btn:hover {
+            background-color: #f5f5f5;
+            border-color: #000;
+        }
+
+        /* Modal Styles */
+        .daily-task-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .daily-task-modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .daily-task-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .daily-task-modal-header h3 {
+            margin: 0;
+            color: #333;
+            font-size: 20px;
+        }
+
+        .daily-task-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .daily-task-close:hover {
+            color: #333;
+            background-color: #f5f5f5;
+            border-radius: 50%;
+        }
+
+        .daily-task-form-group {
+            margin-bottom: 20px;
+        }
+
+        .daily-task-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .daily-task-form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.2s ease;
+        }
+
+        .daily-task-form-control:focus {
+            outline: none;
+            border-color: #000;
+            box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+        }
+
+        .daily-task-form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .daily-task-form-row .daily-task-form-group {
+            flex: 1;
+        }
+
+        .daily-task-form-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .daily-task-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .daily-task-btn-primary {
+            background-color: #000;
+            color: white;
+        }
+
+        .daily-task-btn-primary:hover {
+            background-color: #333;
+        }
+
+        .daily-task-btn-secondary {
+            background-color: #f5f5f5;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .daily-task-btn-secondary:hover {
+            background-color: #e9ecef;
+        }
+
+        .daily-task-manager-section {
+            border-top: 2px solid #000;
+            margin-top: 30px;
+            padding-top: 20px;
+        }
+
+        .daily-task-manager-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .daily-task-manager-icon {
+            width: 24px;
+            height: 24px;
+            background-color: #000;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .daily-task-empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+
+        .daily-task-empty-state svg {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .daily-task-content {
+                flex-direction: column;
+            }
+            
+            .daily-task-filters {
+                justify-content: center;
+            }
+            
+            .daily-task-form-row {
+                flex-direction: column;
+            }
+            
+            .daily-task-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+        }
