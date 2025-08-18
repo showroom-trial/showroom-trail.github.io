@@ -100,11 +100,11 @@
                 <div class="cards-container">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Total Leads </h3>
+                            <h3 class="card-title">Total Leads completed </h3>
                         </div>
-                        <div class="card-value">12</div>
+                        <div class="card-value">112</div>
                         <div class="card-subtitle">
-                            <span class="trend-up">↑ 4 from yesterday</span>
+                            <span class="trend-up">present year</span>
                         </div>
                     </div>
 
@@ -170,11 +170,11 @@
                             <div class="table-actions">
                                 <!-- Your existing search, filter, exports elements remain untouched -->
                         </div>
-                        <h3 class="table-title">Assigned Leads</h3>
+                        <!--<h3 class="table-title">Assigned Leads</h3>-->
                         <div class="table-actions">
-                            <input type="text" class="search-input" placeholder="Search leads..." data-table="leads-table">
+                            <!--<input type="text" class="search-input" placeholder="Search leads..." data-table="leads-table">-->
                             <select class="filter-select" data-filter="status" data-table="leads-table">
-                                <option value="all">All Status</option>
+                                <!--<option value="all">All Status</option>-->
                                 <option value="New">New</option>
                                 <option value="In Progress">In Progress</option>
                                 <option value="Follow-up">Follow-up</option>
@@ -245,8 +245,8 @@
                                 <th>Lead Source</th>
                                 <th>Interested Model</th>
                                 <th>Assigned Executive</th>
+                                 <th>Executive ID</th>
                                 <th>Last Update</th>
-                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -2805,7 +2805,7 @@ if (salesCtx) {
             datasets: [{
                 label: 'Sales Contribution (%)',
                 data: [28.6, 25.0, 21.4, 17.8, 7.2],
-                backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#FFC300'],
+                backgroundColor: ['#333333', '#666666', '#999999', '#777777', '#666666'],
                 borderWidth: 1
             }]
         },
