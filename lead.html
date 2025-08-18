@@ -917,6 +917,285 @@
         flex: 1 1 100%;
     }
 }
+
+/* Customer Details Dialog Styles */
+.customer-dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.customer-dialog {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow: hidden;
+    animation: dialogSlideIn 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes dialogSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.customer-dialog-header {
+    background: #f5f5f5;
+    color: #333;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    flex-shrink: 0;
+}
+
+.customer-dialog-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.customer-dialog-close {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.customer-dialog-close:hover {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.customer-dialog-content {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+}
+
+.customer-info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background-color: #fafafa;
+    border-radius: 6px;
+    border-left: 3px solid #3f51b5;
+}
+
+.info-label {
+    font-weight: 500;
+    color: #555;
+    font-size: 13px;
+}
+
+.info-value {
+    color: #333;
+    font-weight: 600;
+    font-size: 13px;
+    text-align: right;
+}
+
+.customer-action-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.action-btn {
+    padding: 12px 8px;
+    font-size: 10px;
+    min-height: 50px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 6px;
+    word-wrap: break-word;
+    text-align: center;
+    letter-spacing: 0.2px;
+    overflow: hidden;
+}
+
+.call-btn {
+    background: #4CAF50;
+    grid-column: span 1.2;
+    min-width: 100px;
+}
+
+.call-btn:hover {
+    background: #45a049;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.email-btn {
+    background: #2196F3;
+    grid-column: span 1.2;
+    min-width: 100px;
+}
+
+.email-btn:hover {
+    background: #1976D2;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+}
+
+.whatsapp-btn {
+    background: #25D366;
+    grid-column: span 1.2;
+    min-width: 100px;
+}
+
+.whatsapp-btn:hover {
+    background: #128C7E;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.action-btn i {
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+/* Mobile Responsiveness for Dialog */
+@media (max-width: 768px) {
+    .customer-dialog-overlay {
+        padding: 15px;
+    }
+    
+    .customer-dialog {
+        max-width: 100%;
+        max-height: 95vh;
+    }
+    
+    .customer-dialog-header {
+        padding: 14px 18px;
+    }
+    
+    .customer-dialog-header h3 {
+        font-size: 16px;
+    }
+    
+    .customer-dialog-content {
+        padding: 18px;
+    }
+    
+    .customer-info-grid {
+        gap: 10px;
+    }
+    
+    .info-item {
+        padding: 10px 14px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    
+    .info-value {
+        text-align: left;
+        font-weight: 500;
+    }
+    
+    .customer-action-buttons {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .action-btn {
+        padding: 14px 12px;
+        font-size: 13px;
+        min-height: 50px;
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .customer-dialog-overlay {
+        padding: 10px;
+    }
+    
+    .customer-dialog {
+        max-height: 98vh;
+    }
+    
+    .customer-dialog-header {
+        padding: 12px 16px;
+    }
+    
+    .customer-dialog-content {
+        padding: 16px;
+    }
+    
+    .customer-info-grid {
+        gap: 8px;
+    }
+    
+    .info-item {
+        padding: 8px 12px;
+    }
+    
+    .action-btn {
+        padding: 10px 6px;
+        font-size: 9px;
+        min-height: 44px;
+        word-wrap: break-word;
+        text-align: center;
+        letter-spacing: 0.2px;
+        overflow: hidden;
+        gap: 4px;
+    }
+}
+
+/* High zoom level support */
+@media screen and (min-resolution: 2dppx) {
+    .customer-dialog {
+        max-height: 80vh;
+    }
+    
+    .customer-dialog-content {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
 </style>
                 <div class="table-container">
                     <div class="table-header">
@@ -962,7 +1241,7 @@
                                 </td>
                                 <td data-label="Status"><span class="status-badge status-Hot">Today</span></td>
                                  <td>
-        <button class="status-update-btn" data-id="1">Details</button>
+        <button class="status-update-btn" data-id="1" data-customer="James Wilson" data-phone="+1 234-567-8901" data-email="james.wilson@email.com" data-model="KIA Sportage" data-variant="LX" data-color="White">Details</button>
     </td>
                             </tr>
                             <tr class="urgent-row">
@@ -978,7 +1257,7 @@
                                 </td>
                                 <td data-label="Status"><span class="status-badge status-Hot">Today</span></td>
                                 <td>
-        <button class="status-update-btn" data-id="2">Details</button>
+        <button class="status-update-btn" data-id="2" data-customer="Emma Roberts" data-phone="+1 234-567-8902" data-email="emma.roberts@email.com" data-model="KIA EV6" data-variant="GT-Line" data-color="Black">Details</button>
     </td>
                             <tr>
                                 <td data-label="Lead Name">David Thompson</td>
@@ -993,7 +1272,7 @@
                                 </td>
                                 <td data-label="Status"><span class="status-badge status-Warm">Tomorrow</span></td>
                                  <td>
-                                <button class="status-update-btn" data-id="7">Details</button>
+                                <button class="status-update-btn" data-id="7" data-customer="David Thompson" data-phone="+1 234-567-8903" data-email="david.thompson@email.com" data-model="KIA Telluride" data-variant="SX" data-color="Blue">Details</button>
                             </td>
                             </tr>
                             <tr>
@@ -1009,7 +1288,7 @@
                                 </td>
                                 <td data-label="Status"><span class="status-badge status-Cold">Scheduled</span></td>
                                  <td>
-        <button class="status-update-btn" data-id="3">Details</button>
+        <button class="status-update-btn" data-id="3" data-customer="Richard Clark" data-phone="+1 234-567-8904" data-email="richard.clark@email.com" data-model="KIA Sorento" data-variant="EX" data-color="Silver">Details</button>
     </td>
                             </tr>
                             <tr class="overdue-row">
@@ -1025,11 +1304,60 @@
                                 </td>
                                 <td data-label="Status"><span class="status-badge status-Hot">Overdue</span></td>
                                  <td>
-        <button class="status-update-btn" data-id="4">Details</button>
+        <button class="status-update-btn" data-id="4" data-customer="Patricia Hughes" data-phone="+1 234-567-8905" data-email="patricia.hughes@email.com" data-model="KIA K5" data-variant="GT" data-color="Red">Details</button>
     </td>
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+            
+            <!-- Customer Details Dialog Box -->
+            <div id="customer-details-dialog" class="customer-dialog-overlay" style="display: none;">
+                <div class="customer-dialog">
+                    <div class="customer-dialog-header">
+                        <h3>Customer Details</h3>
+                        <button class="customer-dialog-close" id="close-customer-dialog">&times;</button>
+                    </div>
+                    <div class="customer-dialog-content">
+                        <div class="customer-info-grid">
+                            <div class="info-item">
+                                <span class="info-label">Customer Name:</span>
+                                <span class="info-value" id="dialog-customer-name">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Phone:</span>
+                                <span class="info-value" id="dialog-customer-phone">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Email:</span>
+                                <span class="info-value" id="dialog-customer-email">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Model:</span>
+                                <span class="info-value" id="dialog-customer-model">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Variant:</span>
+                                <span class="info-value" id="dialog-customer-variant">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Color:</span>
+                                <span class="info-value" id="dialog-customer-color">-</span>
+                            </div>
+                        </div>
+                        <div class="customer-action-buttons">
+                            <button class="action-btn call-btn" id="call-customer-btn">
+                                <i class="fas fa-phone"></i> Call
+                            </button>
+                            <button class="action-btn email-btn" id="email-customer-btn">
+                                <i class="fas fa-envelope"></i> Mail
+                            </button>
+                            <button class="action-btn whatsapp-btn" id="whatsapp-customer-btn">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -3360,6 +3688,106 @@ document.querySelectorAll(".status-update-btn").forEach((btn) => {
   // Initial paint
   renderSummary();
 })();
+
+// Customer Details Dialog Functionality
+document.addEventListener("DOMContentLoaded", function() {
+    const customerDialog = document.getElementById("customer-details-dialog");
+    const closeDialogBtn = document.getElementById("close-customer-dialog");
+    const callBtn = document.getElementById("call-customer-btn");
+    const emailBtn = document.getElementById("email-customer-btn");
+    const whatsappBtn = document.getElementById("whatsapp-customer-btn");
+
+    // Close dialog when close button is clicked
+    if (closeDialogBtn) {
+        closeDialogBtn.addEventListener("click", function() {
+            customerDialog.style.display = "none";
+        });
+    }
+
+    // Close dialog when clicking outside the dialog
+    if (customerDialog) {
+        customerDialog.addEventListener("click", function(e) {
+            if (e.target === customerDialog) {
+                customerDialog.style.display = "none";
+            }
+        });
+    }
+
+    // Handle Details button clicks
+    document.querySelectorAll(".status-update-btn").forEach(btn => {
+        btn.addEventListener("click", function() {
+            const customerName = this.getAttribute("data-customer");
+            const customerPhone = this.getAttribute("data-phone");
+            const customerEmail = this.getAttribute("data-email");
+            const customerModel = this.getAttribute("data-model");
+            const customerVariant = this.getAttribute("data-variant");
+            const customerColor = this.getAttribute("data-color");
+
+            // Populate dialog with customer information
+            document.getElementById("dialog-customer-name").textContent = customerName || "-";
+            document.getElementById("dialog-customer-phone").textContent = customerPhone || "-";
+            document.getElementById("dialog-customer-email").textContent = customerEmail || "-";
+            document.getElementById("dialog-customer-model").textContent = customerModel || "-";
+            document.getElementById("dialog-customer-variant").textContent = customerVariant || "-";
+            document.getElementById("dialog-customer-color").textContent = customerColor || "-";
+
+            // Show the dialog
+            customerDialog.style.display = "flex";
+        });
+    });
+
+    // Handle Call button click
+    if (callBtn) {
+        callBtn.addEventListener("click", function() {
+            const phoneNumber = document.getElementById("dialog-customer-phone").textContent;
+            if (phoneNumber && phoneNumber !== "-") {
+                // Remove any non-numeric characters except + for international calls
+                const cleanPhone = phoneNumber.replace(/[^\d+]/g, '');
+                window.open(`tel:${cleanPhone}`, '_self');
+            } else {
+                alert("Phone number not available");
+            }
+        });
+    }
+
+    // Handle Email button click
+    if (emailBtn) {
+        emailBtn.addEventListener("click", function() {
+            const email = document.getElementById("dialog-customer-email").textContent;
+            if (email && email !== "-") {
+                const subject = "Follow-up regarding your KIA inquiry";
+                const body = "Dear customer,\n\nThank you for your interest in KIA vehicles. We would like to follow up on your inquiry.\n\nBest regards,\nKIA Showroom Team";
+                const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                window.open(mailtoLink, '_self');
+            } else {
+                alert("Email address not available");
+            }
+        });
+    }
+
+    // Handle WhatsApp button click
+    if (whatsappBtn) {
+        whatsappBtn.addEventListener("click", function() {
+            const phoneNumber = document.getElementById("dialog-customer-phone").textContent;
+            if (phoneNumber && phoneNumber !== "-") {
+                // Remove any non-numeric characters except + for international calls
+                const cleanPhone = phoneNumber.replace(/[^\d+]/g, '');
+                const message = "Hello! Thank you for your interest in KIA vehicles. We would like to follow up on your inquiry.";
+                const whatsappLink = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
+                window.open(whatsappLink, '_blank');
+            } else {
+                alert("Phone number not available for WhatsApp");
+            }
+        });
+    }
+
+    // Close dialog with Escape key
+    document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape" && customerDialog.style.display === "flex") {
+            customerDialog.style.display = "none";
+        }
+    });
+});
 </script>
 
 </body>
